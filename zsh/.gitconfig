@@ -1,0 +1,45 @@
+[user]
+	name = Rodrigo Martins
+	email = rodrigo.m.de.campos@accenture.com
+[alias]
+	cansei = commit --amend --no-edit
+	ls = status
+	ac = !git add -A && git cansei
+  branch-name = !git rev-parse --abbrev-ref HEAD
+	stashstaged = !git stash --keep-index && \
+									git stash && \
+									git stash apply stash@{1} && \
+									git stash show -p | git apply -R && \
+									git stash drop stash@{1}
+
+
+[core]
+	excludesfile = /Users/rodrigo.m.de.campos/.gitignore_global
+	editor = nvim
+
+
+[sequence]
+	editor = nvim
+
+[includeIf "gitdir:~/Documents/Projects/flutter_bvpd/**"]
+  path = ~/.gitconfig_banco_bv
+
+; [pager]
+;     diff = delta
+;     log = delta
+;     reflog = delta
+;     show = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+    line-numbers = true
+    side-by-side = true
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
