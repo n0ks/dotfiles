@@ -8,7 +8,7 @@ source $HOME/.config/nvim/plugin/quickfix.vim
 source $HOME/.config/nvim/plugin/fzf.vim
 " source $HOME/.config/nvim/plugin/coc.vim
 source $HOME/.config/nvim/general/autocmd.vim 
-" source $HOME/.config/nvim/general/lsp-config.vim
+source $HOME/.config/nvim/general/lsp-config.vim
 
 
 call plug#begin('~/.vim/plugged')
@@ -22,8 +22,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 " Plug 'glepnir/lspsaga.nvim'
 " Plug 'kabouzeid/nvim-lspinstall'
-" Plug 'neovim/nvim-lsp'
-" Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 " Plug 'ahmedkhalf/lsp-rooter.nvim'
 " Plug 'andweeb/presence.nvim'
 "Plug 'mfussenegger/nvim-dap'
@@ -66,7 +66,6 @@ Plug 'honza/vim-snippets'
 " THEMES
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'cocopon/iceberg.vim'
-" Plug 'eddyekofo94/gruvbox-flat.nvim'
 Plug 'sainnhe/gruvbox-material'
 Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'folke/tokyonight.nvim'

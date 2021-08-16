@@ -54,9 +54,8 @@ M.search_dotfiles = function()
     require("telescope.builtin").find_files({
         prompt_title = "< DOTFILES >",
         cwd = "$HOME/.dotfiles",
-        find_command = {'rg', '--files', '--iglob', '!.git', '--hidden', '-L'},
+        find_command = {'rg', '--files', '--iglob', '!.git', '--hidden'},
         previewer = false,
-        follow = false
     })
 end
 

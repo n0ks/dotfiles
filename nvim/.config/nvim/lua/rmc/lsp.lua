@@ -1,9 +1,9 @@
--- local nvim_lsp = require('lspconfig')
+local nvim_lsp = require('lspconfig')
 
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities.textDocument.completion.completionItem.snippetSupport = true
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- local closing_labels_namespace = vim.api.nvim_create_namespace('dart_closing_labels')
+local closing_labels_namespace = vim.api.nvim_create_namespace('dart_closing_labels')
 
 -- local on_code_action = function (...)
 --   local arg = {...}
