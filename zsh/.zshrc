@@ -38,6 +38,7 @@ export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/fvm/default/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
 export PATH="$MAGICK_HOME/bin:$PATH"
@@ -109,3 +110,5 @@ export NVM_DIR="$HOME/.nvm"
 function runAll(){
   ls -d */ | xargs -I {} bash -c "cd '{}' && $1"
 }
+
+alias luamake=/Users/rodrigo.m.de.campos/Documents/Projects/github/lua-language-server/3rd/luamake/luamake

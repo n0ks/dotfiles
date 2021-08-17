@@ -9,7 +9,7 @@ set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 set wildignore+=*.swp,*~,._*
 set wildignore+=**/node_modules/**
-set completeopt=menuone,preview,noselect,noinsert
+set completeopt=menuone,noselect
 set shortmess-=F
 set regexpengine=1
 set hidden                              " Required to keep multiple buffers open multiple buffers

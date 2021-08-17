@@ -56,6 +56,7 @@ M.search_dotfiles = function()
         cwd = "$HOME/.dotfiles",
         find_command = {'rg', '--files', '--iglob', '!.git', '--hidden'},
         previewer = false,
+        follow = false
     })
 end
 

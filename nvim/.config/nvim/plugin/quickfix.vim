@@ -2,10 +2,8 @@
 let g:the_primeagen_qf_l = 0
 let g:the_primeagen_qf_g = 0
 
-nnoremap <silent><c-q> :call ToggleQFList(1)<CR>
+nnoremap <silent><nowait><M-q> :call ToggleQFList(1)<CR>
 nnoremap <silent><leader>q :call ToggleQFList(0)<CR>
-
-
 
 fun! ToggleQFList(global)
     if a:global

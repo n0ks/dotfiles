@@ -14,7 +14,6 @@ fun! UnsetQFControlVariable()
     end
 endfun
 
-
 autocmd FileType netrw setl bufhidden=delete
 " by default .ts file are not identified as typescript and .tsx files are not
 " identified as typescript react file, so add following

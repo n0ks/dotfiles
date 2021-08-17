@@ -1,4 +1,3 @@
-
 " ----------------------------------------------------------------------------
 " General
 " ----------------------------------------------------------------------------
@@ -136,3 +135,34 @@ nnoremap <C-e> :lua require("FTerm").toggle()<CR>
 nnoremap <C-q> :lua require("FTerm").close()<CR>
 
 
+" ----------------------------------------------------------------------------
+" LSP
+" ----------------------------------------------------------------------------
+
+nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
+" nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap gi <CR><cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <C-k> <CR><cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
+" nnoremap <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
+
+ 
+nnoremap gr  <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap [d <CR><cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap ]d <CR><cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <leader>di <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
+nnoremap <leader>lf <cmd>lua require('stylua-nvim').format_file()<CR>
+"
+" SAGA
+nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent>K :Lspsaga hover_doc<CR>
+
+" -- scroll down hover doc or scroll in definition preview
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+
+imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+nnoremap <leader>x  :VsnipYank key <bar> VsnipOpen <CR>
