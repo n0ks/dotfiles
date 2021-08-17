@@ -1,51 +1,16 @@
-local nvim_lsp = require('lspconfig')
+local nvim_lsp = require("lspconfig")
+
+local sumneko_root_path = vim.fn.getenv("HOME") .. "/Documents/Projects/github/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local closing_labels_namespace = vim.api.nvim_create_namespace('dart_closing_labels')
 
--- local on_code_action = function (...)
---   local arg = {...}
---   print(vim.inspect(arg))
--- end
-
--- local on_closing_labels = function (...)
---   local arg = {...}
---   local labels = arg[3].labels
-
---   vim.api.nvim_buf_clear_namespace(0, closing_labels_namespace, 0, -1)
-
---   for i,l in ipairs(labels) do
---     local name =  l.label
---     local line = l.range['end'].line
---     vim.api.nvim_buf_set_virtual_text(
---       0,
---       closing_labels_namespace,
---       line,
---       {{'// '..name, 'Comment'}},
---       {}
---     )
---     print(i, name, line)
---   end
--- end
-
-  -- nvim_lsp.dartls.setup{
-  --   cmd = { "dart", "~/fvm/default/bin/cache/dart-sdk/bin/snapshots/analysis_server.dart.snapshot", "--lsp" },
-  --   on_attach = require('completion').on_attach(),
-  --   init_options = {
-  --     closingLabels = true,
-  --     flutterOutline = true,
-  --     onlyAnalyzeProjectsWithOpenFiles = true,
-  --     suggestFromUnimkortedLibraries = true,
-  --     outline = true,
-  --   },
-  --     callbacks = {
-  --     ['dart/textDocument/publishClosingLabels'] = on_closing_labels;
-  --     ['textDocument/codeAction'] = on_code_action;
-  --   };
-
-  -- }
+local on_attach = function(_, bufnr)
+	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+end
 
 -- require'lspinstall'.setup() -- important
 
@@ -54,3 +19,61 @@ local closing_labels_namespace = vim.api.nvim_create_namespace('dart_closing_lab
 --   require'lspconfig'[server].setup{}
 -- end
 
+local runtime_path = vim.split(package.path, ";")
+
+require("lspconfig").tsserver.setup({
+	on_attach = on_attach,
+	filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+})
+
+require("lspconfig").yamlls.setup({
+	on_attach = on_attach,
+})
+
+require("lspconfig").sumneko_lua.setup({
+	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+	on_attach = on_attach,
+	capabilities = capabilities,
+	commands = {
+		Format = {
+			function()
+				require("stylua-nvim").format_file()
+			end,
+		},
+	},
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = "LuaJIT",
+				-- Setup your lua path
+				path = runtime_path,
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { "vim" },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			-- Do not send telemetry data containing a randomized but unique identifier
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+})
+
+require("flutter-tools").setup({
+	decorations = {
+		statusline = {
+			app_version = true,
+			device = false,
+		},
+	},
+	lsp = {
+		on_attach = on_attach,
+		capabilities = capabilities,
+	},
+})

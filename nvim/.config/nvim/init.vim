@@ -6,9 +6,7 @@ source $HOME/.config/nvim/plugin/fern.vim
 source $HOME/.config/nvim/plugin/telescope.vim
 source $HOME/.config/nvim/plugin/quickfix.vim
 source $HOME/.config/nvim/plugin/fzf.vim
-" source $HOME/.config/nvim/plugin/coc.vim
 source $HOME/.config/nvim/general/autocmd.vim 
-source $HOME/.config/nvim/general/lsp-config.vim
 
 
 call plug#begin('~/.vim/plugged')
@@ -20,7 +18,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
-" Plug 'glepnir/lspsaga.nvim'
+Plug 'glepnir/lspsaga.nvim'
 " Plug 'kabouzeid/nvim-lspinstall'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
@@ -28,7 +26,7 @@ Plug 'neovim/nvim-lspconfig'
 " Plug 'andweeb/presence.nvim'
 "Plug 'mfussenegger/nvim-dap'
 "Plug 'rcarriga/nvim-dap-ui'
-"Plug 'sheerun/vim-polyglot'
+Plug 'ckipp01/stylua-nvim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'NTBBloodbath/rest.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
@@ -57,12 +55,19 @@ Plug 'sindrets/diffview.nvim'
 Plug 'stsewd/fzf-checkout.vim'
 Plug 'mg979/vim-visual-multi'
 Plug 'tommcdo/vim-fubitive'
+
 "Flutter
 Plug 'akinsho/flutter-tools.nvim'
 Plug 'dart-lang/dart-vim-plugin'
+
+" Snippets
 Plug 'natebosch/dartlang-snippets'
-" Plug 'SirVer/UltiSnips' | 
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/UltiSnips'
+" Plug 'honza/vim-snippets'
+" Plug 'L3MON4D3/LuaSnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip-integ'
+Plug 'Neevash/awesome-flutter-snippets'
 " THEMES
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'cocopon/iceberg.vim'
@@ -76,7 +81,5 @@ Plug 'shaunsingh/moonlight.nvim'
 Plug 'shaunsingh/nord.nvim'
 call plug#end()
 
-lua require('rmc.init')
-" lua require('FTerm').setup()
 source $HOME/.config/nvim/themes/theme.vim
- " let g:coc_start_at_startup = v:false
+lua require('rmc.init')
