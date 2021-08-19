@@ -60,7 +60,7 @@ nnoremap <silent><esc> :noh<return><esc>
 nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim
 nnoremap <leader>+ :vertical resize +15<CR>
 nnoremap <leader>- :vertical resize -15<CR>
-nnoremap <leader>ca :w <bar> %bd <bar> e# <bar> bd# <CR>
+nnoremap <leader>cA :w <bar> %bd <bar> e# <bar> bd# <CR>
 nnoremap <silent><leader>CC :call CleanNoNameEmptyBuffers()<CR>
 " Replace word under cursor in file (case-sensitive)
 nmap <leader>sr *:%s///gI<left><left><left>
@@ -107,9 +107,6 @@ nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 
 "nnoremap <leader>rq :lua require('rest-nvim').run()<CR>
-"nnoremap <F5> :lua require'dap'.continue()<CR>
-"nnoremap <F10> :lua require'dap'.step_over()<CR>
-"nnoremap <leader>b :lua require'dap'.toggle_breakpoint()<CR>
 
 
 " ----------------------------------------------------------------------------
@@ -131,8 +128,8 @@ nnoremap <M-m> :lua require("harpoon.ui").toggle_quick_menu()<CR>
 " Ftern
 " ----------------------------------------------------------------------------
 "
-nnoremap <C-e> :lua require("FTerm").toggle()<CR>
-nnoremap <C-q> :lua require("FTerm").close()<CR>
+" nnoremap <C-e> :lua require("FTerm").toggle()<CR>
+" nnoremap <C-q> :lua require("FTerm").close()<CR>
 
 
 " ----------------------------------------------------------------------------
@@ -154,15 +151,28 @@ nnoremap ]d <CR><cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <leader>di <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>lf <cmd>lua require('stylua-nvim').format_file()<CR>
-"
-" SAGA
-nnoremap <silent><leader>ca :Lspsaga code_action<CR>
-vnoremap <silent><leader>ca :<C-U>Lspsaga range_code_action<CR>
-nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap <leader>ss <cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
 
+" SAGA
+" nnoremap <silent><leader>ca :Lspsaga code_action<CR>
+nnoremap <silent><M-CR> :Lspsaga code_action<CR>
+vnoremap <silent><M-CR> :<C-U>Lspsaga range_code_action<CR>
+nnoremap <silent>K :Lspsaga hover_doc<CR>
 " -- scroll down hover doc or scroll in definition preview
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
 nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+
+"DAP                    
+nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
+nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
+nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
+nnoremap <silent> <F12> :lua require'dap'.step_out()<CR>
+nnoremap <silent> <leader>b :lua require'dap'.toggle_breakpoint()<CR>
+nnoremap <silent> <leader>B :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
+nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
+nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
+nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
+ 
 
 imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j>'
 nnoremap <leader>x  :VsnipYank key <bar> VsnipOpen <CR>

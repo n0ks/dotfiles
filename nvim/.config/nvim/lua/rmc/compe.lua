@@ -10,30 +10,27 @@ require("compe").setup({
 	max_abbr_width = 100,
 	max_kind_width = 100,
 	max_menu_width = 100,
-	documentation = false,
-
+	documentation = {
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, -- the border option is the same as `|help nvim_open_win|`
+		winhighlight = "NormalFloat:CompeDocumentation,FloatBorder:CompeDocumentationBorder",
+		max_width = 120,
+		min_width = 60,
+		max_height = math.floor(vim.o.lines * 0.3),
+		min_height = 1,
+	},
 	source = {
+		vsnip = { priority = 100 },
+		nvim_lsp = { priority = 90 },
+		buffer = { priority = 10 },
 		path = true,
-		buffer = {
-			enable = true,
-			priority = 1,
-		},
 		calc = true,
-		vsnip = {
-			priority = 5,
-			enable = true,
-		},
-		nvim_lsp = {
-			enable = true,
-			priority = 100,
-		},
 		nvim_lua = true,
 		spell = true,
 		tags = true,
 		ultisnips = true,
 		snippets_nvim = false,
 		treesitter = false,
-    emoji = true
+		emoji = { priority = 0 },
 	},
 })
 
