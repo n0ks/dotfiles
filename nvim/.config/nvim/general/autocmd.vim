@@ -26,6 +26,7 @@ au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 " autocmd BufRead,BufNewFile,BufEnter *.dart UltiSnipsAddFiletypes dart-flutter
 au BufRead,BufNewFile Fastfile set filetype=ruby
 
+
 augroup fixlist
     autocmd!
     autocmd BufWinEnter quickfix call SetQFControlVariable()
