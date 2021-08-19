@@ -1,0 +1,16 @@
+{
+  "feat": {
+    "prefix": ["fe"],
+    "body": [
+      "feat($1): $2"
+    ]
+  },
+
+  "fix": {
+    "prefix": ["fix"],
+    "description": "fix commit",
+    "body": [
+      "fix($1): $2"
+    ]
+  }
+}
