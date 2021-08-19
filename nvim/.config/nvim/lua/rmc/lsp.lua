@@ -1,17 +1,15 @@
 local nvim_lsp = require("lspconfig")
-
+local protocol = require('vim.lsp.protocol')
 local sumneko_root_path = vim.fn.getenv("HOME") .. "/Documents/Projects/github/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
 local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
-
 -- require'lspinstall'.setup() -- important
 
 -- local servers = require'lspinstall'.installed_servers()
@@ -21,16 +19,18 @@ end
 
 local runtime_path = vim.split(package.path, ";")
 
-require("lspconfig").tsserver.setup({
+--INSTALL: -- npm i -g typescript typescript-language-server
+nvim_lsp.tsserver.setup({
 	on_attach = on_attach,
 	filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
+  settings = {documentFormatting = true}
 })
 
-require("lspconfig").yamlls.setup({
+nvim_lsp.yamlls.setup({
 	on_attach = on_attach,
 })
 
-require("lspconfig").sumneko_lua.setup({
+nvim_lsp.sumneko_lua.setup({
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -72,8 +72,39 @@ require("flutter-tools").setup({
 			device = false,
 		},
 	},
+	debugger = {
+		enabled = true,
+	},
 	lsp = {
 		on_attach = on_attach,
 		capabilities = capabilities,
 	},
 })
+
+protocol.CompletionItemKind = {
+  ' Text';        -- = 1
+  'ƒ Method';      -- = 2;
+  'ƒ Function';    -- = 3; or 
+  ' Constructor'; -- = 4;
+  'ƒ Field';         -- = 5;
+  ' Variable';    -- = 6;
+  ' Class';       -- = 7;
+  'ﰮ Interface';   -- = 8;
+  ' Module';      -- = 9;
+  ' Property';    -- = 10;
+  ' Unit';        -- = 11;
+  ' Value';       -- = 12;
+  '了Enum';        -- = 13;
+  ' Keyword';     -- = 14;
+  '﬌ Snippet';     -- = 15;
+  ' Color';       -- = 16;
+  ' File';        -- = 17;
+  ' Reference';     -- = 18;
+  ' Folder';      -- = 19;
+  ' EnumMember';  -- = 20;
+  ' Constant';    -- = 21;
+  ' Struct';      -- = 22;
+  'ﯓ Event';         -- = 23;
+  ' Operator';      -- = 24;
+  ' TypeParameter'; -- = 25;
+}
