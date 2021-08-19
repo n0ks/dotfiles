@@ -55,7 +55,8 @@ set shortmess+=c
 " Auto reload if file was changed somewhere else (for autoread)
 set nocursorline        " Don't paint cursor line
 set nocursorcolumn      " Don't paint cursor column
-
+" set fileformats=dos
+"
 let mapleader=" "
 let g:cursorhold_updatetime = 100
 let g:fubitive_domain_pattern = 'bitbucket\.bvnet\.bv'
@@ -76,6 +77,12 @@ let g:mkdp_auto_close = 0
 " vim-test
 let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
+
+let g:vsnip_filetypes = {}
+let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']
+let g:vsnip_filetypes.typescriptreact = ['typescript', 'html']
+let g:vsnip_snippet_dir = expand('~/.config/nvim/vsnip')
+
 
 " let g:UltiSnipsExpandTrigger = '<tab>'
 " let g:UltiSnipsJumpForwardTrigger = '<tab>'
