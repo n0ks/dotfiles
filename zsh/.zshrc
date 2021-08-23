@@ -15,12 +15,13 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/rodrigo.m.de.campos/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 source $ZSH/oh-my-zsh.sh
 source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
 export TERM=xterm-256color
+
 # ZSH_THEME="cloud"
 export DOTFILES=$HOME/.dotfiles
 export STOW_FOLDERS="nvim,alacritty,zsh"
@@ -69,12 +70,11 @@ alias projects="cd $PROJECTS"
 alias bvbank="cd $PROJECTS/flutter_bvpd/flutapp-bvpd-base-bank.git/"
 alias bvcart="cd $PROJECTS/flutter_bvpd/cartoes/"
 alias rmn="rm -rf node_modules && echo node_modules deleted!"
-alias proxy="export https_proxy=http://$USER:$PASS@proxy-duq:8080 && export http_proxy=http://$USER:$PASS@proxy-duq:8080"
-alias unproxy="export https_proxy= && export http_proxy="
 alias lfolder="ls -d -- */ .*/"
 alias lc='colorls --sd'
 alias lct='colorls --sd --tree=1'
 alias nv=nvim
+alias luamake=$HOME/Documents/Projects/github/lua-language-server/3rd/luamake/luamake
 
 alias bvpr-appca="./bitbucket.sh open_pr flutapp-acli-cart-appcartoes"
 alias bvpr-core="./bitbucket.sh open_pr flutlib-acli-cart-core"
@@ -99,7 +99,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -111,4 +111,3 @@ function runAll(){
   ls -d */ | xargs -I {} bash -c "cd '{}' && $1"
 }
 
-alias luamake=/Users/rodrigo.m.de.campos/Documents/Projects/github/lua-language-server/3rd/luamake/luamake

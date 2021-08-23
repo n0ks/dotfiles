@@ -1,4 +1,4 @@
-background_opacity: 0.94
+background_opacity: 0.95
 cursor:
   blink_interval: 500
   style:
@@ -266,23 +266,29 @@ window:
   startup_mode: Windowed
 colors:
   primary:
-    background: "#282c34"
-    foreground: "#abb2bf"
+    background: "#011627"
+    foreground: "#acb4c2"
+  cursor:
+    text: "#fafafa"
+    cursor: "#9ca1aa"
+  selection:
+    text: "#080808"
+    background: "#b2ceee"
   normal:
-    black: "#282c34"
-    red: "#e06c75"
-    green: "#98c379"
-    yellow: "#d19a66"
-    blue: "#61afef"
-    magenta: "#c678dd"
-    cyan: "#56b6c2"
-    white: "#abb2bf"
+    black: "#1d3b53"
+    red: "#fc514e"
+    green: "#a1cd5e"
+    yellow: "#e3d18a"
+    blue: "#82aaff"
+    magenta: "#c792ea"
+    cyan: "#7fdbca"
+    white: "#a1aab8"
   bright:
-    black: "#5c6370"
-    red: "#e06c75"
-    green: "#98c379"
-    yellow: "#d19a66"
-    blue: "#61afef"
-    magenta: "#c678dd"
-    cyan: "#56b6c2"
-    white: "#ffffff"
+    black: "#7c8f8f"
+    red: "#ff5874"
+    green: "#21c7a8"
+    yellow: "#ecc48d"
+    blue: "#82aaff"
+    magenta: "#ae81ff"
+    cyan: "#7fdbca"
+    white: "#d6deeb"
