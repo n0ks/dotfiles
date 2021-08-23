@@ -51,13 +51,15 @@ set colorcolumn=80
 set termguicolors
 set shortmess+=A                        " This is needed to avoid swapfile warning when auto-reloading
 set shortmess+=c
-" set ignorecase                          " Ignore case when searching.
+set ignorecase                          " Ignore case when searching.
+set smartcase
 " Auto reload if file was changed somewhere else (for autoread)
 set nocursorline        " Don't paint cursor line
 set nocursorcolumn      " Don't paint cursor column
 " set fileformats=dos
-"
+
 let mapleader=" "
+
 let g:cursorhold_updatetime = 100
 let g:fubitive_domain_pattern = 'bitbucket\.bvnet\.bv'
 
@@ -70,6 +72,10 @@ let g:netrw_banner=0
 let g:term_buf = 0
 let g:NetrwIsOpen=0
 let g:fugitive_summary_format = "%s <%an>"
+
+"projects
+let g:nvim_tree_update_cwd = 1
+let g:nvim_tree_respect_buf_cwd = 1
 
 " markdown
 let g:mkdp_auto_close = 0
