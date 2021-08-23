@@ -1,3 +1,5 @@
+vim.cmd("highlight link CompeDocumentation Black")
+
 require("compe").setup({
 	enabled = true,
 	autocomplete = true,

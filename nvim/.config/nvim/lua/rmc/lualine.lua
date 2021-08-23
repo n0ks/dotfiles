@@ -2,9 +2,9 @@ require("lualine").setup({
 	extensions = { "quickfix", "fugitive" },
 	options = {
 		-- theme = "gruvbox",
-		theme  = 'nightfly' ,
+		-- theme  = 'nightfly' ,
 		-- theme  = 'palenight' ,
-		-- theme  = 'material-nvim' ,
+		theme  = 'tokyonight' ,
 		section_separators = "",
 		component_separators = "⁃",
 		icons_enabled = 1, -- displays icons in alongside component
