@@ -14,22 +14,13 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-source $ZSH/oh-my-zsh.sh
-source ~/.oh-my-zsh/plugins/git/git.plugin.zsh
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
 export TERM=xterm-256color
 
-# ZSH_THEME="cloud"
 export DOTFILES=$HOME/.dotfiles
 export STOW_FOLDERS="nvim,alacritty,zsh"
 
-plugins=(
-  git 
-  # zsh-autosuggestions
-)
 
 export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/Documents/Projects/flutter_bvpd/card-holy-scripts
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -44,7 +35,6 @@ export PATH=$PATH:$HOME/.cargo/bin
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
 export PATH="$MAGICK_HOME/bin:$PATH"
 export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"  
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
 export GIT_EDITOR=vim
 export GIT_SEQUENCE_EDITOR="vim"
 export RBENV_ROOT=/usr/local/var/rbenv
