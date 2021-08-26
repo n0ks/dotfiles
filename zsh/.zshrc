@@ -13,6 +13,7 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
+setopt auto_cd
 
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"

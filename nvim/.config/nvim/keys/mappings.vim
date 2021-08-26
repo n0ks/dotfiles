@@ -14,7 +14,6 @@ inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
-
 " Visually select the text that was last edited/pasted (Vimcast#26).
 noremap gV `[v`]
 nnoremap <M-h> <C-w>h
@@ -33,14 +32,11 @@ inoremap <C-s> <ESC>:w<CR>
 " Use control-c instead of escape
 nnoremap <C-c> <Esc>
 nnoremap <leader>bd :bd%<CR>
-
 nmap gx :!open <c-r><c-a> 
 nmap ,p "0p
 nmap ,P "0P
 nnoremap <silent><leader>r :source ~/.config/nvim/init.vim<CR>
-
 nnoremap <leader>cd :lcd %:p:h
-
 nnoremap <leader>Q :q<CR>
 " Prevent common mistake of pressing q: instead :q
 noremap q; :q
@@ -62,10 +58,11 @@ nnoremap <silent><leader>CC :call CleanNoNameEmptyBuffers()<CR>
 nmap <leader>sr *:%s///gI<left><left><left>
 " Replace word under cursor in line (case-sensitive)
 nmap <leader>sl *:s///gI<left><left><left>
-
 nnoremap ,fn :put =expand('%:t')<CR>
-" tnoremap <Esc> <C-\><C-n>
-
+nnoremap <F1> :FlutterRestart<CR>
+tnoremap <C-[> <C-\><C-n>
+nmap sj :SplitjoinSplit<CR>
+nmap sk :SplitjoinJoin<CR>
 
 "---------------------------------------------------------------------------
 " Quickfix
@@ -112,13 +109,12 @@ nmap <silent> <leader>ts :TestSuite<CR>
 
 nnoremap <M-a> :lua require("harpoon.mark").add_file()<CR>
 nnoremap <M-m> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-
-" ----------------------------------------------------------------------------
-" Ftern
-" ----------------------------------------------------------------------------
-"
-" nnoremap <C-e> :lua require("FTerm").toggle()<CR>
-" nnoremap <C-q> :lua require("FTerm").close()<CR>
+nnoremap <M-1> :lua require("harpoon.ui").nav_file(1)<CR>
+nnoremap <M-2> :lua require("harpoon.ui").nav_file(2)<CR>
+nnoremap <M-3> :lua require("harpoon.ui").nav_file(3)<CR>
+nnoremap <M-4> :lua require("harpoon.ui").nav_file(4)<CR>
+nnoremap <M-5> :lua require("harpoon.ui").nav_file(5)<CR>
+nnoremap <M-0> :lua require("harpoon.term").gotoTerminal(1)<CR>
 
 
 " ----------------------------------------------------------------------------
