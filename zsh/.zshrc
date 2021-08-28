@@ -14,14 +14,12 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 setopt auto_cd
-
+# source ~/git-plugin.zsh
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
 export TERM=xterm-256color
 
 export DOTFILES=$HOME/.dotfiles
-export STOW_FOLDERS="nvim,alacritty,zsh"
-
 
 export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/Documents/Projects/flutter_bvpd/card-holy-scripts
 export ANDROID_HOME=$HOME/Library/Android/sdk
