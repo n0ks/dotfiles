@@ -71,6 +71,7 @@ let g:netrw_winsize = 15
 let g:netrw_banner=0
 let g:term_buf = 0
 let g:NetrwIsOpen=0
+
 let g:fugitive_summary_format = "%s <%an>"
 
 "projects
@@ -89,10 +90,7 @@ let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']
 let g:vsnip_filetypes.typescriptreact = ['typescript', 'html']
 let g:vsnip_snippet_dir = expand('~/.config/nvim/vsnip')
 
-
-" let g:UltiSnipsExpandTrigger = '<tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<tab>'
-" let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+let g:coq_settings = {'auto_start': v:true }
 
 function! CleanNoNameEmptyBuffers()
     let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && (getbufline(v:val, 1, "$") == [""])')
