@@ -63,7 +63,9 @@ nnoremap <F1> :FlutterRestart<CR>
 tnoremap <C-[> <C-\><C-n>
 nmap sj :SplitjoinSplit<CR>
 nmap sk :SplitjoinJoin<CR>
-
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" let g:completion_enable_snippet = 'vim-vsnip'
 "---------------------------------------------------------------------------
 " Quickfix
 " ----------------------------------------------------------------------------
