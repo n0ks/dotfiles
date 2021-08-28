@@ -1,6 +1,0 @@
-#/usr/bin/env zsh
-
-for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
-do
-    stow -D $folder
-done
