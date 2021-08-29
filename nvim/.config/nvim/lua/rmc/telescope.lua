@@ -12,9 +12,8 @@ require("telescope").setup({
 		mappings = {
 			i = {
 				["<C-x>"] = false,
-				["<C-a>"] = actions.send_to_qflist,
 				["<C-s>"] = actions.toggle_selection,
-				["<C-q>"] = actions.send_selected_to_qflist,
+				["<C-q>"] = actions.smart_send_to_qflist,
 			},
 		},
 	},
