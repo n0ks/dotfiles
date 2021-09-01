@@ -23,6 +23,7 @@ export DOTFILES=$HOME/.dotfiles
 
 export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/Documents/Projects/flutter_bvpd/card-holy-scripts
 export ANDROID_HOME=$HOME/Library/Android/sdk
+export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
@@ -30,6 +31,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
 export PATH="$MAGICK_HOME/bin:$PATH"
@@ -55,6 +58,13 @@ export BB_URL="https://${GIT_BV_USERNAME}:${GIT_BV_PASSWORD}@bitbucket.bvnet.bv"
 alias gcm="git checkout master"
 alias cph="git log -1 --pretty=format:"%h" | pbcopy"
 alias sourcezsh="source ~/.zshrc"
+alias g="git"
+alias ggl="git pull"
+alias gsb='git status -sb'
+alias gtv='git tag | sort -V'
+alias gupa='git pull --rebase --autostash'
+
+
 alias projects="cd $PROJECTS"
 alias bvbank="cd $PROJECTS/flutter_bvpd/flutapp-bvpd-base-bank.git/"
 alias bvcart="cd $PROJECTS/flutter_bvpd/cartoes/"
@@ -63,6 +73,8 @@ alias lfolder="ls -d -- */ .*/"
 alias lc='colorls --sd'
 alias lct='colorls --sd --tree=1'
 alias nv=nvim
+alias vim=nvim
+alias ls=exa
 alias luamake=$HOME/Documents/Projects/github/lua-language-server/3rd/luamake/luamake
 
 alias bvpr-appca="./bitbucket.sh open_pr flutapp-acli-cart-appcartoes"
