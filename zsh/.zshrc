@@ -18,7 +18,7 @@ setopt auto_cd
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
-
+bindkey -v
 # source ~/git-plugin.zsh
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
