@@ -1,6 +1,7 @@
 " ----------------------------------------------------------------------------
 " General
 " ----------------------------------------------------------------------------
+
 inoremap  jk <Esc>
 inoremap  kj <Esc>
 " Y yanks from the cursor to the end of line as expected. See :help Y.
@@ -16,56 +17,51 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 " Visually select the text that was last edited/pasted (Vimcast#26).
 noremap gV `[v`]
-nnoremap <M-h> <C-w>h
-nnoremap <M-k> <C-w>k
-nnoremap <M-j> <C-w>j
-nnoremap <M-l> <C-w>l
-nnoremap <leader>w <C-w>w 
-
-nnoremap <silent><TAB> :bnext<CR>
-nnoremap <silent><S-TAB> :bprevious<CR>
-
-" Alternate way to save
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <ESC>:w<CR>
-
-" Use control-c instead of escape
-nnoremap <C-c> <Esc>
-nnoremap <leader>bd :bd%<CR>
 nmap gx :!open <c-r><c-a> 
 nmap ,p "0p
 nmap ,P "0P
 nnoremap <silent><leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>cd :lcd %:p:h
-nnoremap <leader>Q :q<CR>
-" Prevent common mistake of pressing q: instead :q
-noremap q; :q
-" Better tabbing
 vnoremap < <gv
 vnoremap > >gv
+noremap q; :q
 " paste last thing yanked
 vnoremap <leader>p "_dP
 nnoremap <C-d> 6j
 nnoremap <C-u> 6k
-" copy entire file
 nnoremap <leader>Y gg"+yG
 nnoremap <silent><esc> :noh<return><esc>
-nnoremap <leader>+ :vertical resize +15<CR>
-nnoremap <leader>- :vertical resize -15<CR>
-nnoremap <leader>cA :w <bar> %bd <bar> e# <bar> bd# <CR>
-nnoremap <silent><leader>CC :call CleanNoNameEmptyBuffers()<CR>
-" Replace word under cursor in file (case-sensitive)
-nmap <leader>sr *:%s///gI<left><left><left>
-" Replace word under cursor in line (case-sensitive)
-nmap <leader>sl *:s///gI<left><left><left>
 nnoremap ,fn :put =expand('%:t')<CR>
 nnoremap <F1> :FlutterRestart<CR>
 tnoremap <C-[> <C-\><C-n>
 nmap sj :SplitjoinSplit<CR>
 nmap sk :SplitjoinJoin<CR>
-" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" let g:completion_enable_snippet = 'vim-vsnip'
+
+" Replace word under cursor in file (case-sensitive)
+nmap <leader>sr *:%s///gI<left><left><left>
+" Replace word under cursor in line (case-sensitive)
+nmap <leader>sl *:s///gI<left><left><left>
+
+" ----------------------------------------------------------------------------
+" WINDOWS & BUFFERS
+" ----------------------------------------------------------------------------
+nnoremap <silent><TAB> :bnext<CR>
+nnoremap <silent><S-TAB> :bprevious<CR>
+nnoremap <M-h> <C-w>h
+nnoremap <M-k> <C-w>k
+nnoremap <M-j> <C-w>j
+nnoremap <M-l> <C-w>l
+nnoremap <leader>w <C-w>w 
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>
+nnoremap <C-c> <Esc>
+nnoremap <leader>bd :bd%<CR>
+nnoremap <leader>Q :q<CR>
+nnoremap <leader>+ :vertical resize +15<CR>
+nnoremap <leader>- :vertical resize -15<CR>
+nnoremap <leader>cA :w <bar> %bd <bar> e# <bar> bd# <CR>
+nnoremap <silent><leader>CC :call CleanNoNameEmptyBuffers()<CR>
+
 "---------------------------------------------------------------------------
 " Quickfix
 " ----------------------------------------------------------------------------
@@ -81,8 +77,6 @@ nnoremap <silent> <Down> :cnext<CR>
 nnoremap <silent> <Left> :cpfile<CR>
 nnoremap <silent> <Right> :cnfile<CR>
 
-nnoremap <leader>mm :lua require('material.functions').toggle_style()<CR>
-
 " ----------------------------------------------------------------------------
 " Git
 " ----------------------------------------------------------------------------
@@ -91,6 +85,9 @@ nnoremap <leader>gB :G blame<CR>
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>ge :Ge:<CR>
 nnoremap <leader>gb :Telescope git_branches<CR>
+nnoremap <leader>gdi :Telescope git_bcommits<CR>
+nnoremap <leader>tr :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
+nnoremap <leader>tc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 nnoremap <leader>gm :G mergetool<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
@@ -117,6 +114,7 @@ nnoremap <M-3> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <M-4> :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <M-5> :lua require("harpoon.ui").nav_file(5)<CR>
 nnoremap <M-0> :lua require("harpoon.term").gotoTerminal(1)<CR>
+nnoremap <M-9> :lua require("harpoon.term").sendCommand(1, "ls -la")<CR>
 
 
 " ----------------------------------------------------------------------------
@@ -125,13 +123,13 @@ nnoremap <M-0> :lua require("harpoon.term").gotoTerminal(1)<CR>
 
 nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap gi <CR><cmd>lua vim.lsp.buf.implementation()<CR>
+" nnoremap gi <CR><cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 " nnoremap <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
 " nnoremap <C-k> <CR><cmd>lua vim.lsp.buf.signature_help()<CR>
 " nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
  
-nnoremap gr  <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <leader>di <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
 nnoremap <leader>dq <cmd>lua vim.lsp.diagnostic.set_qflist()<CR>
 nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
@@ -188,13 +186,8 @@ nnoremap <leader>ps <cmd>Telescope find_files prompt_prefix=🗄 <cr>
 nnoremap <leader>pl <cmd>Telescope live_grep prompt_prefix=🔍<cr>
 nnoremap <leader>pb <cmd>Telescope buffers<cr>
 nnoremap <leader>ph <cmd>Telescope help_tags<cr>
-nnoremap <leader>gdi :Telescope git_bcommits<CR>
-nnoremap <leader>pz :Files<CR>
-nnoremap <leader>pf :Ag<CR>
 nnoremap <leader>sb :lua require('rmc.telescope').search_bv()<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-nnoremap <leader>tr :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
-nnoremap <leader>tc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 nnoremap <leader>pp <cmd>Telescope projects<cr>
 nnoremap <leader>sd :lua require('rmc.telescope').search_dotfiles()<CR>
 command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})

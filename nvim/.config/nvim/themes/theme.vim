@@ -1,16 +1,10 @@
 set termguicolors
-" let g:material_style = 'moonlight'         
-let g:moonlight_contrast='true'
-let g:material_style = 'deep ocean'
-let g:embark_terminal_italics = 1
-let g:gruvbox_material_enable_italic = 1
+" let g:embark_terminal_italics = 1
+" let g:gruvbox_material_enable_italic = 1
 " let g:gruvbox_material_transparent_background = 1
-let g:gruvbox_material_better_performance = 1
-let g:tokyonight_style = "night"
-let g:tokyonight_transparent = 1             
-
-" colorscheme moonlight
-" colorscheme tokyonight
+" let g:gruvbox_material_better_performance = 1
+" let g:tokyonight_style = "night"
+" let g:tokyonight_transparent = 1             
 " colorscheme embark
 " colorscheme nightfly
 " colorscheme gruvbox-material
@@ -22,8 +16,9 @@ local catppuccino = require("catppuccino")
 -- configure it
 catppuccino.setup(
     {
-    colorscheme = "dark_catppuccino",
-		transparency = true,
+    colorscheme = "neon_latte",
+    transparency = false,
+    term_colors = true,
 		styles = {
 			comments = "italic",
 			functions = "italic",
