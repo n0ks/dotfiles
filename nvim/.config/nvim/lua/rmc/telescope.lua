@@ -1,9 +1,10 @@
 local actions = require("telescope.actions")
+
 require("harpoon").setup({
-    menu = {
-        width = 100,
-        height = 20,
-    }
+	menu = {
+		width = 100,
+		height = 20,
+	},
 })
 
 require("telescope").setup({
@@ -24,9 +25,12 @@ require("telescope").setup({
 		},
 	},
 	extensions = {
-		fzy_native = {
-			override_generic_sorter = false,
-			override_file_sorter = true,
+		fzf = {
+			fuzzy = true, -- false will only do exact matching
+			override_generic_sorter = true, -- override the generic sorter
+			override_file_sorter = true, -- override the file sorter
+			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+			-- the default case_mode is "smart_case"
 		},
 	},
 	pickers = {
@@ -42,9 +46,9 @@ require("telescope").setup({
 	},
 })
 
-require("telescope").load_extension("fzy_native")
+require("telescope").load_extension("fzf")
 require("telescope").load_extension("git_worktree")
-require('telescope').load_extension('projects')
+require("telescope").load_extension("projects")
 
 local M = {}
 
