@@ -13,6 +13,9 @@ call plug#begin('~/.vim/plugged')
 " Plug 'kabouzeid/nvim-lspinstall'
 " Plug 'tommcdo/vim-fubitive'
 
+" Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+" Plug 'ray-x/navigator.lua'
+
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Neevash/awesome-flutter-snippets'
 Plug 'ThePrimeagen/git-worktree.nvim'
@@ -29,9 +32,13 @@ Plug 'kabouzeid/nvim-lspinstall'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'folke/tokyonight.nvim'
-Plug 'glepnir/lspsaga.nvim'
+Plug 'glepnir/zephyr-nvim'
+Plug 'kwkarlwang/bufresize.nvim'
+" Plug 'glepnir/lspsaga.nvim'
+Plug 'rinx/lspsaga.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'jiangmiao/auto-pairs'
@@ -45,7 +52,6 @@ Plug 'mg979/vim-visual-multi'
 Plug 'natebosch/dartlang-snippets'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -66,6 +72,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 call plug#end()
 
+source $HOME/.config/nvim/themes/theme.vim
+
 lua require('rmc.init')
 
-source $HOME/.config/nvim/themes/theme.vim
+lua << EOF
+require("bufresize").setup()
+EOF
