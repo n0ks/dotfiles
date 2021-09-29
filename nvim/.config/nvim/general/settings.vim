@@ -16,9 +16,9 @@ set hidden                              " Required to keep multiple buffers open
 set relativenumber
 set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
-set pumheight=8                        " Makes popup menu smaller
+set pumheight=10
 set ruler              			            " Show the cursor position all the time
-set cmdheight=2                         " More space for displaying messages
+set cmdheight=1                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set mouse=a                            " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
@@ -61,7 +61,6 @@ set nocursorcolumn      " Don't paint cursor column
 let mapleader=" "
 
 let g:cursorhold_updatetime = 100
-let g:fubitive_domain_pattern = 'bitbucket\.bvnet\.bv'
 
 " netrw configs
 let g:netrw_liststyle = 3

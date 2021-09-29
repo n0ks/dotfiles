@@ -6,18 +6,17 @@ dap.defaults.fallback.exception_breakpoints = { "raised" }
 
 require("dapui").setup({
 	sidebar = {
-		open_on_start = true,
+		-- open_on_start = true,
 		elements = {
 			-- Provide as ID strings or tables with "id" and "size" keys
 			{
 				id = "scopes",
 				size = 0.50, -- Can be float or integer > 1
 			},
-			{ id = "breakpoints", size = 0.20 },
+			{ id = "breakpoints", size = 0.30 },
 			{ id = "stacks", size = 0.15 },
 			{ id = "watches", size = 0.15 },
 		},
-		width = 40,
 		position = "left", -- Can be "left" or "right"
 	},
 })
