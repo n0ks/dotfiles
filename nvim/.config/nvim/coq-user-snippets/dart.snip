@@ -1,0 +1,48 @@
+snippet StatelessWidget
+alias stless
+  class $1 extends StatelessWidget {
+
+    @override
+    Widget build(BuildContext context){
+
+    }
+  }
+
+snippet StatefullWidget
+alias stfull
+ class ${0:ClassName} extends StatefulWidget {
+    ${0:ClassName}({Key? key}) : super(key: key);
+
+    @override
+    _${0:ClassName}State createState() => _${0:ClassName}State();
+  }
+
+ class _${0:ClassName}State extends State<${0:ClassName}> {
+    @override
+    Widget build(BuildContext context) {
+      return Container(
+         child: $2
+      );
+    }
+  }
+
+
+snippet dispose
+abbr Dispose function
+alias dis
+  @override
+  void dispose(){
+    super.dispose();
+  }
+
+
+snippet initState
+abbr initState function
+alias ini
+  @override
+  void initState(){
+    $0
+    super.initState();
+  }
+
+

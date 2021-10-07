@@ -1,7 +1,6 @@
 " ----------------------------------------------------------------------------
 " General
 " ----------------------------------------------------------------------------
-
 inoremap  jk <Esc>
 inoremap  kj <Esc>
 " Y yanks from the cursor to the end of line as expected. See :help Y.
@@ -30,9 +29,11 @@ vnoremap <leader>p "_dP
 nnoremap <C-d> 6j
 nnoremap <C-u> 6k
 nnoremap <leader>Y gg"+yG
+nnoremap <silent><CR> :noh<return><esc>
 nnoremap <silent><esc> :noh<return><esc>
 nnoremap ,fn :put =expand('%:t')<CR>
-nnoremap <F1> :FlutterRestart<CR>
+nnoremap <F1> :FlutterRun<CR>
+nnoremap <F2> :FlutterRestart<CR>
 tnoremap <C-[> <C-\><C-n>
 nmap sj :SplitjoinSplit<CR>
 nmap sk :SplitjoinJoin<CR>
@@ -127,7 +128,7 @@ nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 " nnoremap <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
 " nnoremap <C-k> <CR><cmd>lua vim.lsp.buf.signature_help()<CR>
-" nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
  
 nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <leader>di <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
@@ -136,19 +137,23 @@ nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>lf <cmd>lua require('stylua-nvim').format_file()<CR>
 nnoremap <leader>ss <cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
 
+nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap [i <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+
 " ----------------------------------------------------------------------------
 " SAGA
 " ----------------------------------------------------------------------------
 
 nnoremap <silent><M-CR> :Lspsaga code_action<CR>
 vnoremap <silent><M-CR> :<C-U>Lspsaga range_code_action<CR>
-nnoremap <silent>K :Lspsaga hover_doc<CR>
+" nnoremap <silent>K :Lspsaga hover_doc<CR>
 nnoremap <silent><C-k> :Lspsaga preview_definition<CR>
 " -- scroll down hover doc or scroll in definition preview
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
 nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-nnoremap [d :Lspsaga diagnostic_jump_prev<CR>
-nnoremap ]d :Lspsaga diagnostic_jump_next<CR>
+" nnoremap [d :Lspsaga diagnostic_jump_prev<CR>
+" nnoremap ]d :Lspsaga diagnostic_jump_next<CR>
 
 
 " ----------------------------------------------------------------------------
@@ -165,10 +170,10 @@ nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.i
 nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
 nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
 nnoremap <silent> <leader>dk :lua require'dap.ui.variables'.hover()<CR>
-nnoremap <silent> <leader>dK :<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>CR>
+nnoremap <silent> <leader>dK :<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
 nnoremap <silent> <leader>dw <cmd>lua require'dap.ui.widgets'.hover()<CR>
 nnoremap <silent><M-i> :lua require("dapui").eval()<CR>
-nnoremap <silent><M-[> :lua require("dapui").toggle()<CR>
+nnoremap <M-\> :lua require("dapui").toggle()<CR>
 nnoremap <silent><M-o> :lua require("dapui").float_element()<CR>
 
 " ----------------------------------------------------------------------------

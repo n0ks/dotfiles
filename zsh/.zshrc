@@ -14,6 +14,7 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 setopt auto_cd
+unsetopt MULTIOS
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -38,6 +39,7 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
 
+# export JAVA_HOME=$(/usr/libexec/java_home -v11)
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
