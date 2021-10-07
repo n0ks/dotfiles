@@ -180,7 +180,7 @@ nnoremap <silent><M-o> :lua require("dapui").float_element()<CR>
 " VSNIP
 " ----------------------------------------------------------------------------
 
-imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)' : '<C-j>'
 nnoremap <leader>x  :VsnipYank key <bar> VsnipOpen <CR>
 
 " ----------------------------------------------------------------------------

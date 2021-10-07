@@ -1,3 +1,5 @@
+local telescope = require("telescope")
+local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 
 require("harpoon").setup({
@@ -11,7 +13,7 @@ require("telescope").setup({
 	defaults = {
 		color_devicons = true,
 		prompt_prefix = "❯ ",
-		selection_caret = " ➡️ ",
+     	selection_caret = " ➡️ ",
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
 		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
@@ -26,10 +28,9 @@ require("telescope").setup({
 	extensions = {
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
-			override_generic_sorter = true, -- override the generic sorter
-			override_file_sorter = true, -- override the file sorter
-			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-			-- the default case_mode is "smart_case"
+			override_generic_sorter = true, 
+			override_file_sorter = true, 
+			case_mode = "smart_case", 
 		},
 	},
 	pickers = {
@@ -45,21 +46,14 @@ require("telescope").setup({
 	},
 })
 
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("git_worktree")
-require("telescope").load_extension("projects")
+telescope.load_extension("fzf")
+telescope.load_extension("git_worktree")
+telescope.load_extension("projects")
 
 local M = {}
 
-M.search_bv = function()
-	require("telescope.builtin").find_files({
-		prompt_title = "< Banco BV >",
-		cwd = "$HOME/Documents/Projects/flutter_bvpd/",
-	})
-end
-
 M.search_dotfiles = function()
-	require("telescope.builtin").find_files({
+	builtin.find_files({
 		prompt_title = "< DOTFILES >",
 		cwd = "$HOME/.dotfiles",
 		find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
@@ -69,7 +63,7 @@ M.search_dotfiles = function()
 end
 
 M.git_branches = function()
-	require("telescope.builtin").git_branches({
+	builtin.git_branches({
 		attach_mappings = function(_, map)
 			map("i", "<c-d>", actions.git_delete_branch)
 			map("n", "<c-d>", actions.git_delete_branch)
