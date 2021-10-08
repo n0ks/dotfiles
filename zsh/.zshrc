@@ -20,13 +20,11 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey -v
-# source ~/git-plugin.zsh
+
+export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
 export TERM=xterm-256color
-
-export DOTFILES=$HOME/.dotfiles
-
 
 export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/Documents/Projects/flutter_bvpd/card-holy-scripts
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -61,21 +59,20 @@ export FZF_ALT_C_COMMAND="fd -t d . $HOME/Documents/Projects/flutter_bvpd"
 export BB_URL="https://${GIT_BV_USERNAME}:${GIT_BV_PASSWORD}@bitbucket.bvnet.bv"
 
 # export PATH="$HOME/.rbenv/bin"
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Git things
+alias g="git"
 alias gcm="git checkout master"
+alias gcm="git checkout develop"
 alias cph="git log -1 --pretty=format:"%h" | pbcopy"
 alias sourcezsh="source ~/.zshrc"
-alias g="git"
 alias ggl="git pull"
 alias gsb='git status -sb'
 alias gtv='git tag | sort -V'
 alias gupa='git pull --rebase --autostash'
 
 
-alias projects="cd $PROJECTS"
-alias bvbank="cd $PROJECTS/flutter_bvpd/flutapp-bvpd-base-bank.git/"
-alias bvcart="cd $PROJECTS/flutter_bvpd/cartoes/"
 alias rmn="rm -rf node_modules && echo node_modules deleted!"
 alias lfolder="ls -d -- */ .*/"
 alias lc='colorls --sd'
@@ -84,23 +81,18 @@ alias nv=nvim
 alias vim=nvim
 alias ls=exa
 alias luamake=$HOME/Documents/Projects/github/lua-language-server/3rd/luamake/luamake
-
-alias bvpr-appca="./bitbucket.sh open_pr flutapp-acli-cart-appcartoes"
-alias bvpr-core="./bitbucket.sh open_pr flutlib-acli-cart-core"
-alias bvpr-model="./bitbucket.sh open_pr flutlib-acli-cart-model"
-alias bvpr-service="./bitbucket.sh open_pr flutlib-acli-cart-service"
-alias bvpr-utils="./bitbucket.sh open_pr flutlib-acli-cart-utils"
-alias bvpr-home="./bitbucket.sh open_pr flutmicro-acli-cart-home"
-alias bvpr-hub="./bitbucket.sh open_pr flutmicro-acli-cart-hub"
-alias bvpr-invoice="./bitbucket.sh open_pr flutmicro-acli-cart-invoice"
-alias bvpr-unloc="./bitbucket.sh open_pr flutmicro-acli-cart-lock-unlock"
-alias bvpr-points="./bitbucket.sh open_pr flutmicro-acli-cart-pointsprogram"
-alias bvpr-settings="./bitbucket.sh open_pr flutmicro-acli-cart-settings"
-alias bvpr-timeline="./bitbucket.sh open_pr flutmicro-acli-cart-timeline"
-alias bvpr-vcard="./bitbucket.sh open_pr flutmicro-acli-cart-virtualcard"
-alias bvpr-credit="./bitbucket.sh open_pr flutmicro-acli-cart-personalcredit"
-alias bvpr-review="./bitbucket.sh open_pr flutmicro-acli-cart-store-review"
-alias bvpr:e="nv ~/Documents/Projects/flutter_bvpd/cartoes/card-holy-scripts/.env"
+# Shortcuts
+salias vim=nvim
+alias ls=exa
+alias luamake=$HOME/Documents/Projects/github/lua-language-server/3rd/luamake/luamake
+# Shortcuts
+alias d="cd ~/Dropbox"
+alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
+alias p="cd $PROJECTS"
+# Gatekeeper (for installing 3rd party apps)
+alias gatekeeperOff="sudo spctl --master-disable"
+alias gatekeeperOn="sudo spctl --master-enable"
 
 eval "$(rbenv init -)"
 
