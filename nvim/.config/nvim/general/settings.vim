@@ -62,6 +62,14 @@ set inccommand=nosplit
 " Decimal inc/dec on c-a and c-x
 set nrformats=
 
+
+" START - Testing some settings
+set breakindent
+set breakindentopt=shift:2
+set showbreak=\\\\\
+set showbreak=↳
+" END - Testing some settings
+
 let mapleader=" "
 
 let g:cursorhold_updatetime = 100

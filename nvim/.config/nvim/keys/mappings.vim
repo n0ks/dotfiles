@@ -62,6 +62,7 @@ nnoremap <leader>+ :vertical resize +15<CR>
 nnoremap <leader>- :vertical resize -15<CR>
 nnoremap <leader>cA :w <bar> %bd <bar> e# <bar> bd# <CR>
 nnoremap <silent><leader>CC :call CleanNoNameEmptyBuffers()<CR>
+nnoremap <Backspace> <C-^>
 
 "---------------------------------------------------------------------------
 " Quickfix
