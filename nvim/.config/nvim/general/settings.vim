@@ -3,6 +3,7 @@ syntax on
 filetype plugin indent on
 set path+=**
 set wildmenu
+set wildmode=full
 " Disable output, vcs, archive, rails, temp and backup files.
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
@@ -56,7 +57,10 @@ set smartcase
 " Auto reload if file was changed somewhere else (for autoread)
 set nocursorline        " Don't paint cursor line
 set nocursorcolumn      " Don't paint cursor column
-" set fileformats=dos
+" Live update substitution
+set inccommand=nosplit
+" Decimal inc/dec on c-a and c-x
+set nrformats=
 
 let mapleader=" "
 
@@ -90,23 +94,6 @@ let g:vsnip_filetypes.typescriptreact = ['typescript', 'html']
 let g:vsnip_snippet_dir = expand('~/.config/nvim/vsnip')
 
 let g:coq_settings = {'auto_start': v:true }
-
-function! CleanNoNameEmptyBuffers()
-    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val) < 0 && (getbufline(v:val, 1, "$") == [""])')
-    if !empty(buffers)
-        exe 'bd '.join(buffers, ' ')
-    else
-        echo 'No buffer deleted'
-    endif
-endfunction
-
-function! MultipleEdit(p_list)
-  for p in a:p_list
-    for c in glob(p, 0, 1)
-      execute 'edit ' . c
-    endfor
-  endfor
-endfunction
 
 command! -bar -bang -nargs=+ -complete=file Edit call MultipleEdit([<f-args>])
 
