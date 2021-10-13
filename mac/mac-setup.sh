@@ -15,15 +15,18 @@ echo "Hello $(whoami)! Let's get you set up."
 echo "installing homebrew"
 # install homebrew https://brew.sh
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-brew update
+brew update && brew upgrade
 
 echo "mkdir -p ${HOME}/code"
 mkdir -p "${HOME}/code"
+
 echo "cloning repos"
-git clone https://github.com/n0ks/dotfiles.git "${HOME}/dotfiles"
+git clone https://github.com/n0ks/dotfiles.git "${HOME}"
 git clone https://github.com/alacritty/alacritty.git "${HOME}/code"
 git clone https://github.com/neovim/neovim.git "${HOME}/code"
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+
+
 
 xcode-select --install
 
