@@ -64,7 +64,7 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # Git things
 alias g="git"
 alias gcm="git checkout master"
-alias gcm="git checkout develop"
+alias gcd="git checkout develop"
 alias cph="git log -1 --pretty=format:"%h" | pbcopy"
 alias sourcezsh="source ~/.zshrc"
 alias ggl="git pull"
