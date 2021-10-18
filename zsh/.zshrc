@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 setopt EXTENDED_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
@@ -22,13 +15,15 @@ bindkey -M vicmd v edit-command-line
 bindkey -v
 
 . $HOME/.asdf/asdf.sh
+. ~/.asdf/plugins/java/set-java-home.zsh
 
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
 export TERM=xterm-256color
+export GREP_OPTIONS='--color=auto'
 
-export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin
+export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/fvm
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -38,9 +33,10 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
-
+export PATH=$PATH:$HOME/neovim/bin
+export FVM_HOME=$HOME/fvm
 # export JAVA_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
+# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
 export PATH="$MAGICK_HOME/bin:$PATH"
@@ -56,7 +52,7 @@ export FASTLANE_SKIP_UPDATE_CHECK=1
 
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --multi --no-mouse'
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME/Documents/Projects/flutter_bvpd"
+# export FZF_ALT_C_COMMAND="fd -t d . $HOME/Documents/code/projects"
 
 # export PATH="$HOME/.rbenv/bin"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -77,23 +73,22 @@ alias lfolder="ls -d -- */ .*/"
 alias lc='colorls --sd'
 alias lct='colorls --sd --tree=1'
 alias nv=nvim
-alias vim=nvim
 alias ls=exa
-alias luamake=$HOME/Documents/Projects/github/lua-language-server/3rd/luamake/luamake
 # Shortcuts
 alias vim=nvim
 alias ls=exa
-alias luamake=$HOME/Documents/Projects/github/lua-language-server/3rd/luamake/luamake
+alias luamake=$HOME/Documents/code/lua-language-server/3rd/luamake/luamake
 # Shortcuts
 alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd $PROJECTS"
+alias code="cd ~/Documents/code"
 # Gatekeeper (for installing 3rd party apps)
 alias gatekeeperOff="sudo spctl --master-disable"
 alias gatekeeperOn="sudo spctl --master-enable"
 
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 # source ~/powerlevel10k/powerlevel10k.zsh-theme
 
@@ -111,3 +106,4 @@ function runAll(){
   ls -d */ | xargs -I {} bash -c "cd '{}' && $1"
 }
 
+eval "$(starship init zsh)"
