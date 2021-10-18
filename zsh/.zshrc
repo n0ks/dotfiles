@@ -57,50 +57,11 @@ export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 # export PATH="$HOME/.rbenv/bin"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Git things
-alias g="git"
-alias gcm="git checkout master"
-alias gcd="git checkout develop"
-alias cph="git log -1 --pretty=format:"%h" | pbcopy"
-alias sourcezsh="source ~/.zshrc"
-alias ggl="git pull"
-alias gsb='git status -sb'
-alias gtv='git tag | sort -V'
-alias gupa='git pull --rebase --autostash'
-
-alias rmn="rm -rf node_modules && echo node_modules deleted!"
-alias lfolder="ls -d -- */ .*/"
-alias lc='colorls --sd'
-alias lct='colorls --sd --tree=1'
-alias nv=nvim
-alias ls=exa
-# Shortcuts
-alias vim=nvim
-alias ls=exa
-alias luamake=$HOME/Documents/code/lua-language-server/3rd/luamake/luamake
-# Shortcuts
-alias d="cd ~/Dropbox"
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd $PROJECTS"
-alias code="cd ~/Documents/code"
-# Gatekeeper (for installing 3rd party apps)
-alias gatekeeperOff="sudo spctl --master-disable"
-alias gatekeeperOn="sudo spctl --master-enable"
+source ~/.aliases
 
 #eval "$(rbenv init -)"
 
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# (( ! ${+functions[p10k]} )) || p10k finalize
 
 function runAll(){
   ls -d */ | xargs -I {} bash -c "cd '{}' && $1"
