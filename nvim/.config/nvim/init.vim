@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
 
 " Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
 " Plug 'ray-x/navigator.lua'
-
+Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'Neevash/awesome-flutter-snippets'
 Plug 'ThePrimeagen/git-worktree.nvim'
