@@ -1,11 +1,5 @@
 #!/usr/bin/env bash
 
-# Ask for the administrator password upfront
-# sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until `setup.sh` has finished
-# while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
 echo "Hello $(whoami)! Let's get you set up."
 
 echo "Shell installation script for n0ks dotfiles";
@@ -13,15 +7,12 @@ echo "-------------------------------------------------";
 echo "";
 
 installSoftware() {
-  echo "[INFO] setting up brew"
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  brew doctor
-  brew update
+  echo "[INFO] Installing required software..";
+	sudo apt-get install -y zsh git-core curl wget python-pip build-essential autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev libsqlite3-dev inotify-tools pkg-config fd bat rg fzf tmux git stow
 
-	# Install zsh and required software
-	echo "[INFO] Installing from Brewfile";
-  brew bundle --file="../Brewfile"
-  xcode-select --install
+  # Change the shell to zsh
+	echo "[INFO] Changing the shell of this user to use zsh...";
+	chsh -s $(which zsh)
 
 }
 
@@ -52,23 +43,13 @@ asdfSetup() {
   asdf plugin-add java https://github.com/halcyon/asdf-java.git
   asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git;
   asdf plugin-add python
-
 }
-
-macSettings() {
-  osascript -e 'tell application "System Preferences" to quit'
-  source ./macos-settings
-}
-
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
 
 setup(){
     installSoftware;
     cloneRepos;
     dotfilesStow;
     installAsdf;
-    macSettings
 }
 
 read -p "Setup is about to start. Do you want to continue? (y/n) " -n 1;

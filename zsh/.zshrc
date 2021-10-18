@@ -8,7 +8,6 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 setopt auto_cd
 unsetopt MULTIOS
-
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
