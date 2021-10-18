@@ -37,7 +37,8 @@ require("telescope").setup({
 		buffers = {
 			sort_lastused = true,
 			show_all_buffers = true,
-			theme = "ivy",
+      previewer = false,
+			theme = "dropdown",
 			mappings = {
 				i = { ["<c-x>"] = "delete_buffer" },
 				n = { ["<c-x>"] = "delete_buffer" },
@@ -46,7 +47,7 @@ require("telescope").setup({
 	},
 })
 
-telescope.load_extension("fzf")
+-- telescope.load_extension("fzf")
 telescope.load_extension("git_worktree")
 telescope.load_extension("projects")
 

@@ -5,7 +5,7 @@ local coq = require("coq")
 local lsp = vim.lsp
 local handlers = lsp.handlers
 
-local sumneko_root_path = vim.fn.getenv("HOME") .. "/Documents/Projects/github/lua-language-server"
+local sumneko_root_path = vim.fn.getenv("HOME") .. "/Documents/code/lua-language-server"
 local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

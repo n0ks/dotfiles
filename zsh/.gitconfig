@@ -23,7 +23,6 @@
 	excludesfile = /Users/rodrigo.m.de.campos/.gitignore_global
 	editor = nvim
 
-
 [sequence]
 	editor = nvim
 
