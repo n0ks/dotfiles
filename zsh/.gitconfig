@@ -1,15 +1,12 @@
-[user]
-	name = n0ks
-	email = rodrigocmp29@gmail.com
 [alias]
-	cansei = commit --amend --no-edit
-	ac = !git add -A && git cansei
+  cansei = commit --amend --no-edit
+  ac = !git add -A && git cansei
   branch-name = !git rev-parse --abbrev-ref HEAD
-	stashstaged = !git stash --keep-index && \
-									git stash && \
-									git stash apply stash@{1} && \
-									git stash show -p | git apply -R && \
-									git stash drop stash@{1}
+  stashstaged = !git stash --keep-index && \
+    git stash && \
+    git stash apply stash@{1} && \
+    git stash show -p | git apply -R && \
+    git stash drop stash@{1}
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -17,72 +14,84 @@
 
   graph = log --oneline --graph --decorate
 
-	ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
 
-	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 
-	lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 
-	conflicts = diff --name-only --diff-filter=U
+  conflicts = diff --name-only --diff-filter=U
 
-	local-branches = !git branch -vv | cut -c 3- | awk '$3 !~/\\[/ { print $1 }'
+  local-branches = !git branch -vv | cut -c 3- | awk '$3 !~/\\[/ { print $1 }'
 
-	recent-branches = !git branch --sort=-committerdate | head
+  recent-branches = !git branch --sort=-committerdate | head
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   # List contributors.
-	authors = !git log --format='%aN <%aE>' | grep -v 'users.noreply.github.com' | sort -u --ignore-case
+  authors = !git log --format='%aN <%aE>' | grep -v 'users.noreply.github.com' | sort -u --ignore-case
   lc = shortlog --email --numbered --summary
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
  # List remote branches.
- 
+
   lrb = "!f() { \
-      remote=\"${1:-origin}\"; \
-      git ls-remote --heads \"$remote\"; \
-  }; f"
+    remote=\"${1:-origin}\"; \
+    git ls-remote --heads \"$remote\"; \
+    }; f"
 
   # Search source
 
   sc = "!f() { \
-      git log --date=short --decorate --pretty=custom -S\"$1\"; \
-  }; f"
+    git log --date=short --decorate --pretty=custom -S\"$1\"; \
+    }; f"
 
   # Search message
 
   sm = "!f() { \
-          git log --date=short --decorate --grep=\"$1\"; \
-   }; f"
+    git log --date=short --decorate --pretty=custom --grep=\"$1\"; \
+    }; f"
 
+[push]
+
+    # Make `git push` automatically push relevant
+    # annotated tags when pushing branches out.
+
+  followTags = true
 
 [core]
-	excludesfile = /Users/rodrigo.m.de.campos/.gitignore_global
-	editor = nvim
+  editor = nvim
 
 [sequence]
-	editor = nvim
+  editor = nvim
 
 ; [includeIf "gitdir:"]
 
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
 [delta]
-    features = side-by-side line-numbers decorations
-    whitespace-error-style = 22 reverse
-    line-numbers = true
-    side-by-side = true
+  features = side-by-side line-numbers decorations
+  whitespace-error-style = 22 reverse
+  line-numbers = true
+  side-by-side = true
 
 [delta "decorations"]
-    commit-decoration-style = bold yellow box ul
-    file-style = bold yellow ul
-    file-decoration-style = none
-; [credential]
-; 	helper = 
-; 	helper = /usr/local/share/gcm-core/git-credential-manager-core
-[credential "https://dev.azure.com"]
-	useHttpPath = true
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+
 [push]
-	default = current
+  default = current
+
+[pretty]
+  custom = "%C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)"
+#                     │        │            │            │             └─ author name
+#                     │        │            │            └─ message
+#                     │        │            └─ date (relative)
+#                     │        └─ decorations (branch, heads or tags)
+#                     └─ hash (abbreviated)
+
+[include]
+  path = ~/.dotfiles/private/.gitconfig-private

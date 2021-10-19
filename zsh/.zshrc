@@ -51,7 +51,7 @@ export FASTLANE_SKIP_UPDATE_CHECK=1
 
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --multi --no-mouse'
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
-# export FZF_ALT_C_COMMAND="fd -t d . $HOME/Documents/code/projects"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME/Documents/code"
 
 # export PATH="$HOME/.rbenv/bin"
 export SSH_KEY_PATH="~/.ssh/rsa_id"

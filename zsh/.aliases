@@ -12,10 +12,11 @@ alias gupa='git pull --rebase --autostash'
 
 alias rmn="rm -rf node_modules && echo node_modules deleted!"
 alias lfolder="ls -d -- */ .*/"
-alias lc='colorls --sd'
-alias lct='colorls --sd --tree=1'
 alias nv=nvim
 alias ls=exa
+alias ll="exa --all --tree --level 1 "
+alias t="tmux"
+
 # Shortcuts
 alias vim=nvim
 alias ls=exa
