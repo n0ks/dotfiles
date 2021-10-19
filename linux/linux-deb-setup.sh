@@ -8,7 +8,10 @@ echo "";
 
 installSoftware() {
   echo "[INFO] Installing required software..";
-	sudo apt-get install -y zsh git-core curl wget python-pip build-essential autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev libsqlite3-dev inotify-tools pkg-config fd bat rg fzf tmux git stow
+
+  sudo apt-get install -y zsh git-core curl wget python-pip build-essential \ 
+  autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev \
+  libsqlite3-dev inotify-tools pkg-config fd bat rg fzf tmux git stow screenkey \
 
   # Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
