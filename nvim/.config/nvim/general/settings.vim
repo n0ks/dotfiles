@@ -62,11 +62,10 @@ set inccommand=nosplit
 " Decimal inc/dec on c-a and c-x
 set nrformats=
 
-
 " START - Testing some settings
 set breakindent
 set breakindentopt=shift:2
-set showbreak=\\\\\
+set showbreak=+++++
 set showbreak=↳
 " END - Testing some settings
 
@@ -96,12 +95,20 @@ let g:mkdp_auto_close = 0
 let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
 
+let g:coq_settings = {
+      \ "auto_start": v:true,
+      \ "keymap.eval_snips": "<leader>j",
+      \ "keymap.jump_to_mark": "<C-g>",
+      \ "clients.snippets.weight_adjust": 1.9,
+      \ "clients.buffers.weight_adjust": -1.9,
+      \ "clients.tree_sitter.weight_adjust": -1.5,
+      \ "clients.lsp.weight_adjust": 1.5
+      \ }
+
 let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']
 let g:vsnip_filetypes.typescriptreact = ['typescript', 'html']
 let g:vsnip_snippet_dir = expand('~/.config/nvim/vsnip')
-
-let g:coq_settings = {'auto_start': v:true }
 
 command! -bar -bang -nargs=+ -complete=file Edit call MultipleEdit([<f-args>])
 

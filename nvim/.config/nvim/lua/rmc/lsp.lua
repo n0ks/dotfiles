@@ -16,12 +16,11 @@ local coq_capabilities = coq.lsp_ensure_capabilities(capabilities)
 local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
-	local pop_opts = { border = "rounded", max_width = 80 }
+	-- local pop_opts = { border = "rounded", max_width = 80 }
 	--
 	-- handlers["textDocument/hover"] = lsp.with(handlers.hover, pop_opts)
 	-- handlers["textDocument/signatureHelp"] = lsp.with(handlers.signature_help, pop_opts)
 
-	vim.cmd([[ command -buffer Formatting lua vim.lsp.buf.formatting() ]])
 end
 
 local servers = require("lspinstall").installed_servers()
@@ -31,8 +30,6 @@ for _, server in pairs(servers) do
 		on_attach = on_attach,
 	})
 end
-
-local runtime_path = vim.split(package.path, ";")
 
 _G.lsp_organize_imports = function()
 	local params = {
@@ -75,7 +72,6 @@ nvim_lsp.tsserver.setup({
 			eslint_bin = "eslint_d",
 			eslint_enable_diagnostics = true,
 			eslint_opts = {},
-
 			-- formatting
 			enable_formatting = false,
 			formatter = "eslint_d",
@@ -139,8 +135,7 @@ nvim_lsp.sumneko_lua.setup({
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = "LuaJIT",
 				-- Setup your lua path
-				path = runtime_path,
-			},
+				path = vim.split(package.path, ";")			},
 			diagnostics = {
 				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
@@ -160,6 +155,7 @@ nvim_lsp.sumneko_lua.setup({
 require("flutter-tools").setup({
 	dev_log = {
 		open_cmd = "tabnew",
+		-- open_cmd = "tmux neww -n 'flutter_log'"
 	},
 	debugger = {
 		enabled = true,

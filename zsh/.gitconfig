@@ -8,6 +8,9 @@
     git stash show -p | git apply -R && \
     git stash drop stash@{1}
 
+    # discard everything
+    fuck = reset --hard HEAD
+
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
   # log things 

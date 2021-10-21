@@ -1,6 +1,7 @@
-snippet StatelessWidget
+snippet stateless
+abbr Stateless Widget
 alias stless
-  class $1 extends StatelessWidget {
+  class ${1:classname} extends StatelessWidget {
 
     @override
     Widget build(BuildContext context){
@@ -8,16 +9,17 @@ alias stless
     }
   }
 
-snippet StatefullWidget
+snippet statefull
+abbr Statefull Widget
 alias stfull
- class ${0:ClassName} extends StatefulWidget {
-    ${0:ClassName}({Key? key}) : super(key: key);
+ class ${1:classname} extends StatefulWidget {
+    ${1:classname}({Key? key}) : super(key: key);
 
     @override
-    _${0:ClassName}State createState() => _${0:ClassName}State();
+    _${1:classname}State createState() => _${1:classname}State();
   }
 
- class _${0:ClassName}State extends State<${0:ClassName}> {
+ class _${1:classname}State extends State<${1:classname}> {
     @override
     Widget build(BuildContext context) {
       return Container(
@@ -44,5 +46,4 @@ alias ini
     $0
     super.initState();
   }
-
 

@@ -19,6 +19,7 @@ require("dapui").setup({
 		},
 		position = "left", -- Can be "left" or "right"
 	},
+  icons = { expanded = "▾", collapsed = "▸" },
 })
 
 -- .exit               Closes the REPL

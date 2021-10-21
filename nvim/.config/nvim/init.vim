@@ -8,17 +8,9 @@ source $HOME/.config/nvim/plugin/fzf.vim
 source $HOME/.config/nvim/general/autocmd.vim 
 
 call plug#begin('~/.vim/plugged')
-" Plug 'SirVer/UltiSnips'
-" Plug 'andweeb/presence.nvim'
 " Plug 'honza/vim-snippets'
-" Plug 'kabouzeid/nvim-lspinstall'
-" Plug 'tommcdo/vim-fubitive'
-
-" Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
-" Plug 'ray-x/navigator.lua'
 Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'Neevash/awesome-flutter-snippets'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ahmedkhalf/project.nvim'
@@ -35,8 +27,7 @@ Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'folke/tokyonight.nvim'
 Plug 'glepnir/zephyr-nvim'
 Plug 'kwkarlwang/bufresize.nvim'
-" Plug 'glepnir/lspsaga.nvim'
-Plug 'rinx/lspsaga.nvim'
+Plug 'tami5/lspsaga.nvim'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'

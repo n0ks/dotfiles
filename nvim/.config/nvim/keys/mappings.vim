@@ -29,7 +29,6 @@ vnoremap <leader>p "_dP
 nnoremap <C-d> 6j
 nnoremap <C-u> 6k
 nnoremap <leader>Y gg"+yG
-nnoremap <silent><CR> :noh<return><esc>
 nnoremap <silent><esc> :noh<return><esc>
 nnoremap ,fn :put =expand('%:t')<CR>
 nnoremap <F1> :FlutterRun<CR>
@@ -42,12 +41,13 @@ nmap sk :SplitjoinJoin<CR>
 nmap <leader>sr *:%s///gI<left><left><left>
 " Replace word under cursor in line (case-sensitive)
 nmap <leader>sl *:s///gI<left><left><left>
+xnoremap <leader>bs :!boxes -d stone
 
 " ----------------------------------------------------------------------------
 " WINDOWS & BUFFERS
 " ----------------------------------------------------------------------------
-nnoremap <silent><TAB> :bnext<CR>
-nnoremap <silent><S-TAB> :bprevious<CR>
+" nnoremap <silent><TAB> :bnext<CR>
+" nnoremap <silent><S-TAB> :bprevious<CR>
 nnoremap <M-h> <C-w>h
 nnoremap <M-k> <C-w>k
 nnoremap <M-j> <C-w>j
@@ -86,13 +86,15 @@ nnoremap <silent> <Right> :cnfile<CR>
 nnoremap <leader>gB :G blame<CR>
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>ge :Ge:<CR>
-nnoremap <leader>gb :Telescope git_branches<CR>
+nnoremap <leader>gb :lua require('rmc.telescope').git_branches()<CR>
 nnoremap <leader>gdi :Telescope git_bcommits<CR>
 nnoremap <leader>tr :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>tc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 nnoremap <leader>gm :G mergetool<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
+nnoremap <leader>gcl :0Gclog<CR>
+nnoremap <leader>gcd :Gclog -- %<CR>
 
 " ----------------------------------------------------------------------------
 " Testing
@@ -125,6 +127,7 @@ nnoremap <M-9> :lua require("harpoon.term").sendCommand(1, "ls -la")<CR>
 
 nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap gdv <cmd>vs \| lua vim.lsp.buf.definition()<CR>
 " nnoremap gi <CR><cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 " nnoremap <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
@@ -181,19 +184,20 @@ nnoremap <silent><M-o> :lua require("dapui").float_element()<CR>
 " VSNIP
 " ----------------------------------------------------------------------------
 
-imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)' : '<C-j>'
-nnoremap <leader>x  :VsnipYank key <bar> VsnipOpen <CR>
+" imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)' : '<C-j>'
+" nnoremap <leader>x  :VsnipYank key <bar> VsnipOpen <CR>
+
 
 " ----------------------------------------------------------------------------
 " TELESCOPE
 " ----------------------------------------------------------------------------
 
-nnoremap <leader>ps <cmd>Telescope find_files prompt_prefix=🗄 <cr>
-nnoremap <leader>pl <cmd>Telescope live_grep prompt_prefix=🔍<cr>
-nnoremap <leader>pb <cmd>Telescope buffers<cr>
+nnoremap <leader>ps <cmd>Telescope find_files<cr>
+nnoremap <leader>pl <cmd>Telescope live_grep<cr>
 nnoremap <leader>ph <cmd>Telescope help_tags<cr>
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <leader>pp <cmd>Telescope projects<cr>
 nnoremap <leader>sd :lua require('rmc.telescope').search_dotfiles()<CR>
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+nnoremap <C-b> <cmd>Telescope buffers<cr>
 command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})
 

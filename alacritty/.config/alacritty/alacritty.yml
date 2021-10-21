@@ -259,7 +259,7 @@ window:
   decorations: buttonless
   dimensions:
     columns: 100
-    lines: 40
+    lines: 60
   padding:
     x: 6
     y: 6
