@@ -9,9 +9,9 @@ echo "";
 installSoftware() {
 	echo "[INFO] Installing required software..";
 
-	sudo apt-get install -y zsh curl wget build-essential \
-		autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev \
-		libsqlite3-dev inotify-tools pkg-config fd-find bat ripgrep fzf tmux git stow screenkey \
+  sudo apt install -y ninja-build gettext libtool libtool-bin zsh curl wget python-pip build-essential cmake g++\ 
+  autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev automake doxygen exa \
+  libsqlite3-dev inotify-tools pkg-config fd-find bat ripgrep fzf tmux git stow screenkey \
 
   # Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
@@ -44,6 +44,18 @@ asdfSetup() {
 	asdf plugin-add java https://github.com/halcyon/asdf-java.git
 	asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git;
 	asdf plugin-add python
+}
+
+neovimSetup(){
+  echo "[INFO] setting up vim-plug"
+  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  pushd ~/code/neovim
+  rm -rf build/
+  git checkout master
+  git pull
+  make CMAKE_BUILD_TYPE=Release
+  sudo make install
+  popd
 }
 
 setup(){
