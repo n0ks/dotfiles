@@ -1,5 +1,4 @@
 require('rmc.treesitter')
-require('rmc.coq')
 require('rmc.lsp')
 require('rmc.lsp-saga')
 require('rmc.telescope')
