@@ -9,15 +9,17 @@ echo "";
 installSoftware() {
 	echo "[INFO] Installing required software..";
 
-  sudo apt install -y ninja-build gettext libtool libtool-bin zsh curl wget python-pip build-essential cmake g++\ 
+ sudo apt install -y --ignore-missing ninja-build gettext libtool libtool-bin zsh curl wget python3-pip build-essential cmake g++ \
   autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev automake doxygen exa xclip \
-  libsqlite3-dev inotify-tools pkg-config fd-find bat ripgrep fzf tmux git stow screenkey \
+  libsqlite3-dev inotify-tools pkg-config fd-find bat ripgrep fzf tmux git stow screenkey
 
-  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
-  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-  sudo apt update
-  sudo apt install gh
-
+	if ! command -v gh &> /dev/null
+	then
+	  curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+	  echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+	  sudo apt update
+	  sudo apt install gh
+	fi
 
   # Change the shell to zsh
 	echo "[INFO] Changing the shell of this user to use zsh...";
