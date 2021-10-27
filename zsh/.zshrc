@@ -22,7 +22,7 @@ export EDITOR="nvim"
 export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto'
 
-export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/fvm:$HOME/chtsh/
+export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/.fvm:$HOME/chtsh/
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator

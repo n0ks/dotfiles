@@ -47,3 +47,12 @@ alias ini
     super.initState();
   }
 
+
+
+snippet json_factory
+abbr Json serializable 
+alias jss
+  factory ${1}.fromJson(Map<String, dynamic> json) => _\$${1}FromJson(json);
+
+  Map<String, dynamic> toJson() => _\$${1}ToJson(this);
+

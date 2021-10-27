@@ -28,7 +28,7 @@ Plug 'folke/tokyonight.nvim'
 Plug 'glepnir/zephyr-nvim'
 Plug 'kwkarlwang/bufresize.nvim'
 Plug 'tami5/lspsaga.nvim'
-Plug 'hoob3rt/lualine.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'hrsh7th/vim-vsnip-integ'
@@ -64,7 +64,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 call plug#end()
 
-source $HOME/.config/nvim/themes/theme.vim
+" source $HOME/.config/nvim/themes/theme.vim
 
 lua require('rmc.init')
 
