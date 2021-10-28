@@ -17,8 +17,8 @@ font:
     family: UbuntuMono Nerd Font 
     style: Regular
   offset:
-    x: 0
-    y: 0
+    x: 1 
+    y: 2
   size: 22
 key_bindings:
   - chars: "\ea"

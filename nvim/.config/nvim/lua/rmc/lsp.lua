@@ -155,7 +155,6 @@ nvim_lsp.sumneko_lua.setup({
 require("flutter-tools").setup({
 	dev_log = {
 		open_cmd = "tabnew",
-		-- open_cmd = "tmux neww -n 'flutter_log'"
 	},
 	debugger = {
 		enabled = true,
