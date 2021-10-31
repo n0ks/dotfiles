@@ -6,6 +6,12 @@ echo "Shell installation script for n0ks dotfiles";
 echo "-------------------------------------------------";
 echo "";
 
+read -p "Setup is about to start. Do you want to continue? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	setup;
+fi;
+
 installSoftware() {
 	echo "[INFO] Installing required software..";
 
@@ -84,7 +90,12 @@ alacrittySetup(){
   # set as default term
   sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
   sudo update-alternatives --config x-terminal-emulator
+
+  # setup from repo
+  # sudo add-apt-repository ppa:mmstick76/alacritty
+  # sudo apt install alacritty
 }
+
 
 setup(){
 	installSoftware;
@@ -93,11 +104,4 @@ setup(){
 	dotfilesStow;
   neovimSetup;
 }
-
-read -p "Setup is about to start. Do you want to continue? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	setup;
-fi;
-
 
