@@ -118,7 +118,7 @@ nnoremap <M-3> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <M-4> :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <M-5> :lua require("harpoon.ui").nav_file(5)<CR>
 nnoremap <M-0> :lua require("harpoon.term").gotoTerminal(1)<CR>
-nnoremap <M-9> :lua require("harpoon.term").sendCommand(1, "ls -la")<CR>
+nnoremap <M-9> :lua require("harpoon.term").sendCommand(1, "ls -la")<CR> <bar> :lua require("harpoon.term").gotoTerminal(1)<CR>i<CR>
 
 
 " ----------------------------------------------------------------------------
@@ -135,8 +135,8 @@ nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
  
 nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <leader>di <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
-nnoremap <leader>dq <cmd>lua vim.lsp.diagnostic.set_qflist()<CR>
+nnoremap <leader>dll <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+nnoremap <leader>dqq <cmd>lua vim.lsp.diagnostic.set_qflist()<CR>
 nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>lf <cmd>lua require('stylua-nvim').format_file()<CR>
 nnoremap <leader>ss <cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
@@ -172,9 +172,8 @@ nnoremap <silent> <leader>db :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <silent> <leader>dB :lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>
 nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
 nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
-nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
-nnoremap <silent> <leader>dk :lua require'dap.ui.variables'.hover()<CR>
-nnoremap <silent> <leader>dK :<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
+nnoremap <silent> <leader>di :lua require'dap.ui.variables'.hover()<CR>
+nnoremap <silent> <leader>d? :<cmd>lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>
 nnoremap <silent> <leader>dw <cmd>lua require'dap.ui.widgets'.hover()<CR>
 nnoremap <silent><M-i> :lua require("dapui").eval()<CR>
 nnoremap <M-\> :lua require("dapui").toggle()<CR>

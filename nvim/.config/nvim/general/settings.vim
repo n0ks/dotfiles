@@ -2,8 +2,6 @@ lang en_US.UTF-8
 syntax on
 filetype plugin indent on
 set path+=**
-set wildmenu
-set wildmode=full
 " Disable output, vcs, archive, rails, temp and backup files.
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
@@ -11,7 +9,6 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 set wildignore+=*.swp,*~,._*
 set wildignore+=**/node_modules/**
 set completeopt=menuone,noselect
-set shortmess-=F
 set regexpengine=1
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set relativenumber
@@ -19,11 +16,9 @@ set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
 set pumheight=10
 set ruler              			            " Show the cursor position all the time
-set cmdheight=1                         " More space for displaying messages
 set iskeyword+=-                      	" treat dash separated words as a word text object"
 set mouse=a                            " Enable your mouse
 set splitbelow                          " Horizontal splits will automatically be below
-set splitright                          " Vertical splits will automatically be to the right
 set t_Co=256                            " Support 256 colors
 set conceallevel=0                      " So that I can see `` in markdown files
 set tabstop=2                           " Insert 2 spaces for a tab set shiftwidth=2                        
@@ -52,9 +47,9 @@ set colorcolumn=80
 set termguicolors
 set shortmess+=A                        " This is needed to avoid swapfile warning when auto-reloading
 set shortmess+=c
+set shortmess-=F
 set ignorecase                          " Ignore case when searching.
 set smartcase
-" Auto reload if file was changed somewhere else (for autoread)
 set nocursorline        " Don't paint cursor line
 set nocursorcolumn      " Don't paint cursor column
 " Live update substitution
@@ -96,9 +91,9 @@ let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
 
 let g:coq_settings = {
-      \ "auto_start": v:true,
+      \ "auto_start": v:false,
       \ "keymap.eval_snips": "<leader>j",
-      \ "keymap.jump_to_mark": "<C-g>",
+      \ "keymap.jump_to_mark": "<C-j>",
       \ "clients.snippets.weight_adjust": 1.9,
       \ "clients.buffers.weight_adjust": -1.9,
       \ "clients.tree_sitter.weight_adjust": -1.5,
