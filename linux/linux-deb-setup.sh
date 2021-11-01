@@ -100,7 +100,7 @@ setup(){
 }
 
 read -p "Setup is about to start. Do you want to continue? (y/n) " -n 1;
-echo "";
+
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	setup;
 fi;
