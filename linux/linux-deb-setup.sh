@@ -4,13 +4,6 @@ echo "Hello $(whoami)! Let's get you set up."
 
 echo "Shell installation script for n0ks dotfiles";
 echo "-------------------------------------------------";
-echo "";
-
-read -p "Setup is about to start. Do you want to continue? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	setup;
-fi;
 
 installSoftware() {
 	echo "[INFO] Installing required software..";
@@ -78,22 +71,22 @@ alacrittySetup(){
   echo "[INFO] setting up alacritty"
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-  pushd ~/code/alacritty
+#   pushd ~/code/alacritty
   
-  cargo build --release
-  infocmp alacritty
+#   cargo build --release
+#   infocmp alacritty
 
-  sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
-  sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
-  sudo desktop-file-install extra/linux/Alacritty.desktop
-  sudo update-desktop-database
+#   sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
+#   sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+#   sudo desktop-file-install extra/linux/Alacritty.desktop
+#   sudo update-desktop-database
   # set as default term
-  sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
-  sudo update-alternatives --config x-terminal-emulator
+#   sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
+#   sudo update-alternatives --config x-terminal-emulator
 
   # setup from repo
-  # sudo add-apt-repository ppa:mmstick76/alacritty
-  # sudo apt install alacritty
+  sudo add-apt-repository ppa:mmstick76/alacritty
+  sudo apt install alacritty
 }
 
 
@@ -102,6 +95,14 @@ setup(){
 	cloneRepos;
 	asdfSetup;
 	dotfilesStow;
-  neovimSetup;
+    neovimSetup;
+    alacrittySetup;
 }
+
+read -p "Setup is about to start. Do you want to continue? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	setup;
+fi;
+
 
