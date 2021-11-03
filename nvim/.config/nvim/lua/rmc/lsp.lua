@@ -5,22 +5,36 @@ local coq = require("coq")
 local lsp = vim.lsp
 local handlers = lsp.handlers
 
-local sumneko_root_path = vim.fn.getenv("HOME") .. "/Documents/code/lua-language-server"
-local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+-- local sumneko_root_path = vim.fn.getenv("HOME") .. "/Documents/code/lua-language-server"
+-- local sumneko_binary = sumneko_root_path .. "/bin/macOS/lua-language-server"
+
+USER = vim.fn.expand('$USER')
+
+local sumneko_root_path = ""
+local sumneko_binary = ""
+
+if vim.fn.has("mac") == 1 then
+    sumneko_root_path = "/Users/" .. USER .. "/Documents/code/lua-language-server"
+    sumneko_binary = "/Users/" .. USER .. "/Documents/code/lua-language-server/bin/macOS/lua-language-server"
+elseif vim.fn.has("unix") == 1 then
+    sumneko_root_path = "/home/" .. USER .. "/Documents/code/lua-language-server"
+    sumneko_binary = "/home/" .. USER .. "/Documents/code/lua-language-server/bin/Linux/lua-language-server"
+else
+    print("Unsupported system for sumneko")
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local coq_capabilities = coq.lsp_ensure_capabilities(capabilities)
-
 local on_attach = function(_, bufnr)
+	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 	-- local pop_opts = { border = "rounded", max_width = 80 }
 	--
 	-- handlers["textDocument/hover"] = lsp.with(handlers.hover, pop_opts)
 	-- handlers["textDocument/signatureHelp"] = lsp.with(handlers.signature_help, pop_opts)
-
 end
 
 local servers = require("lspinstall").installed_servers()
@@ -135,7 +149,8 @@ nvim_lsp.sumneko_lua.setup({
 				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
 				version = "LuaJIT",
 				-- Setup your lua path
-				path = vim.split(package.path, ";")			},
+				path = vim.split(package.path, ";"),
+			},
 			diagnostics = {
 				-- Get the language server to recognize the `vim` global
 				globals = { "vim" },
