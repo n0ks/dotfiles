@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'honza/vim-snippets'
 Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'NTBBloodbath/doombox.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ahmedkhalf/project.nvim'
@@ -54,6 +55,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/gruvbox-material'
 Plug 'Pocco81/Catppuccino.nvim'
 Plug 'sindrets/diffview.nvim'
+Plug 'rose-pine/neovim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
@@ -63,8 +65,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 call plug#end()
-
-" source $HOME/.config/nvim/themes/theme.vim
 
 lua require('rmc.init')
 

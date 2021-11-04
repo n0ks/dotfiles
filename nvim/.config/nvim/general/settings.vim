@@ -56,6 +56,7 @@ set nocursorcolumn      " Don't paint cursor column
 set inccommand=nosplit
 " Decimal inc/dec on c-a and c-x
 set nrformats=
+set lazyredraw
 
 " START - Testing some settings
 set breakindent
@@ -91,12 +92,13 @@ let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
 
 let g:coq_settings = {
-      \ "auto_start": v:false,
+      \ "auto_start": v:true,
       \ "keymap.eval_snips": "<leader>j",
       \ "keymap.jump_to_mark": "<C-j>",
       \ "clients.snippets.weight_adjust": 1.9,
       \ "clients.buffers.weight_adjust": -1.9,
       \ "clients.tree_sitter.weight_adjust": -1.5,
+      \ "clients.tmux.weight_adjust": -1.5,
       \ "clients.lsp.weight_adjust": 1.5
       \ }
 
