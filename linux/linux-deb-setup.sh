@@ -26,6 +26,9 @@ installSoftware() {
 
   ~/.fzf/install
 
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  cargo install stylua
+
 }
 
 cloneRepos() {
@@ -77,11 +80,14 @@ neovimSetup(){
 
 installNpmPackages(){
   npm i -g vscode-langservers-extracted
+  npm i -g diagnostic-languageserver
+  npm i -g eslint_d prettier npm i -g diagnostic-languageserver
+
 }
 
 alacrittySetup(){
   echo "[INFO] setting up alacritty"
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 
 #   pushd ~/code/alacritty
 
