@@ -24,14 +24,17 @@ installSoftware() {
   echo "[INFO] Changing the shell of this user to use zsh...";
   chsh -s $(which zsh)
 
+  ~/.fzf/install
+
 }
 
 cloneRepos() {
   echo "[INFO] cloning repos"
   git clone https://github.com/n0ks/dotfiles ~/.dotfiles
-  git clone https://github.com/neovim/neovim.git ~/code
+  git clone https://github.com/neovim/neovim.git ~/code/neovim
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
-  git clone https://github.com/sumneko/lua-language-server ~/code
+  git clone https://github.com/sumneko/lua-language-server ~/code/lua-language-server
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 }
 
@@ -46,13 +49,7 @@ asdfSetup() {
   # Install useful plugins 
   echo "[INFO] Installing asdf plugins...";
   source $HOME/.asdf/asdf.sh;
-
-  # asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
-  # asdf plugin-add java https://github.com/halcyon/asdf-java.git
-  # asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git;
-  # asdf plugin-add python
-
-  # install from .tools-version - test
+  # install from .tools-version
   asdf install
 }
 
@@ -106,8 +103,8 @@ alacrittySetup(){
 
 
 setup(){
-  installSoftware;
   cloneRepos;
+  installSoftware;
   dotfilesStow;
   asdfSetup;
   neovimSetup;
