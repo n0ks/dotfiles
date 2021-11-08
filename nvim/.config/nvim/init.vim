@@ -1,16 +1,9 @@
-source $HOME/.config/nvim/general/settings.vim
-source $HOME/.config/nvim/general/funfun.vim
-source $HOME/.config/nvim/general/terminal_toggle.vim
-source $HOME/.config/nvim/keys/mappings.vim
-source $HOME/.config/nvim/plugin/fern.vim
-source $HOME/.config/nvim/plugin/quickfix.vim
-source $HOME/.config/nvim/plugin/fzf.vim
-source $HOME/.config/nvim/general/autocmd.vim 
-
 call plug#begin('~/.vim/plugged')
 " Plug 'honza/vim-snippets'
 Plug 'sudormrfbin/cheatsheet.nvim'
 Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'kkoomen/vim-doge'
+Plug 'ewis6991/impatient.nvim'
 Plug 'NTBBloodbath/doombox.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
@@ -57,6 +50,7 @@ Plug 'Pocco81/Catppuccino.nvim'
 Plug 'sindrets/diffview.nvim'
 Plug 'rose-pine/neovim'
 Plug 'tpope/vim-commentary'
+Plug 'dstein64/vim-startuptime'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
@@ -64,10 +58,17 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
+Plug 'lewis6991/impatient.nvim'
 call plug#end()
+
+source $HOME/.config/nvim/general/settings.vim
+source $HOME/.config/nvim/general/funfun.vim
+source $HOME/.config/nvim/general/terminal_toggle.vim
+source $HOME/.config/nvim/keys/mappings.vim
+source $HOME/.config/nvim/plugin/fern.vim
+source $HOME/.config/nvim/plugin/quickfix.vim
+" source $HOME/.config/nvim/plugin/fzf.vim
+source $HOME/.config/nvim/general/autocmd.vim 
 
 lua require('rmc.init')
 
-lua << EOF
-require("bufresize").setup()
-EOF

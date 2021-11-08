@@ -10,7 +10,7 @@ installSoftware() {
 
   sudo apt install -y --ignore-missing ninja-build gettext libtool libtool-bin zsh curl wget python3-pip build-essential cmake g++ \
     autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev automake doxygen exa xclip \
-    libsqlite3-dev inotify-tools pkg-config fd-find bat ripgrep fzf tmux git stow screenkey
+    libsqlite3-dev inotify-tools pkg-config fd-find bat ripgrep fzf tmux git stow screenkey gnome-tweaks
 
   if ! command -v gh &> /dev/null
   then

@@ -48,7 +48,7 @@ catppuccino.setup(
 
 -- catppuccino.load()
 
-vim.g.rose_pine_variant = "base"
+vim.g.rose_pine_variant = "moon"
 vim.g.rose_pine_bold_vertical_split_line = true
 vim.cmd("colorscheme rose-pine")
 

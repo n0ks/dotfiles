@@ -1,3 +1,4 @@
+require('impatient').enable_profile()
 require('rmc.theme')
 require('rmc.treesitter')
 require('rmc.lsp')
@@ -8,3 +9,5 @@ require('rmc.gitsigns')
 require('rmc.dap')
 require('rmc.projects')
 require('rmc.projectionist')
+require("bufresize").setup()
+

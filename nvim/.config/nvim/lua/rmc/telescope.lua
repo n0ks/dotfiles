@@ -17,6 +17,7 @@ require("telescope").setup({
 				["<C-x>"] = false,
 				["<C-s>"] = actions.toggle_selection,
 				["<C-q>"] = actions.smart_send_to_qflist,
+        ["<esc>"] = actions.close
 			},
 			n = {
 				["<C-q>"] = actions.smart_send_to_qflist,
@@ -48,6 +49,7 @@ require("telescope").setup({
 		find_files = {
 			hidden = true,
 			file_ignore_patterns = { ".git/" },
+
 		},
 	},
 })

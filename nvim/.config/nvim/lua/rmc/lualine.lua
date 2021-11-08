@@ -1,7 +1,7 @@
 require("lualine").setup({
 	extensions = { "quickfix", "fugitive" },
 	options = {
-		theme = "catppuccino",
+		theme = "rose-pine",
 		section_separators = "",
 		component_separators = " | ",
 		icons_enabled = 1,
