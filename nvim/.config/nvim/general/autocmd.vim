@@ -3,6 +3,8 @@ au BufNewFile,BufRead *.ts setlocal filetype=typescript
 au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 au BufRead,BufNewFile Fastfile set filetype=ruby
 
+autocmd TermOpen * setlocal nonumber norelativenumber | startinsert
+
 augroup fixlist
     autocmd!
     autocmd BufWinEnter quickfix call SetQFControlVariable()

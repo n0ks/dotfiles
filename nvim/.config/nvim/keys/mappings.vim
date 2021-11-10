@@ -198,5 +198,6 @@ nnoremap <leader>pp <cmd>Telescope projects<cr>
 nnoremap <leader>sd :lua require('rmc.telescope').search_dotfiles()<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <C-b> <cmd>Telescope buffers<cr>
+nnoremap <leader>h :Telescope help_tags<CR>
 command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})
 
