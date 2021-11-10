@@ -80,27 +80,11 @@ neovimSetup(){
 
 installNpmPackages(){
   npm i -g vscode-langservers-extracted
-  npm i -g diagnostic-languageserver
-  npm i -g eslint_d prettier npm i -g diagnostic-languageserver
-
+  npm i -g typescript typescript-language-server diagnostic-languageserver eslint_d yarn
 }
 
 alacrittySetup(){
   echo "[INFO] setting up alacritty"
-
-
-#   pushd ~/code/alacritty
-
-#   cargo build --release
-#   infocmp alacritty
-
-#   sudo cp target/release/alacritty /usr/local/bin # or anywhere else in $PATH
-#   sudo cp extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
-#   sudo desktop-file-install extra/linux/Alacritty.desktop
-#   sudo update-desktop-database
-# set as default term
-#   sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/alacritty 50
-#   sudo update-alternatives --config x-terminal-emulator
 
   # setup from repo
   sudo add-apt-repository ppa:mmstick76/alacritty
