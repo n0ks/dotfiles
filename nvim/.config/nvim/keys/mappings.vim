@@ -91,6 +91,7 @@ nnoremap <leader>gdi :Telescope git_bcommits<CR>
 nnoremap <leader>tr :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>tc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
 nnoremap <leader>gm :G mergetool<CR>
+nnoremap <leader>gqq :Gitsigns setqflist all<CR>
 nmap <leader>gl :diffget //3<CR>
 nmap <leader>gh :diffget //2<CR>
 nnoremap <leader>gcl :0Gclog<CR>
@@ -199,5 +200,6 @@ nnoremap <leader>sd :lua require('rmc.telescope').search_dotfiles()<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <C-b> <cmd>Telescope buffers<cr>
 nnoremap <leader>h :Telescope help_tags<CR>
+nnoremap <Leader>fs :lua require'telescope.builtin'.file_browser{ cwd = vim.fn.expand('%:p:h') }<cr>
 command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})
 

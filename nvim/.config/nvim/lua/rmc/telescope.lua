@@ -16,7 +16,7 @@ require("telescope").setup({
 			i = {
 				["<C-x>"] = false,
 				["<C-s>"] = actions.toggle_selection,
-				["<C-q>"] = actions.smart_send_to_qflist,
+				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
         ["<esc>"] = actions.close
 			},
 			n = {
@@ -64,7 +64,7 @@ M.search_dotfiles = function()
 	builtin.find_files({
 		prompt_title = "< DOTFILES >",
 		cwd = "$HOME/.dotfiles",
-		find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
+		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png}", "--hidden" },
 		previewer = false,
 		follow = false,
 	})
