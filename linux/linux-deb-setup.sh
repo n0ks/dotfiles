@@ -1,11 +1,4 @@
-#!/usr/bin/env bash
-
-echo "Hello $(whoami)! Let's get you set up."
-
-echo "Shell installation script for n0ks dotfiles";
-echo "-------------------------------------------------";
-
-installSoftware() {
+#!/usr/bin/env bash echo "Hello $(whoami)! Let's get you set up." echo "Shell installation script for n0ks dotfiles"; echo "-------------------------------------------------"; installSoftware() {
   echo "[INFO] Installing required software..";
 
   sudo apt install -y --ignore-missing ninja-build gettext libtool libtool-bin zsh curl wget python3-pip build-essential cmake g++ \
@@ -46,9 +39,9 @@ asdfSetup() {
   # Install useful plugins 
   echo "[INFO] Installing asdf plugins...";
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc
-  source $HOME/.asdf/asdf.sh;
+  source ~/.bashrc
 
-  # install from .tools-versio
+  # install from .tools-version
   asdf install
 }
 
