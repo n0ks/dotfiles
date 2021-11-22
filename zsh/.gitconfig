@@ -9,7 +9,7 @@
     git stash drop stash@{1}
 
     # discard everything
-    fuck = reset --hard HEAD
+  fuck = reset --hard HEAD
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -69,8 +69,6 @@
 [sequence]
   editor = nvim
 
-; [includeIf "gitdir:"]
-
 [interactive]
   diffFilter = delta --color-only
 
@@ -96,12 +94,17 @@
 #                     │        └─ decorations (branch, heads or tags)
 #                     └─ hash (abbreviated)
 
-[include]
-  path = ~/.dotfiles/private/.gitconfig-private
-
 [credential]
-	; helper = cache --timeout=3600
+  ; helper = cache --timeout=3600
   helper = store
 
 [http]
-	postBuffer = 1048576000
+  postBuffer = 1048576000
+
+[user]
+  name = n0ks
+  email = rodrigocmp29@gmail.com
+
+[includeIf "gitdir:~/Documents/code/st/"]
+  path = ~/.gitconfig-santander
+

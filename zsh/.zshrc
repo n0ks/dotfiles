@@ -66,4 +66,9 @@ function runAll(){
   ls -d */ | xargs -I {} bash -c "cd '{}' && $1"
 }
 
+f() {
+    fff "$@"
+    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
+}
+
 eval "$(starship init zsh)"

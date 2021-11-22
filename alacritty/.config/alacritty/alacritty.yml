@@ -255,7 +255,7 @@ key_bindings:
 scrolling:
   history: 10000
 window:
-  opacity: 0.9
+  opacity: 0.85
   decorations: buttonless
   dimensions:
     columns: 100
@@ -264,42 +264,39 @@ window:
     x: 6
     y: 6
   startup_mode: Windowed
-
-  # Catpuccino
+# Catppuccin!
 colors:
-  # Default colors
-  primary:
-    background: '0x0e171c'
-    foreground: '0xabb2bf'
+    primary:
+        background: "0x1B1623"
+        foreground: "0xB9C4E3"
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x0e171c'
-    cursor: '0xabb2bf'
+    # Colors the cursor will use if `custom_cursor_colors` is true
+    cursor:
+        text: "0x221E2F"
+        cursor: "0xADD692"
 
-  # Normal colors
-  normal:
-    black:   '0x393b44'
-    red:     '0xc94f6d'
-    green:   '0x97c374'
-    yellow:  '0xdbc074'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x63cdcf'
-    white:   '0xdfdfe0'
+    # Normal colors
+    normal:
+        black: "0x0E0C13"
+        red: "0xE28D8D"
+        green: "0xADD692"
+        yellow: "0xF0DC89"
+        blue: "0x84A5CB"
+        magenta: "0xAE9AD6"
+        cyan: "0xF0A8E4"
+        white: "0xF0F0F5"
 
-  # Bright colors
-  bright:
-    black:   '0x7f8c98'
-    red:     '0xe06c75'
-    green:   '0x58cd8b'
-    yellow:  '0xffe37e'
-    blue:    '0x84cee4'
-    magenta: '0xb8a1e3'
-    cyan:    '0x59f0ff'
-    white:   '0xfdebc3'
+    # Bright colors
+    bright:
+        black: "0x3E4058"
+        red: "0xE28D8D"
+        green: "0xADD692"
+        yellow: "0xF0DC89"
+        blue: "0x84A5CB"
+        magenta: "0xAE9AD6"
+        cyan: "0xF0A8E4"
+        white: "0xF0F0F5"
 
-  indexed_colors:
-    - { index: 16, color: '0xffe37e' }
-    - { index: 17, color: '0xe06c75' }
-
+    indexed_colors:
+        - { index: 16, color: "0xF0DC89" }
+        - { index: 17, color: "0xE28D8D" }

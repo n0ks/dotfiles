@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 
 vim.g.rose_pine_variant = "moon"
