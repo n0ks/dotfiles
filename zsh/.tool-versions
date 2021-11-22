@@ -2,3 +2,4 @@ java adoptopenjdk-11.0.12+7
 ruby 2.7.4
 nodejs lts
 python 3.9.7
+golang 1.17.3
