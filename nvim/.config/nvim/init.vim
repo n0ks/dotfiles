@@ -15,7 +15,7 @@ Plug 'ckipp01/stylua-nvim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'kabouzeid/nvim-lspinstall'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'folke/tokyonight.nvim'
