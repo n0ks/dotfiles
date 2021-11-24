@@ -1,9 +1,9 @@
-require("lspinstall").setup() -- important
-local nvim_lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 local protocol = require("vim.lsp.protocol")
 local coq = require("coq")
 local lsp = vim.lsp
 local handlers = lsp.handlers
+local lsp_installer = require("nvim-lsp-installer")
 
 USER = vim.fn.expand("$USER")
 
@@ -14,39 +14,47 @@ if vim.fn.has("mac") == 1 then
 	sumneko_root_path = "/Users/" .. USER .. "/Documents/code/lua-language-server"
 	sumneko_binary = "/Users/" .. USER .. "/Documents/code/lua-language-server/bin/macOS/lua-language-server"
 elseif vim.fn.has("unix") == 1 then
-	sumneko_root_path = "/home/" .. USER .. "/Documents/code/lua-language-server"
-	sumneko_binary = "/home/" .. USER .. "/Documents/code/lua-language-server/bin/Linux/lua-language-server"
+	sumneko_root_path = "/home/" .. USER .. "/code/lua-language-server"
+	sumneko_binary = "/home/" .. USER .. "/code/lua-language-server/bin/Linux/lua-language-server"
 else
 	print("Unsupported system for sumneko")
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 local coq_capabilities = coq.lsp_ensure_capabilities(capabilities)
 local on_attach = function(_, bufnr)
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
-local servers = require("lspinstall").installed_servers()
-for _, server in pairs(servers) do
-	require("lspconfig")[server].setup({
+lsp_installer.on_server_ready(function(server)
+	local opts = {
 		capabilities = coq_capabilities,
 		on_attach = on_attach,
-	})
-end
-
-_G.lsp_organize_imports = function()
-	local params = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
 	}
-	vim.lsp.buf.execute_command(params)
-end
 
-nvim_lsp.tsserver.setup({
+	server:setup(opts)
+end)
+
+
+lspconfig.pyright.setup({
+	capabilities = coq_capabilities,
+	on_attach = on_attach,
+	settings = {
+		pyright = {
+			disableOrganizeImports = false,
+			analysis = {
+				useLibraryCodeForTypes = true,
+				autoSearchPaths = true,
+				diagnosticMode = "workspace",
+				autoImportCompletions = true,
+			},
+		},
+	},
+})
+
+lspconfig.tsserver.setup({
 	capabilities = coq_capabilities,
 	on_attach = function(client, bufnr)
 		-- disable tsserver formatting if you plan on formatting via null-ls
@@ -103,28 +111,17 @@ nvim_lsp.tsserver.setup({
 	end,
 })
 
---INSTALL: -- npm i -g typescript typescript-language-server
--- nvim_lsp.tsserver.setup({
--- 	on_attach = on_attach,
--- 	capabilities = coq_capabilities,
--- 	filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
--- 	settings = { documentFormatting = true },
--- })
-
--- nvim_lsp.angularls.setup({
--- 	capabilities = coq_capabilities,
--- })
-
-nvim_lsp.html.setup({
+lspconfig.html.setup({
 	capabilities = coq_capabilities,
+	on_attach = on_attach,
 })
 
-nvim_lsp.yamlls.setup({
+lspconfig.yamlls.setup({
 	on_attach = on_attach,
 	capabilities = coq_capabilities,
 })
 
-nvim_lsp.sumneko_lua.setup({
+lspconfig.sumneko_lua.setup({
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	on_attach = on_attach,
 	capabilities = coq_capabilities,

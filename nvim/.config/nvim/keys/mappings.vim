@@ -16,14 +16,14 @@ inoremap ! !<c-g>u
 inoremap ? ?<c-g>u
 " Visually select the text that was last edited/pasted (Vimcast#26).
 noremap gV `[v`]
-nmap gx :!open <c-r><c-a> 
+" nmap gx :!open <c-r><c-a> 
 nmap ,p "0p
 nmap ,P "0P
 nnoremap <silent><leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>cd :lcd %:p:h
 vnoremap < <gv
 vnoremap > >gv
-noremap q; :q
+noremap q; :q!
 " paste last thing yanked
 vnoremap <leader>p "_dP
 nnoremap <C-d> 6j
@@ -119,7 +119,7 @@ nnoremap <M-3> :lua require("harpoon.ui").nav_file(3)<CR>
 nnoremap <M-4> :lua require("harpoon.ui").nav_file(4)<CR>
 nnoremap <M-5> :lua require("harpoon.ui").nav_file(5)<CR>
 nnoremap <M-0> :lua require("harpoon.term").gotoTerminal(1)<CR>
-nnoremap <M-9> :lua require("harpoon.term").sendCommand(1, "ls -la")<CR> <bar> :lua require("harpoon.term").gotoTerminal(1)<CR>i<CR>
+nnoremap <M-9> :lua require("harpoon.term").sendCommand(1, 1)<CR> 
 
 
 " ----------------------------------------------------------------------------

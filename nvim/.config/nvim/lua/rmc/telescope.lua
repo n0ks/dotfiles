@@ -1,15 +1,16 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
+local previewers = require("telescope.previewers")
 
-require("telescope").setup({
+telescope.setup({
 	defaults = {
 		color_devicons = true,
-    prompt_prefix = " λ ",
+		prompt_prefix = " λ ",
 		selection_caret = " > ",
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+		file_previewer = previewers.vim_buffer_cat.new,
+		grep_previewer = previewers.vim_buffer_vimgrep.new,
+		qflist_previewer = previewers.vim_buffer_qflist.new,
 		layout_strategy = "flex",
 		winblend = 0,
 		mappings = {
@@ -17,7 +18,7 @@ require("telescope").setup({
 				["<C-x>"] = false,
 				["<C-s>"] = actions.toggle_selection,
 				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-        ["<esc>"] = actions.close
+				["<esc>"] = actions.close,
 			},
 			n = {
 				["<C-q>"] = actions.smart_send_to_qflist,
@@ -49,7 +50,6 @@ require("telescope").setup({
 		find_files = {
 			hidden = true,
 			file_ignore_patterns = { ".git/" },
-
 		},
 	},
 })
