@@ -13,15 +13,16 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey -v
 
-. $HOME/.asdf/asdf.sh
-. ~/.asdf/plugins/java/set-java-home.zsh
+#. $HOME/.asdf/asdf.sh
+. /opt/asdf-vm/asdf.sh
+#. ~/.asdf/plugins/java/set-java-home.zsh
 
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
 export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto'
-
+export BROWSER='/usr/bin/firefox'
 export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/.fvm:$HOME/chtsh/
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
@@ -52,7 +53,7 @@ export FASTLANE_SKIP_UPDATE_CHECK=1
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --multi --no-mouse'
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME/Documents/code"
-
+export GLFW_IM_MODULE=ibus
 # export PATH="$HOME/.rbenv/bin"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
@@ -66,9 +67,29 @@ function runAll(){
   ls -d */ | xargs -I {} bash -c "cd '{}' && $1"
 }
 
+<<<<<<< Updated upstream
 f() {
     fff "$@"
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
 }
 
 eval "$(starship init zsh)"
+
+function tmx(){
+ tmux new-session -d -c "~/code/python-book/"-s Python
+ tmux new-window -n code
+ tmux  new-window -d -n build
+ tmux attach-session -d -t Testing
+}
+
+#eval "$(starship init zsh)"
+fpath=($fpath "/home/noks/.zfunctions")
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
+
+export SPACESHIP_PROMPT_ADD_NEWLINE=false
+export SPACESHIP_PROMPT_SEPARATE_LINE=false
+
+alias luamake=/home/noks/code/lua-language-server/3rd/luamake/luamake

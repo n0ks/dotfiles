@@ -19,7 +19,7 @@ font:
   offset:
     x: 1 
     y: 2
-  size: 20
+  size: 13
 key_bindings:
   - chars: "\ea"
     key: A
@@ -256,7 +256,8 @@ scrolling:
   history: 10000
 window:
   opacity: 0.85
-  decorations: buttonless
+  decorations: None
+  # decorations: buttonless
   dimensions:
     columns: 100
     lines: 60

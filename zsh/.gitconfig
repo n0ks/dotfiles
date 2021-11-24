@@ -98,6 +98,10 @@
   ; helper = cache --timeout=3600
   helper = store
 
+[user]
+  name = n0ks
+  email = rodrigocmp29@gmail.com
+
 [http]
   postBuffer = 1048576000
 
