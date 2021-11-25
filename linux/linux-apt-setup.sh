@@ -17,7 +17,7 @@ installSoftware(){
 
   sudo apt install -y --ignore-missing ninja-build gettext libtool libtool-bin zsh curl wget python3-pip build-essential cmake g++ \
     autoconf unzip libssl-dev libncurses5-dev libreadline-dev zlib1g-dev automake doxygen exa xclip \
-    libsqlite3-dev inotify-tools pkg-config fd-find bat ripgrep tmux git stow screenkey fff
+    libsqlite3-dev inotify-tools pkg-config fd-find bat ripgrep tmux git stow screenkey
 
   if ! command -v gh &> /dev/null
   then
@@ -33,7 +33,7 @@ installSoftware(){
   ~/.fzf/install
 
   curl https://cht.sh/:cht.sh | sudo tee /usr/local/bin/cht.sh
-  chmod +x /usr/local/bin/cht.sh
+  #chmod +x /usr/local/bin/cht.sh
 
 }
 
@@ -58,7 +58,13 @@ asdfSetup() {
   echo "[INFO] Installing asdf plugins...";
   echo ". $HOME/.asdf/asdf.sh" >> ~/.bashrc
   source ~/.bashrc
-
+  
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  asdf plugin-add python
+  asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+  asdf plugin-add java https://github.com/halcyon/asdf-java.git
+  asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+  
   # install from .tools-version
   asdf install
 }
@@ -94,7 +100,7 @@ alacrittySetup(){
   echo "[INFO] setting up alacritty"
   # setup from repo
   sudo add-apt-repository ppa:mmstick76/alacritty
-  sudo apt install alacritty
+  sudo apt install alacritty -y
 }
 
 installNpmPackages(){
