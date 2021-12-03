@@ -15,6 +15,7 @@ Plug 'ckipp01/stylua-nvim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'dbeniamine/cheat.sh-vim'
 Plug 'embark-theme/vim', { 'as': 'embark' }
@@ -42,6 +43,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'ryanoasis/vim-devicons'
@@ -67,7 +69,6 @@ source $HOME/.config/nvim/general/terminal_toggle.vim
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/plugin/fern.vim
 source $HOME/.config/nvim/plugin/quickfix.vim
-" source $HOME/.config/nvim/plugin/fzf.vim
 source $HOME/.config/nvim/general/autocmd.vim 
 
 lua require('rmc.init')
