@@ -57,19 +57,12 @@ lspconfig.pyright.setup({
 lspconfig.tsserver.setup({
 	capabilities = coq_capabilities,
 	on_attach = function(client, bufnr)
-		-- disable tsserver formatting if you plan on formatting via null-ls
-		-- client.resolved_capabilities.document_formatting = false
-		-- client.resolved_capabilities.document_range_formatting = false
-
 		local ts_utils = require("nvim-lsp-ts-utils")
 
-		-- defaults
 		ts_utils.setup({
 			debug = true,
 			disable_commands = false,
 			enable_import_on_completion = true,
-
-			-- import all
 			import_all_timeout = 5000, -- ms
 			import_all_priorities = {
 				buffers = 4, -- loaded buffer names
