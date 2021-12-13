@@ -3,7 +3,8 @@ call plug#begin('~/.vim/plugged')
 " Plug 'kkoomen/vim-doge'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'NTBBloodbath/doombox.nvim'
-Plug 'Pocco81/Catppuccino.nvim'
+" Plug 'Pocco81/Catppuccino.nvim'
+Plug 'catppuccin/nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ahmedkhalf/project.nvim'
@@ -34,8 +35,6 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'lewis6991/impatient.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'mg979/vim-visual-multi'
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'natebosch/dartlang-snippets'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
