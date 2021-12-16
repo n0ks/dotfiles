@@ -4,6 +4,8 @@ local coq = require("coq")
 local lsp = vim.lsp
 local handlers = lsp.handlers
 local lsp_installer = require("nvim-lsp-installer")
+local utils = require("rmc.utils")
+local null_ls = require("null-ls")
 
 USER = vim.fn.expand("$USER")
 
@@ -34,25 +36,25 @@ lsp_installer.on_server_ready(function(server)
 		on_attach = on_attach,
 	}
 
+	if server.name == "pyright" then
+		local pyopts = {
+			settings = {
+				pyright = {
+					disableOrganizeImports = false,
+					analysis = {
+						useLibraryCodeForTypes = true,
+						autoSearchPaths = true,
+						diagnosticMode = "workspace",
+						autoImportCompletions = true,
+					},
+				},
+			},
+		}
+		utils.merge(opts, pyopts)
+	end
+
 	server:setup(opts)
 end)
-
-
-lspconfig.pyright.setup({
-	capabilities = coq_capabilities,
-	on_attach = on_attach,
-	settings = {
-		pyright = {
-			disableOrganizeImports = false,
-			analysis = {
-				useLibraryCodeForTypes = true,
-				autoSearchPaths = true,
-				diagnosticMode = "workspace",
-				autoImportCompletions = true,
-			},
-		},
-	},
-})
 
 lspconfig.tsserver.setup({
 	capabilities = coq_capabilities,
@@ -62,36 +64,32 @@ lspconfig.tsserver.setup({
 		ts_utils.setup({
 			debug = true,
 			disable_commands = false,
-			enable_import_on_completion = true,
+			enable_import_on_completion = false,
+
+			-- import all
 			import_all_timeout = 5000, -- ms
+			-- lower numbers = higher priority
 			import_all_priorities = {
-				buffers = 4, -- loaded buffer names
-				buffer_content = 3, -- loaded buffer content
-				local_files = 2, -- git files or files with relative path markers
 				same_file = 1, -- add to existing import statement
+				local_files = 2, -- git files or files with relative path markers
+				buffer_content = 3, -- loaded buffer content
+				buffers = 4, -- loaded buffer names
 			},
 			import_all_scan_buffers = 100,
 			import_all_select_source = false,
 
-			-- eslint
-			eslint_enable_code_actions = true,
-			eslint_enable_disable_comments = true,
-			eslint_bin = "eslint_d",
-			eslint_enable_diagnostics = true,
-			eslint_opts = {},
-			-- formatting
-			enable_formatting = false,
-			formatter = "eslint_d",
-			formatter_opts = {},
-
-			-- update imports on file move
-			update_imports_on_move = true,
-			require_confirmation_on_move = false,
-			watch_dir = nil,
-
 			-- filter diagnostics
 			filter_out_diagnostics_by_severity = {},
 			filter_out_diagnostics_by_code = {},
+
+			-- inlay hints
+			auto_inlay_hints = true,
+			inlay_hints_highlight = "Comment",
+
+			-- update imports on file move
+			update_imports_on_move = false,
+			require_confirmation_on_move = false,
+			watch_dir = nil,
 		})
 
 		-- required to fix code action ranges and filter diagnostics
@@ -166,6 +164,32 @@ require("flutter-tools").setup({
 			on_attach(_, bufnr)
 		end,
 		capabilities = coq_capabilities,
+	},
+})
+
+null_ls.setup({
+	sources = {
+		-- null_ls.builtins.diagnostics.eslint_d,
+		-- null_ls.builtins.code_actions.eslint_d,
+		null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
+		null_ls.builtins.formatting.prettier.with({
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"typescript",
+				"typescriptreact",
+				"vue",
+				"css",
+				"scss",
+				"less",
+				"html",
+				"json",
+				"yaml",
+				"markdown",
+				"graphql",
+			},
+			extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+		}),
 	},
 })
 

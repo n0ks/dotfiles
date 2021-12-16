@@ -26,6 +26,7 @@ Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'jiangmiao/auto-pairs'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'kwkarlwang/bufresize.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'

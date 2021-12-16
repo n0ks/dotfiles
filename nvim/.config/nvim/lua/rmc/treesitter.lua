@@ -1,5 +1,9 @@
 require("nvim-treesitter.configs").setup({
 	ensure_installed = "maintained",
+  sync_install = false,
+  playground = {
+    enable = true
+  },
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
 	textobjects = { enable = true },
