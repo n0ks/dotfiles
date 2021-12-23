@@ -90,6 +90,7 @@ nnoremap <leader>gb :lua require('rmc.telescope').git_branches()<CR>
 nnoremap <leader>gdi :Telescope git_bcommits<CR>
 nnoremap <leader>tr :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>tc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
+nnoremap <leader>mf :lua require('telescope').extensions.media_files.media_files()<CR>
 nnoremap <leader>gm :G mergetool<CR>
 nnoremap <leader>gqq :Gitsigns setqflist all<CR>
 nmap <leader>gl :diffget //3<CR>

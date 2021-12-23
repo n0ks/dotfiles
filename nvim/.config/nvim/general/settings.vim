@@ -92,7 +92,7 @@ let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
 
 let g:coq_settings = {
-      \ "auto_start": v:true,
+      \ "auto_start": 'shut-up',
       \ "keymap.eval_snips": "<leader>j",
       \ "keymap.jump_to_mark": "<C-j>",
       \ "clients.snippets.weight_adjust": 1.9,

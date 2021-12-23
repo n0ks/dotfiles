@@ -32,6 +32,11 @@ telescope.setup({
 			override_file_sorter = true,
 			case_mode = "smart_case",
 		},
+		media_files = {
+			-- filetypes whitelist
+			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+			filetypes = { "png", "webp", "jpg", "jpeg", "pdf" },
+		},
 	},
 	pickers = {
 		buffers = {
@@ -57,7 +62,7 @@ telescope.setup({
 telescope.load_extension("git_worktree")
 telescope.load_extension("projects")
 telescope.load_extension("fzf")
-telescope.load_extension('media_files')
+telescope.load_extension("media_files")
 
 local M = {}
 
