@@ -137,8 +137,8 @@ nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
  
 nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <leader>dll <cmd>lua vim.lsp.diagnostic.setloclist()<CR>
-nnoremap <leader>dqq <cmd>lua vim.lsp.diagnostic.setqflist()<CR>
+nnoremap <leader>dll <cmd>lua vim.diagnostic.setloclist()<CR>
+nnoremap <leader>dqq <cmd>lua vim.diagnostic.setqflist()<CR>
 nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>lf <cmd>lua require('stylua-nvim').format_file()<CR>
 nnoremap <leader>ss <cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
