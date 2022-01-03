@@ -91,17 +91,6 @@ let g:mkdp_auto_close = 0
 let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
 
-let g:coq_settings = {
-      \ "auto_start": 'shut-up',
-      \ "keymap.eval_snips": "<leader>j",
-      \ "keymap.jump_to_mark": "<C-j>",
-      \ "clients.snippets.weight_adjust": 1.9,
-      \ "clients.buffers.weight_adjust": -1.9,
-      \ "clients.tree_sitter.weight_adjust": -1.5,
-      \ "clients.tmux.weight_adjust": -1.5,
-      \ "clients.lsp.weight_adjust": 1.5
-      \ }
-
 let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']
 let g:vsnip_filetypes.typescriptreact = ['typescript', 'html']
