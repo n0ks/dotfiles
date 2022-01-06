@@ -11,7 +11,8 @@ Plug 'ahmedkhalf/project.nvim'
 Plug 'akinsho/flutter-tools.nvim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'bluz71/vim-nightfly-guicolors'
-Plug 'ckipp01/stylua-nvim'
+Plug 'kevinhwang91/nvim-bqf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}

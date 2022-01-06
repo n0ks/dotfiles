@@ -12,5 +12,6 @@ require('rmc.projects')
 require('rmc.projectionist')
 require('rmc.harpoon')
 require('rmc.utils')
+require('bqf').setup()
 require("bufresize").setup()
 

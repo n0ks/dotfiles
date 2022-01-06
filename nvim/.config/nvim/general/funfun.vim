@@ -31,3 +31,11 @@ function! MultipleEdit(p_list)
     endfor
   endfor
 endfunction
+
+function! TransparentBackground()
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight LineNr guibg=NONE ctermbg=NONE
+    set fillchars+=vert:\│
+    highlight VertSplit gui=NONE guibg=NONE guifg=#444444 cterm=NONE ctermbg=NONE ctermfg=gray
+endfunction
+
