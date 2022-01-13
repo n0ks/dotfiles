@@ -198,6 +198,7 @@ nnoremap <leader>pl <cmd>Telescope live_grep<cr>
 nnoremap <leader>ph <cmd>Telescope help_tags<cr>
 nnoremap <leader>pp <cmd>Telescope projects<cr>
 nnoremap <leader>sd :lua require('rmc.telescope').search_dotfiles()<CR>
+nnoremap <leader>sw :lua require('rmc.telescope').search_wallpapers()<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <C-b> <cmd>Telescope buffers<cr>
 nnoremap <Leader>fs :lua require'telescope.builtin'.file_browser{ cwd = vim.fn.expand('%:p:h') }<cr>

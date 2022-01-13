@@ -2,6 +2,7 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local previewers = require("telescope.previewers")
+local inspect = require("rmc.inspect")
 
 telescope.setup({
 	defaults = {
@@ -73,6 +74,30 @@ M.search_dotfiles = function()
 		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png}", "--hidden" },
 		previewer = false,
 		follow = false,
+	})
+end
+
+M.search_wallpapers = function()
+	builtin.find_files({
+		prompt_title = "< WALLPAPERS >",
+		cwd = "$HOME/wallpapers",
+		find_command = { "rg", "--files" },
+		previewer = false,
+		follow = false,
+		attach_mappings = function(bufnr, _)
+			actions.select_default:replace(function()
+				actions.close(bufnr)
+
+				local selection = require("telescope.actions.state").get_selected_entry(bufnr)
+
+				local cmd = "feh --bg-fill " .. selection.cwd .. "/" .. selection.value
+
+				if selection then
+					vim.fn.system(cmd)
+				end
+			end)
+			return true
+		end,
 	})
 end
 
