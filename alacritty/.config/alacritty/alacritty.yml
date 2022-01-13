@@ -19,7 +19,7 @@ font:
   offset:
     x: 1 
     y: 2
-  size: 13
+  size: 20
 key_bindings:
   - chars: "\ea"
     key: A
@@ -256,17 +256,16 @@ scrolling:
   history: 10000
 window:
   opacity: 0.85
-  decorations: None
+  decorations: buttonless
   # decorations: buttonless
   dimensions:
     columns: 100
-    lines: 60
+    lines: 45
   padding:
     x: 6
     y: 6
   startup_mode: Windowed
-
-# Catppuccin!
+## Catppuccin!
 colors:
   # Default colors
   primary:
@@ -301,5 +300,5 @@ colors:
     white: '0xD9E0EE'
 
   indexed_colors:
-    - { index: 16, color: '0xF8BD96' }
-    - { index: 17, color: '0xF5E0DC' }
+    - { index: 16, color: '0xECBFBD' }
+    - { index: 17, color: '0x3E4058' }

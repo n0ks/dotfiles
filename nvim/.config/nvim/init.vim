@@ -24,6 +24,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'jiangmiao/auto-pairs'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'b0o/schemastore.nvim'
+Plug 'jbyuki/venn.nvim'
 Plug 'kwkarlwang/bufresize.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
@@ -58,6 +60,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'jbyuki/venn.nvim'
 call plug#end()
 
 source $HOME/.config/nvim/general/settings.vim

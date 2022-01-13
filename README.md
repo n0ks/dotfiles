@@ -29,5 +29,3 @@ source macos-settings
  ./linux-deb-setup.sh
 
 ```
-  
-

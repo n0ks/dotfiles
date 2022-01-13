@@ -2,7 +2,7 @@
 
 set -o allexport; source .env; set +o allexport
 
-for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
+for folder in $STOW_FOLDERS
 do
     printf "Deleting $STOW_FOLDERS"
     stow -D $folder

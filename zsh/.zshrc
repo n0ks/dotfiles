@@ -13,8 +13,8 @@ zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey -v
 
-#. $HOME/.asdf/asdf.sh
-. /opt/asdf-vm/asdf.sh
+. $HOME/.asdf/asdf.sh
+# . /opt/asdf-vm/asdf.sh
 #. ~/.asdf/plugins/java/set-java-home.zsh
 
 export DOTFILES=$HOME/.dotfiles
@@ -35,6 +35,7 @@ export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/neovim/bin
 export FVM_HOME=$HOME/fvm
+. ~/.asdf/plugins/java/set-java-home.zsh
 # export JAVA_HOME=$(/usr/libexec/java_home -v11)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 
@@ -85,8 +86,8 @@ function tmx(){
 fpath=($fpath "/home/noks/.zfunctions")
 
 # Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+#autoload -U promptinit; promptinit
+#prompt spaceship
 
 export SPACESHIP_PROMPT_ADD_NEWLINE=false
 export SPACESHIP_PROMPT_SEPARATE_LINE=false

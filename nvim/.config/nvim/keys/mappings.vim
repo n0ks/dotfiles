@@ -134,7 +134,7 @@ nnoremap gdv <cmd>vs \| lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 " nnoremap <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
 " nnoremap <C-k> <CR><cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
+" nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
  
 nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <leader>dll <cmd>lua vim.diagnostic.setloclist()<CR>
@@ -143,9 +143,9 @@ nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>lf <cmd>lua require('stylua-nvim').format_file()<CR>
 nnoremap <leader>ss <cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
 
-nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap [i <cmd>lua vim.lsp.diagnostic.open_float()<CR>
+" nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+" nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+" nnoremap [i <cmd>lua vim.lsp.diagnostic.open_float()<CR>
 
 " ----------------------------------------------------------------------------
 " SAGA
@@ -153,13 +153,14 @@ nnoremap [i <cmd>lua vim.lsp.diagnostic.open_float()<CR>
 
 nnoremap <silent><M-CR> :Lspsaga code_action<CR>
 vnoremap <silent><M-CR> :<C-U>Lspsaga range_code_action<CR>
-" nnoremap <silent>K :Lspsaga hover_doc<CR>
+nnoremap <silent>K :Lspsaga hover_doc<CR>
 nnoremap <silent><C-k> :Lspsaga preview_definition<CR>
 " -- scroll down hover doc or scroll in definition preview
 nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
 nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
-" nnoremap [d :Lspsaga diagnostic_jump_prev<CR>
-" nnoremap ]d :Lspsaga diagnostic_jump_next<CR>
+nnoremap [d :Lspsaga diagnostic_jump_prev<CR>
+nnoremap ]d :Lspsaga diagnostic_jump_next<CR>
+nnoremap [i :Lspsaga show_line_diagnostics<CR>
 
 
 " ----------------------------------------------------------------------------
