@@ -1,7 +1,8 @@
 autocmd FileType netrw setl bufhidden=delete
 autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
-autocmd BufNewFile,BufRead Fastfile,Podfile,*.podspec set filetype=ruby
+autocmd BufRead,BufNewFile Fastfile set filetype=ruby
+autocmd BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
 
 augroup fixlist
     autocmd!

@@ -11,6 +11,8 @@ function _G.Toggle_venn()
         vim.api.nvim_buf_set_keymap(0, "n", "H", "<C-v>h:VBox<CR>", {noremap = true})
         -- draw a box by pressing "f" with visual selection
         vim.api.nvim_buf_set_keymap(0, "v", "f", ":VBox<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "v", "g", ":VBoxD<CR>", {noremap = true})
+        vim.api.nvim_buf_set_keymap(0, "v", "<leader>", ":VFill<CR>", {noremap = true})
     else
         vim.cmd[[setlocal ve=]]
         vim.cmd[[mapclear <buffer>]]

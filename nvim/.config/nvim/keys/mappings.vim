@@ -156,8 +156,8 @@ vnoremap <silent><M-CR> :<C-U>Lspsaga range_code_action<CR>
 nnoremap <silent>K :Lspsaga hover_doc<CR>
 nnoremap <silent><C-k> :Lspsaga preview_definition<CR>
 " -- scroll down hover doc or scroll in definition preview
-nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+" nnoremap <silent> <C-j> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+" nnoremap <silent> <C-k> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 nnoremap [d :Lspsaga diagnostic_jump_prev<CR>
 nnoremap ]d :Lspsaga diagnostic_jump_next<CR>
 nnoremap [i :Lspsaga show_line_diagnostics<CR>
@@ -202,6 +202,7 @@ nnoremap <leader>sd :lua require('rmc.telescope').search_dotfiles()<CR>
 nnoremap <leader>sw :lua require('rmc.telescope').search_wallpapers()<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <C-b> <cmd>Telescope buffers<cr>
+nnoremap ;t <cmd>Telescope <cr>
 nnoremap <Leader>fs :lua require'telescope.builtin'.file_browser{ cwd = vim.fn.expand('%:p:h') }<cr>
 command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})
 
