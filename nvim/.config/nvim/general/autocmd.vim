@@ -3,6 +3,9 @@ autocmd BufNewFile,BufRead *.ts setlocal filetype=typescript
 autocmd BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 autocmd BufRead,BufNewFile Fastfile set filetype=ruby
 autocmd BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
+autocmd BufRead *.yaml set sw=2 ts=2 sts=2 expandtab
+
+" autocmd! BufWritePost init.vim source % 
 
 augroup fixlist
     autocmd!

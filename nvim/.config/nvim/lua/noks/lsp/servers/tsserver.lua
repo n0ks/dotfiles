@@ -3,7 +3,7 @@ local lspconfig = require("lspconfig")
 
 M.setup = function()
 	lspconfig.tsserver.setup({
-		capabilities = require("rmc.lsp.handlers").capabilities,
+		capabilities = require("noks.lsp.handlers").capabilities,
 		on_attach = function(client, bufnr)
 			local ts_utils = require("nvim-lsp-ts-utils")
 
@@ -38,14 +38,14 @@ M.setup = function()
 				watch_dir = nil,
 			})
 
-			require("rmc.lsp.handlers").on_attach(client, bufnr)
+			require("noks.lsp.handlers").on_attach(client, bufnr)
 			-- required to fix code action ranges and filter diagnostics
 			ts_utils.setup_client(client)
 
 			-- no default maps, so you may want to define some here
 			local opts = { silent = true }
 			vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
+			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
 		end,
 	})
 end

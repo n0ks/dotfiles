@@ -17,9 +17,9 @@ M.setup = function()
 						underline = true,
 					}
 				)
-				require("rmc.lsp.handlers").on_attach(_, bufnr)
+				require("noks.lsp.handlers").on_attach(_, bufnr)
 			end,
-			capabilities = require("rmc.lsp.handlers").capabilities,
+			capabilities = require("noks.lsp.handlers").capabilities,
 		},
 	})
 end

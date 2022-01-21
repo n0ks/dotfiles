@@ -23,7 +23,7 @@ nnoremap <silent><leader>r :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>cd :lcd %:p:h
 vnoremap < <gv
 vnoremap > >gv
-noremap q; :q!
+noremap q; :q!<CR>
 " paste last thing yanked
 vnoremap <leader>p "_dP
 nnoremap <C-d> 6j
@@ -86,7 +86,7 @@ nnoremap <silent> <Right> :cnfile<CR>
 nnoremap <leader>gB :G blame<CR>
 nnoremap <leader>gs :G<CR>
 nnoremap <leader>ge :Ge:<CR>
-nnoremap <leader>gb :lua require('rmc.telescope').git_branches()<CR>
+nnoremap <leader>gb :lua require('noks.configs.telescope').git_branches()<CR>
 nnoremap <leader>gdi :Telescope git_bcommits<CR>
 nnoremap <leader>tr :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
 nnoremap <leader>tc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
@@ -154,7 +154,7 @@ nnoremap <leader>ss <cmd>lua require('telescope.builtin').lsp_document_symbols()
 nnoremap <silent><M-CR> :Lspsaga code_action<CR>
 vnoremap <silent><M-CR> :<C-U>Lspsaga range_code_action<CR>
 nnoremap <silent>K :Lspsaga hover_doc<CR>
-nnoremap <silent><C-k> :Lspsaga preview_definition<CR>
+" nnoremap <silent><C-k> :Lspsaga preview_definition<CR>
 " -- scroll down hover doc or scroll in definition preview
 " nnoremap <silent> <C-j> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
 " nnoremap <silent> <C-k> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
@@ -198,11 +198,9 @@ nnoremap <leader>ps <cmd>Telescope find_files<cr>
 nnoremap <leader>pl <cmd>Telescope live_grep<cr>
 nnoremap <leader>ph <cmd>Telescope help_tags<cr>
 nnoremap <leader>pp <cmd>Telescope projects<cr>
-nnoremap <leader>sd :lua require('rmc.telescope').search_dotfiles()<CR>
-nnoremap <leader>sw :lua require('rmc.telescope').search_wallpapers()<CR>
+nnoremap <leader>sd :lua require('noks.configs.telescope').search_dotfiles()<CR>
+nnoremap <leader>sw :lua require('noks.configs.telescope').search_wallpapers()<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
 nnoremap <C-b> <cmd>Telescope buffers<cr>
 nnoremap ;t <cmd>Telescope <cr>
-nnoremap <Leader>fs :lua require'telescope.builtin'.file_browser{ cwd = vim.fn.expand('%:p:h') }<cr>
 command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})
-

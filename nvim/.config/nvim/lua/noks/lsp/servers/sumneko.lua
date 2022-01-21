@@ -20,8 +20,8 @@ end
 M.setup = function()
 	lspconfig.sumneko_lua.setup({
 		cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-		on_attach = require("rmc.lsp.handlers").on_attach,
-		capabilities = require("rmc.lsp.handlers").capabilities,
+		on_attach = require("noks.lsp.handlers").on_attach,
+		capabilities = require("noks.lsp.handlers").capabilities,
 		settings = {
 			Lua = {
 				runtime = {

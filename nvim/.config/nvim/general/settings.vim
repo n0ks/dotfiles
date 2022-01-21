@@ -10,32 +10,32 @@ set wildignore+=*.swp,*~,._*
 set wildignore+=**/node_modules/**
 set completeopt=menuone,noselect
 set regexpengine=1
-set hidden                              " Required to keep multiple buffers open multiple buffers
+set hidden                               " Required to keep multiple buffers open multiple buffers
 set relativenumber
-set nowrap                              " Display long lines as just one line
-set encoding=utf-8                      " The encoding displayed
+set nowrap                               " Display long lines as just one line
+set encoding=utf-8                       " The encoding displayed
 set pumheight=10
-set ruler              			            " Show the cursor position all the time
-set iskeyword+=-                      	" treat dash separated words as a word text object"
-set mouse=a                            " Enable your mouse
-set splitbelow                          " Horizontal splits will automatically be below
-set t_Co=256                            " Support 256 colors
-set conceallevel=0                      " So that I can see `` in markdown files
-set tabstop=2                           " Insert 2 spaces for a tab set shiftwidth=2                        
+set ruler              			             " Show the cursor position all the time
+set iskeyword+=-                      	 " treat dash separated words as a word text object"
+set mouse=a                              " Enable your mouse
+set splitbelow                           " Horizontal splits will automatically be below
+set t_Co=256                             " Support 256 colors
+set conceallevel=0                       " So that I can see `` in markdown files
+set tabstop=2                            " Insert 2 spaces for a tab set shiftwidth=2                        
 set shiftwidth=2
-set smarttab                            " Makes tabbing smarter will realize you have 2 vs 4
-set expandtab                           " Converts tabs to spaces
-set smartindent                         " Makes indenting smart
-set autoindent                          " Good auto indent
-set laststatus=2                        " Always display the status line
-set number                              " Line numbers
-set background=dark                     " tell vim what the background color looks like
-set showtabline=2                       " Always show tabs
-set noshowmode                          " We don't need to see things like -- INSERT -- anymore
-set nobackup                            " This is recommended by coc
-set nowritebackup                       " This is recommended by coc
-set updatetime=50                      " Faster completion
-set timeoutlen=500                      " By default timeoutlen is 1000 ms
+set smarttab                             " Makes tabbing smarter will realize you have 2 vs 4
+set expandtab                            " Converts tabs to spaces
+set smartindent                          " Makes indenting smart
+set autoindent                           " Good auto indent
+set laststatus=2                         " Always display the status line
+set number                               " Line numbers
+set background=dark                      " tell vim what the background color looks like
+set showtabline=2                        " Always show tabs
+set noshowmode                           " We don't need to see things like -- INSERT -- anymore
+set nobackup                             " This is recommended by coc
+set nowritebackup                        " This is recommended by coc
+set updatetime=50                        " Faster completion
+set timeoutlen=500                       " By default timeoutlen is 1000 ms
 set clipboard+=unnamedplus               " Copy paste between vim and everything else
 set noswapfile
 set undodir=~/.vim/undodir
@@ -50,8 +50,8 @@ set shortmess+=c
 set shortmess-=F
 set ignorecase                          " Ignore case when searching.
 set smartcase
-set nocursorline        " Don't paint cursor line
-set nocursorcolumn      " Don't paint cursor column
+set nocursorline                        " Don't paint cursor line
+set nocursorcolumn                      " Don't paint cursor column
 " Live update substitution
 set inccommand=nosplit
 " Decimal inc/dec on c-a and c-x
