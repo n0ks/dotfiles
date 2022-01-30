@@ -86,8 +86,8 @@ function tmx(){
 fpath=($fpath "/home/noks/.zfunctions")
 
 # Set Spaceship ZSH as a prompt
-#autoload -U promptinit; promptinit
-#prompt spaceship
+# autoload -U promptinit; promptinit
+# prompt spaceship
 
 export SPACESHIP_PROMPT_ADD_NEWLINE=false
 export SPACESHIP_PROMPT_SEPARATE_LINE=false

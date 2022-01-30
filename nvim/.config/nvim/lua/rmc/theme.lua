@@ -3,6 +3,7 @@ vim.g.rose_pine_bold_vertical_split_line = true
 vim.g.rose_pine_disable_background = true
 -- vim.cmd("colorscheme rose-pine")
 require("catppuccin").setup({
+  transparent_background = true,
 	term_colors = true,
 	integrations = {
 		gitsigns = true,
@@ -13,9 +14,9 @@ require("catppuccin").setup({
 
 vim.cmd("colorscheme catppuccin")
 
--- vim.cmd([[
---   highlight Normal guibg=none
---   highlight NonText guibg=none
--- ]])
+vim.cmd([[
+  highlight Normal guibg=none
+  highlight NonText guibg=none
+]])
 
 -- vim.g.rose_pine_disable_background = true
