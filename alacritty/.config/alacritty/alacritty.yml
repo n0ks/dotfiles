@@ -255,8 +255,8 @@ key_bindings:
 scrolling:
   history: 10000
 window:
-  opacity: 0.85
-  decorations: buttonless
+  opacity: 0.95
+  decorations: Full
   # decorations: buttonless
   dimensions:
     columns: 100

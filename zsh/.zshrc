@@ -8,6 +8,8 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 setopt auto_cd
 unsetopt MULTIOS
+
+# autoload -Uz compinit && compinit -u
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
@@ -15,7 +17,7 @@ bindkey -v
 
 . $HOME/.asdf/asdf.sh
 # . /opt/asdf-vm/asdf.sh
-#. ~/.asdf/plugins/java/set-java-home.zsh
+# . ~/.asdf/plugins/java/set-java-home.zsh
 
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -35,9 +37,9 @@ export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/neovim/bin
 export FVM_HOME=$HOME/fvm
-. ~/.asdf/plugins/java/set-java-home.zsh
 # export JAVA_HOME=$(/usr/libexec/java_home -v11)
-# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
+# export JAVA_HOME=/usr/lib/java
 
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
 export PATH="$MAGICK_HOME/bin:$PATH"
@@ -51,18 +53,18 @@ export FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FASTLANE_HIDE_CHANGELOG=1
 export FASTLANE_SKIP_UPDATE_CHECK=1 
 
-export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border --multi --no-mouse'
+export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --multi --no-mouse 
+--bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
+
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 export FZF_ALT_C_COMMAND="fd -t d . $HOME/Documents/code"
 export GLFW_IM_MODULE=ibus
-# export PATH="$HOME/.rbenv/bin"
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 source ~/.aliases
 
-#eval "$(rbenv init -)"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(starship init zsh)"
 
 function runAll(){
   ls -d */ | xargs -I {} bash -c "cd '{}' && $1"
@@ -73,23 +75,48 @@ f() {
     cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
 }
 
-eval "$(starship init zsh)"
 
-function tmx(){
- tmux new-session -d -c "~/code/python-book/"-s Python
- tmux new-window -n code
- tmux  new-window -d -n build
- tmux attach-session -d -t Testing
+# fkill - kill process
+fkill() {
+  local pid
+  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    echo $pid | xargs kill -${1:-9}
+  fi
 }
 
-#eval "$(starship init zsh)"
-fpath=($fpath "/home/noks/.zfunctions")
+vmi() {
+  local lang=${1}
 
-# Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
+  if [[ ! $lang ]]; then
+    lang=$(asdf plugin-list | fzf)
+  fi
 
-export SPACESHIP_PROMPT_ADD_NEWLINE=false
-export SPACESHIP_PROMPT_SEPARATE_LINE=false
+  if [[ $lang ]]; then
+    local versions=$(asdf list-all $lang | fzf --tac --no-sort --multi)
+    if [[ $versions ]]; then
+      for version in $(echo $versions);
+      do; asdf install $lang $version; done;
+    fi
+  fi
+}
+
+fbra() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+fbr() {
+  local branches branch
+  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
 
 alias luamake=/home/noks/code/lua-language-server/3rd/luamake/luamake

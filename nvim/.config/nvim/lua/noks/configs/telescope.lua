@@ -2,7 +2,7 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local previewers = require("telescope.previewers")
-local inspect = require("rmc.inspect")
+local inspect = require("noks.configs.inspect")
 
 telescope.setup({
 	defaults = {
@@ -22,7 +22,7 @@ telescope.setup({
 				["<esc>"] = actions.close,
 			},
 			n = {
-				["<C-q>"] = actions.smart_send_to_qflist,
+				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
 			},
 		},
 	},
@@ -41,8 +41,8 @@ telescope.setup({
 	},
 	pickers = {
 		buffers = {
-			sort_lastused = true,
-			show_all_buffers = true,
+			show_all_buffers = false,
+      ignore_current_buffer = true,
 			previewer = false,
 			theme = "dropdown",
 			mappings = {
@@ -71,8 +71,9 @@ local M = {}
 M.search_dotfiles = function()
 	builtin.find_files({
 		prompt_title = "< DOTFILES >",
+    path_display = { "smart" },
 		cwd = "$HOME/.dotfiles",
-		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png}", "--hidden" },
+		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--hidden" },
 		previewer = false,
 		follow = false,
 	})
