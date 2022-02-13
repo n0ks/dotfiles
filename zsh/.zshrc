@@ -6,18 +6,19 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
+setopt appendhistory
 setopt auto_cd
 unsetopt MULTIOS
-
-# autoload -Uz compinit && compinit -u
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd v edit-command-line
 bindkey -v
 
 . $HOME/.asdf/asdf.sh
-# . /opt/asdf-vm/asdf.sh
-# . ~/.asdf/plugins/java/set-java-home.zsh
+#. ~/.asdf/plugins/java/set-java-home.zsh
 
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -38,7 +39,7 @@ export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/neovim/bin
 export FVM_HOME=$HOME/fvm
 # export JAVA_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
+# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 # export JAVA_HOME=/usr/lib/java
 
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
@@ -118,5 +119,3 @@ fbr() {
            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
-
-alias luamake=/home/noks/code/lua-language-server/3rd/luamake/luamake

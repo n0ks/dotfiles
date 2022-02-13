@@ -45,6 +45,7 @@ neovimSetup() {
     pip3 install neovim python-language-server pylint pynvim
   fi
 
+  nvim --headless +PlugInstall +qall >/dev/null
 }
 
 chtshSetup(){
@@ -74,10 +75,9 @@ asdfSetup() {
 
 postInstall(){
   ~/.fzf/install --all
-  curl --proto '=https' --tlsv-11.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
   go install mvdan.cc/sh/v3/cmd/shfmt@latest
   cargo install stylua
-  nvim --headless +PlugInstall +qall >/dev/null
 }
 
 

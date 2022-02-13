@@ -8,9 +8,8 @@ declare -a arch_packages=(
 	"base-devel"
 	"bat"
 	"cht.sh-git"
-	"curl"
 	"cmake"
-	"ninja"
+	"curl"
 	"doxygen"
 	"exa"
 	"fd"
@@ -23,6 +22,7 @@ declare -a arch_packages=(
 	"inotify-tools"
 	"jq"
 	"lsof"
+	"ninja"
 	"ripgrep"
 	"rlwrap"
 	"screenkey"
@@ -35,17 +35,23 @@ declare -a arch_packages=(
 	"wget"
 	"xclip"
 	"zsh"
+  "feh"
+  "trash-cli"
+  "zathura"
+  "zathura-pdf-poppler"
 )
 
 main() {
 
 	cat <<EOF
+
        ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 
                  Hello $(whoami)! Let's get you set up.          
                Shell installation script for n0ks dotfiles       
 
        ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+
 EOF
 
 	read -p "Setup is about to start. Do you want to continue? (y/n) " -n 1
