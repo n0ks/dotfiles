@@ -28,6 +28,7 @@ declare -a arch_packages=(
 	"screenkey"
 	"shellcheck"
 	"stow"
+  "shfmt"
 	"tmux"
 	"ttf-twemoji"
 	"ueberzug"
