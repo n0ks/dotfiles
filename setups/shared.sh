@@ -14,6 +14,7 @@ declare -a npm_packages=(
   "eslint_d"
   "prettier"
   "yarn"
+  "neovim"
 )
 
 installNpmPackages() {
@@ -58,10 +59,13 @@ chtshSetup(){
 asdfSetup() {
   # Install useful plugins
   echo "[INFO] Installing asdf plugins..."
+
   echo ". $HOME/.asdf/asdf.sh" >>~/.bashrc
   source ~/.bashrc
 
- if command -v asdf &>/dev/null; then
+  # hackerman workaround
+  eval "$(cat ~/.bashrc | tail -n +10)"
+
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf plugin-add python
   asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
@@ -70,7 +74,6 @@ asdfSetup() {
 
   # install from .tools-version
   asdf install
-  fi
 }
 
 postInstall(){

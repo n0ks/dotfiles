@@ -19,7 +19,7 @@ font:
   offset:
     x: 1 
     y: 2
-  size: 20
+  size: 18
 key_bindings:
   - chars: "\ea"
     key: A
@@ -255,7 +255,7 @@ key_bindings:
 scrolling:
   history: 10000
 window:
-  opacity: 0.95
+  opacity: 0.9
   decorations: Full
   # decorations: buttonless
   dimensions:
@@ -265,7 +265,7 @@ window:
     x: 6
     y: 6
   startup_mode: Windowed
-## Catppuccin!
+# Catppuccin!
 colors:
   # Default colors
   primary:
@@ -279,26 +279,26 @@ colors:
 
   # Normal colors
   normal:
-    black: '0x6E6C7E'
-    red: '0xF28FAD'
-    green: '0xABE9B3'
-    yellow: '0xFAE3B0'
-    blue: '0x96CDFB'
+    black:   '0x6E6C7E'
+    red:     '0xF28FAD'
+    green:   '0xABE9B3'
+    yellow:  '0xFAE3B0'
+    blue:    '0x96CDFB'
     magenta: '0xF5C2E7'
-    cyan: '0x89DCEB'
-    white: '0xD9E0EE'
+    cyan:    '0x89DCEB'
+    white:   '0xD9E0EE'
 
   # Bright colors
   bright:
-    black: '0x988BA2'
-    red: '0xF28FAD'
-    green: '0xABE9B3'
-    yellow: '0xFAE3B0'
-    blue: '0x96CDFB'
+    black:   '0x988BA2'
+    red:     '0xF28FAD'
+    green:   '0xABE9B3'
+    yellow:  '0xFAE3B0'
+    blue:    '0x96CDFB'
     magenta: '0xF5C2E7'
-    cyan: '0x89DCEB'
-    white: '0xD9E0EE'
+    cyan:    '0x89DCEB'
+    white:   '0xD9E0EE'
 
   indexed_colors:
-    - { index: 16, color: '0xECBFBD' }
-    - { index: 17, color: '0x3E4058' }
+    - { index: 16, color: '0xF8BD96' }
+    - { index: 17, color: '0xF5E0DC' }
