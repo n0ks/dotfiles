@@ -3,3 +3,4 @@ setxkbmap -layout us,br
 setxkbmap -option 'grp:ctrl_alt_toggle'
 
 xset r rate 200 25
+set bell-style none

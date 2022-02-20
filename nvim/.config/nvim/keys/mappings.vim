@@ -46,8 +46,6 @@ xnoremap <leader>bs :!boxes -d stone
 " ----------------------------------------------------------------------------
 " WINDOWS & BUFFERS
 " ----------------------------------------------------------------------------
-" nnoremap <silent><TAB> :bnext<CR>
-" nnoremap <silent><S-TAB> :bprevious<CR>
 nnoremap <M-h> <C-w>h
 nnoremap <M-k> <C-w>k
 nnoremap <M-j> <C-w>j
@@ -130,9 +128,8 @@ nnoremap <M-9> :lua require("harpoon.term").sendCommand(1, 1)<CR>
 nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap gdv <cmd>vs \| lua vim.lsp.buf.definition()<CR>
-" nnoremap gi <CR><cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-" nnoremap <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
+" nnoremap gi <CR><cmd>lua vim.lsp.buf.implementation()<CR>
 " nnoremap <C-k> <CR><cmd>lua vim.lsp.buf.signature_help()<CR>
 " nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
  
@@ -154,10 +151,6 @@ nnoremap <leader>ss <cmd>lua require('telescope.builtin').lsp_document_symbols()
 nnoremap <silent><M-CR> :Lspsaga code_action<CR>
 vnoremap <silent><M-CR> :<C-U>Lspsaga range_code_action<CR>
 nnoremap <silent>K :Lspsaga hover_doc<CR>
-" nnoremap <silent><C-k> :Lspsaga preview_definition<CR>
-" -- scroll down hover doc or scroll in definition preview
-" nnoremap <silent> <C-j> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
-" nnoremap <silent> <C-k> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
 nnoremap [d :Lspsaga diagnostic_jump_prev<CR>
 nnoremap ]d :Lspsaga diagnostic_jump_next<CR>
 nnoremap [i :Lspsaga show_line_diagnostics<CR>
