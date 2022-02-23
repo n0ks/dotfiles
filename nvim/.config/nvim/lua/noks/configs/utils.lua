@@ -24,27 +24,12 @@ M._if = function(bool, a, b)
 	end
 end
 
-M.map = function(modes, key, result, options)
-	options = M.merge({
-		noremap = true,
-		silent = false,
-		expr = false,
-		nowait = false,
-	}, options or {})
-	local buffer = options.buffer
-	options.buffer = nil
-
-	if type(modes) ~= "table" then
-		modes = { modes }
+M.map = function(mode, lhs, rhs, opts)
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
 	end
-
-	for i = 1, #modes do
-		if buffer then
-			vim.api.nvim_buf_set_keymap(0, modes[i], key, result, options)
-		else
-			vim.api.nvim_set_keymap(modes[i], key, result, options)
-		end
-	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 return M

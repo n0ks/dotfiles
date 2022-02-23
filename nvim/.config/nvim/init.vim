@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+" treesitter is just fucking me up / commit workaround
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'LudoPinelli/comment-box.nvim'
 Plug 'NTBBloodbath/doombox.nvim'
@@ -10,7 +11,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'b0o/schemastore.nvim'
 Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'catppuccin/nvim'
-Plug 'dart-lang/dart-vim-plugin'
+Plug 'danymat/neogen'
 Plug 'dstein64/vim-startuptime'
 Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'github/copilot.vim'
@@ -33,7 +34,7 @@ Plug 'mg979/vim-visual-multi'
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'natebosch/dartlang-snippets'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
@@ -41,13 +42,11 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-media-files.nvim'
-" treesitter is just fucking me up / commit workaround
-Plug 'nvim-treesitter/nvim-treesitter', {'commit':'b5cdb868c7a20640c9b60aa82afe82ed63f4ebd3', 'do': ':TSUpdate'}  
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'commit':'b5cdb868c7a20640c9b60aa82afe82ed63f4ebd3', 'do': ':TSUpdate'}  
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'rose-pine/neovim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'sainnhe/gruvbox-material'
 Plug 'sindrets/diffview.nvim'
 Plug 'tami5/lspsaga.nvim'
 Plug 'tpope/vim-commentary'
@@ -59,10 +58,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 Plug 'williamboman/nvim-lsp-installer'
-Plug 'jbyuki/venn.nvim'
-Plug 'LudoPinelli/comment-box.nvim'
-Plug 'danymat/neogen'
-Plug 'mzlogin/vim-markdown-toc'
 call plug#end()
 
 

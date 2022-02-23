@@ -22,7 +22,7 @@ telescope.setup({
 				["<esc>"] = actions.close,
 			},
 			n = {
-				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist
+				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 			},
 		},
 	},
@@ -42,7 +42,7 @@ telescope.setup({
 	pickers = {
 		buffers = {
 			show_all_buffers = false,
-      ignore_current_buffer = true,
+			ignore_current_buffer = true,
 			previewer = false,
 			theme = "dropdown",
 			mappings = {
@@ -64,14 +64,13 @@ telescope.load_extension("git_worktree")
 telescope.load_extension("projects")
 telescope.load_extension("fzf")
 telescope.load_extension("media_files")
--- telescope.load_extension('media_files')
 
 local M = {}
 
 M.search_dotfiles = function()
 	builtin.find_files({
 		prompt_title = "< DOTFILES >",
-    path_display = { "smart" },
+		path_display = { "smart" },
 		cwd = "$HOME/.dotfiles",
 		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--hidden" },
 		previewer = false,
@@ -114,5 +113,18 @@ M.git_branches = function()
 		end,
 	})
 end
+
+M.document_symbols = function()
+	require("telescope.builtin").lsp_document_symbols(require("telescope.themes").get_dropdown({
+		hidden = true,
+		depth = 1,
+		previewer = false,
+		layout_config = {
+			width = 0.5,
+			height = 0.35,
+		},
+	}))
+end
+
 
 return M

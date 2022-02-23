@@ -107,21 +107,6 @@ nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>ts :TestSuite<CR>
 
 " ----------------------------------------------------------------------------
-" Harpoon
-" ----------------------------------------------------------------------------
-
-nnoremap <M-a> :lua require("harpoon.mark").add_file()<CR>
-nnoremap <M-m> :lua require("harpoon.ui").toggle_quick_menu()<CR>
-nnoremap <M-1> :lua require("harpoon.ui").nav_file(1)<CR>
-nnoremap <M-2> :lua require("harpoon.ui").nav_file(2)<CR>
-nnoremap <M-3> :lua require("harpoon.ui").nav_file(3)<CR>
-nnoremap <M-4> :lua require("harpoon.ui").nav_file(4)<CR>
-nnoremap <M-5> :lua require("harpoon.ui").nav_file(5)<CR>
-nnoremap <M-0> :lua require("harpoon.term").gotoTerminal(1)<CR>
-nnoremap <M-9> :lua require("harpoon.term").sendCommand(1, 1)<CR> 
-
-
-" ----------------------------------------------------------------------------
 " LSP
 " ----------------------------------------------------------------------------
 
@@ -139,22 +124,6 @@ nnoremap <leader>dqq <cmd>lua vim.diagnostic.setqflist()<CR>
 nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 nnoremap <leader>lf <cmd>lua require('stylua-nvim').format_file()<CR>
 nnoremap <leader>ss <cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
-
-" nnoremap [d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-" nnoremap ]d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-" nnoremap [i <cmd>lua vim.lsp.diagnostic.open_float()<CR>
-
-" ----------------------------------------------------------------------------
-" SAGA
-" ----------------------------------------------------------------------------
-
-nnoremap <silent><M-CR> :Lspsaga code_action<CR>
-vnoremap <silent><M-CR> :<C-U>Lspsaga range_code_action<CR>
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-nnoremap [d :Lspsaga diagnostic_jump_prev<CR>
-nnoremap ]d :Lspsaga diagnostic_jump_next<CR>
-nnoremap [i :Lspsaga show_line_diagnostics<CR>
-
 
 " ----------------------------------------------------------------------------
 " DAP
@@ -187,13 +156,4 @@ nnoremap <silent><M-o> :lua require("dapui").float_element()<CR>
 " TELESCOPE
 " ----------------------------------------------------------------------------
 
-nnoremap <leader>ps <cmd>Telescope find_files<cr>
-nnoremap <leader>pl <cmd>Telescope live_grep<cr>
-nnoremap <leader>ph <cmd>Telescope help_tags<cr>
-nnoremap <leader>pp <cmd>Telescope projects<cr>
-nnoremap <leader>sd :lua require('noks.configs.telescope').search_dotfiles()<CR>
-nnoremap <leader>sw :lua require('noks.configs.telescope').search_wallpapers()<CR>
-nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
-nnoremap <C-b> <cmd>Telescope buffers<cr>
-nnoremap ;t <cmd>Telescope <cr>
 command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})
