@@ -58,6 +58,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'nvim-telescope/telescope-symbols.nvim'
 call plug#end()
 
 
