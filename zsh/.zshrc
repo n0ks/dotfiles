@@ -6,16 +6,19 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
+setopt AUTO_PUSHD # cd -1,-2 etc..
 setopt appendhistory
 setopt auto_cd
 unsetopt MULTIOS
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+
 autoload -U edit-command-line
 zle -N edit-command-line
+
 bindkey -M vicmd v edit-command-line
 bindkey -v
+
+HISTSIZE=10000
+SAVEHIST=10000
 
 . $HOME/.asdf/asdf.sh
 #. ~/.asdf/plugins/java/set-java-home.zsh
@@ -58,64 +61,13 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --multi --no-mou
 --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME/Documents/code"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME/code"
 export GLFW_IM_MODULE=ibus
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 source ~/.aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f ~/functions.sh ]] && source ~/functions.sh
+
 eval "$(starship init zsh)"
-
-function runAll(){
-  ls -d */ | xargs -I {} bash -c "cd '{}' && $1"
-}
-
-f() {
-    fff "$@"
-    cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")"
-}
-
-
-# fkill - kill process
-fkill() {
-  local pid
-  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
-
-  if [ "x$pid" != "x" ]
-  then
-    echo $pid | xargs kill -${1:-9}
-  fi
-}
-
-vmi() {
-  local lang=${1}
-
-  if [[ ! $lang ]]; then
-    lang=$(asdf plugin-list | fzf)
-  fi
-
-  if [[ $lang ]]; then
-    local versions=$(asdf list-all $lang | fzf --tac --no-sort --multi)
-    if [[ $versions ]]; then
-      for version in $(echo $versions);
-      do; asdf install $lang $version; done;
-    fi
-  fi
-}
-
-fbra() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
-fbr() {
-  local branches branch
-  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}

@@ -32,6 +32,7 @@ alias code="cd ~/Documents/code"
 alias gatekeeperOff="sudo spctl --master-disable"
 alias gatekeeperOn="sudo spctl --master-enable"
 
+alias ch="cht.sh"
 #Pacman Shortcuts
 alias sync="sudo pacman -Syyy"
 alias install="sudo pacman -S"

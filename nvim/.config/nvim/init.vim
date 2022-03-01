@@ -1,8 +1,5 @@
 call plug#begin('~/.vim/plugged')
-" treesitter is just fucking me up / commit workaround
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'LudoPinelli/comment-box.nvim'
-Plug 'NTBBloodbath/doombox.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
 Plug 'ahmedkhalf/project.nvim'
@@ -13,7 +10,6 @@ Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'catppuccin/nvim'
 Plug 'danymat/neogen'
 Plug 'dstein64/vim-startuptime'
-Plug 'embark-theme/vim', { 'as': 'embark' }
 Plug 'github/copilot.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'jbyuki/venn.nvim'
@@ -43,6 +39,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+" treesitter is just fucking me up / commit workaround
 Plug 'nvim-treesitter/nvim-treesitter', {'commit':'b5cdb868c7a20640c9b60aa82afe82ed63f4ebd3', 'do': ':TSUpdate'}  
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'rose-pine/neovim'
