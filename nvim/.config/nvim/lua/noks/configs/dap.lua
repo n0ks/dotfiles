@@ -1,9 +1,48 @@
 local dap = require("dap")
+local dap_install = require("dap-install")
+local inspect = require("noks.configs.inspect")
+require("nvim-dap-virtual-text").setup()
 
-vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapStopped", { text = '🟢', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpoint', {text='🟥', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
 
 dap.defaults.fallback.exception_breakpoints = { "raised" }
+
+dap_install.config("chrome", {})
+
+dap.adapters.node2 = {
+	type = "executable",
+	command = "node",
+	args = {
+		vim.fn.stdpath("data") .. "/dapinstall/jsnode/" .. "/vscode-node-debug2/out/src/nodeDebug.js",
+	},
+}
+
+dap.configurations.javascript = {
+	{
+		type = "node2",
+		request = "launch",
+		program = "${file}",
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = "inspector",
+		console = "integratedTerminal",
+	},
+}
+
+dap.configurations.typescriptreact = {
+	{
+		type = "chrome",
+		request = "attach",
+		program = "${file}",
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = "inspector",
+		port = 9222,
+		webRoot = "${workspaceFolder}",
+	},
+}
 
 require("dapui").setup({
 	sidebar = {
@@ -20,22 +59,6 @@ require("dapui").setup({
 		},
 		position = "left", -- Can be "left" or "right"
 	},
-  icons = { expanded = "▾", collapsed = "▸" },
+	icons = { expanded = "▾", collapsed = "▸" },
 })
 
--- .exit               Closes the REPL
--- .c or .continue     Same as |dap.continue|
--- .n or .next         Same as |dap.step_over|
--- .into               Same as |dap.step_into|
--- .into_target        Same as |dap.step_into{askForTargets=true}|
--- .out                Same as |dap.step_out|
--- .up                 Same as |dap.up|
--- .down               Same as |dap.down|
--- .goto               Same as |dap.goto_|
--- .scopes             Prints the variables in the current scopes
--- .threads            Prints all threads
--- .frames             Print the stack frames
--- .capabilities       Print the capabilities of the debug adapter
--- .b or .back         Same as |dap.step_back|
--- .rc or
--- .reverse-continue   Same as |dap.reverse_continue|

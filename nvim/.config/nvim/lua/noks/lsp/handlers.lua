@@ -43,7 +43,7 @@ vim.diagnostic.config(config)
 M.capabilities = coq_capabilities
 
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" then
+	if client.name == "tsserver" or client.name == "sumneko_lua" then
 		client.resolved_capabilities.document_formatting = false
 	end
 end
