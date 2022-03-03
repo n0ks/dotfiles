@@ -43,5 +43,5 @@ map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")
 map("n", ";t", ":Telescope<cr>")
 
-map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emoji'} }")
-map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }")
+map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emoji'} }<CR>")
+map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")

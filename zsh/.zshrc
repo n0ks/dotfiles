@@ -23,6 +23,7 @@ SAVEHIST=10000
 . $HOME/.asdf/asdf.sh
 #. ~/.asdf/plugins/java/set-java-home.zsh
 
+export HISTFILE=$HOME/.zsh_history
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export EDITOR="nvim"
