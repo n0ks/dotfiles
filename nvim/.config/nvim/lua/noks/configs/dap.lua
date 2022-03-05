@@ -3,13 +3,13 @@ local dap_install = require("dap-install")
 local inspect = require("noks.configs.inspect")
 require("nvim-dap-virtual-text").setup()
 
-vim.fn.sign_define('DapBreakpoint', {text='🟥', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text='⭐️', texthl='', linehl='', numhl=''})
+vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapBreakpointRejected", { text = "🟦", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", numhl = "" })
 
 dap.defaults.fallback.exception_breakpoints = { "raised" }
 
-dap_install.config("chrome", {})
+-- dap_install.config("chrome", {})
 
 dap.adapters.node2 = {
 	type = "executable",
@@ -44,6 +44,37 @@ dap.configurations.typescriptreact = {
 	},
 }
 
+-- test latter
+
+-- dap.adapters.go = {
+-- 	type = "executable",
+-- 	command = "node",
+-- 	args = {
+-- 		vim.fn.stdpath("data") .. "/dapinstall/go/" .. "/vscode-go/out/src/debugAdapter/goDebug.ts",
+-- 	},
+-- }
+
+-- dap.configurations.go = {
+-- 	{
+-- 		type = "go",
+-- 		name = "Debug",
+-- 		request = "launch",
+-- 		showLog = true,
+-- 		program = "${file}",
+-- 		console = "externalTerminal",
+-- 		dlvToolPath = vim.fn.exepath("dlv"),
+-- 	},
+-- 	{
+-- 		name = "Test Current File",
+-- 		type = "go",
+-- 		request = "launch",
+-- 		showLog = true,
+-- 		mode = "test",
+-- 		program = ".",
+-- 		dlvToolPath = vim.fn.exepath("dlv"),
+-- 	},
+-- }
+
 require("dapui").setup({
 	sidebar = {
 		-- open_on_start = true,
@@ -61,4 +92,3 @@ require("dapui").setup({
 	},
 	icons = { expanded = "▾", collapsed = "▸" },
 })
-

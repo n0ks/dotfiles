@@ -58,12 +58,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'nvim-telescope/telescope-symbols.nvim'
+Plug 'ray-x/go.nvim'
 call plug#end()
 
 
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/funfun.vim
-source $HOME/.config/nvim/general/terminal_toggle.vim
+" source $HOME/.config/nvim/general/terminal_toggle.vim
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/plugin/fern.vim
 source $HOME/.config/nvim/plugin/quickfix.vim
