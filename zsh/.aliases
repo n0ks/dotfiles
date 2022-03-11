@@ -18,7 +18,7 @@ alias ll="exa --all --tree --level 1 "
 alias t="tmux"
 
 # Shortcuts
-alias vim=nvim
+#alias vim=nvim
 alias ls=exa
 alias luamake=$HOME/Documents/code/lua-language-server/3rd/luamake/luamake
 alias be='bundle exec '

@@ -6,6 +6,7 @@ M.setup = function()
 	null_ls.setup({
 		sources = {
 			null_ls.builtins.diagnostics.eslint_d,
+			null_ls.builtins.code_actions.eslint_d,
 			null_ls.builtins.formatting.eslint_d,
 			null_ls.builtins.diagnostics.shellcheck,
 			null_ls.builtins.code_actions.shellcheck,
@@ -28,7 +29,7 @@ M.setup = function()
 					"markdown",
 					"graphql",
 				},
-				extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+				-- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 			}),
 		},
 	})
