@@ -9,7 +9,28 @@ vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", nu
 
 dap.defaults.fallback.exception_breakpoints = { "raised" }
 
--- dap_install.config("chrome", {})
+dap_install.config("chrome", {})
+dap_install.config("jsnode", {})
+
+dap.configurations.typescript = {
+	{
+		name = "Run",
+		type = "node2",
+		request = "launch",
+		program = "${file}",
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = "inspector",
+		console = "integratedTerminal",
+		outFiles = { "${workspaceFolder}/build/*.js" },
+	},
+	{
+		name = "Attach to process",
+		type = "node2",
+		request = "attach",
+		processId = require("dap.utils").pick_process,
+	},
+}
 
 dap.adapters.node2 = {
 	type = "executable",
@@ -41,6 +62,7 @@ dap.configurations.typescriptreact = {
 		protocol = "inspector",
 		port = 9222,
 		webRoot = "${workspaceFolder}",
+		console = "integratedTerminal",
 	},
 }
 
@@ -82,11 +104,11 @@ require("dapui").setup({
 			-- Provide as ID strings or tables with "id" and "size" keys
 			{
 				id = "scopes",
-				size = 0.50, -- Can be float or integer > 1
+				size = 0.30, -- Can be float or integer > 1
 			},
-			{ id = "breakpoints", size = 0.30 },
-			{ id = "stacks", size = 0.15 },
-			{ id = "watches", size = 0.15 },
+			{ id = "breakpoints", size = 0.25 },
+			{ id = "stacks", size = 0.25 },
+			{ id = "watches", size = 0.25 },
 		},
 		position = "left", -- Can be "left" or "right"
 	},
