@@ -27,7 +27,7 @@ alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd $PROJECTS"
-alias code="cd ~/Documents/code"
+alias code="cd ~/code"
 # Gatekeeper (for installing 3rd party apps)
 alias gatekeeperOff="sudo spctl --master-disable"
 alias gatekeeperOn="sudo spctl --master-enable"

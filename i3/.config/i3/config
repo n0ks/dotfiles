@@ -307,7 +307,7 @@ set $yellowbrown  	  #e1b700
 set $black_blue   	  #000517
 # define colors for windows:
 #class          		        	border		bground		text		indicator	child_border
-client.focused         		    $lightblue	$darkblue 	$lightblue		$lightblue		$lightblue
+client.focused         		    $darkblue	  	$darkblue 	$darkblue		$darkblue		$darkblue
 client.unfocused       	      $darkblue	  $darkblue 	$grey 		$purple		$darkgrey
 client.focused_inactive 	    $darkblue	  $darkblue 	$grey 		$purple		$black
 client.urgent          		    $urgentred	$urgentred	$white		$purple		$yellowbrown
