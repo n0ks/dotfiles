@@ -41,8 +41,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" treesitter is just fucking me up / commit workaround
-Plug 'nvim-treesitter/nvim-treesitter', {'commit':'b5cdb868c7a20640c9b60aa82afe82ed63f4ebd3', 'do': ':TSUpdate'}  
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'rose-pine/neovim'
 Plug 'ryanoasis/vim-devicons'
@@ -68,7 +67,6 @@ source $HOME/.config/nvim/general/funfun.vim
 source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/plugin/fern.vim
 source $HOME/.config/nvim/plugin/quickfix.vim
-source $HOME/.config/nvim/general/autocmd.vim 
 
 lua require('noks.init')
 
