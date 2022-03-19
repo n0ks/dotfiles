@@ -44,9 +44,11 @@ dap.configurations.javascript = {
 	{
 		type = "node2",
 		request = "launch",
+		name = "Launch file",
 		program = "${file}",
 		cwd = vim.fn.getcwd(),
 		sourceMaps = true,
+		restart = true,
 		protocol = "inspector",
 		console = "integratedTerminal",
 	},
@@ -68,34 +70,41 @@ dap.configurations.typescriptreact = {
 
 -- test latter
 
--- dap.adapters.go = {
--- 	type = "executable",
--- 	command = "node",
--- 	args = {
--- 		vim.fn.stdpath("data") .. "/dapinstall/go/" .. "/vscode-go/out/src/debugAdapter/goDebug.ts",
--- 	},
--- }
+dap.adapters.go = {
+	type = "executable",
+	command = "node",
+	args = {
+		vim.fn.stdpath("data") .. "/dapinstall/go/" .. "/vscode-go/out/src/debugAdapter/goDebug.ts",
+	},
+}
 
--- dap.configurations.go = {
--- 	{
--- 		type = "go",
--- 		name = "Debug",
--- 		request = "launch",
--- 		showLog = true,
--- 		program = "${file}",
--- 		console = "externalTerminal",
--- 		dlvToolPath = vim.fn.exepath("dlv"),
--- 	},
--- 	{
--- 		name = "Test Current File",
--- 		type = "go",
--- 		request = "launch",
--- 		showLog = true,
--- 		mode = "test",
--- 		program = ".",
--- 		dlvToolPath = vim.fn.exepath("dlv"),
--- 	},
--- }
+dap.configurations.go = {
+	{
+		type = "go",
+		request = "attach",
+		name = "Attach Debugger",
+		cwd = vim.fn.getcwd(),
+		dlvToolPath = vim.fn.exepath("dlv"),
+	},
+	{
+		type = "go",
+		name = "Debug",
+		request = "launch",
+		showLog = true,
+		program = "${file}",
+		console = "externalTerminal",
+		dlvToolPath = vim.fn.exepath("dlv"),
+	},
+	{
+		name = "Test Current File",
+		type = "go",
+		request = "launch",
+		showLog = true,
+		mode = "test",
+		program = ".",
+		dlvToolPath = vim.fn.exepath("dlv"),
+	},
+}
 
 require("dapui").setup({
 	sidebar = {

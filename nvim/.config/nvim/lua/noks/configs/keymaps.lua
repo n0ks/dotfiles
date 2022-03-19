@@ -1,7 +1,8 @@
 local map = require("noks.configs.utils").map
 
 map("n", "<leader>nf", ":lua require('neogen').generate()<CR>")
-map("", ",T", "<Plug>PlenaryTestFile")
+map("n", ",T", "<Plug>PlenaryTestFile")
+map("n", ",0d", ":.,6d<CR>")
 
 -- " ----------------------------------------------------------------------------
 -- " Harpoon

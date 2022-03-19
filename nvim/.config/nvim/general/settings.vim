@@ -1,4 +1,3 @@
-lang en_US.UTF-8
 syntax on
 filetype plugin indent on
 set path+=**
@@ -27,7 +26,6 @@ set smarttab                             " Makes tabbing smarter will realize yo
 set expandtab                            " Converts tabs to spaces
 set smartindent                          " Makes indenting smart
 set autoindent                           " Good auto indent
-set laststatus=2                         " Always display the status line
 set number                               " Line numbers
 set background=dark                      " tell vim what the background color looks like
 set showtabline=2                        " Always show tabs
@@ -64,6 +62,7 @@ set breakindentopt=shift:2
 set showbreak=+++++
 set showbreak=↳
 " END - Testing some settings
+"
 
 let mapleader=" "
 
@@ -90,6 +89,7 @@ let g:mkdp_auto_close = 0
 " vim-test
 let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
+let test#javascript#jest#options = "--color=always"
 
 let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']
@@ -97,5 +97,4 @@ let g:vsnip_filetypes.typescriptreact = ['typescript', 'html']
 let g:vsnip_snippet_dir = expand('~/.config/nvim/vsnip')
 
 command! -bar -bang -nargs=+ -complete=file Edit call MultipleEdit([<f-args>])
-
 

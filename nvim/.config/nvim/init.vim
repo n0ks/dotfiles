@@ -58,6 +58,11 @@ Plug 'vim-test/vim-test'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'ray-x/go.nvim'
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+Plug 'shaeinst/roshnivim-cs'
+Plug 'rebelot/kanagawa.nvim'
+" Plug '~/code/stackmap.nvim/'
+Plug 'arkav/lualine-lsp-progress'
 call plug#end()
 
 

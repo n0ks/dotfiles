@@ -1,25 +1,24 @@
-vim.g.rose_pine_variant = "moon"
-vim.g.rose_pine_bold_vertical_split_line = true
-vim.g.rose_pine_disable_background = true
-
--- vim.cmd("colorscheme rose-pine")
-
 require("catppuccin").setup({
-  transparent_background = true,
 	term_colors = true,
-  transparent_background = true,
+	transparent_background = true,
 	integrations = {
 		gitsigns = true,
-    telescope = true,
-    fern = true
+		telescope = true,
+		fern = true,
 	},
 })
 
-vim.cmd("colorscheme catppuccin")
+require("kanagawa").setup({
+	transparent = false,
+	dimInactive = true,
+	globalStatus = true,
+})
+
+vim.cmd("colorscheme kanagawa")
+-- vim.cmd("colorscheme catppuccin")
 
 vim.cmd([[
   highlight Normal guibg=none
   highlight NonText guibg=none
+  set laststatus=3
 ]])
-
--- vim.g.rose_pine_disable_background = true

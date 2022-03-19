@@ -1,5 +1,10 @@
 vim.g.coq_settings = {
 	auto_start = "shut-up",
+	display = {
+		pum = {
+			fast_close = false,
+		},
+	},
 	keymap = {
 		eval_snips = "<leader>j",
 		jump_to_mark = "<C-j>",
@@ -31,7 +36,5 @@ require("coq_3p")({
 	{ src = "nvimlua", short_name = "nLUA" },
 	{ src = "repl", sh = "zsh" },
 	{ src = "figlet", short_name = "BIG", trigger = "!big" },
-  { src = "copilot", short_name = "COP", accept_key = "<c-f>" },
+	{ src = "copilot", short_name = "COP", accept_key = "<c-f>" },
 })
-
-
