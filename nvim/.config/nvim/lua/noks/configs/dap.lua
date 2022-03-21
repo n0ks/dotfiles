@@ -14,21 +14,25 @@ dap_install.config("jsnode", {})
 
 dap.configurations.typescript = {
 	{
-		name = "Run",
-		type = "node2",
-		request = "launch",
-		program = "${file}",
-		cwd = vim.fn.getcwd(),
-		sourceMaps = true,
-		protocol = "inspector",
 		console = "integratedTerminal",
+		cwd = vim.fn.getcwd(),
+		name = "Run",
 		outFiles = { "${workspaceFolder}/build/*.js" },
+		program = "${file}",
+		protocol = "inspector",
+		request = "launch",
+		sourceMaps = true,
+		type = "node2",
 	},
 	{
+		cwd = vim.fn.getcwd(),
 		name = "Attach to process",
-		type = "node2",
-		request = "attach",
 		processId = require("dap.utils").pick_process,
+		protocol = "inspector",
+		request = "attach",
+		skipFiles = { "<node_internals>/**/*.js" },
+		sourceMaps = true,
+		type = "node2",
 	},
 }
 

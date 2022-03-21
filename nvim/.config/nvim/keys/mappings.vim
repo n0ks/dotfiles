@@ -1,81 +1,12 @@
 " ----------------------------------------------------------------------------
 " General
 " ----------------------------------------------------------------------------
-inoremap  jk <Esc>
-inoremap  kj <Esc>
 " Y yanks from the cursor to the end of line as expected. See :help Y.
-nnoremap Y y$
-nnoremap J mzJ`z
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-nnoremap cn *``cgn
-nnoremap cN *``cgN
-inoremap , ,<c-g>u
-inoremap . .<c-g>u
-inoremap ! !<c-g>u
-inoremap ? ?<c-g>u
-" Visually select the text that was last edited/pasted (Vimcast#26).
-noremap gV `[v`]
-" nmap gx :!open <c-r><c-a> 
-nmap ,p "0p
-nmap ,P "0P
-nnoremap <silent><leader>r :source ~/.config/nvim/init.vim<CR>
-nnoremap <leader>cd :lcd %:p:h
-vnoremap < <gv
-vnoremap > >gv
-noremap q; :q!<CR>
 " paste last thing yanked
-vnoremap <leader>p "_dP
-nnoremap <C-d> 6j
-nnoremap <C-u> 6k
-nnoremap <leader>Y gg"+yG
-nnoremap <silent><esc> :noh<return><esc>
-nnoremap ,fn :put =expand('%:t')<CR>
-nnoremap <F1> :FlutterRun<CR>
-nnoremap <F2> :FlutterRestart<CR>
 tnoremap <C-[> <C-\><C-n>
-nmap sj :SplitjoinSplit<CR>
-nmap sk :SplitjoinJoin<CR>
-
-" Replace word under cursor in file (case-sensitive)
-nmap <leader>sr *:%s///gI<left><left><left>
-" Replace word under cursor in line (case-sensitive)
-nmap <leader>sl *:s///gI<left><left><left>
 xnoremap <leader>bs :!boxes -d stone
-
-" ----------------------------------------------------------------------------
-" WINDOWS & BUFFERS
-" ----------------------------------------------------------------------------
-nnoremap <M-h> <C-w>h
-nnoremap <M-k> <C-w>k
-nnoremap <M-j> <C-w>j
-nnoremap <M-l> <C-w>l
-nnoremap <leader>w <C-w>w 
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <ESC>:w<CR>
-nnoremap <C-c> <Esc>
-nnoremap <leader>bd :bd%<CR>
-nnoremap <leader>Q :q<CR>
-nnoremap <leader>+ :vertical resize +15<CR>
-nnoremap <leader>- :vertical resize -15<CR>
-nnoremap <leader>cA :w <bar> %bd <bar> e# <bar> bd# <CR>
-nnoremap <silent><leader>CC :call CleanNoNameEmptyBuffers()<CR>
-nnoremap <Backspace> <C-^>
-
-"---------------------------------------------------------------------------
-" Quickfix
-" ----------------------------------------------------------------------------
-
-nnoremap ]q :cnext<cr>zz
-nnoremap [q :cprev<cr>zz
-nnoremap ]l :lnext<cr>zz
-nnoremap [l :lprev<cr>zz
-
-" quickfix mapping, nextfile jumps
-nnoremap <silent> <Up> :cprevious<CR>
-nnoremap <silent> <Down> :cnext<CR>
-nnoremap <silent> <Left> :cpfile<CR>
-nnoremap <silent> <Right> :cnfile<CR>
 
 " ----------------------------------------------------------------------------
 " Git

@@ -14,7 +14,6 @@ M.setup = function()
 			enabled = true,
 			run_via_dap = true,
 			register_configurations = function(paths)
-				P(paths)
 				require("dap").configurations.dart = {
 					{
 						type = "dart",
