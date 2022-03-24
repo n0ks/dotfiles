@@ -13,7 +13,8 @@ Plug 'dstein64/vim-startuptime'
 Plug 'github/copilot.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'jbyuki/venn.nvim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'windwp/nvim-autopairs'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -74,4 +75,3 @@ source $HOME/.config/nvim/plugin/fern.vim
 source $HOME/.config/nvim/plugin/quickfix.vim
 
 lua require('noks.init')
-

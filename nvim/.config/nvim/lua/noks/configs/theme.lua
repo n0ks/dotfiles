@@ -9,8 +9,8 @@ require("catppuccin").setup({
 })
 
 require("kanagawa").setup({
-	transparent = false,
-	dimInactive = true,
+	transparent = true,
+	dimInactive = false,
 	globalStatus = true,
 })
 

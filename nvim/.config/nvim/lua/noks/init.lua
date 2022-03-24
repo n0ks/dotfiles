@@ -19,4 +19,5 @@ require('neogen').setup()
 require("bufresize").setup()
 require('noks.configs.venn')
 require('noks.globals')
+require('nvim-autopairs').setup{}
 require('noks.configs.theme')
