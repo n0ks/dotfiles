@@ -129,6 +129,7 @@ map("n", "<leader>ds", ":lua require('noks.configs.telescope').document_symbols(
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")
 map("n", ";t", ":Telescope<cr>")
+map("n", ";tr", ":Telescope resume<cr>")
 
 map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emoji'} }<CR>")
 map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")
@@ -145,3 +146,22 @@ map("n", "<leader>un", "<cmd>UltestNearest<cr>")
 map("n", "<leader>ul", "<cmd>UltestLast<cr>")
 map("n", "]t", "<Plug>(ultest-next-fail)")
 map("n", "[t", "<Plug>rultest-prev)")
+-- " ----------------------------------------------------------------------------
+-- " Git
+-- " ----------------------------------------------------------------------------
+
+map("n", "<leader>gB", ":G blame<CR>")
+map("n", "<leader>gs", ":G<CR>")
+map("n", "<leader>ge", ":Ge:<CR>")
+map("n", "<leader>gb", ":lua require('noks.configs.telescope').git_branches()<CR>")
+map("n", "<leader>gdi", ":Telescope git_bcommits<CR>")
+map("n", "<leader>tr", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
+map("n", "<leader>tc", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
+map("n", "<leader>mf", ":lua require('telescope').extensions.media_files.media_files()<CR>")
+map("n", "<leader>gm", ":G mergetool<CR>")
+map("n", "<leader>gqq", ":Gitsigns setqflist all<CR>")
+map("n", "<leader>gcl", ":0Gclog<CR>")
+map("n", "<leader>gcd", ":Gclog -- %<CR>")
+
+-- nmap <leader>gl :diffget //3<CR>
+-- nmap <leader>gh :diffget //2<CR>

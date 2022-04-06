@@ -64,6 +64,7 @@ Plug 'shaeinst/roshnivim-cs'
 Plug 'rebelot/kanagawa.nvim'
 " Plug '~/code/stackmap.nvim/'
 Plug 'arkav/lualine-lsp-progress'
+Plug 'windwp/nvim-ts-autotag'
 call plug#end()
 
 

@@ -13,6 +13,7 @@ set hidden                               " Required to keep multiple buffers ope
 set relativenumber
 set nowrap                               " Display long lines as just one line
 set encoding=utf-8                       " The encoding displayed
+set fileencoding=utf-8
 set pumheight=10
 set ruler              			             " Show the cursor position all the time
 set iskeyword+=-                      	 " treat dash separated words as a word text object"
@@ -91,10 +92,6 @@ let test#neovim#term_position = "topleft"
 let test#javascript#jest#options = "--color=always"
 let g:ultest_use_pty = 1
 
-let g:vsnip_filetypes = {}
-let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']
-let g:vsnip_filetypes.typescriptreact = ['typescript', 'html']
-let g:vsnip_snippet_dir = expand('~/.config/nvim/vsnip')
+let g:asyncrun_open = 8
 
 command! -bar -bang -nargs=+ -complete=file Edit call MultipleEdit([<f-args>])
-

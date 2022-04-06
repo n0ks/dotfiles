@@ -9,25 +9,6 @@ tnoremap <C-[> <C-\><C-n>
 xnoremap <leader>bs :!boxes -d stone
 
 " ----------------------------------------------------------------------------
-" Git
-" ----------------------------------------------------------------------------
-
-nnoremap <leader>gB :G blame<CR>
-nnoremap <leader>gs :G<CR>
-nnoremap <leader>ge :Ge:<CR>
-nnoremap <leader>gb :lua require('noks.configs.telescope').git_branches()<CR>
-nnoremap <leader>gdi :Telescope git_bcommits<CR>
-nnoremap <leader>tr :lua require('telescope').extensions.git_worktree.git_worktrees()<CR>
-nnoremap <leader>tc :lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>
-nnoremap <leader>mf :lua require('telescope').extensions.media_files.media_files()<CR>
-nnoremap <leader>gm :G mergetool<CR>
-nnoremap <leader>gqq :Gitsigns setqflist all<CR>
-nmap <leader>gl :diffget //3<CR>
-nmap <leader>gh :diffget //2<CR>
-nnoremap <leader>gcl :0Gclog<CR>
-nnoremap <leader>gcd :Gclog -- %<CR>
-
-" ----------------------------------------------------------------------------
 " Testing
 " ----------------------------------------------------------------------------
 
@@ -45,9 +26,6 @@ nnoremap gD <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap gdv <cmd>vs \| lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-" nnoremap gi <CR><cmd>lua vim.lsp.buf.implementation()<CR>
-" nnoremap <C-k> <CR><cmd>lua vim.lsp.buf.signature_help()<CR>
-" nnoremap K <cmd>lua vim.lsp.buf.hover()<CR>
  
 nnoremap gr <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <leader>dll <cmd>lua vim.diagnostic.setloclist()<CR>
@@ -75,12 +53,6 @@ nnoremap <silent><M-i> :lua require("dapui").eval()<CR>
 nnoremap <M-\> :lua require("dapui").toggle()<CR>
 nnoremap <silent><M-o> :lua require("dapui").float_element()<CR>
 
-" ----------------------------------------------------------------------------
-" VSNIP
-" ----------------------------------------------------------------------------
-
-" imap <expr> <C-j>   vsnip#available(1)  ? '<Plug>(vsnip-expand)' : '<C-j>'
-" nnoremap <leader>x  :VsnipYank key <bar> VsnipOpen <CR>
 
 
 " ----------------------------------------------------------------------------
@@ -88,3 +60,8 @@ nnoremap <silent><M-o> :lua require("dapui").float_element()<CR>
 " ----------------------------------------------------------------------------
 
 command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})
+
+
+" faster macros
+nnoremap @ <cmd>execute "noautocmd norm! " . v:count1 . "@" . getcharstr()<cr>
+xnoremap @ :<C-U>execute "noautocmd '<,'>norm! " . v:count1 . "@" . getcharstr()<cr>
