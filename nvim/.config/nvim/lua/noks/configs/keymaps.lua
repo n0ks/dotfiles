@@ -132,3 +132,16 @@ map("n", ";t", ":Telescope<cr>")
 
 map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emoji'} }<CR>")
 map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")
+
+-- ----------------------------------------------------------------------------
+-- Ultest
+-- ----------------------------------------------------------------------------
+
+map("n", "<leader>ut", "<cmd>Ultest<cr>")
+map("n", "<leader>us", "<cmd>UltestSummary<cr>")
+map("n", "<leader>ud", "<cmd>UltestDebugNearest<cr>")
+map("n", "<leader>uo", "<cmd>UltestOutput<cr>")
+map("n", "<leader>un", "<cmd>UltestNearest<cr>")
+map("n", "<leader>ul", "<cmd>UltestLast<cr>")
+map("n", "]t", "<Plug>(ultest-next-fail)")
+map("n", "[t", "<Plug>rultest-prev)")

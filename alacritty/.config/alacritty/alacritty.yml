@@ -19,7 +19,7 @@ font:
   offset:
     x: 1 
     y: 2
-  size: 18
+  size: 14
 key_bindings:
   - chars: "\ea"
     key: A

@@ -26,6 +26,9 @@ telescope.setup({
 			},
 		},
 	},
+	path_display = {
+		truncate = 1,
+	},
 	extensions = {
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
@@ -125,6 +128,5 @@ M.document_symbols = function()
 		},
 	}))
 end
-
 
 return M

@@ -63,7 +63,6 @@ set showbreak=+++++
 set showbreak=↳
 " END - Testing some settings
 "
-
 let mapleader=" "
 
 let g:cursorhold_updatetime = 100
@@ -90,6 +89,7 @@ let g:mkdp_auto_close = 0
 let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
 let test#javascript#jest#options = "--color=always"
+let g:ultest_use_pty = 1
 
 let g:vsnip_filetypes = {}
 let g:vsnip_filetypes.javascriptreact = ['javascript', 'html']

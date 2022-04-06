@@ -14,6 +14,12 @@ require("kanagawa").setup({
 	globalStatus = true,
 })
 
+require("rose-pine").setup({
+	---@usage 'main'|'moon'
+	dark_variant = "moon",
+	disable_background = true,
+})
+
 vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme catppuccin")
 

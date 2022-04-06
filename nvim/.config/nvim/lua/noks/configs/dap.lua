@@ -12,6 +12,15 @@ dap.defaults.fallback.exception_breakpoints = { "raised" }
 dap_install.config("chrome", {})
 dap_install.config("jsnode", {})
 
+dap.listeners.after["event_initialized"]["dapui"] = function()
+	require("dapui").open()
+end
+
+dap.listeners.after["event_terminated"]["dapui"] = function()
+	require("dapui").close()
+	vim.cmd("bd! \\[dap-repl]")
+end
+
 dap.configurations.typescript = {
 	{
 		console = "integratedTerminal",
