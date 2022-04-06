@@ -32,15 +32,13 @@ autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
 -- 	end,
 -- })
 
--- autocmd({ "BufNewFile", "BufRead" }, { "*.tsx" }, { command = "setl filetype=typescript.tsx" })
-
 autocmd({ "BufNewFile", "BufRead" }, { "Fastfile", "Podfile" }, { command = "setl filetype=ruby" })
 
 autocmd({ "BufRead" }, { "*.yaml" }, { command = "set sw=2 sts=2 expandtab" })
 
 autocmd({ "BufWinEnter" }, { "quickfix" }, { command = "call SetQFControlVariable()" }, qflist_group)
 
-autocmd({ "BufWinEnter" }, { "*" }, { command = "call UnsetQFControlVariable()" }, qflist_group)
+autocmd({ "BufWinLeave" }, { "*" }, { command = "call UnsetQFControlVariable()" }, qflist_group)
 
 autocmd({ "TextYankPost" }, { "*" }, {
 	callback = function()
