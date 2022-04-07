@@ -37,7 +37,7 @@ M.setup = function()
 			local opts = { silent = true }
 			vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
 
-			vim.cmd([[ command! ESfix execute '!npm run lint:fix' ]])
+			vim.cmd([[ command! ESfix AsyncRun -mode=term -focus=0 npm run lint:fix ]])
 			-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":TSLspImportAll<CR>", opts)
 		end,
 	})

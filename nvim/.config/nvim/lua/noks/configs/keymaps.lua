@@ -9,7 +9,7 @@ map("n", ",T", "<Plug>PlenaryTestFile")
 map("n", ",0d", ":.,6d<CR>")
 map("n", ",sh", ":w !sh<CR>")
 map("n", ",rr", ":luafile %<CR>")
-
+map("n", ";f", "v/{<CR>%V")
 -- exec last cmd
 map("n", ",cc", ":,@:<CR>")
 
@@ -129,7 +129,7 @@ map("n", "<leader>ds", ":lua require('noks.configs.telescope').document_symbols(
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")
 map("n", ";t", ":Telescope<cr>")
-map("n", ";tr", ":Telescope resume<cr>")
+map("n", ";T", ":Telescope resume<cr>")
 
 map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emoji'} }<CR>")
 map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")
@@ -144,6 +144,7 @@ map("n", "<leader>ud", "<cmd>UltestDebugNearest<cr>")
 map("n", "<leader>uo", "<cmd>UltestOutput<cr>")
 map("n", "<leader>un", "<cmd>UltestNearest<cr>")
 map("n", "<leader>ul", "<cmd>UltestLast<cr>")
+map("n", "<leader>uc", "<cmd>UltestClear<cr>")
 map("n", "]t", "<Plug>(ultest-next-fail)")
 map("n", "[t", "<Plug>rultest-prev)")
 -- " ----------------------------------------------------------------------------

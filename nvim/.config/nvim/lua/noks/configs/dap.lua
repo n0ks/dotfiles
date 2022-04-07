@@ -21,6 +21,8 @@ dap.listeners.after["event_terminated"]["dapui"] = function()
 	vim.cmd("bd! \\[dap-repl]")
 end
 
+vim.cmd [[au FileType dap-repl lua require('dap.ext.autocompl').attach()]]
+
 dap.configurations.typescript = {
 	{
 		console = "integratedTerminal",
