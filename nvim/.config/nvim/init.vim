@@ -71,7 +71,6 @@ call plug#end()
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/funfun.vim
 " source $HOME/.config/nvim/general/terminal_toggle.vim
-source $HOME/.config/nvim/keys/mappings.vim
 source $HOME/.config/nvim/plugin/fern.vim
 source $HOME/.config/nvim/plugin/quickfix.vim
 

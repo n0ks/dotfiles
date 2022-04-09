@@ -129,4 +129,6 @@ M.document_symbols = function()
 	}))
 end
 
+vim.cmd([[command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})]])
+
 return M

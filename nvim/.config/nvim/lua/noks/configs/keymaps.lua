@@ -16,6 +16,13 @@ map("n", ",cc", ":,@:<CR>")
 map("n", ",p", "0p")
 map("n", ",P", "0P")
 
+-- " Y yanks from the cursor to the end of line as expected. See :help Y.
+vim.cmd[[nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k']]
+vim.cmd[[nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j']]
+
+map("t", "<C-[>" ,"<C-\\><C-n>")
+map("x", "<leader>bs", ":!boxes -d stone")
+
 -- " Replace word under cursor in file (case-sensitive)
 map("n", "<leader>sr", "*:%s///gI<left><left><left>")
 -- " Replace word under cursor in line (case-sensitive)
@@ -53,6 +60,10 @@ map("i", "?", "?<c-g>u")
 map("v", "<leader>p", "_dP")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+-- " faster macros
+map("n", "@", ":execute 'noautocmd norm! ' . v:count1 . '@'. getcharstr()<cr>")
+map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
 
 -- +----------------------------------------------------------+
 -- | WINDOWS & BUFFERS                                        |
@@ -104,7 +115,7 @@ map("n", "<Left>", ":cpfile<CR>")
 map("n", "<Right>", ":cnfile<CR>")
 
 -- ----------------------------------------------------------------------------
--- SAGA
+-- LSP THINGS
 -- ----------------------------------------------------------------------------
 
 map("n", "<M-CR>", ":Lspsaga code_action<CR>")
@@ -115,6 +126,17 @@ map("n", "[i", ":Lspsaga show_line_diagnostics<CR>")
 
 map("v", "<M-CR>", ":<C-U>Lspsaga range_code_action<CR>")
 
+map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>")
+map("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
+map("n", "gdv", ":vs | lua vim.lsp.buf.definition()<CR>")
+map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+
+map("n", "gr", ":lua vim.lsp.buf.references()<CR>")
+map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
+map("n", "<leader>dqq", ":lua vim.diagnostic.setqflist()<CR>")
+map("n", "<leader>f", ":lua vim.lsp.buf.formatting()<CR>")
+map("n", "<leader>lf", ":lua require('stylua-nvim').format_file()<CR>")
+map("n", "<leader>ss", ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
 -- ----------------------------------------------------------------------------
 -- TELESCOPE
 -- ----------------------------------------------------------------------------
@@ -135,18 +157,25 @@ map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emo
 map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")
 
 -- ----------------------------------------------------------------------------
--- Ultest
+-- Ultest + Testing
 -- ----------------------------------------------------------------------------
 
-map("n", "<leader>ut", "<cmd>Ultest<cr>")
-map("n", "<leader>us", "<cmd>UltestSummary<cr>")
-map("n", "<leader>ud", "<cmd>UltestDebugNearest<cr>")
-map("n", "<leader>uo", "<cmd>UltestOutput<cr>")
-map("n", "<leader>un", "<cmd>UltestNearest<cr>")
-map("n", "<leader>ul", "<cmd>UltestLast<cr>")
-map("n", "<leader>uc", "<cmd>UltestClear<cr>")
+map("n", "<leader>ut", ":Ultest<cr>")
+map("n", "<leader>us", ":UltestSummary<cr>")
+map("n", "<leader>ud", ":UltestDebugNearest<cr>")
+map("n", "<leader>uo", ":UltestOutput<cr>")
+map("n", "<leader>un", ":UltestNearest<cr>")
+map("n", "<leader>ul", ":UltestLast<cr>")
+map("n", "<leader>uc", ":UltestClear<cr>")
 map("n", "]t", "<Plug>(ultest-next-fail)")
 map("n", "[t", "<Plug>rultest-prev)")
+
+map("n", "<leader>tf", ":TestFile<CR>")
+map("n", "<leader>tg", ":TestVisit<CR>")
+map("n", "<leader>tl", ":TestLast<CR>")
+map("n", "<leader>tn", ":TestNearest<CR>")
+map("n", "<leader>ts", ":TestSuite<CR>")
+
 -- " ----------------------------------------------------------------------------
 -- " Git
 -- " ----------------------------------------------------------------------------
@@ -163,6 +192,24 @@ map("n", "<leader>gm", ":G mergetool<CR>")
 map("n", "<leader>gqq", ":Gitsigns setqflist all<CR>")
 map("n", "<leader>gcl", ":0Gclog<CR>")
 map("n", "<leader>gcd", ":Gclog -- %<CR>")
+map("n", "leader>gl", ":diffget //3<CR>")
+map("n", "<leader>gh", ":diffget //2<CR>")
 
--- nmap <leader>gl :diffget //3<CR>
--- nmap <leader>gh :diffget //2<CR>
+-- " ----------------------------------------------------------------------------
+-- " DAP
+-- " ----------------------------------------------------------------------------
+
+map("n", "<F5>", ":lua require'dap'.continue()<CR>")
+map("n", "<F10>", ":lua require'dap'.step_over()<CR>")
+map("n", "<F11>", ":lua require'dap'.step_into()<CR>")
+map("n", "<F12>", ":lua require'dap'.step_out()<CR>")
+map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
+map("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+map("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+map("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
+map("n", "<leader>di", ":lua require'dap.ui.variables'.hover()<CR>")
+map("n", "<leader>d?", ":lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>")
+map("n", "<leader>dw", ":lua require'dap.ui.widgets'.hover()<CR>")
+map("n", "<M-i>", ":lua require('dapui').eval()<CR>")
+map("n", "<M-\\>", ":lua require('dapui').toggle()<CR>")
+map("n", "<M-o>", ":lua require('dapui').float_element()<CR>")
