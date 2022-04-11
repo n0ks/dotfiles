@@ -91,6 +91,7 @@ map("i", "<C-s>", "<ESC>:w<CR>")
 
 map("n", "<M-a>", ":lua require('harpoon.mark').add_file()<CR>")
 map("n", "<M-m>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
+map("n", "<M-c>", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>")
 map("n", "<M-1>", ":lua require('harpoon.ui').nav_file(1)<CR>")
 map("n", "<M-2>", ":lua require('harpoon.ui').nav_file(2)<CR>")
 map("n", "<M-3>", ":lua require('harpoon.ui').nav_file(3)<CR>")
