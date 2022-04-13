@@ -169,7 +169,7 @@ map("n", "<leader>un", ":UltestNearest<cr>")
 map("n", "<leader>ul", ":UltestLast<cr>")
 map("n", "<leader>uc", ":UltestClear<cr>")
 map("n", "]t", "<Plug>(ultest-next-fail)")
-map("n", "[t", "<Plug>rultest-prev)")
+map("n", "[t", "<Plug>(ultest-prev-fail)")
 
 map("n", "<leader>tf", ":TestFile<CR>")
 map("n", "<leader>tg", ":TestVisit<CR>")

@@ -90,7 +90,10 @@ let g:mkdp_auto_close = 0
 let test#strategy = 'neovim'
 let test#neovim#term_position = "topleft"
 let test#javascript#jest#options = "--color=always"
+
 let g:ultest_use_pty = 1
+let g:ultest_pass_sign = "👌"
+let g:ultest_fail_sign = "💩"
 
 let g:asyncrun_open = 8
 
