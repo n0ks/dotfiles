@@ -57,18 +57,18 @@ alias jss
 snippet Bloc
 abbr Bloc
 alias bloc
-  class ${1}Bloc extends Bloc<${1}Event, ${1}State> {
+  class ${1}Bloc extends Bloc<Event, State> {
     ${1}Bloc() : super(${1}Initial()) {
-      on<${1}Event>((event, emit) {});
+      on<Event>((event, emit) {});
     }
   }
 
 snippet cubit
 abbr Cubit
 alias cub
-  class $1Cubit extends Cubit<$1State> {,
-    $1Cubit() : super(const Init$1State());,
-  },
+  class $1Cubit extends Cubit<$1State> {
+    $1Cubit() : super();
+  }
 
 
 # snippet Bloc Provider

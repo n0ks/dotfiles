@@ -17,10 +17,10 @@ map("n", ",p", "0p")
 map("n", ",P", "0P")
 
 -- " Y yanks from the cursor to the end of line as expected. See :help Y.
-vim.cmd[[nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k']]
-vim.cmd[[nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j']]
+vim.cmd([[nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k']])
+vim.cmd([[nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j']])
 
-map("t", "<C-[>" ,"<C-\\><C-n>")
+map("t", "<C-[>", "<C-\\><C-n>")
 map("x", "<leader>bs", ":!boxes -d stone")
 
 -- " Replace word under cursor in file (case-sensitive)
@@ -149,6 +149,7 @@ map("n", "<leader>pp", ":Telescope projects<cr>")
 map("n", "<leader>sd", ":lua require('noks.configs.telescope').search_dotfiles()<CR>")
 map("n", "<leader>sw", ":lua require('noks.configs.telescope').search_wallpapers()<CR>")
 map("n", "<leader>ds", ":lua require('noks.configs.telescope').document_symbols()<CR>")
+map("n", "<leader>H", ":Telescope help_tags<CR>")
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")
 map("n", ";t", ":Telescope<cr>")

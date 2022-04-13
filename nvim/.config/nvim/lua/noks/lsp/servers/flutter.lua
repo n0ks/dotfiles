@@ -49,10 +49,11 @@ M.setup = function()
 
 				vim.cmd([[
               command FlutterRunDevelopment :FlutterRun --flavor development --target=lib/main_development.dart
-              command BuildRunner AsyncRun -mode=term -focus=0 -rows=12 -close flutter packages pub run build_runner build
+              command BuildRunner AsyncRun -mode=term -focus=0 -rows=12 -close flutter packages pub run build_runner build --delete-conflicting-outputs
               command L10n AsyncRun -mode=term -focus=0 -rows=12 flutter gen-l10n
               command -nargs=1 CreateBlocFolder :lcd %:h | AsyncRun mkdir bloc && touch bloc/<args>.state.dart bloc/<args>.events.dart
               command DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply 
+              command DartFixDry AsyncRun -cwd=$(VIM_FILEDIR) dart fix --dry-run 
           ]])
 
 				require("noks.lsp.handlers").on_attach(_, bufnr)
