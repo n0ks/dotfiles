@@ -1,5 +1,22 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = "maintained",
+	ensure_installed = {
+		"bash",
+		"css",
+		"dart",
+		"dockerfile",
+		"go",
+		"gomod",
+		"gowork",
+		"html",
+		"javascript",
+		"lua",
+		"scss",
+		"typescript",
+    "jsonc",
+    "ruby",
+    "vim",
+    "yaml",
+	},
 	sync_install = false,
 	playground = {
 		enable = true,
