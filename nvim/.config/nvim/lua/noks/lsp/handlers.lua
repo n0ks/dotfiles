@@ -38,7 +38,10 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-M.capabilities = coq.lsp_ensure_capabilities(capabilities)
+local cmp_capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
+-- M.capabilities = coq.lsp_ensure_capabilities(capabilities)
+M.capabilities = cmp_capabilities
 
 -- Jump directly to the first available definition every time.
 vim.lsp.handlers["textDocument/definition"] = function(_, result)
