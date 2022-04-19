@@ -1,0 +1,18 @@
+{
+  "name": "snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "flutter",
+        "path": "./snippets/frameworks/flutter.json"
+      },
+      {
+        "language": "flutter_bloc",
+        "path": "./snippets/frameworks/flutter_bloc.json"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "Json factory": {
+    "prefix": "jss",
+    "body": [
+      "factory ${1}.fromJson(Map<String, dynamic> json) => _${1}FromJson(json);",
+      " ",
+      "Map<String, dynamic> toJson() => _${1}ToJson(this);"
+    ],
+    "description": "Create Json serializable"
+  }
+}
