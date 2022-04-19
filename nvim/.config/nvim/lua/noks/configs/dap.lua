@@ -9,6 +9,8 @@ vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", nu
 
 dap.defaults.fallback.exception_breakpoints = { "raised" }
 
+dap.set_log_level("TRACE")
+
 -- dap_install.config("chrome", {})
 -- dap_install.config("jsnode", {})
 
@@ -21,14 +23,14 @@ dap.defaults.fallback.exception_breakpoints = { "raised" }
 -- 	vim.cmd("bd! \\[dap-repl]")
 -- end
 
-vim.cmd [[au FileType dap-repl lua require('dap.ext.autocompl').attach()]]
+vim.cmd([[au FileType dap-repl lua require('dap.ext.autocompl').attach()]])
 
 dap.configurations.typescript = {
 	{
-		console = "integratedTerminal",
+		preLaunchTask = "tsc: build - tsconfig.json",
 		cwd = vim.fn.getcwd(),
 		name = "Run",
-		outFiles = { "${workspaceFolder}/build/*.js" },
+		outFiles = { "${workspaceFolder}/out/**/*.js" },
 		program = "${file}",
 		protocol = "inspector",
 		request = "launch",
