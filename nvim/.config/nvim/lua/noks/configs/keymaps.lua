@@ -200,17 +200,14 @@ map("n", "<leader>gh", ":diffget //2<CR>")
 -- " ----------------------------------------------------------------------------
 -- " DAP
 -- " ----------------------------------------------------------------------------
-
-map("n", "<F5>", ":lua require'dap'.continue()<CR>")
-map("n", "<F10>", ":lua require'dap'.step_over()<CR>")
-map("n", "<F11>", ":lua require'dap'.step_into()<CR>")
+map("n", "<F9>", ":lua require'dap'.step_over()<CR>")
+map("n", "<F10>", ":lua require'dap'.step_into()<CR>")
 map("n", "<F12>", ":lua require'dap'.step_out()<CR>")
 map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
 map("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 map("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 map("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
-map("n", "<leader>di", ":lua require'dap.ui.variables'.hover()<CR>")
-map("n", "<leader>d?", ":lua local widgets=require'dap.ui.widgets';widgets.centered_float(widgets.scopes)<CR>")
+map("n", "<leader>d?", ":lua local widgets=require'dap.ui.widgets';widgets.centered_(widgets.scopes)<CR>")
 map("n", "<leader>dw", ":lua require'dap.ui.widgets'.hover()<CR>")
 map("n", "<M-i>", ":lua require('dapui').eval()<CR>")
 map("n", "<M-\\>", ":lua require('dapui').toggle()<CR>")

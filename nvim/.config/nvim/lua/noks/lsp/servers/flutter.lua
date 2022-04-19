@@ -6,13 +6,13 @@ M.setup = function()
 			border = nil,
 			notification_style = nil,
 		},
-		fvm = true,
+		-- fvm = true,
 		dev_log = {
 			open_cmd = "tabnew",
 		},
 		debugger = {
 			enabled = true,
-			run_via_dap = true,
+			-- run_via_dap = true,
 			register_configurations = function(paths)
 				require("dap").configurations.dart = {
 					{
@@ -49,7 +49,7 @@ M.setup = function()
 
 				vim.cmd([[
               command FlutterRunDevelopment :FlutterRun --flavor development --target=lib/main_development.dart
-              command BuildRunner AsyncRun -mode=term -focus=0 -rows=12 -close flutter packages pub run build_runner build --delete-conflicting-outputs
+              command BuildRunner AsyncRun -mode=term -focus=0 -rows=12 flutter packages pub run build_runner build --delete-conflicting-outputs
               command L10n AsyncRun -mode=term -focus=0 -rows=12 flutter gen-l10n
               command -nargs=1 CreateBlocFolder :lcd %:h | AsyncRun mkdir bloc && touch bloc/<args>.state.dart bloc/<args>.events.dart
               command DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply 
