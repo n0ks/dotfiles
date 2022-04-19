@@ -8,18 +8,18 @@ env:
   TERM: xterm-256color
 font:
   bold:
-    family: JetBrainsMono Nerd Font Mono
+    family: BlexMono Nerd Font
     style: Bold
   italic:
-    family: JetBrainsMono Nerd Font Mono
+    family: BlexMono Nerd Font
     style: Italic
   normal:
-    family: JetBrainsMono Nerd Font Mono
-    style: Regular
+    family: BlexMono Nerd Font
+    style: Text
   offset:
     x: 1 
     y: 2
-  size: 18
+  size: 14
 key_bindings:
   - chars: "\ea"
     key: A
@@ -255,9 +255,9 @@ key_bindings:
 scrolling:
   history: 10000
 window:
-  opacity: 0.8
-  # decorations: Full
-  decorations: buttonless
+  opacity: 0.97
+  decorations: Full
+  # decorations: None
   dimensions:
     columns: 100
     lines: 45

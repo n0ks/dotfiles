@@ -21,7 +21,7 @@ dap.defaults.fallback.exception_breakpoints = { "raised" }
 -- 	vim.cmd("bd! \\[dap-repl]")
 -- end
 
-vim.cmd [[au FileType dap-repl lua require('dap.ext.autocompl').attach()]]
+vim.cmd([[au FileType dap-repl lua require('dap.ext.autocompl').attach()]])
 
 dap.configurations.typescript = {
 	{
