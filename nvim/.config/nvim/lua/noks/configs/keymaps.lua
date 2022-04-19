@@ -16,9 +16,8 @@ map("n", ",cc", ":,@:<CR>")
 map("n", ",p", "0p")
 map("n", ",P", "0P")
 
--- " Y yanks from the cursor to the end of line as expected. See :help Y.
-vim.cmd([[nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k']])
-vim.cmd([[nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j']])
+map("n", "j", [[(v:count > 5 ? "m'" . v:count : "") . 'j']], { expr = true, desc = "if j > 5 then add to jumplist" })
+map("n", "k", [[(v:count > 5 ? "m'" . v:count : "") . 'k']], { expr = true, desc = "if k > 5 then add to jumplist" })
 
 map("t", "<C-[>", "<C-\\><C-n>")
 map("x", "<leader>bs", ":!boxes -d stone")
