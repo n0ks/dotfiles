@@ -23,6 +23,7 @@ local read_file_on_change_group = autogroup("read_file_on_change")
 local lsp_node = autogroup("LspNodeModules")
 
 autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
+autocmd({"BufWinEnter"}, { "*" }, { command = "startinsert" })
 
 -- autocmd({ "BufNewFile", "BufRead" }, { "*.ts" }, {
 -- 	callback = function()

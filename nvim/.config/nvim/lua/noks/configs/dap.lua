@@ -1,5 +1,5 @@
 local dap = require("dap")
-local dap_install = require("dap-install")
+-- local dap_install = require("dap-install")
 local inspect = require("noks.configs.inspect")
 require("nvim-dap-virtual-text").setup()
 
@@ -9,8 +9,8 @@ vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", nu
 
 dap.defaults.fallback.exception_breakpoints = { "raised" }
 
-dap_install.config("chrome", {})
-dap_install.config("jsnode", {})
+-- dap_install.config("chrome", {})
+-- dap_install.config("jsnode", {})
 
 -- dap.listeners.after["event_initialized"]["dapui"] = function()
 -- 	require("dapui").open()

@@ -27,7 +27,7 @@ Plug 'lewis6991/gitsigns.nvim', {'tag': 'release'}
 Plug 'lewis6991/impatient.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'theHamsta/nvim-dap-virtual-text'
-Plug 'Pocco81/DAPInstall.nvim'
+Plug 'Pocco81/dap-buddy.nvim'
 Plug 'mg979/vim-visual-multi'
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}

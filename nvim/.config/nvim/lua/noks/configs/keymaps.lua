@@ -19,9 +19,9 @@ map("n", ",P", "0P")
 map("n", "j", [[(v:count > 5 ? "m'" . v:count : "") . 'j']], { expr = true, desc = "if j > 5 then add to jumplist" })
 map("n", "k", [[(v:count > 5 ? "m'" . v:count : "") . 'k']], { expr = true, desc = "if k > 5 then add to jumplist" })
 
-map("t", "<C-[>", "<C-\\><C-n>")
-map("x", "<leader>bs", ":!boxes -d stone")
+map("t", "<C-x>", "<C-\\><C-n>")
 
+map("x", "<leader>bs", ":!boxes -d stone")
 -- " Replace word under cursor in file (case-sensitive)
 map("n", "<leader>sr", "*:%s///gI<left><left><left>")
 -- " Replace word under cursor in line (case-sensitive)
@@ -46,7 +46,6 @@ map("n", "<leader>r", ":source ~/.config/nvim/init.vim<CR>")
 map("n", "<leader>cd", ":lcd %:p:h")
 map("n", "q;", ":q!<CR>")
 
-map("n", "<esc>", ":noh<return><esc>")
 map("n", ",fn", ":put =expand('%:t')<CR>")
 
 map("i", "jk", "<Esc>")
