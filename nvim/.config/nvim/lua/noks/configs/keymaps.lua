@@ -49,7 +49,6 @@ map("n", "q;", ":q!<CR>")
 map("n", ",fn", ":put =expand('%:t')<CR>")
 
 map("i", "jk", "<Esc>")
-map("i", "kj", "<Esc>")
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", "!", "!<c-g>u")
@@ -198,6 +197,7 @@ map("n", "<leader>gh", ":diffget //2<CR>")
 -- " ----------------------------------------------------------------------------
 -- " DAP
 -- " ----------------------------------------------------------------------------
+map("n", "<F5>", ":lua require'dap'.continue()<CR>")
 map("n", "<F9>", ":lua require'dap'.step_over()<CR>")
 map("n", "<F10>", ":lua require'dap'.step_into()<CR>")
 map("n", "<F12>", ":lua require'dap'.step_out()<CR>")

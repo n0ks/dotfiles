@@ -2,8 +2,11 @@
 -- │ Helper functions │
 -- ╰──────────────────╯
 
+local fn = vim.fn
+local api = vim.api
+
 local autocmd = function(ftable, pattern, action, group)
-	vim.api.nvim_create_autocmd(ftable, {
+	api.nvim_create_autocmd(ftable, {
 		group = group,
 		pattern = pattern,
 		command = action.command or nil,
@@ -12,7 +15,7 @@ local autocmd = function(ftable, pattern, action, group)
 end
 
 local autogroup = function(name)
-	vim.api.nvim_create_augroup(name, { clear = true })
+	api.nvim_create_augroup(name, { clear = true })
 end
 
 -- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -23,7 +26,8 @@ local read_file_on_change_group = autogroup("read_file_on_change")
 local lsp_node = autogroup("LspNodeModules")
 
 autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
-autocmd({"BufWinEnter"}, { "*" }, { command = "startinsert" })
+
+autocmd({ "TermOpen" }, { "*" }, { command = "startinsert | set winfixheight" })
 
 -- autocmd({ "BufNewFile", "BufRead" }, { "*.ts" }, {
 -- 	callback = function()
@@ -32,8 +36,20 @@ autocmd({"BufWinEnter"}, { "*" }, { command = "startinsert" })
 -- 		end)
 -- 	end,
 -- })
+--
+-- restore cursor position when opening file
+autocmd({ "BufReadPost" }, { "*" }, {
+	callback = function()
+		if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
+			fn.setpos(".", fn.getpos("'\""))
+			api.nvim_feedkeys("zz", "n", true)
+		end
+	end,
+})
 
 autocmd({ "BufNewFile", "BufRead" }, { "Fastfile", "Podfile" }, { command = "setl filetype=ruby" })
+
+autocmd({ "Filetype" }, { "json" }, { command = "setl filetype=jsonc" })
 
 autocmd({ "BufRead" }, { "*.yaml" }, { command = "set sw=2 sts=2 expandtab" })
 
