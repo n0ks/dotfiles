@@ -1,6 +1,6 @@
 require("catppuccin").setup({
 	term_colors = true,
-	transparent_background = true,
+	-- transparent_background = true,
 	integrations = {
 		gitsigns = true,
 		telescope = true,
@@ -20,11 +20,16 @@ require("rose-pine").setup({
 	disable_background = true,
 })
 
-vim.cmd("colorscheme kanagawa")
+vim.g.nightflyTransparent = 1
+vim.g.nightflyWinSeparator = 2
+-- vim.cmd("colorscheme kanagawa")
+-- vim.cmd("colorscheme nightfly")
 -- vim.cmd("colorscheme catppuccin")
 
+vim.cmd("colorscheme nightfox")
+
+  -- highlight Normal guibg=none
+  -- highlight NonText guibg=none
 vim.cmd([[
-  highlight Normal guibg=none
-  highlight NonText guibg=none
   set laststatus=3
 ]])
