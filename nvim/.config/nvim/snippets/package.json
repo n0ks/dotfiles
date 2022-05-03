@@ -6,6 +6,13 @@
   "contributes": {
     "snippets": [
       {
+        "language": [
+          "javascript",
+          "typescript"
+        ],
+        "path": "./snippets/jest.json"
+      },
+      {
         "language": "flutter",
         "path": "./snippets/frameworks/flutter.json"
       },
