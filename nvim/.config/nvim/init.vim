@@ -1,21 +1,58 @@
 call plug#begin('~/.vim/plugged')
+" Debugging
+Plug 'mfussenegger/nvim-dap'
+Plug 'rcarriga/nvim-dap-ui'
+Plug 'theHamsta/nvim-dap-virtual-text'
+
+" Completion / snippets / lsp things
+Plug 'L3MON4D3/LuaSnip'
+Plug 'akinsho/flutter-tools.nvim'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind.nvim'
+Plug 'rafamadriz/friendly-snippets'
+Plug 'ray-x/go.nvim'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'tami5/lspsaga.nvim'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'jose-elias-alvarez/null-ls.nvim'
+Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
+
+" Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+" Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
+" Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+
+" Themes
+Plug 'EdenEast/nightfox.nvim'
+Plug 'catppuccin/nvim'
+Plug 'rose-pine/neovim'
+Plug 'bluz71/vim-nightfly-guicolors'
+Plug 'rebelot/kanagawa.nvim'
+
+" Telescope 
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-media-files.nvim'
+Plug 'nvim-telescope/telescope-symbols.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+" Tools & etc
+" Plug 'github/copilot.vim'
 Plug 'LudoPinelli/comment-box.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
-Plug 'akinsho/flutter-tools.nvim'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'b0o/schemastore.nvim'
-Plug 'bluz71/vim-nightfly-guicolors'
-Plug 'catppuccin/nvim'
 Plug 'danymat/neogen'
 Plug 'dstein64/vim-startuptime'
-" Plug 'github/copilot.vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'jbyuki/venn.nvim'
-Plug 'windwp/nvim-autopairs'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'jose-elias-alvarez/null-ls.nvim'
-Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
 Plug 'kwkarlwang/bufresize.nvim'
@@ -25,28 +62,15 @@ Plug 'lambdalisue/fern.vim'
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lewis6991/gitsigns.nvim', {'tag': 'release'}
 Plug 'lewis6991/impatient.nvim'
-Plug 'mfussenegger/nvim-dap'
-Plug 'theHamsta/nvim-dap-virtual-text'
-Plug 'Pocco81/dap-buddy.nvim'
 Plug 'mg979/vim-visual-multi'
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'neovim/nvim-lsp'
-Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'nvim-telescope/telescope-media-files.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
-Plug 'rcarriga/nvim-dap-ui'
-Plug 'rose-pine/neovim'
+Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'sindrets/diffview.nvim'
-Plug 'tami5/lspsaga.nvim'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
@@ -55,27 +79,8 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'nvim-telescope/telescope-symbols.nvim'
-Plug 'ray-x/go.nvim'
-Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
-Plug 'rebelot/kanagawa.nvim'
-Plug 'arkav/lualine-lsp-progress'
+Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
-
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'hrsh7th/cmp-path'
-Plug 'onsails/lspkind.nvim'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
-
-
-Plug 'EdenEast/nightfox.nvim'
 call plug#end()
 
 
