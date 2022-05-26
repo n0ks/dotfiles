@@ -53,15 +53,14 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", "!", "!<c-g>u")
 map("i", "?", "?<c-g>u")
-
 map("v", "<leader>p", "_dP")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- " faster macros
-map("n", "@", ":execute 'noautocmd norm! ' . v:count1 . '@'. getcharstr()<cr>")
-map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
-
+-- map("n", "@", ":execute 'noautocmd norm! ' . v:count1 . '@'. getcharstr()<cr>")
+-- map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
+--
 -- +----------------------------------------------------------+
 -- | WINDOWS & BUFFERS                                        |
 -- +----------------------------------------------------------+
@@ -146,6 +145,7 @@ map("n", "<leader>pp", ":Telescope projects<cr>")
 map("n", "<leader>sd", ":lua require('noks.configs.telescope').search_dotfiles()<CR>")
 map("n", "<leader>sw", ":lua require('noks.configs.telescope').search_wallpapers()<CR>")
 map("n", "<leader>ds", ":lua require('noks.configs.telescope').document_symbols()<CR>")
+map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
 map("n", "<leader>H", ":Telescope help_tags<CR>")
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")

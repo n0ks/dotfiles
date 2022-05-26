@@ -105,11 +105,12 @@
 
 [http]
   postBuffer = 1048576000
+	sslVerify = false
 
 [user]
   name = n0ks
   email = rodrigocmp29@gmail.com
 
-[includeIf "gitdir:~/Documents/code/st/"]
-  path = ~/.gitconfig-santander
+[includeIf "gitdir:~/code/safra/"]
+  path = ~/.gitconfig_safra
 

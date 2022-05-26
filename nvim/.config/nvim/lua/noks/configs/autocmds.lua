@@ -25,9 +25,22 @@ local highlight_yank_group = autogroup("highlight_yank")
 local read_file_on_change_group = autogroup("read_file_on_change")
 local lsp_node = autogroup("LspNodeModules")
 
+-- autocmd({ "CursorHold" }, { "" }, {
+-- 	callback = function()
+-- 		local opts = {
+-- 			focusable = false,
+-- 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+-- 			source = "always",
+-- 			scope = "cursor",
+-- 		}
+
+-- 		vim.diagnostic.open_float(nil, opts)
+-- 	end,
+-- })
+
 autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
 
-autocmd({ "TermOpen" }, { "*" }, { command = "startinsert | set winfixheight" })
+-- autocmd({ "TermOpen" }, { "*" }, { command = "startinsert | set winfixheight" })
 
 -- autocmd({ "BufNewFile", "BufRead" }, { "*.ts" }, {
 -- 	callback = function()

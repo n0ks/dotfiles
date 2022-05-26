@@ -15,7 +15,7 @@ autoload -U edit-command-line
 zle -N edit-command-line
 
 bindkey -M vicmd v edit-command-line
-bindkey -v
+# bindkey -v
 
 HISTSIZE=10000
 SAVEHIST=10000
@@ -49,6 +49,7 @@ export FVM_HOME=$HOME/fvm
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 # export JAVA_HOME=/usr/lib/java
 
+export HOMEBREW_NO_AUTO_UPDATE=1
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
 export PATH="$MAGICK_HOME/bin:$PATH"
 export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"  
