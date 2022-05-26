@@ -25,9 +25,9 @@ telescope.setup({
 				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 			},
 		},
-	},
-	path_display = {
-		truncate = 1,
+		path_display = {
+			truncate = 3
+		},
 	},
 	extensions = {
 		fzf = {
@@ -129,6 +129,8 @@ M.document_symbols = function()
 	}))
 end
 
-vim.cmd([[command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})]])
+vim.cmd(
+	[[command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})]]
+)
 
 return M

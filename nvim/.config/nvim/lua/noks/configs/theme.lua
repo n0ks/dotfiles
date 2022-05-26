@@ -20,16 +20,22 @@ require("rose-pine").setup({
 	disable_background = true,
 })
 
+require("nightfox").setup({
+	options = {
+		transparent = true,
+	},
+})
+
 vim.g.nightflyTransparent = 1
 vim.g.nightflyWinSeparator = 2
--- vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme nightfly")
 -- vim.cmd("colorscheme catppuccin")
-
+-- vim.cmd("colorscheme kanagawa")
 vim.cmd("colorscheme nightfox")
+-- vim.cmd("colorscheme rose-pine")
 
-  -- highlight Normal guibg=none
-  -- highlight NonText guibg=none
+-- highlight Normal guibg=none
+-- highlight NonText guibg=none
 vim.cmd([[
   set laststatus=3
 ]])

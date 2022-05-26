@@ -34,8 +34,9 @@ M.setup = function()
 			-- required to fix code action ranges and filter diagnostics
 			ts_utils.setup_client(client)
 
-			local opts = { silent = true }
-			vim.api.nvim_buf_set_keymap(bufnr, "n", "gs", ":TSLspOrganize<CR>", opts)
+			local opts = { silent = true, buffer = true }
+			vim.keymap.set("n", "gs", ":TSLspOrganize<CR>", opts)
+			vim.keymap.set("n", "<leader>im", ":TSLspImportAll<CR>", opts)
 
 			vim.cmd([[ command! ESfix AsyncRun -mode=term -focus=0 npm run lint:fix ]])
 		end,

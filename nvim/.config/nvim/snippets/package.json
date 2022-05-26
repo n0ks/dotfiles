@@ -13,6 +13,14 @@
         "path": "./snippets/jest.json"
       },
       {
+        "language": [
+          "typescriptreact",
+          "typescript",
+          "javascriptreact"
+        ],
+        "path": "./snippets/frameworks/react.json"
+      },
+      {
         "language": "flutter",
         "path": "./snippets/frameworks/flutter.json"
       },

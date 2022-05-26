@@ -1,5 +1,5 @@
 local M = {}
-local coq = require("coq")
+-- local coq = require("coq")
 
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
@@ -9,8 +9,8 @@ local signs = {
 }
 
 local config = {
-	virtual_text = true,
-	-- show signs
+	virtual_text = false,
+	-- show signs,
 	signs = {
 		active = signs,
 	},

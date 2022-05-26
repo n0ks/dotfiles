@@ -56,8 +56,8 @@ function getFZFPreviewer() (
     fi
 )
 
-ff() {
-    $EDITOR $(find * -type f | fzf --multi --reverse --preview "$(getFZFPreviewer)")
+sf() {
+    $EDITOR $(fd --type f | fzf --multi --reverse --preview "$(getFZFPreviewer)")
 }
 
 # ────────────────────────────────────────────────────────────

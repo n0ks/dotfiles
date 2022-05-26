@@ -34,6 +34,16 @@ M.setup = function()
 						dartSdkPath = paths.dart_sdk,
 						flutterSdkPath = paths.flutter_sdk,
 					},
+					{
+						type = "dart",
+						request = "attach",
+						name = "attach (DEV)",
+						program = "${workspaceFolder}/lib/main_development.dart",
+						cwd = "${workspaceFolder}",
+						args = { "--flavor", "development" },
+						dartSdkPath = paths.dart_sdk,
+						flutterSdkPath = paths.flutter_sdk,
+					},
 				}
 			end,
 		},

@@ -19,6 +19,7 @@ cmp.setup({
 		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
 	},
+	preselect = "none",
 	experimental = {
 		ghost_text = true,
 	},
@@ -54,8 +55,8 @@ cmp.setup({
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
 		{ name = "nvim_lua" },
+		{ name = "luasnip" },
 		{ name = "path" },
 		{ name = "buffer", keyword_length = 4 },
 	}),
