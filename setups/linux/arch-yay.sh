@@ -21,6 +21,7 @@ declare -a arch_packages=(
 	"htop"
 	"inotify-tools"
 	"jq"
+  "polybar"
 	"lsof"
 	"ninja"
 	"ripgrep"
