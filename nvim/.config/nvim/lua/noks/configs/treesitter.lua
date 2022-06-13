@@ -9,6 +9,7 @@ require("nvim-treesitter.configs").setup({
 		"gowork",
 		"html",
 		"javascript",
+    "tsx",
 		"lua",
 		"scss",
 		"typescript",
