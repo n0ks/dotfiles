@@ -13,10 +13,10 @@ require("nvim-treesitter.configs").setup({
 		"lua",
 		"scss",
 		"typescript",
-    "jsonc",
-    "ruby",
-    "vim",
-    "yaml",
+		"jsonc",
+		"ruby",
+		"vim",
+		"yaml",
 	},
 	sync_install = false,
 	playground = {
@@ -29,9 +29,8 @@ require("nvim-treesitter.configs").setup({
 	incremental_selection = { enable = true },
 	textobjects = { enable = true },
 	indent = { enable = false },
-	rainbow = {
+	context_commentstring = {
 		enable = true,
-		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
-		max_file_lines = nil, -- Do not enable for files with more than n lines, int
+		enable_autocmd = false,
 	},
 })

@@ -13,7 +13,6 @@ telescope.setup({
 		grep_previewer = previewers.vim_buffer_vimgrep.new,
 		qflist_previewer = previewers.vim_buffer_qflist.new,
 		layout_strategy = "flex",
-		winblend = 0,
 		mappings = {
 			i = {
 				["<C-x>"] = false,
@@ -26,7 +25,7 @@ telescope.setup({
 			},
 		},
 		path_display = {
-			truncate = 3
+			truncate = 3,
 		},
 	},
 	extensions = {
@@ -48,6 +47,9 @@ telescope.setup({
 			ignore_current_buffer = true,
 			previewer = false,
 			theme = "dropdown",
+			path_display = {
+				shorten = { len = 1, exclude = { 1, -1 } },
+			},
 			mappings = {
 				i = { ["<c-x>"] = "delete_buffer" },
 				n = { ["<c-x>"] = "delete_buffer" },

@@ -124,8 +124,7 @@ dap.configurations.go = {
 }
 
 require("dapui").setup({
-	sidebar = {
-		-- open_on_start = true,
+	layout = {
 		elements = {
 			-- Provide as ID strings or tables with "id" and "size" keys
 			{
@@ -136,7 +135,6 @@ require("dapui").setup({
 			{ id = "stacks", size = 0.25 },
 			{ id = "watches", size = 0.25 },
 		},
-		position = "left", -- Can be "left" or "right"
 	},
 	icons = { expanded = "▾", collapsed = "▸" },
 })

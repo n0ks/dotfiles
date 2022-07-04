@@ -40,6 +40,8 @@ local lsp_node = autogroup("LspNodeModules")
 
 autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
 
+-- autocmd({ "FileType" }, { "typescriptreact" }, { command = "set ft=typescript" })
+
 -- autocmd({ "TermOpen" }, { "*" }, { command = "startinsert | set winfixheight" })
 
 -- autocmd({ "BufNewFile", "BufRead" }, { "*.ts" }, {

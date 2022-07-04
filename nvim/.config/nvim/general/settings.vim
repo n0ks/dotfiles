@@ -94,6 +94,8 @@ let test#javascript#jest#options = "--color=always"
 let g:ultest_use_pty = 1
 let g:ultest_pass_sign = "👌"
 let g:ultest_fail_sign = "💩"
+let g:ultest_running_sign = '🚀'
+let g:ultest_deprecation_notice = 0
 
 let g:asyncrun_open = 8
 
