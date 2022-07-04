@@ -81,6 +81,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'vim-test/vim-test'
 Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+Plug 'numToStr/Comment.nvim'
 call plug#end()
 
 
