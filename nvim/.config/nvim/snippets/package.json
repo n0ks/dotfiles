@@ -8,17 +8,18 @@
       {
         "language": [
           "javascript",
-          "typescript",
           "javascriptreact",
+          "typescript",
           "typescriptreact"
         ],
         "path": "./snippets/jest.json"
       },
       {
         "language": [
-          "typescriptreact",
+          "javascript",
+          "javascriptreact",
           "typescript",
-          "javascriptreact"
+          "typescriptreact"
         ],
         "path": "./snippets/frameworks/react.json"
       },

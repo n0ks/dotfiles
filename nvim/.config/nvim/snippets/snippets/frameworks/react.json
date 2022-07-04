@@ -448,33 +448,6 @@
     ],
     "scope": "typescript,typescriptreact,javascript,javascriptreact"
   },
-  "describeBlock": {
-    "key": "describeBlock",
-    "prefix": "desc",
-    "body": [
-      "describe('${1:first}', () => { ${2:second} })"
-    ],
-    "description": "Testing `describe` block",
-    "scope": "typescript,typescriptreact,javascript,javascriptreact"
-  },
-  "itAsyncBlock": {
-    "key": "itAsyncBlock",
-    "prefix": "tita",
-    "body": [
-      "it('should ${1:first}', async () => { ${2:second} })"
-    ],
-    "description": "Testing asynchronous `it` block",
-    "scope": "typescript,typescriptreact,javascript,javascriptreact"
-  },
-  "itBlock": {
-    "key": "itBlock",
-    "prefix": "tit",
-    "body": [
-      "it('should ${1:first}', () => { ${2:second} })"
-    ],
-    "description": "Testing `it` block",
-    "scope": "typescript,typescriptreact,javascript,javascriptreact"
-  },
   "setupReactComponentTestWithRedux": {
     "key": "setupReactComponentTestWithRedux",
     "prefix": "srtest",
@@ -659,5 +632,5 @@
     ],
     "description": "Creates and returns a new Promise in the standard ES7 syntax",
     "scope": "typescript,typescriptreact,javascript,javascriptreact"
-  },
+  }
 }
