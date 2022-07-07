@@ -6,6 +6,8 @@
 # Keep-alive: update existing `sudo` time stamp until `setup.sh` has finished
 # while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+source ../shared.sh
+
 echo "Hello $(whoami)! Let's get you set up."
 
 echo "Shell installation script for n0ks dotfiles";
@@ -25,36 +27,6 @@ installSoftware() {
 
 }
 
-cloneRepos() {
-  echo "mkdir -p ${HOME}/code"
-  mkdir -p "${HOME}/code"
-
-  echo "[INFO] cloning repos"
-  git clone https://github.com/alacritty/alacritty.git "${HOME}/code"
-  git clone https://github.com/neovim/neovim.git "${HOME}/code"
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
-
-}
-
-dotfilesStow (){
- pushd ~/.dotfiles; chmod +x install.sh; source ./install.sh; popd
- echo `pwd`
-}
-
-asdfSetup() {
-  source ~/.zshrc
-
-	# Install useful plugins 
-	echo "[INFO] Installing asdf plugins...";
-	source $HOME/.asdf/asdf.sh;
-
-  asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
-  asdf plugin-add java https://github.com/halcyon/asdf-java.git
-  asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git;
-  asdf plugin-add python
-
-}
-
 macSettings() {
   osascript -e 'tell application "System Preferences" to quit'
   source ./macos-settings
@@ -64,11 +36,11 @@ macSettings() {
 # settings we’re about to change
 
 setup(){
-    installSoftware;
-    cloneRepos;
-    dotfilesStow;
-    installAsdf;
-    macSettings
+    cloneRepos
+    installSoftware
+    dotfilesStow
+    asdfSetup
+    neovimSetup
 }
 
 read -p "Setup is about to start. Do you want to continue? (y/n) " -n 1;
