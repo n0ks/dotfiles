@@ -6,7 +6,6 @@ require("nvim-lsp-installer").setup({
 		"yamlls",
 		"vimls",
 		"sqlls",
-		"marksman",
 		"jsonls",
 		"html",
 	},

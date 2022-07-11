@@ -8,13 +8,13 @@ env:
   TERM: xterm-256color
 font:
   bold:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMonoNL Nerd Font
     style: Bold
   italic:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMonoNL Nerd Font
     style: Italic
   normal:
-    family: JetBrainsMono Nerd Font Mono
+    family: JetBrainsMonoNL Nerd Font
     style: Regular
   # offset:
   #   x: 1 
@@ -255,7 +255,7 @@ key_bindings:
 scrolling:
   history: 10000
 window:
-  opacity: 0.9
+  opacity: 1
   decorations: None
   # transparent_background_colors: true
   # decorations: buttonless
@@ -441,4 +441,4 @@ macchiato: &macchiato # Default colors
     - { index: 16, color: "#F5A97F" }
     - { index: 17, color: "#F4DBD6" }
 
-colors: *macchiato
+colors: *kana
