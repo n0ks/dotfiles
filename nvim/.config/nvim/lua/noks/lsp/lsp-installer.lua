@@ -8,6 +8,7 @@ require("nvim-lsp-installer").setup({
 		"sqlls",
 		"jsonls",
 		"html",
+    "sumneko_lua"
 	},
-	automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+	automatic_installation = false, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
 })
