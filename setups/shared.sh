@@ -9,7 +9,6 @@ set +o allexport
 declare -a npm_packages=(
   "vscode-langservers-extracted"
   "typescript-language-server"
-  "yaml-language-server"
   "diagnostic-languageserver"
   "eslint_d"
   "prettier"
@@ -34,13 +33,6 @@ neovimSetup() {
   sudo make install
   popd
 
-  pushd ~/code/lua-language-server
-  git submodule update --init --recursive
-  cd 3rd/luamake
-  ./compile/install.sh
-  cd ../../
-  ./3rd/luamake/luamake rebuild
-  popd
 
   if command -v pip3 2>/dev/null; then
     pip3 install neovim python-language-server pylint pynvim
@@ -95,7 +87,6 @@ cloneRepos() {
   git clone https://github.com/neovim/neovim.git ~/code/neovim
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  git clone https://github.com/sumneko/lua-language-server ~/code/lua-language-server
 }
 
 dotfilesStow() {
