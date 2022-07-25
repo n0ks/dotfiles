@@ -1,4 +1,4 @@
-local sumneko_lua_server = require("noks.lsp.servers.sumneko")
+local sumneko_lua = require("noks.lsp.servers.sumneko")
 local tsserver = require("noks.lsp.servers.tsserver")
 local null_ls = require("noks.lsp.servers.null_ls")
 local flutter = require("noks.lsp.servers.flutter")
@@ -13,23 +13,22 @@ local jsonls_settings = require("noks.lsp.servers.jsonls")
 local M = {}
 
 M.setup = function()
-	sumneko_lua_server.setup()
-	tsserver.setup()
-	null_ls.setup()
-	flutter.setup()
-
-	local server_args = { jsonls = jsonls_settings, pyright = pyright_settings }
+	local server_args =
+		{ jsonls = jsonls_settings, pyright = pyright_settings, sumneko_lua = sumneko_lua.config }
 
 	local servers = lsp_install.get_installed_servers()
 
 	for _, server in ipairs(servers) do
 		local args = server_args[server.name] or {}
-
 		args.on_attach = on_attach
 		args.capabilities = capabilities
 
 		lsp_config[server.name].setup(args)
 	end
+
+	tsserver.setup()
+	null_ls.setup()
+	flutter.setup()
 end
 
 return M
