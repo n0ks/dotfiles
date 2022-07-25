@@ -33,7 +33,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'EdenEast/nightfox.nvim'
 Plug 'catppuccin/nvim'
 Plug 'rose-pine/neovim'
-Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'rebelot/kanagawa.nvim'
 
 " Telescope 
@@ -58,7 +57,7 @@ Plug 'kevinhwang91/nvim-bqf'
 Plug 'kwkarlwang/bufresize.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern.vim', {'branch': 'main'}
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lewis6991/gitsigns.nvim', {'tag': 'release'}
 Plug 'lewis6991/impatient.nvim'
