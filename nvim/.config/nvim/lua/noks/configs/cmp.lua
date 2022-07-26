@@ -55,19 +55,19 @@ cmp.setup({
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
+		{ name = "nvim_lua", max_item_count = 6 },
 		{ name = "luasnip" },
+		{ name = "buffer", max_item_count = 6 },
 		{ name = "path" },
-		{ name = "buffer", keyword_length = 4 },
 	}),
 	formatting = {
 		format = require("lspkind").cmp_format({
 			with_text = true,
 			menu = {
-				buffer = "[Buffer]",
-				nvim_lsp = "[LSP]",
-				nvim_lua = "[LSP]",
 				luasnip = "[LuaSnip]",
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[NVim Lua]",
+				buffer = "[Buffer]",
 				path = "[Path]",
 			},
 		}),

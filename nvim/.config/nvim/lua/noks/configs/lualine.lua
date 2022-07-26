@@ -6,16 +6,26 @@ require("lualine").setup({
 		component_separators = " | ",
 		icons_enabled = 1,
 	},
+	tabline = {
+		lualine_a = {},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = { "tabs" },
+	},
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "b:gitsigns_status" },
-		lualine_c = {'filename'},
+		lualine_c = { "filename" },
 		lualine_x = {
-			{ 'diagnostics', sources = {"nvim_diagnostic"}, symbols = {error = ' ', warn = ' ', info = ' ', hint = ' '} },
-			'encoding',
-			'filetype'
+			{
+				"diagnostics",
+				sources = { "nvim_diagnostic" },
+				symbols = { error = " ", warn = " ", info = " ", hint = " " },
+			},
+			"encoding",
+			"filetype",
 		},
-
 	},
 })
 

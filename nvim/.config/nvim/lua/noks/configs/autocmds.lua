@@ -8,7 +8,7 @@ local api = vim.api
 local autocmd = function(ftable, pattern, action, group)
 	api.nvim_create_autocmd(ftable, {
 		group = group,
-		pattern = pattern,
+		pattern = pattern or { "*" },
 		command = action.command or nil,
 		callback = action.callback or nil,
 	})
@@ -38,7 +38,16 @@ local lsp_node = autogroup("LspNodeModules")
 -- 	end,
 -- })
 
+-- don't auto comment new line
+autocmd({ "BufEnter" }, nil, { command = [[set formatoptions-=cro]] })
+
 autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
+
+autocmd(
+	"FileType",
+	{ "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
+	{ command = [[nnoremap <buffer><silent> q :close<CR>]] }
+)
 
 -- autocmd({ "FileType" }, { "typescriptreact" }, { command = "set ft=typescript" })
 
