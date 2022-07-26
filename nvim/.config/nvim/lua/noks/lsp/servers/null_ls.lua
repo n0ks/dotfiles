@@ -1,19 +1,19 @@
 local M = {}
 
-local null_ls = require("null-ls")
+local nls = require("null-ls")
 
 M.setup = function()
-	null_ls.setup({
+	nls.setup({
 		sources = {
-			-- null_ls.builtins.diagnostics.eslint_d,
-			-- null_ls.builtins.code_actions.eslint_d,
-			-- null_ls.builtins.formatting.eslint_d,
-			null_ls.builtins.diagnostics.shellcheck,
-			null_ls.builtins.code_actions.shellcheck,
-			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.formatting.shfmt,
-			null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
-			null_ls.builtins.formatting.prettier.with({
+		-- nls.builtins.diagnostics.eslint_d,
+			-- nls.builtins.code_actions.eslint_d,
+			-- nls.builtins.formatting.eslint_d,
+			nls.builtins.diagnostics.shellcheck,
+			nls.builtins.code_actions.shellcheck,
+			nls.builtins.formatting.stylua,
+			nls.builtins.formatting.shfmt,
+			nls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
+			nls.builtins.formatting.prettier.with({
 				filetypes = {
 					"javascript",
 					"javascriptreact",
@@ -29,7 +29,6 @@ M.setup = function()
 					"markdown",
 					"graphql",
 				},
-				-- extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
 			}),
 		},
 	})
