@@ -41,6 +41,7 @@ declare -a arch_packages=(
   "trash-cli"
   "zathura"
   "zathura-pdf-poppler"
+  "starship"
 )
 
 main() {
