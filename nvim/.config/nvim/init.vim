@@ -83,6 +83,7 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'numToStr/Comment.nvim'
 Plug 'ziontee113/icon-picker.nvim'
+Plug 'stevearc/dressing.nvim'
 call plug#end()
 
 

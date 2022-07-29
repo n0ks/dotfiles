@@ -61,6 +61,11 @@ map("v", ">", ">gv")
 -- map("n", "@", ":execute 'noautocmd norm! ' . v:count1 . '@'. getcharstr()<cr>")
 -- map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
 --
+
+map("n", "<Leader><Leader>i", "<cmd>IconPickerNormal alt_font symbols nerd_font emoji<cr>") 
+map("n", "<Leader><Leader>y", "<cmd>IconPickerYank alt_font symbols nerd_font emoji<cr>") --> Yank the selected icon into register
+map("i", "<C-i>", "<cmd>IconPickerInsert emoji<cr>") 
+
 -- +----------------------------------------------------------+
 -- | WINDOWS & BUFFERS                                        |
 -- +----------------------------------------------------------+
