@@ -1,29 +1,29 @@
 require("catppuccin").setup({
-	term_colors = true,
-	-- transparent_background = true,
-	integrations = {
-		gitsigns = true,
-		telescope = true,
-		fern = true,
-	},
+  term_colors = true,
+  -- transparent_background = true,
+  integrations = {
+    gitsigns = true,
+    telescope = true,
+    fern = true,
+  },
 })
 
 require("kanagawa").setup({
-	transparent = true,
-	dimInactive = false,
-	globalStatus = true,
+  transparent = true,
+  dimInactive = false,
+  globalStatus = true,
 })
 
 require("rose-pine").setup({
-	---@usage 'main'|'moon'
-	dark_variant = "moon",
-	disable_background = true,
+  ---@usage 'main'|'moon'
+  dark_variant = "main",
+  disable_background = true,
 })
 
 require("nightfox").setup({
-	options = {
-		transparent = true,
-	},
+  options = {
+    transparent = true,
+  },
 })
 
 -- vim.cmd("colorscheme catppuccin")
@@ -31,8 +31,8 @@ require("nightfox").setup({
 -- vim.cmd("colorscheme nightfox")
 vim.cmd("colorscheme rose-pine")
 
--- highlight Normal guibg=none
--- highlight NonText guibg=none
 vim.cmd([[
   set laststatus=3
+  highlight Normal guibg=none
+  highlight NonText guibg=none
 ]])

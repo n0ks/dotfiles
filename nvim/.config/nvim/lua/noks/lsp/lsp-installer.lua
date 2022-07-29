@@ -2,7 +2,6 @@ require("nvim-lsp-installer").setup({
 	ensure_installed = {
 		"bashls",
 		"cssls",
-		"emmet_ls",
 		"yamlls",
 		"vimls",
 		"sqlls",

@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-  auto_install = true,
+	auto_install = true,
 	ensure_installed = {
 		"bash",
 		"css",
@@ -10,7 +10,7 @@ require("nvim-treesitter.configs").setup({
 		"gowork",
 		"html",
 		"javascript",
-    "tsx",
+		"tsx",
 		"lua",
 		"scss",
 		"typescript",
@@ -29,7 +29,8 @@ require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
 	textobjects = { enable = true },
-	indent = { enable = false },
+	indent = { enable = true },
+	autopairs = { enable = true },
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
