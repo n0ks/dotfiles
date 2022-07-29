@@ -15,6 +15,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
+Plug 'SmiteshP/nvim-navic'
 Plug 'onsails/lspkind.nvim'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'ray-x/go.nvim'
@@ -70,7 +71,6 @@ Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'sindrets/diffview.nvim'
 Plug 'skywind3000/asyncrun.vim'
-Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
@@ -82,6 +82,7 @@ Plug 'windwp/nvim-autopairs'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'numToStr/Comment.nvim'
+Plug 'ziontee113/icon-picker.nvim'
 call plug#end()
 
 

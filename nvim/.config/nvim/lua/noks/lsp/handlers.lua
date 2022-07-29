@@ -1,3 +1,4 @@
+
 local M = {}
 -- local coq = require("coq")
 
@@ -27,6 +28,8 @@ local config = {
 		prefix = "",
 	},
 }
+
+vim.g.navic_silence = true
 
 for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
@@ -58,9 +61,13 @@ vim.lsp.handlers["textDocument/definition"] = function(_, result)
 end
 
 M.on_attach = function(client, bufnr)
+
 	if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "html" then
 		client.server_capabilities.document_formatting = false
 	end
+
+  require("nvim-navic").attach(client,bufnr)
+
 end
 
 return M
