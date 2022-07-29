@@ -1,3 +1,6 @@
+local navic = require("nvim-navic")
+local _,p = pcall(require,"rose-pine.palette")
+
 require("lualine").setup({
 	extensions = { "quickfix", "fugitive" },
 	options = {
@@ -5,18 +8,16 @@ require("lualine").setup({
 		section_separators = "",
 		component_separators = " | ",
 		icons_enabled = 1,
+		globalstatus = false,
 	},
-	tabline = {
-		lualine_a = {},
-		lualine_c = {},
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = { "tabs" },
+	tabline = { lualine_a = { { "filename", color = { bg = p.base, fg = p.rose } } } },
+	winbar = {
+		lualine_a = { { navic.get_location, cond = navic.is_available or false, color = p.base } },
 	},
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "b:gitsigns_status" },
-		lualine_c = { "filename" },
+		lualine_c = {},
 		lualine_x = {
 			{
 				"diagnostics",
