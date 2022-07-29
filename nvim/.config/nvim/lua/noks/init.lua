@@ -22,6 +22,8 @@ require("noks.configs.venn")
 require("noks.globals")
 require("noks.configs.autopairs")
 require("noks.configs.comment")
-require("noks.configs.neotest")
---require("diffview").setup({})
+require("noks.configs.dressing")
+require("icon-picker").setup({
+	disable_legacy_commands = true,
+})
 
