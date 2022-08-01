@@ -1,5 +1,6 @@
 local map = require("noks.configs.utils").map
 
+
 -- +----------------------------------------------------------+
 -- | GENERAL                                                  |
 -- +----------------------------------------------------------+
@@ -26,6 +27,7 @@ map("x", "<leader>bs", ":!boxes -d stone")
 map("n", "<leader>sr", "*:%s///gI<left><left><left>")
 -- " Replace word under cursor in line (case-sensitive)
 map("n", "<leader>sl", "*:s///gI<left><left><left>")
+
 
 map("n", "Y", "y$")
 map("n", "J", "mzJ`z")
@@ -175,11 +177,13 @@ map("n", "<leader>uc", ":UltestClear<cr>")
 map("n", "]t", "<Plug>(ultest-next-fail)")
 map("n", "[t", "<Plug>(ultest-prev-fail)")
 
-map("n", "<leader>tf", ":TestFile<CR>")
-map("n", "<leader>tg", ":TestVisit<CR>")
-map("n", "<leader>tl", ":TestLast<CR>")
-map("n", "<leader>tn", ":TestNearest<CR>")
-map("n", "<leader>ts", ":TestSuite<CR>")
+map("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
+map("n", "<leader>to", ":lua require('neotest').output.open({ enter = true })<CR>")
+map("n", "<leader>tn", ":lua require('neotest').run.run()<CR>")
+map("n", "<leader>ts", ":lua require('neotest').summary.toggle()<CR>")
+
+-- map("n", "<leader>ts", ":TestSuite<CR>")
+-- map("n", "<leader>tl", ":TestLast<CR>")
 
 -- " ----------------------------------------------------------------------------
 -- " Git
@@ -197,7 +201,7 @@ map("n", "<leader>gm", ":G mergetool<CR>")
 map("n", "<leader>gqq", ":Gitsigns setqflist all<CR>")
 map("n", "<leader>gcl", ":0Gclog<CR>")
 map("n", "<leader>gcd", ":Gclog -- %<CR>")
-map("n", "leader>gl", ":diffget //3<CR>")
+map("n", "<leader>gl", ":diffget //3<CR>")
 map("n", "<leader>gh", ":diffget //2<CR>")
 
 -- " ----------------------------------------------------------------------------
@@ -216,3 +220,4 @@ map("n", "<leader>dw", ":lua require'dap.ui.widgets'.hover()<CR>")
 map("n", "<M-i>", ":lua require('dapui').eval()<CR>")
 map("n", "<M-\\>", ":lua require('dapui').toggle()<CR>")
 map("n", "<M-o>", ":lua require('dapui').float_element()<CR>")
+
