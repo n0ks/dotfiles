@@ -7,5 +7,25 @@
       "Map<String, dynamic> toJson() => _${1}ToJson(this);"
     ],
     "description": "Create Json serializable"
-  }
+  },
+
+  "Freezed dataclass": {
+    "prefix": "fdataclass",
+    "body": [
+      "class ${1:DataClass} with _\\$${1:DataClass}",
+      " ",
+      "const ${1:DataClass}._()",
+      "const factory ${1:DataClass}() = ${1:DataClass}"
+    ],
+    "description": "Create a freezed dataclass"
+  },
+
+  "Part file": {
+    "prefix": "pts",
+    "body": [
+      "part '${TM_FILENAME_BASE}.g.dart",
+    ],
+    "description": "Create .g part"
+  },
+
 }
