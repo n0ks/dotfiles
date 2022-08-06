@@ -68,6 +68,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
+Plug 'nvim-neotest/neotest'
+Plug 'haydenmeade/neotest-jest'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sindrets/diffview.nvim'
 Plug 'skywind3000/asyncrun.vim'

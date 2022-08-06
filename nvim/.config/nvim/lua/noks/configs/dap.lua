@@ -1,5 +1,4 @@
 local dap = require("dap")
--- local dap_install = require("dap-install")
 local inspect = require("noks.configs.inspect")
 require("nvim-dap-virtual-text").setup()
 
@@ -9,7 +8,7 @@ vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", nu
 
 dap.defaults.fallback.exception_breakpoints = { "raised" }
 
-dap.set_log_level("TRACE")
+dap.set_log_level("DEBUG")
 
 -- dap_install.config("chrome", {})
 -- dap_install.config("jsnode", {})

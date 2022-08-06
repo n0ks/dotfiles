@@ -1,8 +1,11 @@
 require("neotest").setup({
-	adapters = {
-		require("neotest-jest")({
-			jestCommand = "npm test --",
-			jestConfigFile = "jest.config.ts",
-		}),
-	},
+  icons = {
+    running = "",
+  },
+  adapters = {
+    require("neotest-jest")({
+      jestCommand = "npx jest --",
+      jestConfigFile = "jest.config.ts",
+    }),
+  },
 })
