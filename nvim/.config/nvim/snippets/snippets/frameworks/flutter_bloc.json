@@ -2,6 +2,7 @@
   "Bloc": {
     "prefix": "bloc",
     "body": [
+      "import 'package:flutter_bloc/flutter_bloc.dart';",
       "class ${1:Subject}Bloc extends Bloc<$1Event, $1State> {",
       "\t${1:Subject}Bloc() : super(${1:Subject}Initial()) {",
       "\t\ton<$1Event>((event, emit) {",
@@ -14,6 +15,7 @@
   "Cubit": {
     "prefix": "cubit",
     "body": [
+      "import 'package:flutter_bloc/flutter_bloc.dart';",
       "class ${1:Subject}Cubit extends Cubit<$1State> {",
       "\t${1:Subject}Cubit() : super(${1:Subject}Initial());",
       "}"

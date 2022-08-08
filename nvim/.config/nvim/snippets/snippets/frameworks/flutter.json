@@ -2,30 +2,34 @@
   "Json factory": {
     "prefix": "jss",
     "body": [
-      "factory ${1}.fromJson(Map<String, dynamic> json) => _${1}FromJson(json);",
+      "factory ${1}.fromJson(Map<String, dynamic> json) => _\\$${1}FromJson(json);",
       " ",
-      "Map<String, dynamic> toJson() => _${1}ToJson(this);"
+      "Map<String, dynamic> toJson() => _\\$${1}ToJson(this);"
     ],
     "description": "Create Json serializable"
   },
-
   "Freezed dataclass": {
     "prefix": "fdataclass",
     "body": [
-      "class ${1:DataClass} with _\\$${1:DataClass}",
+      "class ${1:DataClass} with _\\$${1:DataClass} { ",
       " ",
-      "const ${1:DataClass}._()",
-      "const factory ${1:DataClass}() = ${1:DataClass}"
+      "const factory ${1:DataClass}() = _${1:DataClass};",
+      "}"
     ],
     "description": "Create a freezed dataclass"
   },
-
   "Part file": {
     "prefix": "pts",
     "body": [
-      "part '${TM_FILENAME_BASE}.g.dart",
+      "part '${TM_FILENAME_BASE}.g.dart';"
     ],
     "description": "Create .g part"
   },
-
+  "Freezed Part file": {
+    "prefix": "fpts",
+    "body": [
+      "part '${TM_FILENAME_BASE}.freezed.dart';"
+    ],
+    "description": "Create .freezed part"
+  }
 }
