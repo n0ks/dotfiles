@@ -35,6 +35,7 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'catppuccin/nvim'
 Plug 'rose-pine/neovim'
 Plug 'rebelot/kanagawa.nvim'
+Plug 'maxmx03/solarized.nvim'
 
 " Telescope 
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -51,7 +52,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'b0o/schemastore.nvim'
 Plug 'danymat/neogen'
 Plug 'dstein64/vim-startuptime'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 Plug 'jbyuki/venn.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
@@ -67,9 +68,9 @@ Plug 'mzlogin/vim-markdown-toc'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lualine/lualine.nvim'
-Plug 'rcarriga/vim-ultest', { 'do': ':UpdateRemotePlugins' }
 Plug 'nvim-neotest/neotest'
 Plug 'haydenmeade/neotest-jest'
+Plug 'sidlatau/neotest-dart'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sindrets/diffview.nvim'
 Plug 'skywind3000/asyncrun.vim'

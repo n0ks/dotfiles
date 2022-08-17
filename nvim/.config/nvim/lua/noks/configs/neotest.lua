@@ -7,5 +7,8 @@ require("neotest").setup({
       jestCommand = "npx jest --",
       jestConfigFile = "jest.config.ts",
     }),
+    require('neotest-dart')({
+      command = 'flutter'
+    })
   },
 })
