@@ -9,6 +9,11 @@ require("neotest").setup({
     }),
     require('neotest-dart')({
       command = 'flutter'
+    }),
+    require('neotest-go')({
+      experimental = {
+        test_table = true
+      }
     })
   },
 })

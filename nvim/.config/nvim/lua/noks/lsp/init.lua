@@ -2,6 +2,7 @@ local sumneko_lua = require("noks.lsp.servers.sumneko")
 local tsserver = require("noks.lsp.servers.tsserver")
 local null_ls = require("noks.lsp.servers.null_ls")
 local flutter = require("noks.lsp.servers.flutter")
+local go = require("noks.lsp.servers.go")
 local lsp_install = require("nvim-lsp-installer")
 local lsp_config = require("lspconfig")
 local on_attach = require("noks.lsp.handlers").on_attach
@@ -29,6 +30,7 @@ M.setup = function()
 	tsserver.setup()
 	null_ls.setup()
 	flutter.setup()
+  go.setup()
 end
 
 return M

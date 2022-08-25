@@ -30,6 +30,10 @@
       {
         "language": "flutter_bloc",
         "path": "./snippets/frameworks/flutter_bloc.json"
+      },
+      {
+        "language": "go",
+        "path": "./snippets/gosnips.json"
       }
     ]
   }

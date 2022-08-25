@@ -64,9 +64,9 @@ map("v", ">", ">gv")
 -- map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
 --
 
-map("n", "<Leader><Leader>i", "<cmd>IconPickerNormal alt_font symbols nerd_font emoji<cr>") 
+map("n", "<Leader><Leader>i", "<cmd>IconPickerNormal alt_font symbols nerd_font emoji<cr>")
 map("n", "<Leader><Leader>y", "<cmd>IconPickerYank alt_font symbols nerd_font emoji<cr>") --> Yank the selected icon into register
-map("i", "<C-i>", "<cmd>IconPickerInsert emoji<cr>") 
+map("i", "<C-i>", "<cmd>IconPickerInsert emoji<cr>")
 
 -- +----------------------------------------------------------+
 -- | WINDOWS & BUFFERS                                        |
@@ -139,7 +139,7 @@ map("n", "gr", ":lua vim.lsp.buf.references()<CR>")
 map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
 map("n", "<leader>dle", ":lua vim.diagnostic.setloclist({severity=vim.diagnostic.severity.ERROR})<CR>")
 map("n", "<leader>dqq", ":lua vim.diagnostic.setqflist()<CR>")
-map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>")
+map("n", "<leader>f", ":lua vim.lsp.buf.formatting({async=true})<CR>")
 map("n", "<leader>lf", ":lua require('stylua-nvim').format_file()<CR>")
 map("n", "<leader>ss", ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
 -- ----------------------------------------------------------------------------
@@ -164,24 +164,16 @@ map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emo
 map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")
 
 -- ----------------------------------------------------------------------------
--- Ultest + Testing
+-- Testing
 -- ----------------------------------------------------------------------------
-
-map("n", "<leader>ut", ":Ultest<cr>")
-map("n", "<leader>us", ":UltestSummary<cr>")
-map("n", "<leader>ud", ":UltestDebugNearest<cr>")
-map("n", "<leader>uo", ":UltestOutput<cr>")
-map("n", "<leader>un", ":UltestNearest<cr>")
-map("n", "<leader>ul", ":UltestLast<cr>")
-map("n", "<leader>uc", ":UltestClear<cr>")
-map("n", "]t", "<Plug>(ultest-next-fail)")
-map("n", "[t", "<Plug>(ultest-prev-fail)")
 
 map("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
 map("n", "<leader>to", ":lua require('neotest').output.open({ enter = true })<CR>")
 map("n", "<leader>tn", ":lua require('neotest').run.run()<CR>")
 map("n", "<leader>ts", ":lua require('neotest').summary.toggle()<CR>")
 
+map("n", "[t", ":lua require('neotest').jump.prev({ status = 'failed' })<CR>")
+map("n", "]t", ":lua require('neotest').jump.next({ status = 'failed' })<CR>")
 -- map("n", "<leader>ts", ":TestSuite<CR>")
 -- map("n", "<leader>tl", ":TestLast<CR>")
 
@@ -220,4 +212,3 @@ map("n", "<leader>dw", ":lua require'dap.ui.widgets'.hover()<CR>")
 map("n", "<M-i>", ":lua require('dapui').eval()<CR>")
 map("n", "<M-\\>", ":lua require('dapui').toggle()<CR>")
 map("n", "<M-o>", ":lua require('dapui').float_element()<CR>")
-

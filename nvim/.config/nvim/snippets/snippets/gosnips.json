@@ -1,0 +1,16 @@
+{
+  "t Errorf": {
+    "prefix": "ter",
+    "body": "t.Errorf('', $1)",
+    "description": "Test Error"
+  },
+  "t Run": {
+    "prefix": "trun",
+    "body": [
+      " t.Run(\"$1\", func(t *testing.T) { ",
+      "\t$2",
+      "})"
+    ],
+    "description": "Test Error"
+  }
+}
