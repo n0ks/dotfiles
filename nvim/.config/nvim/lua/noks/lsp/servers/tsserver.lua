@@ -39,6 +39,8 @@ M.setup = function()
 			vim.keymap.set("n", "<leader>im", ":TSLspImportAll<CR>", opts)
 
 			vim.cmd([[ command! ESfix AsyncRun -mode=term -focus=0 npm run lint:fix ]])
+			vim.cmd([[ command! ToInterface AsyncRun -mode=term cat % | quicktype -o % --just-types
+      ]])
 		end,
 	})
 end
