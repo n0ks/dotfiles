@@ -1,6 +1,6 @@
-
 local M = {}
 -- local coq = require("coq")
+local navic = require("nvim-navic")
 
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
@@ -48,26 +48,28 @@ M.capabilities = cmp_capabilities
 
 -- Jump directly to the first available definition every time.
 vim.lsp.handlers["textDocument/definition"] = function(_, result)
-  if not result or vim.tbl_isempty(result) then
-    print "[LSP] Could not find definition"
-    return
-  end
+	if not result or vim.tbl_isempty(result) then
+		print("[LSP] Could not find definition")
+		return
+	end
 
-  if vim.tbl_islist(result) then
-    vim.lsp.util.jump_to_location(result[1], "utf-8")
-  else
-    vim.lsp.util.jump_to_location(result, "utf-8")
-  end
+	if vim.tbl_islist(result) then
+		vim.lsp.util.jump_to_location(result[1], "utf-8")
+	else
+		vim.lsp.util.jump_to_location(result, "utf-8")
+	end
 end
 
 M.on_attach = function(client, bufnr)
-
 	if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "html" then
 		client.server_capabilities.document_formatting = false
 	end
 
-  require("nvim-navic").attach(client,bufnr)
+	navic.setup({
+		highlight = true,
+	})
 
+	navic.attach(client, bufnr)
 end
 
 return M
