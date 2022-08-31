@@ -24,6 +24,7 @@ require("noks.configs.autopairs")
 require("noks.configs.comment")
 require("noks.configs.dressing")
 require("noks.configs.surround")
+require("noks.configs.octo")
 require("icon-picker").setup({
 	disable_legacy_commands = true,
 })

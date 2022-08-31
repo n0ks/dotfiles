@@ -26,7 +26,7 @@ Plug 'williamboman/nvim-lsp-installer'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
-
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 " Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 " Plug 'ms-jpq/coq.thirdparty', {'branch': '3p'}
 " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
@@ -36,7 +36,6 @@ Plug 'EdenEast/nightfox.nvim'
 Plug 'catppuccin/nvim'
 Plug 'rose-pine/neovim'
 Plug 'rebelot/kanagawa.nvim'
-Plug 'maxmx03/solarized.nvim'
 
 " Telescope 
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -46,6 +45,7 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " Tools & etc
 " Plug 'github/copilot.vim'
+Plug 'pwntester/octo.nvim'
 Plug 'LudoPinelli/comment-box.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'

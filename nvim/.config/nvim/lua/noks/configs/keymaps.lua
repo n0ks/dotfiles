@@ -195,6 +195,8 @@ map("n", "<leader>gcl", ":0Gclog<CR>")
 map("n", "<leader>gcd", ":Gclog -- %<CR>")
 map("n", "<leader>gl", ":diffget //3<CR>")
 map("n", "<leader>gh", ":diffget //2<CR>")
+map("n", "<leader>gp", ":Octo pr list<CR>")
+
 
 -- " ----------------------------------------------------------------------------
 -- " DAP
