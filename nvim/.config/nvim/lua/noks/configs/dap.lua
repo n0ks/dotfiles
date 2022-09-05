@@ -1,6 +1,17 @@
-local dap = require("dap")
 local inspect = require("noks.configs.inspect")
 require("nvim-dap-virtual-text").setup()
+
+local dap, dapui = require("dap"), require("dapui")
+
+dap.listeners.after.event_initialized["dapui_config"] = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+	dapui.close()
+end
 
 vim.fn.sign_define("DapBreakpoint", { text = "🟥", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "🟦", texthl = "", linehl = "", numhl = "" })
@@ -9,18 +20,6 @@ vim.fn.sign_define("DapStopped", { text = "⭐️", texthl = "", linehl = "", nu
 dap.defaults.fallback.exception_breakpoints = { "raised" }
 
 dap.set_log_level("DEBUG")
-
--- dap_install.config("chrome", {})
--- dap_install.config("jsnode", {})
-
--- dap.listeners.after["event_initialized"]["dapui"] = function()
--- 	require("dapui").open()
--- end
-
--- dap.listeners.after["event_terminated"]["dapui"] = function()
--- 	require("dapui").close()
--- 	vim.cmd("bd! \\[dap-repl]")
--- end
 
 vim.cmd([[au FileType dap-repl lua require('dap.ext.autocompl').attach()]])
 
@@ -48,6 +47,7 @@ dap.configurations.typescript = {
 	},
 }
 
+-- TODO: need to setup this right
 dap.adapters.node2 = {
 	type = "executable",
 	command = "node",
@@ -122,7 +122,7 @@ dap.configurations.go = {
 	},
 }
 
-require("dapui").setup({
+dapui.setup({
 	layout = {
 		elements = {
 			-- Provide as ID strings or tables with "id" and "size" keys
