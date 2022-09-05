@@ -27,8 +27,7 @@ require("catppuccin").setup({
 
 require("kanagawa").setup({
 	transparent = true,
-	dimInactive = false,
-	globalStatus = true,
+	dimInactive = false
 })
 
 require("rose-pine").setup({
@@ -42,7 +41,8 @@ require("nightfox").setup({
 	},
 })
 
-vim.cmd("colorscheme catppuccin")
+-- vim.cmd("colorscheme catppuccin")
+vim.cmd("colorscheme embark")
 -- vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme rose-pine")
 
