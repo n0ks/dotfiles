@@ -14,23 +14,33 @@ local jsonls_settings = require("noks.lsp.servers.jsonls")
 local M = {}
 
 M.setup = function()
-	local server_args =
-		{ jsonls = jsonls_settings, pyright = pyright_settings, sumneko_lua = sumneko_lua.config }
+	null_ls.setup()
+
+	local server_args = {
+		jsonls = jsonls_settings,
+		pyright = pyright_settings,
+		sumneko_lua = sumneko_lua.config,
+		tsserver = tsserver.config,
+	}
 
 	local servers = lsp_install.get_installed_servers()
 
 	for _, server in ipairs(servers) do
 		local args = server_args[server.name] or {}
-		args.on_attach = on_attach
-		args.capabilities = capabilities
+
+		if not args.on_attach then
+			args.on_attach = on_attach
+		end
+
+		if not args.capabilities then
+			args.capabilities = capabilities
+		end
 
 		lsp_config[server.name].setup(args)
 	end
 
-	tsserver.setup()
-	null_ls.setup()
 	flutter.setup()
-  go.setup()
+	go.setup()
 end
 
 return M
