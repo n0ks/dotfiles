@@ -8,7 +8,7 @@ local api = vim.api
 local autocmd = function(ftable, pattern, action, group)
 	api.nvim_create_autocmd(ftable, {
 		group = group,
-		pattern = pattern or { "*" },
+		pattern = pattern or nil,
 		command = action.command or nil,
 		callback = action.callback or nil,
 	})

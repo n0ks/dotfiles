@@ -23,6 +23,8 @@ Plug 'ray-x/guihua.lua'
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'tami5/lspsaga.nvim'
 Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 Plug 'jose-elias-alvarez/nvim-lsp-ts-utils'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
