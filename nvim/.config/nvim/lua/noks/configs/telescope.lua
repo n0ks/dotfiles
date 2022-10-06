@@ -130,6 +130,23 @@ M.document_symbols = function()
 	}))
 end
 
+M.live_grep_qflist = function()
+	local qflist = vim.fn.getqflist()
+	local filetable = {}
+	local hashlist = {}
+
+	for _, value in pairs(qflist) do
+		local name = vim.api.nvim_buf_get_name(value.bufnr)
+
+		if not hashlist[name] then
+			hashlist[name] = true
+			table.insert(filetable, name)
+		end
+	end
+
+	builtin.live_grep({ search_dirs = filetable })
+end
+
 vim.cmd(
 	[[command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})]]
 )
