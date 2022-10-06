@@ -45,6 +45,7 @@ export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/neovim/bin
 export FVM_HOME=$HOME/fvm
+export GOROOT=$HOME/.asdf/installs/golang/1.17.8/go
 # export JAVA_HOME=$(/usr/libexec/java_home -v11)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 # export JAVA_HOME=/usr/lib/java
