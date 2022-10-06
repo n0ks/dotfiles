@@ -77,7 +77,7 @@ let g:netrw_banner=0
 let g:term_buf = 0
 let g:NetrwIsOpen=0
 
-let g:fugitive_summary_format = "%s <%an>"
+let g:fugitive_summary_format = "%s <%an> - %ar"
 
 "projects
 let g:nvim_tree_update_cwd = 1
