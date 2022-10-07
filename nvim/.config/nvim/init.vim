@@ -52,7 +52,6 @@ Plug 'pwntester/octo.nvim'
 Plug 'LudoPinelli/comment-box.nvim'
 Plug 'ThePrimeagen/git-worktree.nvim'
 Plug 'ThePrimeagen/harpoon'
-Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'b0o/schemastore.nvim'
 Plug 'danymat/neogen'
 Plug 'dstein64/vim-startuptime'
@@ -94,11 +93,8 @@ Plug 'ziontee113/icon-picker.nvim'
 Plug 'stevearc/dressing.nvim'
 call plug#end()
 
-
-source $HOME/.config/nvim/general/settings.vim
+" source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/funfun.vim
 " source $HOME/.config/nvim/general/terminal_toggle.vim
 source $HOME/.config/nvim/plugin/fern.vim
-source $HOME/.config/nvim/plugin/quickfix.vim
-
 lua require('noks.init')

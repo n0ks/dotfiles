@@ -1,4 +1,5 @@
 require("impatient").enable_profile()
+require("noks.settings")
 require("noks.configs.keymaps")
 require("noks.configs.treesitter")
 require("noks.configs.utils")
@@ -28,4 +29,3 @@ require("noks.configs.octo")
 require("icon-picker").setup({
 	disable_legacy_commands = true,
 })
-

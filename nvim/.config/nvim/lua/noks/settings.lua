@@ -3,40 +3,28 @@ local o, opt, fn, g = vim.o, vim.opt, vim.fn, vim.g
 local indent = 2
 
 vim.cmd([[
-	filetype plugin indent on
-
-  let g:netrw_liststyle = 3
-  let g:netrw_browse_split = 2
-  let g:netrw_altv = 0
-  let g:netrw_winsize = 15
-  let g:netrw_banner=0
-  let g:term_buf = 0
-  let g:NetrwIsOpen=0
-
-  let g:fugitive_summary_format = "%s <%an> - %ar"
-
-  "projects
-  let g:nvim_tree_update_cwd = 1
-  let g:nvim_tree_respect_buf_cwd = 1
-
-  " markdown
-  let g:mkdp_auto_close = 0
-
+ filetype plugin indent on
   " vim-test
   let test#strategy = 'neovim'
   let test#neovim#term_position = "vert botright 70"
   let test#javascript#jest#options = "--color=always"
-
-  let g:ultest_use_pty = 1
-  let g:ultest_pass_sign = "👌"
-  let g:ultest_fail_sign = "💩"
-  let g:ultest_running_sign = '🚀'
-  let g:ultest_deprecation_notice = 0
-
-  let g:asyncrun_open = 8
 ]])
 
 g.mapleader = " "
+g.fugitive_summary_format = "%s <%an> - %ar"
+
+g.nvim_tree_update_cwd = 1
+g.nvim_tree_respect_buf_cwd = 1
+g.mkdp_auto_close = 0
+g.asyncrun_open = 8
+
+g.netrw_liststyle = 3
+g.netrw_browse_split = 2
+g.netrw_altv = 0
+g.netrw_winsize = 15
+g.netrw_banner = 0
+g.term_buf = 0
+g.NetrwIsOpen = 0
 
 opt.cmdheight = 0
 opt.backspace = { "eol", "start", "indent" }
@@ -47,6 +35,7 @@ opt.syntax = "enable"
 opt.undodir = "~/.vim/undodir"
 opt.undofile = true
 opt.pumheight = 15
+opt.listchars = { eol = " ", tab = "▸ ", trail = "·" }
 
 opt.autoindent = true
 opt.expandtab = true
@@ -55,22 +44,17 @@ opt.smartindent = true
 opt.softtabstop = indent
 opt.tabstop = indent
 
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
 opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*" }
 opt.wildmenu = true
 
------------------------------------------------------------------------------//
--- Cursor {{{1
------------------------------------------------------------------------------//
--- This is from the help docs, it enables mode shapes, "Cursor" highlight, and blinking
 opt.guicursor = {
-  [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]],
-  [[a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor]],
-  [[sm:block-blinkwait175-blinkoff150-blinkon175]],
+	[[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]],
 }
+
 opt.cursorline = false
 opt.laststatus = 3
 opt.lazyredraw = true
