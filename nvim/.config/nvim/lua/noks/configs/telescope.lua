@@ -95,11 +95,14 @@ M.search_wallpapers = function()
 
 				local selection = require("telescope.actions.state").get_selected_entry(bufnr)
 
-				local cmd = "feh --bg-fill " .. selection.cwd .. "/" .. selection.value
+				local cmd
 
-				if selection then
-					vim.fn.system(cmd)
+				if vim.fn.has("macunix") == 1 then
+					cmd = "m wallpaper " .. selection.cwd .. "/" .. selection.value
+				else
+					cmd = "feh --bg-fill " .. selection.cwd .. "/" .. selection.value
 				end
+				vim.fn.system(cmd)
 			end)
 			return true
 		end,
