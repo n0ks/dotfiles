@@ -1,5 +1,5 @@
 syntax on
-filetype plugin indent on
+" filetype plugin indent on
 set path+=**
 " Disable output, vcs, archive, rails, temp and backup files.
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
@@ -65,8 +65,6 @@ set showbreak=↳
 " END - Testing some settings
 "
 let mapleader=" "
-
-let g:cursorhold_updatetime = 100
 
 " netrw configs
 let g:netrw_liststyle = 3
