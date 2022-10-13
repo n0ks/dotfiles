@@ -1,8 +1,10 @@
 call plug#begin('~/.vim/plugged')
+
 " Debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'theHamsta/nvim-dap-virtual-text'
+Plug 'leoluz/nvim-dap-go'
 
 " Completion / snippets / lsp things
 Plug 'L3MON4D3/LuaSnip'
@@ -22,7 +24,6 @@ Plug 'ray-x/go.nvim'
 Plug 'ray-x/guihua.lua' 
 Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'tami5/lspsaga.nvim'
-Plug 'williamboman/nvim-lsp-installer'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'jose-elias-alvarez/null-ls.nvim'
@@ -91,10 +92,11 @@ Plug 'JoosepAlviste/nvim-ts-context-commentstring'
 Plug 'numToStr/Comment.nvim'
 Plug 'ziontee113/icon-picker.nvim'
 Plug 'stevearc/dressing.nvim'
+Plug 'nvim-tree/nvim-tree.lua'
 call plug#end()
 
 " source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/funfun.vim
 " source $HOME/.config/nvim/general/terminal_toggle.vim
-source $HOME/.config/nvim/plugin/fern.vim
+" source $HOME/.config/nvim/plugin/fern.vim
 lua require('noks.init')

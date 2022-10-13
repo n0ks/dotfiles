@@ -30,8 +30,8 @@ function! s:hijack_directory() abort
 endfunction
 
 
-noremap <silent> <Leader>vv :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
-noremap <silent> <Leader>vc :Fern %:h -drawer -reveal=% -toggle -width=30<CR><C-w>=
+" noremap <silent> <Leader>vv :Fern . -drawer -reveal=% -toggle -width=35<CR><C-w>=
+" noremap <silent> <Leader>vc :Fern %:h -drawer -reveal=% -toggle -width=30<CR><C-w>=
 
 
 function! FernInit() abort

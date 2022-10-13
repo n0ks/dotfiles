@@ -1,4 +1,7 @@
 local on_attach = require("noks.lsp.handlers").on_attach
+local map = require("noks.configs.utils").map
+
+local on_attach = require("noks.lsp.handlers").on_attach
 local M = {}
 
 M.setup = function()
@@ -16,11 +19,11 @@ M.setup = function()
 		verbose = false, -- output loginf in messages
 		lsp_cfg = false, -- true: use non-default gopls setup specified in go/lsp.lua
 		lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
-		lsp_on_attach = nil,
+		lsp_on_attach = on_attach,
 		lsp_codelens = true, -- set to false to disable codelens, true by default
 		lsp_keymaps = false, -- set to false to disable gopls/lsp keymap
 		lsp_diag_hdlr = true, -- hook lsp diag handler
-		lsp_diag_virtual_text = { space = 0, prefix = "" }, -- virtual text setup
+		lsp_diag_virtual_text = nil,
 		lsp_diag_signs = true,
 		lsp_diag_update_in_insert = true,
 		lsp_document_formatting = true,
@@ -32,7 +35,7 @@ M.setup = function()
 		dap_debug_gui = true, -- set to true to enable dap gui, highly recommended
 		dap_debug_vt = true, -- set to true to enable dap virtual text
 		build_tags = "", -- set default build tags
-		textobjects = true, -- enable default text jobects through treesittter-text-objects
+		textobjects = true, -- enable default text obects through treesittter-text-objects
 		test_runner = "go", -- richgo, go test, richgo, dlv, ginkgo
 		run_in_floaterm = false, -- set to true to run in float window.
 		-- float term recommended if you use richgo/ginkgo with terminal color
