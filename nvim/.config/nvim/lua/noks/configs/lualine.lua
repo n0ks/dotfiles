@@ -6,12 +6,17 @@ require("lualine").setup({
 	options = {
 		theme = "auto",
 		icons_enabled = 1,
-		globalstatus = false,
+		globalstatus = true,
 	},
 	tabline = {
-		lualine_a = { { "filename", color = { bg = palette.blue.base, fg = palette.fg0 } } },
+		lualine_a = {
+			{ "filename", color = { bg = palette.blue.base, fg = palette.fg0 } },
+		},
 		lualine_b = {
 			{ navic.get_location, cond = navic.is_available or false, color = { bg = palette.bg0, fg = palette.fg0 } },
+		},
+		lualine_x = {
+			{ "tabs" },
 		},
 	},
 	winbar = {},

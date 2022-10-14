@@ -1,7 +1,7 @@
+local capabilities = require("noks.lsp.handlers").capabilities
 local on_attach = require("noks.lsp.handlers").on_attach
 local map = require("noks.configs.utils").map
 
-local on_attach = require("noks.lsp.handlers").on_attach
 local M = {}
 
 M.setup = function()
@@ -17,20 +17,22 @@ M.setup = function()
 		comment_placeholder = "", -- comment_placeholder your cool placeholder e.g. ﳑ       
 		icons = { breakpoint = "🧘", currentpos = "🏃" },
 		verbose = false, -- output loginf in messages
-		lsp_cfg = false, -- true: use non-default gopls setup specified in go/lsp.lua
+		lsp_cfg = {
+			capabilities = capabilities,
+		},
 		lsp_gofumpt = false, -- true: set default gofmt in gopls format to gofumpt
 		lsp_on_attach = on_attach,
 		lsp_codelens = true, -- set to false to disable codelens, true by default
 		lsp_keymaps = false, -- set to false to disable gopls/lsp keymap
 		lsp_diag_hdlr = true, -- hook lsp diag handler
-		lsp_diag_virtual_text = nil,
+		lsp_diag_virtual_text = false,
 		lsp_diag_signs = true,
 		lsp_diag_update_in_insert = true,
 		lsp_document_formatting = true,
 		gopls_cmd = nil, -- if you need to specify gopls path and cmd, e.g {"/home/user/lsp/gopls", "-logfile","/var/log/gopls.log" }
 		gopls_remote_auto = true, -- add -remote=auto to gopls
 		dap_debug = false, -- set to false to disable dap
-		dap_debug_keymap = false, -- true: use keymap for debugger defined in go/dap.lua
+		dap_debug_keymap = false, -- true: use keymap for debugger defined in go/dap.luago
 		-- false: do not use keymap in go/dap.lua.  you must define your own.
 		dap_debug_gui = true, -- set to true to enable dap gui, highly recommended
 		dap_debug_vt = true, -- set to true to enable dap virtual text
@@ -38,7 +40,12 @@ M.setup = function()
 		textobjects = true, -- enable default text obects through treesittter-text-objects
 		test_runner = "go", -- richgo, go test, richgo, dlv, ginkgo
 		run_in_floaterm = false, -- set to true to run in float window.
-		-- float term recommended if you use richgo/ginkgo with terminal color
+		luasnip = true,
+		lsp_inlay_hints = {
+			enable = true,
+			only_current_line = true,
+			show_variable_name = true,
+		},
 	})
 end
 
