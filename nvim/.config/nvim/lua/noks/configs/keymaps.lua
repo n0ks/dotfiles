@@ -1,6 +1,5 @@
 local map = require("noks.configs.utils").map
 
-
 -- +----------------------------------------------------------+
 -- | GENERAL                                                  |
 -- +----------------------------------------------------------+
@@ -27,7 +26,6 @@ map("x", "<leader>bs", ":!boxes -d stone")
 map("n", "<leader>sr", "*:%s///gI<left><left><left>")
 -- " Replace word under cursor in line (case-sensitive)
 map("n", "<leader>sl", "*:s///gI<left><left><left>")
-
 
 map("n", "Y", "y$")
 map("n", "J", "mzJ`z")
@@ -62,11 +60,11 @@ map("v", ">", ">gv")
 -- " faster macros
 -- map("n", "@", ":execute 'noautocmd norm! ' . v:count1 . '@'. getcharstr()<cr>")
 -- map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
---
+--#region
 
 map("n", "<Leader><Leader>i", "<cmd>IconPickerNormal alt_font symbols nerd_font emoji<cr>")
-map("n", "<Leader><Leader>y", "<cmd>IconPickerYank alt_font symbols nerd_font emoji<cr>") --> Yank the selected icon into register
-map("i", "<C-i>", "<cmd>IconPickerInsert emoji<cr>")
+-- map("n", "<Leader><Leader>y", "<cmd>IconPickerYank alt_font symbols nerd_font emoji<cr>") --> Yank the selected icon into register
+-- map("i", "<C-i>", "<cmd>IconPickerInsert emoji<cr>")
 
 -- +----------------------------------------------------------+
 -- | WINDOWS & BUFFERS                                        |
@@ -87,6 +85,8 @@ map("n", "<leader>cA", ":w <bar> %bd <bar> e# <bar> bd# <CR>")
 map("n", "<leader>CC", ":call CleanNoNameEmptyBuffers()<CR>")
 map("n", "<Backspace>", "<C-^>")
 map("i", "<C-s>", "<ESC>:w<CR>")
+
+map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
 
 -- " ----------------------------------------------------------------------------
 -- " Harpoon
@@ -130,7 +130,7 @@ map("n", "[i", ":Lspsaga show_line_diagnostics<CR>")
 
 map("v", "<M-CR>", ":<C-U>Lspsaga range_code_action<CR>")
 
-map("n", "gD", ":lua vim.lsp.buf.declaration()<CR>")
+map("n", "gD", ":Lspsaga peek_definition<CR>")
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 map("n", "gdv", ":vs | lua vim.lsp.buf.definition()<CR>")
 map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
@@ -139,8 +139,7 @@ map("n", "gr", ":lua vim.lsp.buf.references()<CR>")
 map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
 map("n", "<leader>dle", ":lua vim.diagnostic.setloclist({severity=vim.diagnostic.severity.ERROR})<CR>")
 map("n", "<leader>dqq", ":lua vim.diagnostic.setqflist()<CR>")
-map("n", "<leader>f", ":lua vim.lsp.buf.formatting({async=true})<CR>")
-map("n", "<leader>lf", ":lua require('stylua-nvim').format_file()<CR>")
+map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>")
 map("n", "<leader>ss", ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
 -- ----------------------------------------------------------------------------
 -- TELESCOPE
@@ -197,7 +196,6 @@ map("n", "<leader>gcd", ":Gclog -- %<CR>")
 map("n", "<leader>gl", ":diffget //3<CR>")
 map("n", "<leader>gh", ":diffget //2<CR>")
 map("n", "<leader>gp", ":Octo pr list<CR>")
-
 
 -- " ----------------------------------------------------------------------------
 -- " DAP
