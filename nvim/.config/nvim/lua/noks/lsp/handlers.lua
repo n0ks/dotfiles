@@ -41,7 +41,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local cmp_capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 -- M.capabilities = coq.lsp_ensure_capabilities(capabilities)
 M.capabilities = cmp_capabilities
