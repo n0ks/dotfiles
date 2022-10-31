@@ -1,5 +1,4 @@
 local o, opt, fn, g = vim.o, vim.opt, vim.fn, vim.g
-
 local indent = 2
 
 vim.cmd([[
@@ -26,7 +25,8 @@ g.netrw_banner = 0
 g.term_buf = 0
 g.NetrwIsOpen = 0
 
-opt.cmdheight = 0
+opt.cmdheight = 1
+
 opt.backspace = { "eol", "start", "indent" }
 opt.clipboard = "unnamedplus"
 opt.encoding = "utf-8"
@@ -36,6 +36,7 @@ opt.undodir = "~/.vim/undodir"
 opt.undofile = true
 opt.pumheight = 15
 opt.listchars = { eol = " ", tab = "▸ ", trail = "·" }
+opt.background = "dark"
 
 opt.autoindent = true
 opt.expandtab = true
@@ -46,13 +47,15 @@ opt.tabstop = indent
 
 opt.hlsearch = true
 opt.incsearch = true
+opt.cursorline = true
+opt.inccommand = "nosplit"
 opt.ignorecase = true
 opt.smartcase = true
-opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*" }
+opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*", "*.swp", "*~", "._*" }
 opt.wildmenu = true
 
 opt.guicursor = {
-	[[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]],
+	[[n-v-c:block]],
 }
 
 opt.cursorline = false
@@ -74,9 +77,10 @@ opt.wrap = false
 opt.backup = false
 opt.swapfile = false
 opt.writebackup = false
-
+-- opt.regexpengine = 1
 opt.completeopt = { "menu", "menuone", "noselect" }
-opt.shortmess = opt.shortmess + { c = true }
+opt.shortmess:append("c")
+opt.shortmess:remove("F")
 
 opt.redrawtime = 1500
 opt.timeoutlen = 250
