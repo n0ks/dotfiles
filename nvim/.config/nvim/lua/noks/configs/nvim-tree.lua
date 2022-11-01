@@ -68,6 +68,9 @@ require("nvim-tree").setup({
 				folder_arrow = false,
 			},
 		},
+		indent_markers = {
+			enable = true,
+		},
 	},
 	update_focused_file = {
 		enable = true,
