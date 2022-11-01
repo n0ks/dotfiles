@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-
 " Debugging
 Plug 'mfussenegger/nvim-dap'
 Plug 'rcarriga/nvim-dap-ui'
@@ -40,6 +39,7 @@ Plug 'catppuccin/nvim'
 Plug 'rose-pine/neovim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 " Telescope 
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
