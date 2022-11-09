@@ -74,7 +74,6 @@ local M = {}
 M.search_dotfiles = function()
 	builtin.find_files({
 		prompt_title = "< DOTFILES >",
-		path_display = { "smart" },
 		cwd = "$HOME/.dotfiles",
 		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--hidden" },
 		previewer = false,
@@ -96,13 +95,26 @@ M.search_wallpapers = function()
 				local selection = require("telescope.actions.state").get_selected_entry(bufnr)
 
 				local cmd
+				local isMac = 1 == vim.fn.has("macunix")
+				local isLinux = 1 == vim.fn.has("linux")
+				local hasMacExecutable = 1 == vim.fn.executable("m")
+				local hasLinuxExecutable = 1 == vim.fn.executable("feh")
 
-				if vim.fn.has("macunix") == 1 then
+				if isMac and hasMacExecutable then
 					cmd = "m wallpaper " .. selection.cwd .. "/" .. selection.value
 				else
-					cmd = "feh --bg-fill " .. selection.cwd .. "/" .. selection.value
+					vim.notify_once("m-cli isn't installed", vim.log.levels.INFO)
 				end
-				vim.fn.system(cmd)
+
+				if hasLinuxExecutable then
+					cmd = "feh --bg-fill " .. selection.cwd .. "/" .. selection.value
+				else
+					vim.notify_once("feh isn't installed", vim.log.levels.INFO)
+				end
+
+				if cmd ~= nil then
+					vim.fn.system(cmd)
+				end
 			end)
 			return true
 		end,
