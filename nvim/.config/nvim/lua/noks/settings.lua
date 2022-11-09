@@ -7,6 +7,7 @@ vim.cmd([[
   let test#strategy = 'neovim'
   let test#neovim#term_position = "vert botright 70"
   let test#javascript#jest#options = "--color=always"
+  set t_Co=256 
 ]])
 
 g.mapleader = " "
@@ -32,7 +33,7 @@ opt.clipboard = "unnamedplus"
 opt.encoding = "utf-8"
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
-opt.undodir = "~/.vim/undodir"
+opt.undodir = vim.fn.stdpath("config") .. "/undo"
 opt.undofile = true
 opt.pumheight = 15
 opt.listchars = { eol = " ", tab = "▸ ", trail = "·" }
