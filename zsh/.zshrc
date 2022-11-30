@@ -67,6 +67,7 @@ export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --multi --no-mou
 --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 
 export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
+export FZF_CTRL_R_OPTS='--no-sort'
 export FZF_ALT_C_COMMAND="fd -t d . $HOME/code"
 export GLFW_IM_MODULE=ibus
 export SSH_KEY_PATH="~/.ssh/rsa_id"

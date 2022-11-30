@@ -2,10 +2,7 @@ local M = {}
 
 M.setup = function()
 	require("flutter-tools").setup({
-		-- fvm = true,
-		dev_log = {
-			open_cmd = "",
-		},
+		fvm = true,
 		debugger = {
 			enabled = true,
 			run_via_dap = true,

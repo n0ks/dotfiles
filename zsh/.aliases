@@ -44,3 +44,4 @@ alias remove="sudo pacman -R"
 alias autoremove="sudo pacman -Rns"
 
 alias vg="very_good"
+alias fl="flutter"
