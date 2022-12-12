@@ -9,6 +9,7 @@ map("n", ",T", "<Plug>PlenaryTestFile")
 map("n", ",0d", ":.,6d<CR>")
 map("n", ",sh", ":w !sh<CR>")
 map("n", ",rr", ":luafile %<CR>")
+map("n", "<Leader>rr", ":LspRestart <CR>")
 map("n", ";f", "v/{<CR>%V")
 -- exec last cmd
 map("n", ",cc", ":,@:<CR>")

@@ -26,7 +26,7 @@ require("catppuccin").setup({
 })
 
 require("kanagawa").setup({
-	transparent = true,
+	transparent = false,
 	dimInactive = false,
 })
 
@@ -44,7 +44,7 @@ require("nightfox").setup({
 require("tokyonight").setup({
 	style = "storm",
 	light_style = "day",
-	transparent = true,
+	transparent = false,
 	terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 	styles = {
 		comments = { italic = true },
@@ -61,6 +61,10 @@ require("tokyonight").setup({
 	dim_inactive = true, -- dims inactive windows
 	lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 })
+--Put this lines inside your vimrc to set the colorscheme
+require("nebulous").setup({
+	variant = "nova",
+})
 
 vim.cmd([[
   set laststatus=3
@@ -71,4 +75,5 @@ vim.cmd([[
 -- vim.cmd("colorscheme catppuccin")
 -- vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme rose-pine")
-vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme nebulous")

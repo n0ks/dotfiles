@@ -40,6 +40,7 @@ Plug 'rose-pine/neovim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'Yagua/nebulous.nvim'
 
 " Telescope 
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
