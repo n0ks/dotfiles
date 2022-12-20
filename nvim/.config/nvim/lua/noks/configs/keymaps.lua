@@ -14,8 +14,8 @@ map("n", ";f", "v/{<CR>%V")
 -- exec last cmd
 map("n", ",cc", ":,@:<CR>")
 
-map("n", ",p", "0p")
-map("n", ",P", "0P")
+map("n", ",p", '"0p')
+map("n", ",P", '"0P')
 
 map("n", "j", [[(v:count > 5 ? "m'" . v:count : "") . 'j']], { expr = true, desc = "if j > 5 then add to jumplist" })
 map("n", "k", [[(v:count > 5 ? "m'" . v:count : "") . 'k']], { expr = true, desc = "if k > 5 then add to jumplist" })
@@ -141,20 +141,21 @@ map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
 map("n", "<leader>dle", ":lua vim.diagnostic.setloclist({severity=vim.diagnostic.severity.ERROR})<CR>")
 map("n", "<leader>dqq", ":lua vim.diagnostic.setqflist()<CR>")
 map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>")
-map("n", "<leader>ss", ":lua require('telescope.builtin').lsp_document_symbols()<CR>")
 -- ----------------------------------------------------------------------------
 -- TELESCOPE
 -- ----------------------------------------------------------------------------
 
 map("n", "<leader>ps", ":Telescope find_files<cr>")
 map("n", "<leader>pl", ":Telescope live_grep<cr>")
-map("n", "<leader>ph", ":Telescope help_tags<cr>")
 map("n", "<leader>pp", ":Telescope projects<cr>")
 map("n", "<leader>sd", ":lua require('noks.configs.telescope').search_dotfiles()<CR>")
 map("n", "<leader>fq", ":lua require('noks.configs.telescope').live_grep_qflist()<CR>")
 map("n", "<leader>sw", ":lua require('noks.configs.telescope').search_wallpapers()<CR>")
 map("n", "<leader>ds", ":lua require('noks.configs.telescope').document_symbols()<CR>")
 map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
+
+map("n", "<leader>tg", ":Telescope grep_string<CR>")
+
 map("n", "<leader>H", ":Telescope help_tags<CR>")
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")
