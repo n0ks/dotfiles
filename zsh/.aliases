@@ -42,6 +42,7 @@ alias clr-cache="sudo pacman -Scc"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias remove="sudo pacman -R"
 alias autoremove="sudo pacman -Rns"
+alias update-keys="sudo pacman -Sy archlinux-keyring endeavouros-keyring"
 
 alias vg="very_good"
 alias fl="flutter"

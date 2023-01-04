@@ -44,7 +44,7 @@ require("nightfox").setup({
 require("tokyonight").setup({
 	style = "storm",
 	light_style = "day",
-	transparent = false,
+	transparent = true,
 	terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 	styles = {
 		comments = { italic = true },
@@ -76,4 +76,5 @@ vim.cmd([[
 -- vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme rose-pine")
 -- vim.cmd("colorscheme kanagawa")
-vim.cmd("colorscheme nebulous")
+vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme nebulous")

@@ -262,7 +262,7 @@ exec --no-startup-id numlockx on
 
 # start a script to setup displays
 exec --no-startup-id ~/.screenlayout/monitor.sh
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh --forest
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh --cuts
 
 # start blueberry app for managing bluetooth devices from tray:
 exec --no-startup-id blueberry-tray
