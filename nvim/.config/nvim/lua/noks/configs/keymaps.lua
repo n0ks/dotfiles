@@ -153,6 +153,7 @@ map("n", "<leader>fq", ":lua require('noks.configs.telescope').live_grep_qflist(
 map("n", "<leader>sw", ":lua require('noks.configs.telescope').search_wallpapers()<CR>")
 map("n", "<leader>ds", ":lua require('noks.configs.telescope').document_symbols()<CR>")
 map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
+map("n", "<leader>no", ":lua require('noks.configs.telescope').notifications()<CR>")
 
 map("n", "<leader>tg", ":Telescope grep_string<CR>")
 

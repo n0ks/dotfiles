@@ -93,7 +93,6 @@ M.search_wallpapers = function()
 				actions.close(bufnr)
 
 				local selection = require("telescope.actions.state").get_selected_entry(bufnr)
-
 				local cmd
 				local isMac = 1 == vim.fn.has("macunix")
 				local isLinux = 1 == vim.fn.has("linux")
@@ -160,6 +159,10 @@ M.live_grep_qflist = function()
 	end
 
 	builtin.live_grep({ search_dirs = filetable })
+end
+
+M.notifications = function()
+	telescope.extensions.notify.notify()
 end
 
 vim.cmd(

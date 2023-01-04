@@ -1,3 +1,4 @@
+require("neodev").setup()
 local sumneko_lua = require("noks.lsp.servers.sumneko")
 local tsserver = require("noks.lsp.servers.tsserver")
 local null_ls = require("noks.lsp.servers.null_ls")

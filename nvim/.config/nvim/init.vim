@@ -96,6 +96,7 @@ Plug 'ziontee113/icon-picker.nvim'
 Plug 'stevearc/dressing.nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'declancm/maximize.nvim'
+Plug 'rcarriga/nvim-notify'
 call plug#end()
 
 " source $HOME/.config/nvim/general/settings.vim

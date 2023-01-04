@@ -3,7 +3,6 @@ cursor:
   style:
     shape: Block
   unfocused_hollow: true
-draw_bold_text_with_bright_colors: false
 env:
   TERM: xterm-256color
 font:
@@ -260,7 +259,7 @@ scrolling:
   history: 10000
 window:
   opacity: 0.95
-  decorations: None
+  decorations: none
   # transparent_background_colors: true
   # decorations: buttonless
   dimensions:

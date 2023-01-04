@@ -1,6 +1,8 @@
 local o, opt, fn, g = vim.o, vim.opt, vim.fn, vim.g
 local indent = 2
 
+vim.notify = require('notify')
+
 vim.cmd([[
  filetype plugin indent on
   " vim-test
