@@ -76,5 +76,5 @@ vim.cmd([[
 -- vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme rose-pine")
 -- vim.cmd("colorscheme kanagawa")
-vim.cmd("colorscheme tokyonight")
 -- vim.cmd("colorscheme nebulous")
+vim.cmd("colorscheme tokyonight")

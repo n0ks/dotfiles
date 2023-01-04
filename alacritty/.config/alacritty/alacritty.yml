@@ -259,7 +259,7 @@ key_bindings:
 scrolling:
   history: 10000
 window:
-  opacity: 0.96
+  opacity: 0.95
   decorations: None
   # transparent_background_colors: true
   # decorations: buttonless
@@ -450,5 +450,9 @@ window:
     indexed_colors:
       - { index: 16, color: "#F5A97F" }
       - { index: 17, color: "#F4DBD6" }
+
+  indexed_colors:
+    - { index: 16, color: "#F5A97F" }
+    - { index: 17, color: "#F4DBD6" }
 
 colors: *nightfox
