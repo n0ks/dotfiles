@@ -41,6 +41,7 @@ M.setup = function()
 			if not args.capabilities then
 				args.capabilities = capabilities
 			end
+
 			args.flags = opts.flags
 
 			lsp_config[server_name].setup(args)
@@ -48,7 +49,6 @@ M.setup = function()
 	})
 
 	flutter.setup()
-	go.setup()
 end
 
 return M

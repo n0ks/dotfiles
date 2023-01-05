@@ -37,6 +37,7 @@ opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
 opt.undodir = vim.fn.stdpath("config") .. "/undo"
 opt.undofile = true
+-- opt.undofile = true
 opt.pumheight = 15
 opt.listchars = { eol = " ", tab = "▸ ", trail = "·" }
 opt.background = "dark"

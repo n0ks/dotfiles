@@ -6,35 +6,39 @@ M.setup = function()
 		debugger = {
 			enabled = true,
 			run_via_dap = true,
-			register_configurations = function(paths)
-				require("dap").configurations.dart = {
-					{
-						type = "dart",
-						request = "launch",
-						name = "Launch flutter (default)",
-						program = "${workspaceFolder}/lib/main.dart",
-						cwd = "${workspaceFolder}",
-					},
-					{
-						type = "dart",
-						request = "launch",
-						name = "Launch flutter (DEV)",
-						program = "${workspaceFolder}/lib/main_development.dart",
-						cwd = "${workspaceFolder}",
-						args = { "--flavor", "development" },
-					},
-					{
-						type = "dart",
-						request = "attach",
-						name = "attach (DEV)",
-						program = "${workspaceFolder}/lib/main_development.dart",
-						cwd = "${workspaceFolder}",
-						args = { "--flavor", "development" },
-					},
-				}
-			end,
+			-- valid only when run_via_dap is false
+			-- register_configurations = function(paths)
+			-- 	require("dap").configurations.dart = {
+			-- 		{
+			-- 			type = "dart",
+			-- 			request = "launch",
+			-- 			name = "Launch flutter (default)",
+			-- 			program = "${workspaceFolder}/lib/main.dart",
+			-- 			cwd = "${workspaceFolder}",
+			-- 		},
+			-- 		{
+			-- 			type = "dart",
+			-- 			request = "launch",
+			-- 			name = "Launch flutter (DEV)",
+			-- 			program = "${workspaceFolder}/lib/main_development.dart",
+			-- 			cwd = "${workspaceFolder}",
+			-- 			args = { "--flavor", "development" },
+			-- 		},
+			-- 		{
+			-- 			type = "dart",
+			-- 			request = "attach",
+			-- 			name = "Attach (DEV)",
+			-- 			program = "${workspaceFolder}/lib/main_development.dart",
+			-- 			cwd = "${workspaceFolder}",
+			-- 			args = { "--flavor", "development" },
+			-- 		},
+			-- 	}
+			-- end,
 		},
 		lsp = {
+			color = {
+				enabled = true,
+			},
 			on_attach = function(_, bufnr)
 				vim.lsp.handlers["textDocument/publishDiagnostics"] =
 					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

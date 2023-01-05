@@ -42,7 +42,7 @@ require("nightfox").setup({
 })
 
 require("tokyonight").setup({
-	style = "storm",
+	style = "night",
 	light_style = "day",
 	transparent = true,
 	terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim

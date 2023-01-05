@@ -99,10 +99,17 @@
   ; helper = cache --timeout=3600
   helper = store
 
+[http]
+  postBuffer = 1048576000
+	sslVerify = false
+
 [user]
   name = n0ks
   email = rodrigocmp29@gmail.com
 
-[http]
-  postBuffer = 1048576000
-	sslVerify = false
+[includeIf "gitdir:~/code/ecs/"]
+  path = ~/.gitconfig_santander
+
+[includeIf "gitdir:~/code/ssaauth/"]
+  path = ~/.gitconfig_santander
+

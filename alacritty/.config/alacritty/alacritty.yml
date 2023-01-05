@@ -19,6 +19,7 @@ font:
     x: 0
     y: 1
   size: 14
+
 key_bindings:
   - chars: "\ea"
     key: A
@@ -252,11 +253,13 @@ key_bindings:
     key: Key9
     mods: Command
 
-    
   #  ╞══════════════════════════════════════════════════════════╡
 
 scrolling:
-  history: 10000
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 5000
+
 window:
   opacity: 0.95
   decorations: none
@@ -266,6 +269,9 @@ window:
     columns: 100
     lines: 45
   startup_mode: Windowed
+
+  # If `true`, bold text is drawn using the bright color variants.
+  draw_bold_text_with_bright_colors: true
 
   #  ╞══════════════════════════════════════════════════════════╡
 
