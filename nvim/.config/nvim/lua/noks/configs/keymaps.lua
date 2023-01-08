@@ -54,7 +54,8 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", "!", "!<c-g>u")
 map("i", "?", "?<c-g>u")
-map("v", "<leader>p", "_dP")
+map("v", "<leader>p", '"_dP')
+
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
