@@ -46,3 +46,4 @@ alias update-keys="sudo pacman -Sy archlinux-keyring endeavouros-keyring"
 
 alias vg="very_good"
 alias fl="flutter"
+alias getwname="xprop | grep WM_CLASS"

@@ -96,6 +96,8 @@ map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
 
 map("n", "<Leader>ga", ":GoAlt<CR>")
 
+map("v", "<space>ca", "<cmd>lua require('go.codeaction').run_range_code_action()<CR>")
+
 -- " ----------------------------------------------------------------------------
 -- " Harpoon
 -- " ----------------------------------------------------------------------------

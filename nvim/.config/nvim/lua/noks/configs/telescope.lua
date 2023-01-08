@@ -96,23 +96,22 @@ M.search_wallpapers = function()
 				local cmd
 				local isMac = 1 == vim.fn.has("macunix")
 				local isLinux = 1 == vim.fn.has("linux")
+
 				local hasMacExecutable = 1 == vim.fn.executable("m")
 				local hasLinuxExecutable = 1 == vim.fn.executable("feh")
 
 				if isMac and hasMacExecutable then
 					cmd = "m wallpaper " .. selection.cwd .. "/" .. selection.value
-				else
-					vim.notify_once("m-cli isn't installed", vim.log.levels.INFO)
 				end
 
-				if hasLinuxExecutable then
+				if isLinux and hasLinuxExecutable then
 					cmd = "feh --bg-fill " .. selection.cwd .. "/" .. selection.value
-				else
-					vim.notify_once("feh isn't installed", vim.log.levels.INFO)
 				end
 
 				if cmd ~= nil then
 					vim.fn.system(cmd)
+				else
+					vim.notify("Not possible to set wallpaper", vim.log.levels.INFO)
 				end
 			end)
 			return true

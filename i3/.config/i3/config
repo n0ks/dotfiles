@@ -107,7 +107,7 @@ bindcode $mod+Shift+90 	 move container to workspace  $ws10
 # keybindings for different actions: #
 ######################################
 
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
 # lock with a picture:
