@@ -1,4 +1,5 @@
 local colors = require("catppuccin.palettes").get_palette()
+local starry = require("starry")
 
 require("catppuccin").setup({
 	term_colors = true,
@@ -45,13 +46,12 @@ require("tokyonight").setup({
 	style = "night",
 	light_style = "day",
 	transparent = true,
-	terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+	terminal_colors = true,
 	styles = {
 		comments = { italic = true },
 		keywords = { italic = true },
 		functions = {},
 		variables = {},
-		-- Background styles. Can be "dark", "transparent" or "normal"
 		sidebars = "transparent",
 		floats = "transparent",
 	},
@@ -59,11 +59,19 @@ require("tokyonight").setup({
 	day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
 	hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
 	dim_inactive = true, -- dims inactive windows
-	lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+	lualine_bold = false,
 })
---Put this lines inside your vimrc to set the colorscheme
+
 require("nebulous").setup({
 	variant = "nova",
+})
+
+vim.g.starry_disable_background = true
+
+starry.setup({
+	custom_highlights = {
+		LineNr = { bg = nil },
+	},
 })
 
 vim.cmd([[
@@ -72,9 +80,4 @@ vim.cmd([[
   " highlight NonText guibg=none
 ]])
 
--- vim.cmd("colorscheme catppuccin")
--- vim.cmd("colorscheme kanagawa")
--- vim.cmd("colorscheme rose-pine")
--- vim.cmd("colorscheme kanagawa")
--- vim.cmd("colorscheme nebulous")
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme middlenight_blue")

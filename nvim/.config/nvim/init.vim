@@ -42,6 +42,7 @@ Plug 'rebelot/kanagawa.nvim'
 Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 Plug 'Yagua/nebulous.nvim'
+Plug 'ray-x/starry.nvim'
 
 " Telescope 
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -58,7 +59,7 @@ Plug 'ThePrimeagen/harpoon'
 Plug 'b0o/schemastore.nvim'
 Plug 'danymat/neogen'
 Plug 'dstein64/vim-startuptime'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'jbyuki/venn.nvim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'kevinhwang91/nvim-bqf'
@@ -97,6 +98,7 @@ Plug 'stevearc/dressing.nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'declancm/maximize.nvim'
 Plug 'rcarriga/nvim-notify'
+Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
 call plug#end()
 
 " source $HOME/.config/nvim/general/settings.vim
