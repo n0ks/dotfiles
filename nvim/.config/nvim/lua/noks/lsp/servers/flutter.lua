@@ -3,37 +3,42 @@ local M = {}
 M.setup = function()
 	require("flutter-tools").setup({
 		fvm = true,
+		closing_tags = {
+			enabled = false,
+		},
+		outline = {
+			open_cmd = "tabedit",
+		},
 		debugger = {
 			enabled = true,
 			run_via_dap = true,
-			-- valid only when run_via_dap is false
-			-- register_configurations = function(paths)
-			-- 	require("dap").configurations.dart = {
-			-- 		{
-			-- 			type = "dart",
-			-- 			request = "launch",
-			-- 			name = "Launch flutter (default)",
-			-- 			program = "${workspaceFolder}/lib/main.dart",
-			-- 			cwd = "${workspaceFolder}",
-			-- 		},
-			-- 		{
-			-- 			type = "dart",
-			-- 			request = "launch",
-			-- 			name = "Launch flutter (DEV)",
-			-- 			program = "${workspaceFolder}/lib/main_development.dart",
-			-- 			cwd = "${workspaceFolder}",
-			-- 			args = { "--flavor", "development" },
-			-- 		},
-			-- 		{
-			-- 			type = "dart",
-			-- 			request = "attach",
-			-- 			name = "Attach (DEV)",
-			-- 			program = "${workspaceFolder}/lib/main_development.dart",
-			-- 			cwd = "${workspaceFolder}",
-			-- 			args = { "--flavor", "development" },
-			-- 		},
-			-- 	}
-			-- end,
+			register_configurations = function(paths)
+				require("dap").configurations.dart = {
+					{
+						type = "dart",
+						request = "launch",
+						name = "Launch flutter (default)",
+						program = "${workspaceFolder}/lib/main.dart",
+						cwd = "${workspaceFolder}",
+					},
+					{
+						type = "dart",
+						request = "launch",
+						name = "Launch flutter (DEV)",
+						program = "${workspaceFolder}/lib/main_development.dart",
+						cwd = "${workspaceFolder}",
+						args = { "--flavor", "development" },
+					},
+					{
+						type = "dart",
+						request = "attach",
+						name = "Attach (DEV)",
+						program = "${workspaceFolder}/lib/main_development.dart",
+						cwd = "${workspaceFolder}",
+						args = { "--flavor", "development" },
+					},
+				}
+			end,
 		},
 		lsp = {
 			color = {
