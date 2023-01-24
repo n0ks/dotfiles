@@ -1,9 +1,18 @@
-local saga = require("lspsaga")
+local status, saga = pcall(require, "lspsaga")
 
-saga.init_lsp_saga({
-	code_action_lightbulb = {
+if not status then
+	return
+end
+
+saga.setup({
+	lightbulb = {
 		enable = false,
-		sign = true,
-		virtual_text = true,
+		virtual_text = false,
+	},
+	symbol_in_winbar = {
+		enable = false,
+	},
+	ui = {
+		border = "rounded",
 	},
 })
