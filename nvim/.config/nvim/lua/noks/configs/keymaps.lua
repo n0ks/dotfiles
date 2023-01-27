@@ -138,6 +138,8 @@ map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>")
 map("n", "]d", ":Lspsaga diagnostic_jump_next<CR>")
 map("n", "[i", ":Lspsaga show_line_diagnostics<CR>")
 
+map("n", "<leader>gr", ":Lspsaga lsp_finder<CR>")
+
 map("v", "<M-CR>", ":<C-U>Lspsaga range_code_action<CR>")
 
 map("n", "gD", ":Lspsaga peek_definition<CR>")
