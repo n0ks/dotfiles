@@ -137,6 +137,7 @@ map("n", "K", ":Lspsaga hover_doc<CR>")
 map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>")
 map("n", "]d", ":Lspsaga diagnostic_jump_next<CR>")
 map("n", "[i", ":Lspsaga show_line_diagnostics<CR>")
+map("n", "<leader>o", ":Lspsaga outline<CR>")
 
 map("n", "<leader>gr", ":Lspsaga lsp_finder<CR>")
 

@@ -101,7 +101,6 @@ Plug 'rcarriga/nvim-notify'
 Plug 'shortcuts/no-neck-pain.nvim', { 'tag': '*' }
 call plug#end()
 
-" source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/funfun.vim
 " source $HOME/.config/nvim/general/terminal_toggle.vim
 " source $HOME/.config/nvim/plugin/fern.vim

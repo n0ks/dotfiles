@@ -11,8 +11,11 @@ saga.setup({
 		enable_in_insert = true,
 		virtual_text = false,
 	},
+	symbol_in_winbar = {
+		enable = false,
+	},
 	ui = {
 		border = "rounded",
 		title = true,
-	},
+  },
 })
