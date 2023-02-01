@@ -81,6 +81,8 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 source ~/.aliases
 
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -f ~/functions.sh ]] && source ~/functions.sh
 

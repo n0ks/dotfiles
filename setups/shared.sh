@@ -87,6 +87,7 @@ cloneRepos() {
   git clone https://github.com/neovim/neovim.git ~/code/neovim
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 }
 
 dotfilesStow() {
