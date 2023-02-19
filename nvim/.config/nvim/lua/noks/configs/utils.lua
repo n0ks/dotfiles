@@ -32,4 +32,10 @@ M.map = function(mode, lhs, rhs, opts)
 	vim.keymap.set(mode, lhs, rhs, options)
 end
 
+M.foreach = function(fn, list)
+	for key, value in pairs(list) do
+		fn(value, key)
+	end
+end
+
 return M

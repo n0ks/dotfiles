@@ -27,8 +27,6 @@ export LANG=en_US.UTF-8
 . $HOME/.asdf/asdf.sh
 #. ~/.asdf/plugins/java/set-java-home.zsh
 export FLIP_PATH=$HOME/.flip/
-# export PUB_HOSTED_URL=http://artifactory.santanderbr.corp/artifactory/flutter-all
-export PUB_HOSTED_URL=https://odinartifactory.jfrog.io/artifactory/api/pub/flutter-pub-all
 export FLUTTER_ROOT=$HOME/flutter
 export HISTFILE=$HOME/.zsh_history
 export DOTFILES=$HOME/.dotfiles
