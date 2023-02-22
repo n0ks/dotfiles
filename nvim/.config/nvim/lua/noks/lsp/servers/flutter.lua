@@ -6,9 +6,6 @@ M.setup = function()
 		closing_tags = {
 			enabled = false,
 		},
-		outline = {
-			open_cmd = "tabedit",
-		},
 		debugger = {
 			enabled = true,
 			run_via_dap = true,
