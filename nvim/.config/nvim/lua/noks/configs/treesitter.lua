@@ -19,6 +19,8 @@ require("nvim-treesitter.configs").setup({
 		"ruby",
 		"vim",
 		"yaml",
+		"markdown",
+		"markdown_inline",
 	},
 	sync_install = false,
 	playground = {
@@ -27,7 +29,7 @@ require("nvim-treesitter.configs").setup({
 	autotag = {
 		enable = true,
 	},
-	highlight = { enable = true },
+	highlight = { enable = true, additional_vim_regex_highlighting = false },
 	incremental_selection = { enable = true },
 	textobjects = {
 		lsp_interop = {
