@@ -1,8 +1,6 @@
 local o, opt, fn, g = vim.o, vim.opt, vim.fn, vim.g
 local indent = 2
 
-vim.notify = require('notify')
-
 vim.cmd([[
  filetype plugin indent on
   " vim-test
@@ -11,6 +9,14 @@ vim.cmd([[
   let test#javascript#jest#options = "--color=always"
   set t_Co=256 
 ]])
+
+opt.termguicolors = true
+
+vim.notify = require("notify")
+
+vim.notify.setup({
+	background_colour = "#FFFFFF",
+})
 
 g.mapleader = " "
 g.fugitive_summary_format = "%s <%an> - %ar"
@@ -90,7 +96,5 @@ opt.redrawtime = 1500
 opt.timeoutlen = 250
 opt.ttimeoutlen = 10
 opt.updatetime = 100
-
-opt.termguicolors = true
 
 o.conceallevel = 0
