@@ -64,7 +64,7 @@ map("v", ">", ">gv")
 -- map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
 --#region
 
-map("n", "<Leader><Leader>i", "<cmd>IconPickerNormal alt_font symbols nerd_font emoji<cr>")
+map("n", "<Leader><Leader>i", "<cmd>IconPickerNormal symbols emoji<cr>")
 -- map("n", "<Leader><Leader>y", "<cmd>IconPickerYank alt_font symbols nerd_font emoji<cr>") --> Yank the selected icon into register
 -- map("i", "<C-i>", "<cmd>IconPickerInsert emoji<cr>")
 
@@ -216,8 +216,8 @@ map("n", "<leader>gp", ":Octo pr list<CR>")
 -- " DAP
 -- " ----------------------------------------------------------------------------
 map("n", "<F5>", ":lua require'dap'.continue()<CR>")
-map("n", "<F9>", ":lua require'dap'.step_over()<CR>")
-map("n", "<F10>", ":lua require'dap'.step_into()<CR>")
+map("n", "<F10>", ":lua require'dap'.step_over()<CR>")
+map("n", "<F11>", ":lua require'dap'.step_into()<CR>")
 map("n", "<F12>", ":lua require'dap'.step_out()<CR>")
 map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
 map("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
