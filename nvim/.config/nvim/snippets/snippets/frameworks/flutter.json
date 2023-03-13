@@ -31,5 +31,12 @@
       "part '${TM_FILENAME_BASE}.freezed.dart';"
     ],
     "description": "Create .freezed part"
+  },
+  "Ignore file coverage": {
+    "prefix": "cov",
+    "body": [
+      "// coverage: ignore-file"
+    ],
+    "description": "Ignore this file on test coverage"
   }
 }
