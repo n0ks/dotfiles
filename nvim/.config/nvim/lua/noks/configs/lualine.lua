@@ -1,5 +1,4 @@
 local navic = require("nvim-navic")
-local palette = require("nightfox.palette").load("duskfox")
 
 require("lualine").setup({
 	extensions = { "quickfix", "fugitive" },
@@ -12,12 +11,12 @@ require("lualine").setup({
 		lualine_a = {
 			{
 				"filename",
-				color = { bg = palette.blue.base, fg = palette.fg0 },
+				color = { bg = "#363646", fg = "#C8C093" },
 				separator = { left = "", right = "" },
 			},
 		},
 		lualine_b = {
-			{ navic.get_location, cond = navic.is_available or false, color = { bg = palette.bg0, fg = palette.fg0 } },
+			{ navic.get_location, cond = navic.is_available or false },
 		},
 		lualine_x = {
 			{ "tabs" },

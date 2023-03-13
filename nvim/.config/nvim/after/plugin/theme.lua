@@ -1,19 +1,19 @@
-local colors = require("catppuccin.palettes").get_palette()
+-- local colors = require("catppuccin.palettes").get_palette()
 local starry = require("starry")
 
 require("catppuccin").setup({
 	term_colors = true,
-	transparent_background = true,
-	custom_highlights = {
-		Comment = { fg = colors.overlay1 },
-		LineNr = { fg = colors.overlay1 },
-		CursorLine = { bg = colors.none },
-		CursorLineNr = { fg = colors.lavender },
-		DiagnosticVirtualTextError = { bg = colors.none },
-		DiagnosticVirtualTextWarn = { bg = colors.none },
-		DiagnosticVirtualTextInfo = { bg = colors.none },
-		DiagnosticVirtualTextHint = { bg = colors.none },
-	},
+	transparent_background = false,
+	-- custom_highlights = {
+	-- 	Comment = { fg = colors.overlay1 },
+	-- 	LineNr = { fg = colors.overlay1 },
+	-- 	CursorLine = { bg = colors.none },
+	-- 	CursorLineNr = { fg = colors.lavender },
+	-- 	DiagnosticVirtualTextError = { bg = colors.none },
+	-- 	DiagnosticVirtualTextWarn = { bg = colors.none },
+	-- 	DiagnosticVirtualTextInfo = { bg = colors.none },
+	-- 	DiagnosticVirtualTextHint = { bg = colors.none },
+	-- },
 	integrations = {
 		-- navic = true,
 		gitsigns = true,
@@ -29,6 +29,22 @@ require("catppuccin").setup({
 require("kanagawa").setup({
 	transparent = false,
 	dimInactive = false,
+	overrides = function(colors)
+		local theme = colors.theme
+		return {
+			Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
+			PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+			PmenuSbar = { bg = theme.ui.bg_m1 },
+			PmenuThumb = { bg = theme.ui.bg_p2 },
+			TelescopeTitle = { fg = theme.ui.special, bold = true },
+			TelescopePromptNormal = { bg = theme.ui.bg_p1 },
+			TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+			TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+			TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+			TelescopePreviewNormal = { bg = theme.ui.bg_dim },
+			TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+		}
+	end,
 })
 
 require("rose-pine").setup({
@@ -38,14 +54,13 @@ require("rose-pine").setup({
 
 require("nightfox").setup({
 	options = {
-		transparent = true,
+		transparent = false,
 	},
 })
 
 require("tokyonight").setup({
-	style = "night",
-	light_style = "day",
-	transparent = true,
+	style = "storm",
+	transparent = false,
 	terminal_colors = true,
 	styles = {
 		comments = { italic = true },
@@ -66,7 +81,7 @@ require("nebulous").setup({
 	variant = "nova",
 })
 
-vim.g.starry_disable_background = true
+-- vim.g.starry_disable_background = true
 
 starry.setup({
 	custom_highlights = {
@@ -80,4 +95,4 @@ vim.cmd([[
   " highlight NonText guibg=none
 ]])
 
-vim.cmd("colorscheme middlenight_blue")
+vim.cmd("colorscheme kanagawa")
