@@ -12,12 +12,6 @@ vim.cmd([[
 
 opt.termguicolors = true
 
-vim.notify = require("notify")
-
-vim.notify.setup({
-	background_colour = "#FFFFFF",
-})
-
 g.mapleader = " "
 g.fugitive_summary_format = "%s <%an> - %ar"
 

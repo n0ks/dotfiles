@@ -8,6 +8,9 @@ M.config = {
 	capabilities = require("noks.lsp.handlers").capabilities,
 	settings = {
 		Lua = {
+			completion = {
+				callSnippet = "Replace",
+			},
 			diagnostics = {
 				globals = { "vim" },
 			},

@@ -1,30 +1,27 @@
--- local colors = require("catppuccin.palettes").get_palette()
-local starry = require("starry")
-
-require("catppuccin").setup({
-	term_colors = true,
-	transparent_background = false,
-	-- custom_highlights = {
-	-- 	Comment = { fg = colors.overlay1 },
-	-- 	LineNr = { fg = colors.overlay1 },
-	-- 	CursorLine = { bg = colors.none },
-	-- 	CursorLineNr = { fg = colors.lavender },
-	-- 	DiagnosticVirtualTextError = { bg = colors.none },
-	-- 	DiagnosticVirtualTextWarn = { bg = colors.none },
-	-- 	DiagnosticVirtualTextInfo = { bg = colors.none },
-	-- 	DiagnosticVirtualTextHint = { bg = colors.none },
-	-- },
-	integrations = {
-		-- navic = true,
-		gitsigns = true,
-		telescope = true,
-		fern = true,
-		dap = {
-			enabled = true,
-			enable_ui = true,
-		},
-	},
-})
+-- require("catppuccin").setup({
+-- 	erm_colors = true,
+-- 	transparent_background = false,
+-- custom_highlights = {
+-- 	Comment = { fg = colors.overlay1 },
+-- 	LineNr = { fg = colors.overlay1 },
+-- 	CursorLine = { bg = colors.none },
+-- 	CursorLineNr = { fg = colors.lavender },
+-- 	DiagnosticVirtualTextError = { bg = colors.none },
+-- 	DiagnosticVirtualTextWarn = { bg = colors.none },
+-- 	DiagnosticVirtualTextInfo = { bg = colors.none },
+-- 	DiagnosticVirtualTextHint = { bg = colors.none },
+-- },
+-- 	integrations = {
+-- 		navic = true,
+-- 		gitsigns = true,
+-- 		telescope = true,
+-- 		fern = true,
+-- 		dap = {
+-- 			enabled = true,
+-- 			enable_ui = true,
+-- 		},
+-- 	},
+-- })
 
 require("kanagawa").setup({
 	transparent = false,
@@ -47,47 +44,35 @@ require("kanagawa").setup({
 	end,
 })
 
-require("rose-pine").setup({
-	dark_variant = "main",
-	disable_background = true,
-})
+-- require("rose-pine").setup({
+-- 	dark_variant = "main",
+-- 	disable_background = true,
+-- })
+--
+-- require("nightfox").setup({
+-- 	options = {
+-- 		transparent = false,
+-- 	},
+-- })
 
-require("nightfox").setup({
-	options = {
-		transparent = false,
-	},
-})
-
-require("tokyonight").setup({
-	style = "storm",
-	transparent = false,
-	terminal_colors = true,
-	styles = {
-		comments = { italic = true },
-		keywords = { italic = true },
-		functions = {},
-		variables = {},
-		sidebars = "transparent",
-		floats = "transparent",
-	},
-	sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
-	day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
-	hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
-	dim_inactive = true, -- dims inactive windows
-	lualine_bold = false,
-})
-
-require("nebulous").setup({
-	variant = "nova",
-})
-
--- vim.g.starry_disable_background = true
-
-starry.setup({
-	custom_highlights = {
-		LineNr = { bg = nil },
-	},
-})
+-- require("tokyonight").setup({
+-- 	style = "storm",
+-- 	transparent = false,
+-- 	terminal_colors = true,
+-- 	styles = {
+-- 		comments = { italic = true },
+-- 		keywords = { italic = true },
+-- 		functions = {},
+-- 		variables = {},
+-- 		sidebars = "transparent",
+-- 		floats = "transparent",
+-- 	},
+-- 	sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+-- 	day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+-- 	hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+-- 	dim_inactive = true, -- dims inactive windows
+-- 	lualine_bold = false,
+-- })
 
 vim.cmd([[
   set laststatus=3

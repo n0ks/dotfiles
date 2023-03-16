@@ -1,8 +1,8 @@
 require("neodev").setup()
+
 local sumneko_lua = require("noks.lsp.servers.sumneko")
 local tsserver = require("noks.lsp.servers.tsserver")
 local null_ls = require("noks.lsp.servers.null_ls")
-local flutter = require("noks.lsp.servers.flutter")
 local go = require("noks.lsp.servers.go")
 local lsp_config = require("lspconfig")
 local mlsp = require("mason-lspconfig")
@@ -47,8 +47,6 @@ M.setup = function()
 			lsp_config[server_name].setup(args)
 		end,
 	})
-
-	flutter.setup()
 end
 
 return M
