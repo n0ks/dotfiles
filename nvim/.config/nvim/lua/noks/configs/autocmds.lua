@@ -96,3 +96,6 @@ autocmd(
 
 autocmd({ "BufRead" }, { "*/node_modules/*" }, { command = "lua vim.diagnostic.disable(0)" }, lsp_node)
 autocmd({ "BufNewFile" }, { "*/node_modules/*" }, { command = "lua vim.diagnostic.disable(0)" }, lsp_node)
+
+autocmd({ "BufWinLeave" }, { "*.*" }, { command = "mkview!" })
+autocmd({ "BufWinEnter" }, { "*.*" }, { command = "silent loadview" })
