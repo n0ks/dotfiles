@@ -85,6 +85,7 @@ opt.writebackup = false
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.shortmess:append("c")
 opt.shortmess:remove("F")
+opt.foldmethod = "manual"
 
 opt.redrawtime = 1500
 opt.timeoutlen = 250
