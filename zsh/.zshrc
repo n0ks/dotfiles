@@ -38,7 +38,7 @@ export TERM=xterm-256color
 # export TERM=screen-256color
 export GREP_OPTIONS='--color=auto'
 export BROWSER='/usr/bin/firefox'
-export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/:$HOME/flutter/bin:$HOME/.flip
+export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/:$HOME/fvm/default/bin:$HOME/.flip
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
