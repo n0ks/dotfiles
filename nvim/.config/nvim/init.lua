@@ -1,6 +1,7 @@
 require("noks.settings")
 require("noks.globals")
 require("noks.configs.keymaps")
+require("noks.configs.autocmds")
 
 vim.cmd("source" .. "~/.config/nvim/general/funfun.vim")
 
@@ -41,7 +42,6 @@ local opts = {
 }
 
 require("lazy").setup({
-
 	-- Theme
 	"rebelot/kanagawa.nvim",
 
@@ -65,6 +65,8 @@ require("lazy").setup({
 	"rafamadriz/friendly-snippets",
 
 	{ "folke/neodev.nvim", ft = "lua" },
+
+	{ "kylechui/nvim-surround", config = true, event = "VeryLazy" },
 
 	{
 		"lewis6991/gitsigns.nvim",
@@ -134,13 +136,14 @@ require("lazy").setup({
 		end,
 		lazy = false,
 	},
+
 	{
-		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("mason").setup()
+			require("noks.lsp.mason").setup()
 		end,
 		dependencies = {
-			"williamboman/mason-lspconfig.nvim",
+			"williamboman/mason.nvim",
 		},
 		event = "VeryLazy",
 	},

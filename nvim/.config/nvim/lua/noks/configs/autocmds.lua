@@ -83,7 +83,7 @@ autocmd({ "BufWinLeave" }, { "*" }, { command = "call UnsetQFControlVariable()" 
 
 autocmd({ "TextYankPost" }, { "*" }, {
 	callback = function()
-		vim.highlight.on_yank({ timeout = 40, on_visual = true })
+		vim.highlight.on_yank({ timeout = 700, on_visual = true, higroup = "IncSearch" })
 	end,
 }, highlight_yank_group)
 
