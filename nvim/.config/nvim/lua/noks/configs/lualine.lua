@@ -28,13 +28,25 @@ require("lualine").setup({
 		lualine_b = { "branch", "b:gitsigns_status" },
 		lualine_c = {},
 		lualine_x = {
+			"filetype",
 			{
 				"diagnostics",
 				sources = { "nvim_diagnostic" },
 				symbols = { error = " ", warn = " ", info = " ", hint = " " },
 			},
-			"encoding",
-			"filetype",
+			{
+				encoding = function()
+					-- Override 'encoding': Don't display if encoding is UTF-8.
+					local ret, _ = (vim.bo.fenc or vim.go.enc):gsub("^utf%-8$", "")
+					return ret
+				end,
+			},
+			{
+				fileformat = function()
+					local ret, _ = vim.bo.fileformat:gsub("^unix$", "")
+					return ret
+				end,
+			},
 		},
 	},
 })
