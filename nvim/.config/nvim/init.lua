@@ -67,6 +67,13 @@ require("lazy").setup({
 	{ "folke/neodev.nvim", ft = "lua" },
 
 	{ "kylechui/nvim-surround", config = true, event = "VeryLazy" },
+	{
+		"sindrets/diffview.nvim",
+		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+		config = function()
+			require("noks.configs.diffview")
+		end,
+	},
 
 	{
 		"lewis6991/gitsigns.nvim",

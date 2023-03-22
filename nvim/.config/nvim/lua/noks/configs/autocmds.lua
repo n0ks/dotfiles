@@ -77,13 +77,13 @@ autocmd({ "Filetype" }, { "json" }, { command = "setl filetype=jsonc" })
 
 autocmd({ "BufRead" }, { "*.yaml" }, { command = "set sw=2 sts=2 expandtab" })
 
-autocmd({ "BufWinEnter" }, { "quickfix" }, { command = "call SetQFControlVariable()" }, qflist_group)
+-- autocmd({ "BufWinEnter" }, { "quickfix" }, { command = "call SetQFControlVariable()" }, qflist_group)
 
-autocmd({ "BufWinLeave" }, { "*" }, { command = "call UnsetQFControlVariable()" }, qflist_group)
+-- autocmd({ "BufWinLeave" }, { "*" }, { command = "call UnsetQFControlVariable()" }, qflist_group)
 
 autocmd({ "TextYankPost" }, { "*" }, {
 	callback = function()
-		vim.highlight.on_yank({ timeout = 700, on_visual = true, higroup = "IncSearch" })
+		vim.highlight.on_yank({ timeout = 40, on_visual = true, higroup = "IncSearch" })
 	end,
 }, highlight_yank_group)
 
@@ -97,5 +97,5 @@ autocmd(
 autocmd({ "BufRead" }, { "*/node_modules/*" }, { command = "lua vim.diagnostic.disable(0)" }, lsp_node)
 autocmd({ "BufNewFile" }, { "*/node_modules/*" }, { command = "lua vim.diagnostic.disable(0)" }, lsp_node)
 
-autocmd({ "BufWinLeave" }, { "*.*" }, { command = "mkview!" })
-autocmd({ "BufWinEnter" }, { "*.*" }, { command = "silent loadview" })
+-- autocmd({ "BufWinLeave" }, { "*.*" }, { command = "mkview!" })
+-- autocmd({ "BufWinEnter" }, { "*.*" }, { command = "silent loadview" })
