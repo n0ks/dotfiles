@@ -91,3 +91,9 @@ fbr() {
 open-at-line () {
   nvim $(rg --line-number --hidden . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')
 }
+
+
+xcodeenv(){
+  local project=$1
+  xcodebuild -project $project.xcodeproj -target "$project" -showBuildSettings
+}

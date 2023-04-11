@@ -63,12 +63,14 @@ require("lazy").setup({
 	"antoinemadec/FixCursorHold.nvim",
 	"kyazdani42/nvim-web-devicons",
 	"rafamadriz/friendly-snippets",
+	"stevearc/dressing.nvim",
 
 	{ "folke/neodev.nvim", ft = "lua" },
 
 	{ "kylechui/nvim-surround", config = true, event = "VeryLazy" },
 	{
 		"sindrets/diffview.nvim",
+		-- event = "VeryLazy",
 		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
 		config = function()
 			require("noks.configs.diffview")
@@ -92,10 +94,10 @@ require("lazy").setup({
 
 	{
 		"shortcuts/no-neck-pain.nvim",
+		cmd = { "NoNeckPain" },
 		config = function()
 			require("noks.configs.no-neck")
 		end,
-		event = "VeryLazy",
 	},
 
 	{
@@ -128,11 +130,11 @@ require("lazy").setup({
 	{
 		"rcarriga/nvim-notify",
 		config = function()
-			vim.notify = require("notify")
+			-- vim.notify = require("notify")
+			-- vim.notify.setup({})
 		end,
 	},
 	{
-
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		dependencies = {
@@ -238,6 +240,17 @@ require("lazy").setup({
 		dependencies = { "theHamsta/nvim-dap-virtual-text", "leoluz/nvim-dap-go", "rcarriga/nvim-dap-ui" },
 		config = function()
 			require("noks.configs.dap")
+		end,
+	},
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-neotest/neotest-go",
+			"haydenmeade/neotest-jest",
+			"sidlatau/neotest-dart",
+		},
+		config = function()
+			require("noks.configs.neotest")
 		end,
 	},
 }, opts)

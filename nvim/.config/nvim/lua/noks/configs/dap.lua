@@ -18,11 +18,12 @@ dapui.setup({
 			-- Provide as ID strings or tables with "id" and "size" keys
 			{
 				id = "scopes",
-				size = 0.30, -- Can be float or integer > 1
+				size = 0.4, -- Can be float or integer > 1
 			},
-			{ id = "breakpoints", size = 0.25 },
-			{ id = "stacks", size = 0.25 },
-			{ id = "watches", size = 0.25 },
+			{ id = "breakpoints", size = 0.2 },
+			{ id = "stacks", size = 0.2 },
+			{ id = "watches", size = 0.2 },
+			{ id = "console", size = 0 },
 		},
 	},
 	icons = { expanded = "▾", collapsed = "▸" },
@@ -30,7 +31,7 @@ dapui.setup({
 
 vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
 vim.fn.sign_define("DapBreakpointRejected", { text = "🔵", texthl = "", linehl = "", numhl = "" })
-vim.fn.sign_define("DapStopped", { text = "🟡", texthl = "", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = "👉", texthl = "", linehl = "", numhl = "" })
 
 dap.defaults.fallback.exception_breakpoints = { "raised" }
 

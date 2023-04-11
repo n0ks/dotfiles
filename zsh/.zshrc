@@ -57,6 +57,8 @@ export GOPATH=$HOME/.asdf/shims
 
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 # export JAVA_HOME=/usr/lib/java
+export MANPAGER='nvim +Man!'
+export MANWIDTH=999
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 export MAGICK_HOME="$HOME/ImageMagick-7.0.8"

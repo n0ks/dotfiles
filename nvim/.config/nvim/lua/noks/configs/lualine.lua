@@ -15,9 +15,6 @@ require("lualine").setup({
 				separator = { left = "", right = "" },
 			},
 		},
-		lualine_b = {
-			{ navic.get_location, cond = navic.is_available or false },
-		},
 		lualine_x = {
 			{ "tabs" },
 		},
@@ -26,7 +23,16 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "b:gitsigns_status" },
-		lualine_c = {},
+		lualine_c = {
+			{
+				function()
+					return navic.get_location()
+				end,
+				cond = function()
+					return navic.is_available()
+				end,
+			},
+		},
 		lualine_x = {
 			"filetype",
 			{

@@ -146,7 +146,7 @@ map("v", "<M-CR>", ":<C-U>Lspsaga range_code_action<CR>")
 map("n", "gD", ":Lspsaga peek_definition<CR>")
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 map("n", "gdv", ":vs | lua vim.lsp.buf.definition()<CR>")
-map("n", "<leader>rn", ":lua vim.lsp.buf.rename()<CR>")
+map("n", "<leader>rn", ":Lspsaga rename<CR>")
 
 map("n", "gr", ":lua vim.lsp.buf.references()<CR>")
 map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
@@ -183,6 +183,7 @@ map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'git
 -- ----------------------------------------------------------------------------
 
 map("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
+map("n", "<leader>td", ":lua require('neotest').run.run({strategy = 'dap'})<CR>")
 map("n", "<leader>to", ":lua require('neotest').output.open({ enter = true })<CR>")
 map("n", "<leader>tn", ":lua require('neotest').run.run()<CR>")
 map("n", "<leader>ts", ":lua require('neotest').summary.toggle()<CR>")
