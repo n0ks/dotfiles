@@ -29,7 +29,7 @@ local config = {
 	},
 }
 
-vim.g.navic_silence = true
+-- vim.g.navic_silence = true
 
 for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
@@ -86,12 +86,12 @@ M.on_attach = function(client, bufnr)
 	-- if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "html" then
 	-- 	client.server_capabilities.document_formatting = false
 	-- end
-
-	navic.setup({
-		highlight = true,
-	})
-
-	navic.attach(client, bufnr)
+	if client.server_capabilities.documentSymbolProvider then
+		navic.setup({
+			highlight = true,
+		})
+		navic.attach(client, bufnr)
+	end
 end
 
 return M

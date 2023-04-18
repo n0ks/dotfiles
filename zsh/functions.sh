@@ -92,6 +92,9 @@ open-at-line () {
   nvim $(rg --line-number --hidden . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')
 }
 
+watchgotest(){
+  fswatch -e ".*" -i "\\.go$" . | xargs -n1 -I {} sh -c "echo $'\e[1;31m'{}$'\e[0m'; go test -v — bench . — benchmem"
+}
 
 xcodeenv(){
   local project=$1

@@ -10,7 +10,7 @@ M.setup = function()
 			enabled = true,
 			run_via_dap = true,
 			register_configurations = function(_)
-				require("dap").configurations.dart = {}
+				-- 	require("dap").configurations.dart = {}
 				require("dap.ext.vscode").load_launchjs()
 			end,
 		},
@@ -25,7 +25,7 @@ M.setup = function()
 			on_attach = function(_, bufnr)
 				vim.lsp.handlers["textDocument/publishDiagnostics"] =
 					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-						virtual_text = true,
+						virtual_text = false,
 						underline = true,
 					})
 

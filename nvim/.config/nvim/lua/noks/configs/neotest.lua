@@ -1,4 +1,7 @@
 require("neotest").setup({
+	quickfix = {
+		enabled = false,
+	},
 	icons = {
 		running = "",
 		failed = "",

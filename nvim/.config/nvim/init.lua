@@ -46,6 +46,7 @@ require("lazy").setup({
 	"rebelot/kanagawa.nvim",
 
 	"EdenEast/nightfox.nvim",
+	{ "rose-pine/neovim", name = "rose-pine" },
 	"catppuccin/nvim",
 	"folke/tokyonight.nvim",
 
@@ -65,13 +66,20 @@ require("lazy").setup({
 	"rafamadriz/friendly-snippets",
 	"stevearc/dressing.nvim",
 
-	{ "folke/neodev.nvim", ft = "lua" },
+	{
+		"folke/neodev.nvim",
+		config = function()
+			require("neodev").setup({
+				library = { plugins = { "neotest" }, types = true },
+			})
+		end,
+	},
 
 	{ "kylechui/nvim-surround", config = true, event = "VeryLazy" },
 	{
 		"sindrets/diffview.nvim",
-		-- event = "VeryLazy",
-		cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+		event = "VeryLazy",
+		-- cmd = { "DiffviewOpen", "DiffviewFileHistory" },
 		config = function()
 			require("noks.configs.diffview")
 		end,
@@ -94,7 +102,6 @@ require("lazy").setup({
 
 	{
 		"shortcuts/no-neck-pain.nvim",
-		cmd = { "NoNeckPain" },
 		config = function()
 			require("noks.configs.no-neck")
 		end,
@@ -167,10 +174,10 @@ require("lazy").setup({
 	},
 	{
 		"glepnir/lspsaga.nvim",
+		event = "LspAttach",
 		config = function()
 			require("noks.lsp.lsp-saga")
 		end,
-		event = "VeryLazy",
 	},
 	{
 		"windwp/nvim-autopairs",

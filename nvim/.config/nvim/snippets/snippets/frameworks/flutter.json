@@ -38,5 +38,13 @@
       "// coverage: ignore-file"
     ],
     "description": "Ignore this file on test coverage"
+  },
+
+  "Verify": {
+    "prefix": "ve",
+    "body": [
+      "verify(() => $1);"
+    ],
+    "description": "Verify test"
   }
 }
