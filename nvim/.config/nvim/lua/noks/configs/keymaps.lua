@@ -167,6 +167,8 @@ map("n", "<leader>ds", ":lua require('noks.configs.telescope').document_symbols(
 map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
 map("n", "<leader>no", ":lua require('noks.configs.telescope').notifications()<CR>")
 
+map("n", "<leader>od", ":lua require('noks.configs.telescope').open_diff()<CR>")
+
 map("n", "<leader>tg", ":Telescope grep_string<CR>")
 
 map("n", "<leader>H", ":Telescope help_tags<CR>")

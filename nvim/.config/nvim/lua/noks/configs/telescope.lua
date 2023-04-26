@@ -131,6 +131,23 @@ M.git_branches = function()
 	})
 end
 
+M.open_diff = function()
+	require("telescope.builtin").git_commits({
+		attach_mappings = function(_, map)
+			map("n", "<c-o>", function()
+				local selected_entry = state.get_selected_entry()
+				local value = selected_entry["value"]
+				-- close Telescope window properly prior to switching windows
+				vim.api.nvim_win_close(0, true)
+				local cmd = "DiffviewOpen " .. value
+
+				vim.cmd(cmd)
+			end)
+			return true
+		end,
+	})
+end
+
 M.document_symbols = function()
 	require("telescope.builtin").lsp_document_symbols(require("telescope.themes").get_dropdown({
 		hidden = true,

@@ -49,6 +49,7 @@ require("lazy").setup({
 	{ "rose-pine/neovim", name = "rose-pine" },
 	"catppuccin/nvim",
 	"folke/tokyonight.nvim",
+	"nyoom-engineering/oxocarbon.nvim",
 
 	"onsails/lspkind.nvim",
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
@@ -60,6 +61,8 @@ require("lazy").setup({
 	"tpope/vim-projectionist",
 	"tpope/vim-repeat",
 	"tpope/vim-rhubarb",
+
+	-- "sjywind3000/asyncrun.vim",
 
 	"antoinemadec/FixCursorHold.nvim",
 	"kyazdani42/nvim-web-devicons",
@@ -133,12 +136,13 @@ require("lazy").setup({
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
+		event = "VeryLazy",
 	},
 	{
 		"rcarriga/nvim-notify",
 		config = function()
-			-- vim.notify = require("notify")
-			-- vim.notify.setup({})
+			vim.notify = require("notify")
+			vim.notify.setup({})
 		end,
 	},
 	{
@@ -237,7 +241,6 @@ require("lazy").setup({
 	},
 	{
 		"akinsho/flutter-tools.nvim",
-		ft = "dart",
 		config = function()
 			require("noks.lsp.servers.flutter").setup()
 		end,
