@@ -56,7 +56,9 @@ telescope.setup({
 			},
 		},
 		live_grep = {
-			file_ignore_patterns = { ".git/" },
+			additional_args = function(opts)
+				return { "--hidden" }
+			end,
 		},
 		find_files = {
 			hidden = true,

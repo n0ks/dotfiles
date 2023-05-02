@@ -1,27 +1,27 @@
--- require("catppuccin").setup({
--- 	erm_colors = true,
--- 	transparent_background = false,
--- custom_highlights = {
--- 	Comment = { fg = colors.overlay1 },
--- 	LineNr = { fg = colors.overlay1 },
--- 	CursorLine = { bg = colors.none },
--- 	CursorLineNr = { fg = colors.lavender },
--- 	DiagnosticVirtualTextError = { bg = colors.none },
--- 	DiagnosticVirtualTextWarn = { bg = colors.none },
--- 	DiagnosticVirtualTextInfo = { bg = colors.none },
--- 	DiagnosticVirtualTextHint = { bg = colors.none },
--- },
--- 	integrations = {
--- 		navic = true,
--- 		gitsigns = true,
--- 		telescope = true,
--- 		fern = true,
--- 		dap = {
--- 			enabled = true,
--- 			enable_ui = true,
--- 		},
--- 	},
--- })
+local colors = require("catppuccin.palettes").get_palette() -- fetch colors from palette
+
+require("catppuccin").setup({
+	term_colors = true,
+	flavour = "mocha",
+	transparent_background = true,
+	-- custom_highlights = {
+	-- 	Comment = { fg = colors.overlay1 },
+	-- 	LineNr = { fg = colors.overlay1 },
+	-- 	CursorLine = { bg = colors.none },
+	-- 	CursorLineNr = { fg = colors.lavender },
+	-- 	IncSearch = { fg = colors.lavender, bg = colors.lavender },
+	-- },
+	integrations = {
+		navic = true,
+		gitsigns = true,
+		telescope = true,
+		fern = true,
+		dap = {
+			enabled = true,
+			enable_ui = true,
+		},
+	},
+})
 
 require("kanagawa").setup({
 	transparent = false,
@@ -44,16 +44,16 @@ require("kanagawa").setup({
 	end,
 })
 
--- require("rose-pine").setup({
--- 	dark_variant = "main",
--- 	disable_background = true,
--- })
+require("rose-pine").setup({
+	dark_variant = "moon",
+	disable_background = true,
+})
 --
--- require("nightfox").setup({
--- 	options = {
--- 		transparent = false,
--- 	},
--- })
+require("nightfox").setup({
+	options = {
+		transparent = false,
+	},
+})
 
 -- require("tokyonight").setup({
 -- 	style = "storm",
@@ -74,10 +74,12 @@ require("kanagawa").setup({
 -- 	lualine_bold = false,
 -- })
 
+vim.cmd("colorscheme catppuccin")
+
 vim.cmd([[
   set laststatus=3
-  " highlight Normal guibg=none
-  " highlight NonText guibg=none
+  " highlight Normal guibg=NONE ctermbg=NONE
+  " highlight LineNr guibg=NONE ctermbg=NONE
+  " set fillchars+=vert:\│
+  " highlight VertSplit gui=NONE guibg=NONE guifg=#444444 cterm=NONE ctermbg=NONE ctermfg=gray
 ]])
-
-vim.cmd("colorscheme kanagawa")

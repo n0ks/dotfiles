@@ -7,7 +7,7 @@ M.setup = function()
 			"lua_ls",
 			"bashls",
 			"cssls",
-			"yamlls",
+			-- "yamlls",
 			"vimls",
 			"sqlls",
 			"jsonls",

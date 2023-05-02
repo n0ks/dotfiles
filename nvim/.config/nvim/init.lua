@@ -62,12 +62,13 @@ require("lazy").setup({
 	"tpope/vim-repeat",
 	"tpope/vim-rhubarb",
 
-	-- "sjywind3000/asyncrun.vim",
+	"sjywind3000/asyncrun.vim",
 
 	"antoinemadec/FixCursorHold.nvim",
 	"kyazdani42/nvim-web-devicons",
 	"rafamadriz/friendly-snippets",
 	"stevearc/dressing.nvim",
+	{ "j-hui/fidget.nvim", config = true },
 
 	{
 		"folke/neodev.nvim",
@@ -241,6 +242,7 @@ require("lazy").setup({
 	},
 	{
 		"akinsho/flutter-tools.nvim",
+		lazy = false,
 		config = function()
 			require("noks.lsp.servers.flutter").setup()
 		end,
