@@ -62,7 +62,7 @@ require("lazy").setup({
 	"tpope/vim-repeat",
 	"tpope/vim-rhubarb",
 
-	"sjywind3000/asyncrun.vim",
+	"skywind3000/asyncrun.vim",
 
 	"antoinemadec/FixCursorHold.nvim",
 	"kyazdani42/nvim-web-devicons",
@@ -143,7 +143,10 @@ require("lazy").setup({
 		"rcarriga/nvim-notify",
 		config = function()
 			vim.notify = require("notify")
-			vim.notify.setup({})
+
+			vim.notify.setup({
+				background_colour = "#000000",
+			})
 		end,
 	},
 	{

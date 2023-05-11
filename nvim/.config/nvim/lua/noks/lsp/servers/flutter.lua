@@ -16,6 +16,7 @@ M.setup = function()
 		},
 		dev_log = {
 			open_cmd = "tabnew",
+			notify_errors = false,
 		},
 		lsp = {
 			color = {
@@ -38,7 +39,7 @@ M.setup = function()
               command DartFixDry AsyncRun -cwd=$(VIM_FILEDIR) dart fix --dry-run
           ]])
 
-				-- require("noks.lsp.handlers").on_attach(_, bufnr)
+				require("noks.lsp.handlers").on_attach(_, bufnr)
 			end,
 		},
 	})

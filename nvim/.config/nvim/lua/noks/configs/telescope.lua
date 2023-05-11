@@ -13,9 +13,10 @@ telescope.setup({
 		grep_previewer = previewers.vim_buffer_vimgrep.new,
 		qflist_previewer = previewers.vim_buffer_qflist.new,
 		layout_strategy = "flex",
+		-- file_ignore_patterns = { ".git/", "%.js", "%.svg" },
 		mappings = {
 			i = {
-				["<C-x>"] = false,
+				-- ["<C-x>"] = false,
 				["<C-s>"] = actions.toggle_selection,
 				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
 				["<esc>"] = actions.close,
