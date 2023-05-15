@@ -22,6 +22,13 @@ M.setup = function()
 		pyright = pyright_settings,
 		sumneko_lua = sumneko_lua.config,
 		tsserver = tsserver.config,
+		yamlls = {
+			settings = {
+				yaml = {
+					keyOrdering = false,
+				},
+			},
+		},
 	}
 
 	local opts = {
