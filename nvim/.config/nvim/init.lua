@@ -66,7 +66,6 @@ require("lazy").setup({
 
 	"antoinemadec/FixCursorHold.nvim",
 	"kyazdani42/nvim-web-devicons",
-	"rafamadriz/friendly-snippets",
 	"stevearc/dressing.nvim",
 	{ "j-hui/fidget.nvim", config = true },
 
@@ -209,6 +208,7 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip",
 		},
 	},
+	{ "rafamadriz/friendly-snippets", event = "VeryLazy" },
 	{
 		"L3MON4D3/LuaSnip",
 		event = "VeryLazy",
@@ -234,6 +234,7 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-media-files.nvim",
 			"nvim-telescope/telescope-symbols.nvim",
+			"aaronhallaert/advanced-git-search.nvim",
 			{ "nvim-telescope/telescope-fzf-native.nvim", lazy = false, build = "make" },
 		},
 	},
