@@ -2,18 +2,21 @@
   "Json factory": {
     "prefix": "jss",
     "body": [
-      "factory ${1}.fromJson(Map<String, dynamic> json) => _\\$${1}FromJson(json);",
+      "factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}.fromJson(Map<String, dynamic> json) => _\\$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}FromJson(json);",
       " ",
-      "Map<String, dynamic> toJson() => _\\$${1}ToJson(this);"
+      "Map<String, dynamic> toJson() => _\\$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}ToJson(this);"
     ],
     "description": "Create Json serializable"
   },
   "Freezed dataclass": {
     "prefix": "fdataclass",
     "body": [
-      "class ${1:DataClass} with _\\$${1:DataClass} { ",
+      "part '${TM_FILENAME_BASE}.freezed.dart';",
+      "part '${TM_FILENAME_BASE}.g.dart';",
       " ",
-      "const factory ${1:DataClass}() = _${1:DataClass};",
+      "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} with _\\$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} { ",
+      " ",
+      "const factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}() = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}",
       "}"
     ],
     "description": "Create a freezed dataclass"
@@ -39,7 +42,6 @@
     ],
     "description": "Ignore this file on test coverage"
   },
-
   "Verify": {
     "prefix": "ve",
     "body": [

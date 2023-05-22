@@ -212,6 +212,8 @@ require("lazy").setup({
 	{
 		"L3MON4D3/LuaSnip",
 		event = "VeryLazy",
+		build = "make install_jsregexp",
+		version = "1.2.*",
 		config = function()
 			require("noks.configs.luasnip")
 		end,
