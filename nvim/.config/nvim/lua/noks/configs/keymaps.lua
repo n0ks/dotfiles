@@ -38,8 +38,10 @@ map("n", "<C-u>", "6k")
 map("n", "<leader>Y", 'gg"+yG')
 map("n", "<esc>", ":noh<return><esc>")
 map("n", ",fn", ":put =expand('%:t')<CR>")
+
 map("n", "<F1>", ":FlutterRun<CR>")
-map("n", "<F2>", ":FlutterRestart<CR>")
+map("n", "<F2>", ":FlutterReload<CR>")
+map("n", "<F3>", ":FlutterRestart<CR>")
 
 -- " Visually select the text that was last edited/pasted (Vimcast#2).
 map("n", "gV", "`[v`")
@@ -134,10 +136,13 @@ map("n", "<Right>", ":cnfile<CR>")
 
 map("n", "<M-CR>", ":Lspsaga code_action<CR>")
 map("n", "K", ":Lspsaga hover_doc<CR>")
+map("n", "<leader>K", ":Lspsaga hover_doc ++keep<CR>")
 map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>")
 map("n", "]d", ":Lspsaga diagnostic_jump_next<CR>")
 map("n", "[i", ":Lspsaga show_line_diagnostics<CR>")
 map("n", "<leader>o", ":Lspsaga outline<CR>")
+
+map({ "n", "t" }, "<M-d>", "<cmd>Lspsaga term_toggle<CR>")
 
 map("n", "<leader>gr", ":Lspsaga lsp_finder<CR>")
 

@@ -65,9 +65,17 @@ require("lazy").setup({
 	"skywind3000/asyncrun.vim",
 
 	"antoinemadec/FixCursorHold.nvim",
-	"kyazdani42/nvim-web-devicons",
+	"nvim-tree/nvim-web-devicons",
 	"stevearc/dressing.nvim",
 	{ "j-hui/fidget.nvim", config = true },
+
+	{
+		"glepnir/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("noks.configs.dashboard")
+		end,
+	},
 
 	{
 		"folke/neodev.nvim",
@@ -130,13 +138,14 @@ require("lazy").setup({
 			require("noks.configs.harpoon")
 		end,
 	},
+
 	"mzlogin/vim-markdown-toc",
+
 	{
 		"iamcco/markdown-preview.nvim",
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
-		event = "VeryLazy",
 	},
 	{
 		"rcarriga/nvim-notify",
@@ -208,12 +217,12 @@ require("lazy").setup({
 			"saadparwaiz1/cmp_luasnip",
 		},
 	},
-	{ "rafamadriz/friendly-snippets", event = "VeryLazy" },
 	{
 		"L3MON4D3/LuaSnip",
 		event = "VeryLazy",
 		build = "make install_jsregexp",
 		version = "1.2.*",
+		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require("noks.configs.luasnip")
 		end,

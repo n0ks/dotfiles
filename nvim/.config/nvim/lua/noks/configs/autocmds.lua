@@ -72,6 +72,7 @@ autocmd({ "BufReadPost" }, { "*" }, {
 })
 
 autocmd({ "BufNewFile", "BufRead" }, { "Fastfile", "Podfile" }, { command = "setl filetype=ruby" })
+autocmd({ "BufNewFile", "BufRead" }, { "*.arb" }, { command = "setl filetype=json" })
 
 autocmd({ "Filetype" }, { "json" }, { command = "setl filetype=jsonc" })
 

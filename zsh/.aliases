@@ -48,3 +48,5 @@ alias vg="very_good"
 alias fl="flutter"
 alias getwname="xprop | grep WM_CLASS"
 alias deletestore='find . -name ".DS_Store" -type f -print -delete'
+
+alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'

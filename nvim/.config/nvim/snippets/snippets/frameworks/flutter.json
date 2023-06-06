@@ -11,13 +11,14 @@
   "Freezed dataclass": {
     "prefix": "fdataclass",
     "body": [
+      "import 'package:freezed_annotation/freezed_annotation.dart';",
       "part '${TM_FILENAME_BASE}.freezed.dart';",
       "part '${TM_FILENAME_BASE}.g.dart';",
       " ",
       "@freezed",
       "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} with _\\$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} { ",
       " ",
-      "const factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}() = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}",
+      "const factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}() = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g};",
       "}"
     ],
     "description": "Create a freezed dataclass"
@@ -26,6 +27,7 @@
   "Freezed state": {
     "prefix": "fstate",
     "body": [
+      "import 'package:freezed_annotation/freezed_annotation.dart';",
       "part '${TM_FILENAME_BASE}.freezed.dart';",
       "part '${TM_FILENAME_BASE}.g.dart';",
       " ",
