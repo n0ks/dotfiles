@@ -45,6 +45,14 @@ require("lazy").setup({
 	-- Theme
 	"rebelot/kanagawa.nvim",
 
+	{
+		"AlexvZyl/nordic.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nordic").load()
+		end,
+	},
 	"EdenEast/nightfox.nvim",
 	{ "rose-pine/neovim", name = "rose-pine" },
 	"catppuccin/nvim",
@@ -52,8 +60,6 @@ require("lazy").setup({
 	"nyoom-engineering/oxocarbon.nvim",
 
 	"onsails/lspkind.nvim",
-	"jose-elias-alvarez/nvim-lsp-ts-utils",
-	"jose-elias-alvarez/null-ls.nvim",
 	"b0o/schemastore.nvim",
 	"ThePrimeagen/git-worktree.nvim",
 
@@ -64,25 +70,20 @@ require("lazy").setup({
 
 	"skywind3000/asyncrun.vim",
 
-	"antoinemadec/FixCursorHold.nvim",
-	"nvim-tree/nvim-web-devicons",
+	{ "antoinemadec/FixCursorHold.nvim" },
+	{ "nvim-tree/nvim-web-devicons" },
+
+	"folke/trouble.nvim",
 	"stevearc/dressing.nvim",
-	{ "j-hui/fidget.nvim", config = true },
+
+	{ "johmsalas/text-case.nvim", config = true },
+	-- { "j-hui/fidget.nvim", config = true },
 
 	{
 		"glepnir/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
 			require("noks.configs.dashboard")
-		end,
-	},
-
-	{
-		"folke/neodev.nvim",
-		config = function()
-			require("neodev").setup({
-				library = { plugins = { "neotest" }, types = true },
-			})
 		end,
 	},
 
@@ -113,6 +114,7 @@ require("lazy").setup({
 
 	{
 		"shortcuts/no-neck-pain.nvim",
+		-- event = "VeryLazy",
 		config = function()
 			require("noks.configs.no-neck")
 		end,
@@ -159,6 +161,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		commit = "33eb472b459f1d2bf49e16154726743ab3ca1c6d",
 		build = ":TSUpdate",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter-textobjects",
@@ -169,19 +172,34 @@ require("lazy").setup({
 		lazy = false,
 	},
 
+	"jose-elias-alvarez/nvim-lsp-ts-utils",
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"jose-elias-alvarez/null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require("noks.lsp.mason").setup()
+			require("noks.lsp.servers.null_ls").setup()
 		end,
-		dependencies = {
-			"williamboman/mason.nvim",
-		},
-		event = "VeryLazy",
 	},
 	{
 		"neovim/nvim-lspconfig",
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
+			"williamboman/mason.nvim",
+			{
+				"williamboman/mason-lspconfig.nvim",
+				config = function()
+					require("noks.lsp.mason").setup()
+				end,
+			},
+			{
+				"folke/neodev.nvim",
+				ft = "*.lua",
+				config = function()
+					require("neodev").setup({
+						library = { plugins = { "neotest" }, types = true },
+					})
+				end,
+			},
 			"SmiteshP/nvim-navic",
 		},
 		config = function()
@@ -246,7 +264,7 @@ require("lazy").setup({
 			"nvim-telescope/telescope-media-files.nvim",
 			"nvim-telescope/telescope-symbols.nvim",
 			"aaronhallaert/advanced-git-search.nvim",
-			{ "nvim-telescope/telescope-fzf-native.nvim", lazy = false, build = "make" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", lazy = true, build = "make" },
 		},
 	},
 	{

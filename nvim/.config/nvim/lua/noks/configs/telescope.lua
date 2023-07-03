@@ -43,6 +43,16 @@ telescope.setup({
 		},
 	},
 	pickers = {
+		git_branches = {
+			theme = "ivy",
+			layout_config = {
+				width = 0.75,
+				preview_height = 0.,
+			},
+		},
+		lsp_document_symbols = {
+			theme = "dropdown",
+		},
 		buffers = {
 			show_all_buffers = false,
 			ignore_current_buffer = true,
@@ -130,13 +140,14 @@ M.git_branches = function()
 			map("n", "<c-d>", actions.git_delete_branch)
 			map("i", "<c-b>", actions.git_create_branch)
 			map("n", "<c-b>", actions.git_create_branch)
+			map("n", "<cr>", actions.git_switch_branch)
 			return true
 		end,
 	})
 end
 
 M.open_diff = function()
-	require("telescope.builtin").git_commits({
+	builtin.git_commits({
 		attach_mappings = function(_, map)
 			map("n", "<c-o>", function()
 				local selected_entry = state.get_selected_entry()
@@ -150,18 +161,6 @@ M.open_diff = function()
 			return true
 		end,
 	})
-end
-
-M.document_symbols = function()
-	require("telescope.builtin").lsp_document_symbols(require("telescope.themes").get_dropdown({
-		hidden = true,
-		depth = 1,
-		previewer = false,
-		layout_config = {
-			width = 0.5,
-			height = 0.35,
-		},
-	}))
 end
 
 M.live_grep_qflist = function()

@@ -10,7 +10,7 @@ map("n", ",0d", ":.,6d<CR>")
 map("n", ",sh", ":w !sh<CR>")
 map("n", ",rr", ":luafile %<CR>")
 map("n", "<Leader>rr", ":LspRestart <CR>")
-map("n", ";f", "v/{<CR>%V")
+
 -- exec last cmd
 map("n", ",cc", ":,@:<CR>")
 
@@ -37,11 +37,7 @@ map("n", "<C-d>", "6j")
 map("n", "<C-u>", "6k")
 map("n", "<leader>Y", 'gg"+yG')
 map("n", "<esc>", ":noh<return><esc>")
-map("n", ",fn", ":put =expand('%:t')<CR>")
-
-map("n", "<F1>", ":FlutterRun<CR>")
-map("n", "<F2>", ":FlutterReload<CR>")
-map("n", "<F3>", ":FlutterRestart<CR>")
+-- map("n", ",fn", ":put =expand('%:t')<CR>")
 
 -- " Visually select the text that was last edited/pasted (Vimcast#2).
 map("n", "gV", "`[v`")
@@ -168,7 +164,7 @@ map("n", "<leader>pp", ":Telescope projects<cr>")
 map("n", "<leader>sd", ":lua require('noks.configs.telescope').search_dotfiles()<CR>")
 map("n", "<leader>fq", ":lua require('noks.configs.telescope').live_grep_qflist()<CR>")
 map("n", "<leader>sw", ":lua require('noks.configs.telescope').search_wallpapers()<CR>")
-map("n", "<leader>ds", ":lua require('noks.configs.telescope').document_symbols()<CR>")
+map("n", "<leader>ds", ":Telescope lsp_document_symbols<CR>")
 map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
 map("n", "<leader>no", ":lua require('noks.configs.telescope').notifications()<CR>")
 
@@ -180,7 +176,6 @@ map("n", "<leader>H", ":Telescope help_tags<CR>")
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")
 map("n", ";t", ":Telescope<cr>")
-map("n", ";T", ":Telescope resume<cr>")
 
 map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emoji'} }<CR>")
 map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")

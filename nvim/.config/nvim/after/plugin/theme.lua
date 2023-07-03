@@ -24,7 +24,7 @@ require("catppuccin").setup({
 })
 
 require("kanagawa").setup({
-	transparent = false,
+	transparent = true,
 	dimInactive = false,
 	overrides = function(colors)
 		local theme = colors.theme
@@ -46,12 +46,16 @@ require("kanagawa").setup({
 
 require("rose-pine").setup({
 	dark_variant = "moon",
-	disable_background = true,
+	disable_background = false,
 })
 --
 require("nightfox").setup({
 	options = {
-		transparent = false,
+		transparent = true,
+		styles = {
+			comments = "italic",
+			functions = "italic,bold",
+		},
 	},
 })
 
@@ -74,7 +78,12 @@ require("nightfox").setup({
 -- 	lualine_bold = false,
 -- })
 
-vim.cmd("colorscheme catppuccin")
+-- vim.cmd("colorscheme nordfox")
+-- vim.cmd("colorscheme kanagawa")
+
+-- vim.cmd("colorscheme rose-pine")
+-- vim.cmd("colorscheme duskfox")
+-- vim.cmd("colorscheme dawnfox")
 
 vim.cmd([[
   set laststatus=3

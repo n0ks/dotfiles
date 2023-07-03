@@ -27,6 +27,7 @@ local config = {
 		header = "",
 		prefix = "",
 	},
+	format_notify = false,
 }
 
 -- vim.g.navic_silence = true

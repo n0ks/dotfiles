@@ -8,8 +8,8 @@ require("no-neck-pain").setup({
 		scratchPad = {
 			setNames = false,
 			enabled = true,
-			filename = "notes",
-			-- location = "~/Documents/",
+			fileName = "notes",
+			location = "~/",
 		},
 		right = {
 			enabled = false,

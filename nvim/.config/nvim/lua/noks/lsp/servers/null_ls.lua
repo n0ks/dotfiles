@@ -15,7 +15,7 @@ M.setup = function()
 			nls.builtins.code_actions.shellcheck,
 			nls.builtins.formatting.stylua,
 			nls.builtins.formatting.shfmt,
-			nls.builtins.formatting.dart_format,
+			-- nls.builtins.formatting.dart_format,
 			nls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
 			nls.builtins.formatting.prettier.with({
 				filetypes = {
