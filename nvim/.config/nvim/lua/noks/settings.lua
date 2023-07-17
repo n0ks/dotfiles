@@ -91,5 +91,9 @@ opt.redrawtime = 1500
 opt.timeoutlen = 250
 opt.ttimeoutlen = 10
 opt.updatetime = 100
+opt.breakindent = true
+opt.breakindentopt = "shift:2"
+opt.showbreak = "↳"
+opt.laststatus = 3
 
 o.conceallevel = 0

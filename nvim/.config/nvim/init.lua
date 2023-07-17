@@ -49,13 +49,31 @@ require("lazy").setup({
 		"AlexvZyl/nordic.nvim",
 		lazy = false,
 		priority = 1000,
+		enabled = false,
 		config = function()
-			require("nordic").load()
+			local nord = require("nordic")
+			nord.setup({
+				transparent_bg = true,
+			})
+			nord.load()
 		end,
 	},
+
 	"EdenEast/nightfox.nvim",
+
 	{ "rose-pine/neovim", name = "rose-pine" },
-	"catppuccin/nvim",
+
+	{
+		"catppuccin/nvim",
+		lazy = false,
+		priority = 1000,
+		enabled = true,
+		config = function()
+			require("noks.configs.themes.catppuccin")
+			vim.api.nvim_command("colorscheme catppuccin")
+		end,
+	},
+
 	"folke/tokyonight.nvim",
 	"nyoom-engineering/oxocarbon.nvim",
 
@@ -76,8 +94,29 @@ require("lazy").setup({
 	"folke/trouble.nvim",
 	"stevearc/dressing.nvim",
 
-	{ "johmsalas/text-case.nvim", config = true },
+	{ "johmsalas/text-case.nvim", config = true, event = "VeryLazy" },
 	-- { "j-hui/fidget.nvim", config = true },
+
+	{
+		"Exafunction/codeium.vim",
+		config = function()
+			vim.keymap.set("i", "<C-g>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true })
+
+			vim.keymap.set("i", "<C-]>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true })
+
+			vim.keymap.set("i", "<C-[>", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true })
+
+			vim.keymap.set("i", "<C-x>", function()
+				return vim.fn["codeium#Clear"]()
+			end, { expr = true })
+		end,
+	},
 
 	{
 		"glepnir/dashboard-nvim",
