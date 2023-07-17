@@ -20,6 +20,12 @@ map("n", ",P", '"0P')
 map("n", "j", [[(v:count > 5 ? "m'" . v:count : "") . 'j']], { expr = true, desc = "if j > 5 then add to jumplist" })
 map("n", "k", [[(v:count > 5 ? "m'" . v:count : "") . 'k']], { expr = true, desc = "if k > 5 then add to jumplist" })
 
+map("n", "{", "{zz")
+map("n", "}", "}zz")
+
+map("n", "n", "nzz")
+map("n", "N", "Nzz")
+
 map("t", "<C-x>", "<C-\\><C-n>")
 
 map("x", "<leader>bs", ":!boxes -d stone")
