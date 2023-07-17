@@ -2,6 +2,10 @@ require("nvim-tree").setup({
 	on_attach = function(bufnr)
 		local api = require("nvim-tree.api")
 
+		api.events.subscribe(api.events.Event.FileCreated, function(file)
+			vim.cmd("edit " .. file.fname)
+		end)
+
 		local function opts(desc)
 			return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
 		end
@@ -62,6 +66,9 @@ require("nvim-tree").setup({
 	sort_by = "case_sensitive",
 	sync_root_with_cwd = true,
 	hijack_cursor = true,
+	notify = {
+		threshold = vim.log.levels.ERROR,
+	},
 	hijack_netrw = true,
 	disable_netrw = true,
 	renderer = {
