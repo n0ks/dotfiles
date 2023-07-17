@@ -43,7 +43,7 @@ M.setup = function()
               command -nargs=1 CreateBlocFolder :lcd %:h | AsyncRun mkdir bloc && touch bloc/<args>.state.dart bloc/<args>.events.dart
               command DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply
               command DartFixDry AsyncRun -cwd=$(VIM_FILEDIR) dart fix --dry-run
-              command ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --use-freezed -o "$(VIM_FILEPATH)"
+              command ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --no-enums --use-freezed -o "$(VIM_FILEPATH)"
           ]])
 
 				require("noks.lsp.handlers").on_attach(_, bufnr)
