@@ -79,7 +79,7 @@ require("lazy").setup({
 
 	"onsails/lspkind.nvim",
 	"b0o/schemastore.nvim",
-	"ThePrimeagen/git-worktree.nvim",
+	{ "ThePrimeagen/git-worktree.nvim", config = true },
 
 	"tpope/vim-fugitive",
 	"tpope/vim-projectionist",
@@ -94,7 +94,7 @@ require("lazy").setup({
 	"folke/trouble.nvim",
 	"stevearc/dressing.nvim",
 
-	{ "johmsalas/text-case.nvim", config = true, event = "VeryLazy" },
+	{ "johmsalas/text-case.nvim", config = true },
 	-- { "j-hui/fidget.nvim", config = true },
 
 	{
@@ -297,7 +297,6 @@ require("lazy").setup({
 			require("noks.configs.telescope")
 		end,
 		event = "VeryLazy",
-		tag = "0.1.1",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-media-files.nvim",

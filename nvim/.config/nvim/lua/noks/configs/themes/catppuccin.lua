@@ -3,6 +3,13 @@ require("catppuccin").setup({
 	flavour = "mocha",
 	transparent_background = false,
 	show_end_of_buffer = false,
+	highlight_overrides = {
+		mocha = function(mocha)
+			return {
+				LineNr = { fg = mocha.subtext0 },
+			}
+		end,
+	},
 	color_overrides = {
 		mocha = {
 			rosewater = "#EA6962",

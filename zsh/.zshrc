@@ -26,8 +26,6 @@ export LANG=en_US.UTF-8
 
 . $HOME/.asdf/asdf.sh
 #. ~/.asdf/plugins/java/set-java-home.zsh
-export FLIP_PATH=$HOME/.flip/
-export FLUTTER_ROOT=$HOME/flutter
 export HISTFILE=$HOME/.zsh_history
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme zenburn'"
@@ -36,7 +34,7 @@ export TERM=xterm-256color
 # export TERM=screen-256color
 export GREP_OPTIONS='--color=auto'
 export BROWSER='/usr/bin/firefox'
-export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/:$HOME/fvm/default/bin:$HOME/.flip
+export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/:$HOME/fvm/default/bin
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -87,4 +85,12 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -f ~/functions.sh ]] && source ~/functions.sh
 
-eval "$(starship init zsh)"
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
+autoload -U promptinit; promptinit
+prompt pure
+
+## [Completion] 
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/rodrigo.m.de.campos/.dart-cli-completion/zsh-config.zsh ]] && . /Users/rodrigo.m.de.campos/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
