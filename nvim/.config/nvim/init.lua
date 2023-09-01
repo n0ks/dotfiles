@@ -200,11 +200,11 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		commit = "33eb472b459f1d2bf49e16154726743ab3ca1c6d",
+		commit = "f2778bd",
 		build = ":TSUpdate",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
+		-- dependencies = {
+		-- 	"nvim-treesitter/nvim-treesitter-textobjects",
+		-- },
 		config = function()
 			require("noks.configs.treesitter")
 		end,
