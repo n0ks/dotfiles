@@ -23,7 +23,6 @@
     ],
     "description": "Create a freezed dataclass"
   },
-
   "Freezed state": {
     "prefix": "fstate",
     "body": [
@@ -34,11 +33,8 @@
       "@freezed",
       "class ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} with _\\$${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g} { ",
       " ",
-
       "const factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}({required bool param}) = _${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g};",
-
       " ",
-
       "factory ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}.initial() => const ${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/g}({})",
       "}"
     ],
@@ -71,5 +67,41 @@
       "verify(() => $1);"
     ],
     "description": "Verify test"
+  },
+  "Datasource function": {
+    "prefix": "dsf",
+    "body": [
+      "FutureResult<GenericFailure, $2> $1() async {",
+      "\tfinal response = await execute(",
+      "\t\t() => http.client.post(",
+      "\t\t\t'',",
+      "\t\t\tdata: {},",
+      "\t\t),",
+      "\t);",
+      "",
+      "\treturn response.when(",
+      "\t\tfailure: (e) => const Result.failure(GenericFailure()),",
+      "\t\tsuccess: (d) => Result.success($2.fromJson(d.data!)),",
+      "\t);",
+      "}"
+    ],
+    "description": "Datasource function"
+  },
+  "Usecase class": {
+    "prefix": "ucase",
+    "body": [
+      "@injectable",
+      "class $1 {",
+      "\t$1(this._repository);",
+      "",
+      "final _repository;",
+      "",
+      "\tFutureResult<GenericFailure, $2> call(",
+      "\t) {",
+      "\t\tthrow UnimplementedError();",
+      "\t}",
+      "}"
+    ],
+    "description": "Usecase class"
   }
 }

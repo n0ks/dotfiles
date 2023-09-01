@@ -82,6 +82,7 @@ telescope.load_extension("git_worktree")
 telescope.load_extension("fzf")
 telescope.load_extension("media_files")
 telescope.load_extension("advanced_git_search")
+telescope.load_extension("textcase")
 
 local M = {}
 

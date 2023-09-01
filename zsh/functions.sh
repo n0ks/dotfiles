@@ -100,3 +100,24 @@ xcodeenv(){
   local project=$1
   xcodebuild -project $project.xcodeproj -target "$project" -showBuildSettings
 }
+
+w(){
+  local worktree=$(
+      git worktree list | fzf \
+          --prompt="Switch Worktree: " \
+          --height 40% --reverse |
+          awk '{print $1}'
+  )
+
+  cd "$worktree" || return
+
+}
+
+wremote(){
+  git worktree add -b $1 $2 origin/$2
+}
+
+wlocal(){
+  git worktree add -b $1 $2
+}
+

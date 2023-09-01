@@ -47,9 +47,9 @@ require("lazy").setup({
 
 	{
 		"AlexvZyl/nordic.nvim",
-		lazy = false,
-		priority = 1000,
-		enabled = false,
+		-- lazy = false,
+		-- priority = 1000,
+		-- enabled = true,
 		config = function()
 			local nord = require("nordic")
 			nord.setup({
@@ -59,18 +59,26 @@ require("lazy").setup({
 		end,
 	},
 
-	"EdenEast/nightfox.nvim",
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+		enabled = true,
+		config = function()
+			require("noks.configs.themes.nightfox")
+			vim.api.nvim_command("colorscheme carbonfox")
+		end,
+	},
 
 	{ "rose-pine/neovim", name = "rose-pine" },
 
 	{
 		"catppuccin/nvim",
-		lazy = false,
-		priority = 1000,
-		enabled = true,
+		-- lazy = false,
+		-- priority = 1000,
 		config = function()
 			require("noks.configs.themes.catppuccin")
-			vim.api.nvim_command("colorscheme catppuccin")
+			-- vim.api.nvim_command("colorscheme catppuccin")
 		end,
 	},
 
@@ -96,6 +104,18 @@ require("lazy").setup({
 
 	{ "johmsalas/text-case.nvim", config = true },
 	-- { "j-hui/fidget.nvim", config = true },
+
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup()
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+		},
+	},
 
 	{
 		"Exafunction/codeium.vim",

@@ -9,7 +9,7 @@ require("no-neck-pain").setup({
 			setNames = false,
 			enabled = true,
 			fileName = "notes",
-			location = "~/",
+			-- location = "~/",
 		},
 		right = {
 			enabled = false,

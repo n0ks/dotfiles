@@ -9,6 +9,7 @@ map("n", ",T", "<Plug>PlenaryTestFile")
 map("n", ",0d", ":.,6d<CR>")
 map("n", ",sh", ":w !sh<CR>")
 map("n", ",rr", ":luafile %<CR>")
+map("n", ",n", ":NoNeckPain<CR>")
 map("n", "<Leader>rr", ":LspRestart <CR>")
 
 -- exec last cmd
@@ -69,6 +70,7 @@ map("v", ">", ">gv")
 --#region
 
 map("n", "<Leader><Leader>i", "<cmd>IconPickerNormal symbols emoji<cr>")
+map("n", "<Leader>gpt", ":ChatGPT<CR>")
 -- map("n", "<Leader><Leader>y", "<cmd>IconPickerYank alt_font symbols nerd_font emoji<cr>") --> Yank the selected icon into register
 -- map("i", "<C-i>", "<cmd>IconPickerInsert emoji<cr>")
 
@@ -91,8 +93,9 @@ map("n", "<leader>cA", ":w <bar> %bd <bar> e# <bar> bd# <CR>")
 map("n", "<leader>CC", ":call CleanNoNameEmptyBuffers()<CR>")
 map("n", "<Backspace>", "<C-^>")
 map("i", "<C-s>", "<ESC>:w<CR>")
-
 map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
+
+map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
 -- " ----------------------------------------------------------------------------
 -- " Go  remaps
@@ -137,6 +140,7 @@ map("n", "<Right>", ":cnfile<CR>")
 -- ----------------------------------------------------------------------------
 
 map("n", "<M-CR>", ":Lspsaga code_action<CR>")
+map("v", "<M-CR>", ":Lspsaga code_action<CR>")
 map("n", "K", ":Lspsaga hover_doc<CR>")
 map("n", "<leader>K", ":Lspsaga hover_doc ++keep<CR>")
 map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>")
@@ -146,7 +150,7 @@ map("n", "<leader>o", ":Lspsaga outline<CR>")
 
 map({ "n", "t" }, "<M-d>", "<cmd>Lspsaga term_toggle<CR>")
 
-map("n", "<leader>gr", ":Lspsaga lsp_finder<CR>")
+map("n", "<leader>gr", ":Lspsaga finder<CR>")
 
 map("v", "<M-CR>", ":<C-U>Lspsaga range_code_action<CR>")
 
@@ -154,6 +158,7 @@ map("n", "gD", ":Lspsaga peek_definition<CR>")
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 map("n", "gdv", ":vs | lua vim.lsp.buf.definition()<CR>")
 map("n", "<leader>rn", ":Lspsaga rename<CR>")
+map("n", "<leader>rnp", ":Lspsaga rename ++project<CR>")
 
 map("n", "gr", ":lua vim.lsp.buf.references()<CR>")
 map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
