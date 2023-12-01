@@ -12,7 +12,6 @@ require("nvim-treesitter.configs").setup({
 	ensure_installed = {
 		"bash",
 		"css",
-		"dart",
 		"dockerfile",
 		"go",
 		"gomod",
@@ -30,6 +29,7 @@ require("nvim-treesitter.configs").setup({
 		"markdown",
 		"markdown_inline",
 	},
+	ignore_install = { "dart" },
 	sync_install = false,
 	playground = {
 		enable = true,
@@ -37,7 +37,11 @@ require("nvim-treesitter.configs").setup({
 	autotag = {
 		enable = true,
 	},
-	highlight = { enable = true, additional_vim_regex_highlighting = false },
+	highlight = {
+		enable = true,
+		disable = { "yaml", "dart" },
+		additional_vim_regex_highlighting = { "yaml", "jack", "haskell", "dart" },
+	},
 	incremental_selection = { enable = true },
 	textobjects = {
 		lsp_interop = {

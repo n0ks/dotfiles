@@ -13,19 +13,6 @@ local dap, dapui = require("dap"), require("dapui")
 -- end
 
 dapui.setup({
-	layout = {
-		elements = {
-			-- Provide as ID strings or tables with "id" and "size" keys
-			{
-				id = "scopes",
-				size = 0.4, -- Can be float or integer > 1
-			},
-			{ id = "breakpoints", size = 0.2 },
-			{ id = "stacks", size = 0.2 },
-			{ id = "watches", size = 0.2 },
-			{ id = "console", size = 0 },
-		},
-	},
 	icons = { expanded = "▾", collapsed = "▸" },
 })
 

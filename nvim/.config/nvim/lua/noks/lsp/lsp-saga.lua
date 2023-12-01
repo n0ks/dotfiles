@@ -17,5 +17,5 @@ saga.setup({
 	ui = {
 		border = "rounded",
 		title = true,
-  },
+	},
 })

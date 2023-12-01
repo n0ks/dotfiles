@@ -19,6 +19,9 @@ M.setup = function()
 			open_cmd = "tabnew",
 			notify_errors = false,
 		},
+		dev_tools = {
+			autostart = true,
+		},
 		lsp = {
 			color = {
 				enabled = true,

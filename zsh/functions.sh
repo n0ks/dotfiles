@@ -114,10 +114,14 @@ w(){
 }
 
 wremote(){
-  git worktree add -b $1 $2 origin/$2
+  git worktree add --checkout "$1" "$2" && cd $2
+}
+
+wremove(){
+ git worktree remove "$1"
 }
 
 wlocal(){
-  git worktree add -b $1 $2
+  git worktree add -b "$1" "$2"
 }
 

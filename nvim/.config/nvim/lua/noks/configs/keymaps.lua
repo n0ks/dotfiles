@@ -13,7 +13,8 @@ map("n", ",n", ":NoNeckPain<CR>")
 map("n", "<Leader>rr", ":LspRestart <CR>")
 
 -- exec last cmd
-map("n", ",cc", ":,@:<CR>")
+-- map("n", ",cc", ":,@:<CR>")
+map("n", ",cc", ":BaleiaColorize<CR>")
 
 map("n", ",p", '"0p')
 map("n", ",P", '"0P')
@@ -83,6 +84,7 @@ map("n", "<M-k>", "<C-w>k")
 map("n", "<M-j>", "<C-w>j")
 map("n", "<M-l>", "<C-w>l")
 map("n", "<leader>w", "<C-w>w ")
+map("n", "<leader>a", ":A<CR>")
 map("n", "<C-s>", ":w<CR>")
 map("n", "<C-c>", "<Esc>")
 map("n", "<leader>bd", ":bd%<CR>")

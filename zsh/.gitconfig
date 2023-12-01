@@ -1,5 +1,5 @@
 [alias]
-  cansei = commit --amend --no-edit
+  cansei = !git commit --amend --no-edit && git push
   ac = !git add -A && git cansei
   branch-name = !git rev-parse --abbrev-ref HEAD
   stashstaged = !git stash --keep-index && \
@@ -11,6 +11,8 @@
     # discard everything
   fuck = reset --hard HEAD
   s = !git status
+
+  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
 
   # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 

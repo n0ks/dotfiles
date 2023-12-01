@@ -43,13 +43,21 @@ local opts = {
 
 require("lazy").setup({
 	-- Theme
-	"rebelot/kanagawa.nvim",
+	{
+
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("noks.configs.themes.kanagawa")
+			vim.api.nvim_command("colorscheme kanagawa")
+		end,
+	},
 
 	{
 		"AlexvZyl/nordic.nvim",
 		-- lazy = false,
 		-- priority = 1000,
-		-- enabled = true,
 		config = function()
 			local nord = require("nordic")
 			nord.setup({
@@ -61,12 +69,12 @@ require("lazy").setup({
 
 	{
 		"EdenEast/nightfox.nvim",
-		lazy = false,
-		priority = 1000,
-		enabled = true,
+		-- lazy = false,
+		-- priority = 1000,
+		-- enabled = true,
 		config = function()
 			require("noks.configs.themes.nightfox")
-			vim.api.nvim_command("colorscheme carbonfox")
+			-- vim.api.nvim_command("colorscheme carbonfox")
 		end,
 	},
 
@@ -81,9 +89,32 @@ require("lazy").setup({
 			-- vim.api.nvim_command("colorscheme catppuccin")
 		end,
 	},
+	{
+		"eddyekofo94/gruvbox-flat.nvim",
+		-- priority = 1000,
+		config = function()
+			-- vim.g.gruvbox_transparent = true
+			-- vim.api.nvim_command("colorscheme gruvbox-flat")
+		end,
+	},
 
 	"folke/tokyonight.nvim",
-	"nyoom-engineering/oxocarbon.nvim",
+
+	{
+		"m00qek/baleia.nvim",
+		config = function()
+			local b = require("baleia").setup({})
+
+			vim.api.nvim_create_user_command("BaleiaColorize", function()
+				b.once(vim.api.nvim_get_current_buf())
+			end, {})
+
+			vim.cmd([[
+          let s:baleia = luaeval("require('baleia').setup { }")
+          autocmd BufWinEnter,BufRead dap-repl call s:baleia.automatically(bufnr('%'))
+    ]])
+		end,
+	},
 
 	"onsails/lspkind.nvim",
 	"b0o/schemastore.nvim",
@@ -171,15 +202,9 @@ require("lazy").setup({
 		event = "VeryLazy",
 	},
 
+	{ "echasnovski/mini.statusline", version = false, config = function() end },
 	{
-		"shortcuts/no-neck-pain.nvim",
-		-- event = "VeryLazy",
-		config = function()
-			require("noks.configs.no-neck")
-		end,
-	},
-
-	{
+		enabled = false,
 		"nvim-lualine/lualine.nvim",
 		config = function()
 			require("noks.configs.lualine")
@@ -298,7 +323,7 @@ require("lazy").setup({
 		"L3MON4D3/LuaSnip",
 		event = "VeryLazy",
 		build = "make install_jsregexp",
-		version = "1.2.*",
+		version = "2.1.*",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require("noks.configs.luasnip")
