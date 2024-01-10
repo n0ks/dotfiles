@@ -1,6 +1,4 @@
 local M = {}
--- local coq = require("coq")
-local navic = require("nvim-navic")
 
 local signs = {
 	{ name = "DiagnosticSignError", text = "" },
@@ -30,8 +28,6 @@ local config = {
 	format_notify = false,
 }
 
--- vim.g.navic_silence = true
-
 for _, sign in ipairs(signs) do
 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
@@ -44,7 +40,6 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local cmp_capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
--- M.capabilities = coq.lsp_ensure_capabilities(capabilities)
 M.capabilities = cmp_capabilities
 
 -- Jump directly to the first available definition every time.
@@ -87,12 +82,6 @@ M.on_attach = function(client, bufnr)
 	-- if client.name == "tsserver" or client.name == "sumneko_lua" or client.name == "html" then
 	-- 	client.server_capabilities.document_formatting = false
 	-- end
-	if client.server_capabilities.documentSymbolProvider then
-		navic.setup({
-			highlight = true,
-		})
-		navic.attach(client, bufnr)
-	end
 end
 
 return M

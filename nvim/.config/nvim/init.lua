@@ -56,8 +56,9 @@ require("lazy").setup({
 
 	{
 		"AlexvZyl/nordic.nvim",
-		-- lazy = false,
-		-- priority = 1000,
+		enabled = false,
+		lazy = false,
+		priority = 1000,
 		config = function()
 			local nord = require("nordic")
 			nord.setup({
@@ -67,34 +68,25 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"EdenEast/nightfox.nvim",
-		-- lazy = false,
-		-- priority = 1000,
-		-- enabled = true,
-		config = function()
-			require("noks.configs.themes.nightfox")
-			-- vim.api.nvim_command("colorscheme carbonfox")
-		end,
-	},
-
 	{ "rose-pine/neovim", name = "rose-pine" },
 
 	{
 		"catppuccin/nvim",
-		-- lazy = false,
-		-- priority = 1000,
+		lazy = false,
+		priority = 1000,
+		enabled = false,
 		config = function()
 			require("noks.configs.themes.catppuccin")
-			-- vim.api.nvim_command("colorscheme catppuccin")
+			vim.api.nvim_command("colorscheme catppuccin")
 		end,
 	},
 	{
 		"eddyekofo94/gruvbox-flat.nvim",
+		enabled = false,
 		-- priority = 1000,
 		config = function()
-			-- vim.g.gruvbox_transparent = true
-			-- vim.api.nvim_command("colorscheme gruvbox-flat")
+			vim.g.gruvbox_transparent = true
+			vim.api.nvim_command("colorscheme gruvbox-flat")
 		end,
 	},
 
@@ -102,6 +94,7 @@ require("lazy").setup({
 
 	{
 		"m00qek/baleia.nvim",
+		event = "VeryLazy",
 		config = function()
 			local b = require("baleia").setup({})
 
@@ -116,8 +109,12 @@ require("lazy").setup({
 		end,
 	},
 
+	{ "smithbm2316/centerpad.nvim", event = "VeryLazy" },
+
 	"onsails/lspkind.nvim",
+
 	"b0o/schemastore.nvim",
+
 	{ "ThePrimeagen/git-worktree.nvim", config = true },
 
 	"tpope/vim-fugitive",
@@ -133,7 +130,7 @@ require("lazy").setup({
 	"folke/trouble.nvim",
 	"stevearc/dressing.nvim",
 
-	{ "johmsalas/text-case.nvim", config = true },
+	{ "johmsalas/text-case.nvim", config = true, event = "VeryLazy" },
 	-- { "j-hui/fidget.nvim", config = true },
 
 	{
@@ -245,7 +242,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		commit = "f2778bd",
+		-- commit = "f2778bd",
 		build = ":TSUpdate",
 		-- dependencies = {
 		-- 	"nvim-treesitter/nvim-treesitter-textobjects",
@@ -256,7 +253,10 @@ require("lazy").setup({
 		lazy = false,
 	},
 
+	--
+
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
+
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -284,7 +284,6 @@ require("lazy").setup({
 					})
 				end,
 			},
-			"SmiteshP/nvim-navic",
 		},
 		config = function()
 			require("noks.lsp.init").setup()
@@ -358,13 +357,13 @@ require("lazy").setup({
 	},
 	{
 		"akinsho/flutter-tools.nvim",
-		lazy = false,
 		config = function()
 			require("noks.lsp.servers.flutter").setup()
 		end,
 	},
 	{
 		"mfussenegger/nvim-dap",
+		event = "VeryLazy",
 		dependencies = { "theHamsta/nvim-dap-virtual-text", "leoluz/nvim-dap-go", "rcarriga/nvim-dap-ui" },
 		config = function()
 			require("noks.configs.dap")
