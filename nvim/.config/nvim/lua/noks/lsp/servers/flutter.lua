@@ -23,6 +23,11 @@ M.setup = function()
 			autostart = true,
 		},
 		lsp = {
+			settings = {
+				showTodos = false,
+				renameFilesWithClasses = "always",
+				documentation = "full",
+			},
 			color = {
 				enabled = true,
 			},

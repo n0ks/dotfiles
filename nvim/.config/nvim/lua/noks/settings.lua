@@ -7,7 +7,7 @@ vim.cmd([[
   let test#strategy = 'neovim'
   let test#neovim#term_position = "vert botright 70"
   let test#javascript#jest#options = "--color=always"
-  set t_Co=256 
+  set t_Co=256
 ]])
 
 opt.termguicolors = true
@@ -37,9 +37,18 @@ opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
 opt.undodir = vim.fn.stdpath("config") .. "/undo"
 opt.undofile = true
+opt.fillchars = {
+	eob = " ", -- suppress ~ at EndOfBuffer
+	diff = "╱", -- alternatives = ⣿ ░ ─
+	msgsep = " ", -- alternatives: ‾ ─
+	fold = " ",
+	foldopen = "▽", -- '▼'
+	foldclose = "▷", -- '▶'
+	foldsep = " ",
+}
 -- opt.undofile = true
 opt.pumheight = 15
-opt.listchars = { eol = " ", tab = "▸ ", trail = "·" }
+opt.listchars = { eol = nil, tab = "▸ ", trail = "·" }
 opt.background = "dark"
 
 opt.autoindent = true
@@ -76,16 +85,28 @@ opt.sidescrolloff = 3 -- Lines to scroll horizontally
 opt.signcolumn = "yes"
 opt.splitbelow = true -- Open new split below
 opt.splitright = true -- Open new split to the right
-opt.wrap = false
+opt.wrap = true
 
 opt.backup = false
 opt.swapfile = false
 opt.writebackup = false
 -- opt.regexpengine = 1
 opt.completeopt = { "menu", "menuone", "noselect" }
-opt.shortmess:append("c")
-opt.shortmess:remove("F")
+
 opt.foldmethod = "manual"
+
+opt.shortmess = {
+	t = true, -- truncate file messages at start
+	A = true, -- ignore annoying swap file messages
+	o = true, -- file-read message overwrites previous
+	O = true, -- file-read message overwrites previous
+	T = true, -- truncate non-file messages in middle
+	f = true, -- (file x of x) instead of just (x of x
+	F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
+	s = true,
+	c = true,
+	W = true, -- Don't show [w] or written when writing
+}
 
 opt.redrawtime = 1500
 opt.timeoutlen = 250
