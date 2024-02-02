@@ -74,7 +74,7 @@ require("lazy").setup({
 		"catppuccin/nvim",
 		lazy = false,
 		priority = 1000,
-		enabled = false,
+		enabled = true,
 		config = function()
 			require("noks.configs.themes.catppuccin")
 			vim.api.nvim_command("colorscheme catppuccin")
@@ -258,7 +258,7 @@ require("lazy").setup({
 	"jose-elias-alvarez/nvim-lsp-ts-utils",
 
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("noks.lsp.servers.null_ls").setup()
@@ -305,6 +305,7 @@ require("lazy").setup({
 
 	{
 		"hrsh7th/nvim-cmp",
+		event = "VeryLazy",
 		config = function()
 			require("noks.configs.cmp") -- completion
 		end,
@@ -371,6 +372,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-neotest/neotest",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-neotest/neotest-go",
 			"haydenmeade/neotest-jest",
