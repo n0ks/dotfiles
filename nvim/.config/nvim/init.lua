@@ -323,7 +323,7 @@ require("lazy").setup({
 		"L3MON4D3/LuaSnip",
 		event = "VeryLazy",
 		build = "make install_jsregexp",
-		version = "2.1.*",
+		version = "2.2.*",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		config = function()
 			require("noks.configs.luasnip")
