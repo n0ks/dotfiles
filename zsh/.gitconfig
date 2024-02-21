@@ -115,3 +115,7 @@
 [includeIf "gitdir:~/code/ssaauth/"]
   path = ~/.gitconfig_santander
 
+[rerere]
+	enabled = true
+[maintenance]
+	auto = true
