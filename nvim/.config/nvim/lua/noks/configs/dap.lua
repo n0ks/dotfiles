@@ -44,7 +44,7 @@ dapui.setup({
 				size = 0.5,
 			}, {
 				id = "console",
-				size = 0.0,
+				size = 0,
 			} },
 			position = "bottom",
 			size = 20,

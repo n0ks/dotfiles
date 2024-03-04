@@ -7,6 +7,7 @@ M.setup = function()
 		closing_tags = {
 			enabled = false,
 		},
+		fvm = true,
 		debugger = {
 			enabled = true,
 			run_via_dap = true,
@@ -16,7 +17,8 @@ M.setup = function()
 			end,
 		},
 		dev_log = {
-			open_cmd = "tabnew",
+			enabled = false,
+			open_cmd = "tabedit",
 			notify_errors = false,
 		},
 		dev_tools = {

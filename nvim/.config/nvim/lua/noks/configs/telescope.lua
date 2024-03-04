@@ -47,7 +47,7 @@ telescope.setup({
 			theme = "ivy",
 			layout_config = {
 				width = 0.75,
-				preview_height = 0.,
+				preview_height = 0.2,
 			},
 		},
 		lsp_document_symbols = {
@@ -72,13 +72,14 @@ telescope.setup({
 			end,
 		},
 		find_files = {
-			hidden = true,
+			hidden = false,
 			file_ignore_patterns = { ".git/" },
+			previewer = false,
 		},
 	},
 })
 
-telescope.load_extension("git_worktree")
+-- telescope.load_extension("git_worktree")
 telescope.load_extension("fzf")
 telescope.load_extension("media_files")
 telescope.load_extension("advanced_git_search")
@@ -96,6 +97,24 @@ M.search_dotfiles = function()
 	})
 end
 
+M.search_notes = function()
+	builtin.find_files({
+		prompt_title = "< NOTES >",
+		cwd = "$HOME/.dotfiles/private/notes",
+		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--hidden" },
+		previewer = true,
+		follow = false,
+	})
+end
+
+M.find_files = function()
+	builtin.find_files({
+		prompt_title = "< Find Files >",
+		-- find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--hidden" },
+		previewer = false,
+		follow = false,
+	})
+end
 M.search_wallpapers = function()
 	builtin.find_files({
 		prompt_title = "< WALLPAPERS >",

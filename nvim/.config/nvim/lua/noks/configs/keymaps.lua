@@ -9,7 +9,6 @@ map("n", ",T", "<Plug>PlenaryTestFile")
 map("n", ",0d", ":.,6d<CR>")
 map("n", ",sh", ":w !sh<CR>")
 map("n", ",rr", ":luafile %<CR>")
-map("n", ",n", ":NoNeckPain<CR>")
 map("n", "<Leader>rr", ":LspRestart <CR>")
 
 -- exec last cmd
@@ -64,6 +63,10 @@ map("v", "<leader>p", '"_dP')
 
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+
+map("n", "<Tab>", "gt")
+map("n", "<S-Tab>", "gT")
+map("n", "<M-q>", ":copen<CR>")
 
 -- " faster macros
 -- map("n", "@", ":execute 'noautocmd norm! ' . v:count1 . '@'. getcharstr()<cr>")
@@ -175,11 +178,11 @@ map("n", "<leader>ps", ":Telescope find_files<cr>")
 map("n", "<leader>pl", ":Telescope live_grep<cr>")
 map("n", "<leader>pp", ":Telescope projects<cr>")
 map("n", "<leader>sd", ":lua require('noks.configs.telescope').search_dotfiles()<CR>")
+map("n", "<leader>no", ":lua require('noks.configs.telescope').search_notes()<CR>")
 map("n", "<leader>fq", ":lua require('noks.configs.telescope').live_grep_qflist()<CR>")
 map("n", "<leader>sw", ":lua require('noks.configs.telescope').search_wallpapers()<CR>")
 map("n", "<leader>ds", ":Telescope lsp_document_symbols<CR>")
 map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
-map("n", "<leader>no", ":lua require('noks.configs.telescope').notifications()<CR>")
 
 map("n", "<leader>od", ":lua require('noks.configs.telescope').open_diff()<CR>")
 

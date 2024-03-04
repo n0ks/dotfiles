@@ -12,7 +12,7 @@ saga.setup({
 		virtual_text = false,
 	},
 	symbol_in_winbar = {
-		enable = false,
+		enable = true,
 	},
 	ui = {
 		border = "rounded",
