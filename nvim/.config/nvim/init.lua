@@ -42,29 +42,27 @@ local opts = {
 }
 
 require("lazy").setup({
-	-- Theme
 	{
-
 		"rebelot/kanagawa.nvim",
-		lazy = false,
-		priority = 1000,
 		config = function()
-			require("noks.configs.themes.kanagawa")
-			vim.api.nvim_command("colorscheme kanagawa")
+			-- require("noks.configs.themes.kanagawa")
+			-- vim.api.nvim_command("colorscheme kanagawa")
 		end,
 	},
 
 	{
 		"AlexvZyl/nordic.nvim",
-		enabled = false,
-		lazy = false,
+		enabled = true,
 		priority = 1000,
 		config = function()
-			local nord = require("nordic")
-			nord.setup({
-				transparent_bg = true,
-			})
-			nord.load()
+			-- local nord = require("nordic")
+			-- nord.setup({
+			-- 	transparent_bg = true,
+			-- 	override = {
+			-- 		Visual = { bg = "#747575" },
+			-- 	},
+			-- })
+			-- nord.load()
 		end,
 	},
 
@@ -72,12 +70,9 @@ require("lazy").setup({
 
 	{
 		"catppuccin/nvim",
-		lazy = false,
-		priority = 1000,
-		enabled = true,
 		config = function()
-			require("noks.configs.themes.catppuccin")
-			vim.api.nvim_command("colorscheme catppuccin")
+			-- require("noks.configs.themes.catppuccin")
+			-- vim.api.nvim_command("colorscheme catppuccin")
 		end,
 	},
 	{
@@ -90,7 +85,14 @@ require("lazy").setup({
 		end,
 	},
 
-	"folke/tokyonight.nvim",
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("noks.configs.themes.tokyo")
+		end,
+	},
 
 	{
 		"m00qek/baleia.nvim",
@@ -111,18 +113,16 @@ require("lazy").setup({
 
 	{ "smithbm2316/centerpad.nvim", event = "VeryLazy" },
 
-	"onsails/lspkind.nvim",
+	{ "b0o/schemastore.nvim", event = "BufEnter *.json" },
 
-	"b0o/schemastore.nvim",
-
-	{ "ThePrimeagen/git-worktree.nvim", config = true },
+	{ "ThePrimeagen/git-worktree.nvim", config = true, enabled = false },
 
 	"tpope/vim-fugitive",
 	"tpope/vim-projectionist",
 	"tpope/vim-repeat",
 	"tpope/vim-rhubarb",
 
-	"skywind3000/asyncrun.vim",
+	{ "skywind3000/asyncrun.vim", event = "VeryLazy" },
 
 	{ "antoinemadec/FixCursorHold.nvim" },
 	{ "nvim-tree/nvim-web-devicons" },
@@ -147,6 +147,7 @@ require("lazy").setup({
 
 	{
 		"Exafunction/codeium.vim",
+		event = "LspAttach",
 		config = function()
 			vim.keymap.set("i", "<C-g>", function()
 				return vim.fn["codeium#Accept"]()
@@ -186,6 +187,7 @@ require("lazy").setup({
 
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("noks.configs.gitsigns")
 		end,
@@ -200,6 +202,7 @@ require("lazy").setup({
 	},
 
 	{ "echasnovski/mini.statusline", version = false, config = function() end },
+
 	{
 		enabled = false,
 		"nvim-lualine/lualine.nvim",
@@ -217,15 +220,17 @@ require("lazy").setup({
 
 	{
 		"ThePrimeagen/harpoon",
+		event = "VeryLazy",
 		config = function()
 			require("noks.configs.harpoon")
 		end,
 	},
 
-	"mzlogin/vim-markdown-toc",
+	{ "mzlogin/vim-markdown-toc", event = "BufEnter *.md" },
 
 	{
 		"iamcco/markdown-preview.nvim",
+		event = "BufEnter *.md",
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
@@ -252,10 +257,6 @@ require("lazy").setup({
 		end,
 		lazy = false,
 	},
-
-	--
-
-	"jose-elias-alvarez/nvim-lsp-ts-utils",
 
 	{
 		"nvimtools/none-ls.nvim",
@@ -298,6 +299,7 @@ require("lazy").setup({
 	},
 	{
 		"windwp/nvim-autopairs",
+		event = "VeryLazy",
 		config = function()
 			require("noks.configs.autopairs")
 		end,
@@ -317,6 +319,7 @@ require("lazy").setup({
 			"hrsh7th/cmp-path",
 			"hrsh7th/nvim-cmp",
 			"saadparwaiz1/cmp_luasnip",
+			"onsails/lspkind.nvim",
 		},
 	},
 	{
@@ -331,6 +334,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
+		event = "VeryLazy",
 		config = function()
 			require("noks.configs.nvim-tree")
 		end,
