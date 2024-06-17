@@ -85,7 +85,8 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ -f ~/functions.sh ]] && source ~/functions.sh
 
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
+# fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
 

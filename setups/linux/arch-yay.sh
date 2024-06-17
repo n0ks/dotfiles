@@ -4,6 +4,7 @@ source setups/shared.sh
 
 declare -a arch_packages=(
 	"alacritty"
+	"kitty"
 	"automake"
 	"base-devel"
 	"bat"

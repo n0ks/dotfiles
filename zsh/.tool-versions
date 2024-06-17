@@ -1,6 +1,5 @@
 java adoptopenjdk-11.0.12+7
 ruby 2.7.4
-nodejs lts
+nodejs 18.20.3
 python 3.9.7
-git-chglog 0.15.1
 golang 1.18.5
