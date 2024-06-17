@@ -77,11 +77,11 @@ require("lazy").setup({
 	},
 	{
 		"eddyekofo94/gruvbox-flat.nvim",
-		enabled = false,
+		enabled = true,
 		-- priority = 1000,
 		config = function()
 			vim.g.gruvbox_transparent = true
-			vim.api.nvim_command("colorscheme gruvbox-flat")
+			-- vim.api.nvim_command("colorscheme gruvbox-flat")
 		end,
 	},
 
@@ -91,6 +91,8 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			require("noks.configs.themes.tokyo")
+
+			vim.api.nvim_command("colorscheme tokyonight")
 		end,
 	},
 
@@ -241,7 +243,8 @@ require("lazy").setup({
 			vim.notify = require("notify")
 
 			vim.notify.setup({
-				background_colour = "#000000",
+				timeout = 3000,
+				background_colour = "#FFFFFF",
 			})
 		end,
 	},
@@ -381,6 +384,7 @@ require("lazy").setup({
 			"nvim-neotest/neotest-go",
 			"haydenmeade/neotest-jest",
 			"sidlatau/neotest-dart",
+			"nvim-neotest/nvim-nio",
 		},
 		config = function()
 			require("noks.configs.neotest")
