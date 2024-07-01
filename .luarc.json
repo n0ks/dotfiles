@@ -7,5 +7,12 @@
     "Lua.diagnostics.globals": [
         "vim",
         "require"
+    ],
+    "workspace.checkThirdParty": false,
+    "workspace.library": [
+        "/Users/rodrigo.m.de.campos/.local/share/nvim/lazy/neodev.nvim/types/nightly",
+        "/usr/local/share/nvim/runtime/lua",
+        "/Users/rodrigo.m.de.campos/.local/share/nvim/lazy/neotest/lua",
+        "/Users/rodrigo.m.de.campos/.dotfiles/nvim/.config/nvim/lua"
     ]
 }

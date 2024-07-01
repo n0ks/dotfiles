@@ -1,5 +1,5 @@
-java adoptopenjdk-11.0.12+7
+java openjdk-17.0.2
 ruby 2.7.4
-nodejs 18.20.3
+nodejs 20.11.1
 python 3.9.7
 golang 1.19.13

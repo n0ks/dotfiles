@@ -65,13 +65,32 @@ require("lazy").setup({
 			-- nord.load()
 		end,
 	},
-
-	{ "rose-pine/neovim", name = "rose-pine" },
+	{
+		"cdmill/neomodern.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("neomodern").setup({
+				-- optional configuration here
+				style = "coffeecat",
+			})
+			require("neomodern").load()
+		end,
+	},
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		-- lazy = false,
+		-- priority = 1000,
+		config = function()
+			-- im.api.nvim_command("colorscheme rose-pine-main")
+		end,
+	},
 
 	{
 		"catppuccin/nvim",
 		config = function()
-			-- require("noks.configs.themes.catppuccin")
+			require("noks.configs.themes.catppuccin")
 			-- vim.api.nvim_command("colorscheme catppuccin")
 		end,
 	},
@@ -87,12 +106,11 @@ require("lazy").setup({
 
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
+		-- lazy = false,
+		-- priority = 1000,
 		config = function()
 			require("noks.configs.themes.tokyo")
-
-			vim.api.nvim_command("colorscheme tokyonight")
+			-- vim.api.nvim_command("colorscheme tokyonight-night")
 		end,
 	},
 
@@ -108,7 +126,9 @@ require("lazy").setup({
 
 			vim.cmd([[
           let s:baleia = luaeval("require('baleia').setup { }")
-          autocmd BufWinEnter,BufRead dap-repl call s:baleia.automatically(bufnr('%'))
+          autocmd BufWinEnter,BufRead dap-repl setlocal modifiable 
+          \| silent call s:baleia.automatically(bufnr('%'))
+          \| setlocal nomodifiable
     ]])
 		end,
 	},
@@ -149,6 +169,7 @@ require("lazy").setup({
 
 	{
 		"Exafunction/codeium.vim",
+		enabled = false,
 		event = "LspAttach",
 		config = function()
 			vim.keymap.set("i", "<C-g>", function()
@@ -354,7 +375,12 @@ require("lazy").setup({
 			"nvim-telescope/telescope-media-files.nvim",
 			"nvim-telescope/telescope-symbols.nvim",
 			"aaronhallaert/advanced-git-search.nvim",
-			{ "nvim-telescope/telescope-fzf-native.nvim", lazy = true, build = "make" },
+			"nvim-telescope/telescope-file-browser.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				lazy = true,
+				build = "make",
+			},
 		},
 	},
 	{
@@ -372,7 +398,12 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-dap",
 		event = "VeryLazy",
-		dependencies = { "theHamsta/nvim-dap-virtual-text", "leoluz/nvim-dap-go", "rcarriga/nvim-dap-ui" },
+		dependencies = {
+			"theHamsta/nvim-dap-virtual-text",
+			"leoluz/nvim-dap-go",
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio",
+		},
 		config = function()
 			require("noks.configs.dap")
 		end,

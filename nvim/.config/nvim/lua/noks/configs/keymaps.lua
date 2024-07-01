@@ -64,8 +64,8 @@ map("v", "<leader>p", '"_dP')
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
-map("n", "<Tab>", "gt")
-map("n", "<S-Tab>", "gT")
+-- map("n", "<Tab>", "gt")
+-- map("n", "<S-Tab>", "gT")
 map("n", "<M-q>", ":copen<CR>")
 
 -- " faster macros
@@ -195,6 +195,8 @@ map("n", ";t", ":Telescope<cr>")
 
 map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emoji'} }<CR>")
 map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")
+
+map("n", "<leader>pf", ":Telescope file_browser<CR>")
 
 -- ----------------------------------------------------------------------------
 -- Testing

@@ -10,12 +10,15 @@ setopt AUTO_PUSHD # cd -1,-2 etc..
 setopt appendhistory
 setopt auto_cd
 unsetopt MULTIOS
-
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
 autoload -U edit-command-line
 zle -N edit-command-line
 
 bindkey -M vicmd v edit-command-line
 bindkey '^ ' autosuggest-accept
+#
+# complete -C '/usr/local/bin/aws_completer' aws
 # bindkey -v
 
 HISTSIZE=10000
@@ -34,7 +37,7 @@ export TERM=xterm-256color
 # export TERM=screen-256color
 export GREP_OPTIONS='--color=auto'
 export BROWSER='/usr/bin/firefox'
-export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/:$HOME/fvm/default/bin
+export PATH=$PATH:/bin:/usr/bin$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -45,8 +48,10 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/neovim/bin
-export PATH=$PATH:$HOME/.asdf/installs/golang/1.19.13/go
+export PATH=$PATH:$HOME/.asdf/installs/golang/1.19.2/go
 export FVM_HOME=$HOME/fvm
+export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
 #export GOROOT=$HOME/.asdf/installs/golang/1.19.2/go
 export GOPATH=$HOME/.asdf/shims
 # export JAVA_HOME=$(/usr/libexec/java_home -v11)
@@ -87,6 +92,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # fpath+=("$(brew --prefix)/share/zsh/site-functions")
 fpath+=($HOME/.zsh/pure)
+
 autoload -U promptinit; promptinit
 prompt pure
 

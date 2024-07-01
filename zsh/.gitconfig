@@ -99,7 +99,6 @@
 
 [credential]
   ; helper = cache --timeout=3600
-  helper = store
 
 [http]
   postBuffer = 1048576000
@@ -109,11 +108,12 @@
   name = n0ks
   email = rodrigocmp29@gmail.com
 
-[includeIf "gitdir:~/code/ecs/"]
-  path = ~/.gitconfig_santander
+; [remote "origin"]
+; fetch = +refs/heads/*:refs/remotes/origin/*
 
-[includeIf "gitdir:~/code/ssaauth/"]
-  path = ~/.gitconfig_santander
+
+[includeIf "gitdir:~/code/enel/"]
+  path = ~/.gitconfig_enel
 
 [rerere]
 	enabled = true
