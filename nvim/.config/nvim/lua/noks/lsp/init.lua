@@ -1,10 +1,10 @@
 local sumneko_lua = require("noks.lsp.servers.sumneko")
 local tsserver = require("noks.lsp.servers.tsserver")
-local go = require("noks.lsp.servers.go")
 local lsp_config = require("lspconfig")
 local mlsp = require("mason-lspconfig")
 local on_attach = require("noks.lsp.handlers").on_attach
 local capabilities = require("noks.lsp.handlers").capabilities
+local go = require("noks.lsp.servers.go")
 
 local pyright_settings = require("noks.lsp.servers.pyright")
 local jsonls_settings = require("noks.lsp.servers.jsonls")
@@ -24,6 +24,7 @@ M.setup = function()
 				},
 			},
 		},
+		gopls = go.settings,
 	}
 
 	local opts = {
