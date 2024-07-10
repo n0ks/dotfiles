@@ -169,7 +169,7 @@ map("n", "gr", ":lua vim.lsp.buf.references()<CR>")
 map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
 map("n", "<leader>dle", ":lua vim.diagnostic.setloclist({severity=vim.diagnostic.severity.ERROR})<CR>")
 map("n", "<leader>dqq", ":lua vim.diagnostic.setqflist()<CR>")
-map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true})<CR>")
+map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true, timeout_ms=5000})<CR>")
 -- ----------------------------------------------------------------------------
 -- TELESCOPE
 -- ----------------------------------------------------------------------------
