@@ -421,4 +421,12 @@ require("lazy").setup({
 			require("noks.configs.neotest")
 		end,
 	},
+	{
+		"olexsmir/gopher.nvim",
+		ft = "go",
+		build = function()
+			vim.cmd.GoInstallDeps()
+		end,
+		opts = {},
+	},
 }, opts)

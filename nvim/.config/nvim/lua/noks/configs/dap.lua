@@ -157,4 +157,4 @@ dap.configurations.typescriptreact = {
 	},
 }
 
--- require("dap-go").setup()
+require("dap-go").setup()

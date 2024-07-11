@@ -16,7 +16,7 @@ M.setup = function()
 		-- false: do nothing
 		-- if lsp_cfg is a table, merge table with with non-default gopls setup in go/lsp.lua, e.g.
 		--   lsp_cfg = {settings={gopls={matcher='CaseInsensitive', ['local'] = 'your_local_module_path', gofumpt = true }}}
-		lsp_gofumpt = u, -- true: set default gofmt in gopls format to gofumpt
+		lsp_gofumpt = true, -- true: set default gofmt in gopls format to gofumpt
 		-- false: do not set default gofmt in gopls format to gofumpt
 		lsp_on_attach = nil, -- nil: use on_attach function defined in go/lsp.lua,
 		--      when lsp_cfg is true
@@ -92,9 +92,20 @@ M.settings = {
 		gopls = {
 			completeUnimported = true,
 			usePlaceholders = true,
+			gofumpt = true,
+			linksInHover = false,
 			analyses = {
 				unusedparams = true,
 			},
+			codelenses = {
+				generate = true,
+				gc_details = true,
+				regenerate_cgo = true,
+				tidy = true,
+				upgrade_depdendency = true,
+				vendor = true,
+			},
+			usePlaceholders = true,
 		},
 	},
 }

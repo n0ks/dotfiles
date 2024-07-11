@@ -5,7 +5,7 @@ local nls = require("null-ls")
 M.setup = function()
 	nls.setup({
 		sources = {
-			-- nls.builtins.diagnostics.golangci_lint,
+			nls.builtins.diagnostics.golangci_lint,
 			-- nls.builtins.diagnostics.shellcheck,
 			-- nls.builtins.formatting.black.with({ extra_args = { "--fast" } }),
 			nls.builtins.formatting.gofumpt,
