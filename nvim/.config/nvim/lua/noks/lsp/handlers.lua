@@ -1,17 +1,14 @@
 local M = {}
 
-local signs = {
-	{ name = "DiagnosticSignError", text = "" },
-	{ name = "DiagnosticSignWarn", text = "" },
-	{ name = "DiagnosticSignHint", text = "" },
-	{ name = "DiagnosticSignInfo", text = "" },
-}
-
 local config = {
 	virtual_text = false,
-	-- show signs,
 	signs = {
-		active = signs,
+		text = {
+			[vim.diagnostic.severity.HINT] = "",
+			[vim.diagnostic.severity.ERROR] = "✘",
+			[vim.diagnostic.severity.INFO] = "◉",
+			[vim.diagnostic.severity.WARN] = "",
+		},
 	},
 	update_in_insert = true,
 	underline = false,
@@ -28,9 +25,9 @@ local config = {
 	format_notify = false,
 }
 
-for _, sign in ipairs(signs) do
-	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-end
+-- for _, sign in ipairs(signs) do
+-- 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+-- end
 
 vim.diagnostic.config(config)
 
@@ -58,6 +55,7 @@ end
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
+		async = true,
 		timeout_ms = 5000,
 		filter = function(client)
 			return client.name == "null-ls"
