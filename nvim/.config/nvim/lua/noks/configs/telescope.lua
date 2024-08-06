@@ -71,7 +71,7 @@ telescope.setup({
 		},
 		live_grep = {
 			additional_args = function(opts)
-				return { "--hidden" }
+				return { "--hidden", "--smart-case" }
 			end,
 		},
 		find_files = {
