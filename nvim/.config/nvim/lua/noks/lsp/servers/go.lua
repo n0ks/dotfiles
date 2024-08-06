@@ -82,8 +82,13 @@ M.setup = function()
 	})
 end
 
+function on_attatch_go(c, b)
+	on_attach(c, b)
+	map("n", "<leader>ir", ":GoIfErr<CR>")
+end
+
 M.settings = {
-	on_attach = on_attach,
+	on_attach = on_attatch_go,
 	capabilities = capabilities,
 	cmd = { "gopls" },
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },

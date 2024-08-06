@@ -41,7 +41,7 @@ dapui.setup({
 		{
 			elements = { {
 				id = "repl",
-				size = 0.5,
+				size = 1.0,
 			}, {
 				id = "console",
 				size = 0,
@@ -77,6 +77,11 @@ vim.fn.sign_define(
 )
 
 dap.defaults.fallback.exception_breakpoints = { "raised" }
+-- dap.defaults.fallback.force_external_terminal = true
+-- dap.defaults.fallback.external_terminal = {
+-- 	command = "/usr/local/bin/alacritty",
+-- 	args = { "-e" },
+-- }
 
 dap.set_log_level("TRACE")
 

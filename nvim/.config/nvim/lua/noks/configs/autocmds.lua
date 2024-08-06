@@ -74,6 +74,8 @@ autocmd({ "BufReadPost" }, { "*" }, {
 autocmd({ "BufNewFile", "BufRead" }, { "Fastfile", "Podfile" }, { command = "setl filetype=ruby" })
 autocmd({ "BufNewFile", "BufRead" }, { "*.arb" }, { command = "setl filetype=json" })
 
+autocmd({ "BufNewFile", "BufRead" }, { "*.tmpl" }, { command = "setl filetype=html" })
+
 autocmd({ "Filetype" }, { "json" }, { command = "setl filetype=jsonc" })
 
 autocmd({ "BufRead" }, { "*.yaml" }, { command = "set sw=2 sts=2 expandtab" })

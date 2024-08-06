@@ -64,7 +64,24 @@ opt.cursorline = true
 opt.inccommand = "nosplit"
 opt.ignorecase = true
 opt.smartcase = true
-opt.wildignore = opt.wildignore + { "*/node_modules/*", "*/.git/*", "*/vendor/*", "*.swp", "*~", "._*" }
+vim.opt.wildignore = {
+	"*.o",
+	"*.obj,*~",
+	"*.git*",
+	"*.meteor*",
+	"*vim/backups*",
+	"*sass-cache*",
+	"*mypy_cache*",
+	"*__pycache__*",
+	"*cache*",
+	"*logs*",
+	"*node_modules*",
+	"**/node_modules/**",
+	"*DS_Store*",
+	"*.gem",
+	"log/**",
+	"tmp/**",
+}
 opt.wildmenu = true
 
 opt.guicursor = {

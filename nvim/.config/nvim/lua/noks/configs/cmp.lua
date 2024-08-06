@@ -69,6 +69,7 @@ cmp.setup({
 				nvim_lua = "[NVim Lua]",
 				buffer = "[Buffer]",
 				path = "[Path]",
+				["vim-dadbod-completion"] = "[DB]",
 			},
 		}),
 	},
@@ -81,6 +82,13 @@ cmp.setup.filetype("gitcommit", {
 	}, {
 		{ name = "buffer" },
 	}),
+})
+
+cmp.setup.filetype("sql", {
+	sources = {
+		{ name = "vim-dadbod-completion" },
+		{ name = "buffer" },
+	},
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

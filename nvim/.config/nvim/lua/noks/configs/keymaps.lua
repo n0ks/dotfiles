@@ -73,10 +73,7 @@ map("n", "<M-q>", ":copen<CR>")
 -- map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
 --#region
 
-map("n", "<Leader><Leader>i", "<cmd>IconPickerNormal symbols emoji<cr>")
 map("n", "<Leader>gpt", ":ChatGPT<CR>")
--- map("n", "<Leader><Leader>y", "<cmd>IconPickerYank alt_font symbols nerd_font emoji<cr>") --> Yank the selected icon into register
--- map("i", "<C-i>", "<cmd>IconPickerInsert emoji<cr>")
 
 -- +----------------------------------------------------------+
 -- | WINDOWS & BUFFERS                                        |
@@ -182,6 +179,7 @@ map("n", "<leader>no", ":lua require('noks.configs.telescope').search_notes()<CR
 map("n", "<leader>fq", ":lua require('noks.configs.telescope').live_grep_qflist()<CR>")
 map("n", "<leader>sw", ":lua require('noks.configs.telescope').search_wallpapers()<CR>")
 map("n", "<leader>ds", ":Telescope lsp_document_symbols<CR>")
+
 map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
 
 map("n", "<leader>od", ":lua require('noks.configs.telescope').open_diff()<CR>")
