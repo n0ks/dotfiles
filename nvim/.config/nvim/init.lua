@@ -44,6 +44,7 @@ local opts = {
 require("lazy").setup({
 	{
 		"rebelot/kanagawa.nvim",
+		enabled = false,
 		config = function()
 			-- require("noks.configs.themes.kanagawa")
 			-- vim.api.nvim_command("colorscheme kanagawa")
@@ -52,7 +53,7 @@ require("lazy").setup({
 
 	{
 		"AlexvZyl/nordic.nvim",
-		enabled = true,
+		enabled = false,
 		priority = 1000,
 		config = function()
 			-- local nord = require("nordic")
@@ -66,19 +67,8 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"cdmill/neomodern.nvim",
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require("neomodern").setup({
-				-- optional configuration here
-				style = "coffeecat",
-			})
-			require("neomodern").load()
-		end,
-	},
-	{
 		"rose-pine/neovim",
+		enabled = false,
 		name = "rose-pine",
 		-- lazy = false,
 		-- priority = 1000,
@@ -89,28 +79,20 @@ require("lazy").setup({
 
 	{
 		"catppuccin/nvim",
+		enabled = false,
 		config = function()
 			require("noks.configs.themes.catppuccin")
 			-- vim.api.nvim_command("colorscheme catppuccin")
 		end,
 	},
 	{
-		"eddyekofo94/gruvbox-flat.nvim",
-		enabled = true,
-		-- priority = 1000,
-		config = function()
-			vim.g.gruvbox_transparent = true
-			-- vim.api.nvim_command("colorscheme gruvbox-flat")
-		end,
-	},
-
-	{
 		"folke/tokyonight.nvim",
-		-- lazy = false,
-		-- priority = 1000,
+		-- enabled = false,
+		lazy = false,
+		priority = 1000,
 		config = function()
 			require("noks.configs.themes.tokyo")
-			-- vim.api.nvim_command("colorscheme tokyonight-night")
+			vim.api.nvim_command("colorscheme tokyonight-night")
 		end,
 	},
 
@@ -126,37 +108,34 @@ require("lazy").setup({
 
 			vim.cmd([[
           let s:baleia = luaeval("require('baleia').setup { }")
-          autocmd BufWinEnter,BufRead dap-repl setlocal modifiable 
+          autocmd BufWinEnter,BufRead dap-repl setlocal modifiable
           \| silent call s:baleia.automatically(bufnr('%'))
           \| setlocal nomodifiable
     ]])
 		end,
 	},
 
-	{ "smithbm2316/centerpad.nvim", event = "VeryLazy" },
-
 	{ "b0o/schemastore.nvim", event = "BufEnter *.json" },
 
 	{ "ThePrimeagen/git-worktree.nvim", config = true, enabled = false },
 
+	{ "tpope/vim-projectionist", enabled = false },
+	{ "tpope/vim-rhubarb", enable = false },
+
 	"tpope/vim-fugitive",
-	"tpope/vim-projectionist",
 	"tpope/vim-repeat",
-	"tpope/vim-rhubarb",
 
 	{ "skywind3000/asyncrun.vim", event = "VeryLazy" },
 
-	{ "antoinemadec/FixCursorHold.nvim" },
 	{ "nvim-tree/nvim-web-devicons" },
 
-	"folke/trouble.nvim",
 	"stevearc/dressing.nvim",
 
 	{ "johmsalas/text-case.nvim", config = true, event = "VeryLazy" },
-	-- { "j-hui/fidget.nvim", config = true },
 
 	{
 		"jackMort/ChatGPT.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		config = function()
 			require("chatgpt").setup()
@@ -224,7 +203,7 @@ require("lazy").setup({
 		event = "VeryLazy",
 	},
 
-	{ "echasnovski/mini.statusline", version = false, config = function() end },
+	{ "echasnovski/mini.statusline", version = false, config = true },
 
 	{
 		enabled = false,
@@ -273,9 +252,9 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		-- commit = "f2778bd",
 		build = ":TSUpdate",
-		-- dependencies = {
-		-- 	"nvim-treesitter/nvim-treesitter-textobjects",
-		-- },
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
 		config = function()
 			require("noks.configs.treesitter")
 		end,
@@ -372,9 +351,9 @@ require("lazy").setup({
 		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-media-files.nvim",
-			"nvim-telescope/telescope-symbols.nvim",
-			"aaronhallaert/advanced-git-search.nvim",
+			-- "nvim-telescope/telescope-media-files.nvim",
+			-- "nvim-telescope/telescope-symbols.nvim",
+			-- "aaronhallaert/advanced-git-search.nvim",
 			"nvim-telescope/telescope-file-browser.nvim",
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
@@ -428,5 +407,27 @@ require("lazy").setup({
 			vim.cmd.GoInstallDeps()
 		end,
 		opts = {},
+	},
+
+	{
+
+		"kristijanhusak/vim-dadbod-ui",
+		dependencies = {
+			{ "tpope/vim-dadbod", lazy = true },
+			{ "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
+		},
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		init = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+			vim.g.dbs = {
+				{ name = "snippetbox", url = "mysql://root@localhost/snippetbox" },
+			}
+		end,
 	},
 }, opts)
