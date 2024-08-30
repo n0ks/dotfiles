@@ -79,6 +79,9 @@ telescope.setup({
 			file_ignore_patterns = { ".git/" },
 			previewer = false,
 		},
+		git_files = {
+			file_ignore_patterns = { "%.png", "%.g.dart" },
+		},
 	},
 })
 
