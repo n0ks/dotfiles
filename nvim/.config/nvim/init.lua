@@ -429,5 +429,12 @@ require("lazy").setup({
 				{ name = "snippetbox", url = "mysql://root@localhost/snippetbox" },
 			}
 		end,
-	},
+		{
+			"stevearc/oil.nvim",
+    {
+      "stevearc/oil.nvim",
+      opts = {
+        default_file_explorer = false,
+      },
+    },
 }, opts)
