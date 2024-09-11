@@ -51,6 +51,7 @@ export PATH=$PATH:$HOME/neovim/bin
 export PATH=$PATH:$HOME/.asdf/shims
 export FVM_HOME=$HOME/fvm
 export GEM_HOME=$HOME/.gem
+export PATH=$GEM_HOME/bin:$PATH
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
@@ -61,7 +62,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0)
 # export JAVA_HOME=/usr/lib/java
-export MANPAGER='nvim +Man!'
+# export MANPAGER='nvim -u +Man!'
 export MANWIDTH=999
 
 export HOMEBREW_NO_AUTO_UPDATE=1

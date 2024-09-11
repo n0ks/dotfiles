@@ -87,6 +87,20 @@
     ],
     "description": "Datasource function"
   },
+  "Datasource class": {
+    "prefix": "dsc",
+    "body": [
+      "import 'package:injectable/injectable.dart';",
+      "",
+      "@Injectable(as: $1Datasource)",
+      "class $1DatasourceImpl implements $1Datasource {",
+      "",
+      "const $1DatasourceImpl();",
+      "",
+      "}"
+    ],
+    "description": "Datasource function"
+  },
   "Usecase class": {
     "prefix": "ucase",
     "body": [

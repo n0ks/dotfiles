@@ -35,6 +35,8 @@ M.setup = function()
 			},
 			capabilities = require("noks.lsp.handlers").capabilities,
 			on_attach = function(_, bufnr)
+				vim.o.textwidth = 120
+
 				vim.lsp.handlers["textDocument/publishDiagnostics"] =
 					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 						virtual_text = false,
@@ -47,12 +49,9 @@ M.setup = function()
 				map("n", "<F4>", ":lua require('telescope').extensions.flutter.commands()<CR>")
 
 				vim.cmd([[
-              command FlutterRunDevelopment :FlutterRun --flavor development --target=lib/main_development.dart
               command BuildRunner AsyncRun -mode=term -focus=0 -rows=12 flutter pub run build_runner build --delete-conflicting-outputs
               command L10n AsyncRun -mode=term -focus=0 -rows=12 flutter gen-l10n
-              command -nargs=1 CreateBlocFolder :lcd %:h | AsyncRun mkdir bloc && touch bloc/<args>.state.dart bloc/<args>.events.dart
               command DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply
-              command DartFixDry AsyncRun -cwd=$(VIM_FILEDIR) dart fix --dry-run
               command ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --no-enums --use-freezed -o "$(VIM_FILEPATH)"
           ]])
 

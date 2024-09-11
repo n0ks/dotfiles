@@ -95,7 +95,7 @@ opt.list = true
 
 opt.mouse = "a"
 opt.number = true
-opt.rnu = true
+opt.rnu = false
 opt.scrolloff = 18
 opt.showmode = false
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
@@ -133,5 +133,10 @@ opt.breakindent = true
 opt.breakindentopt = "shift:2"
 opt.showbreak = "↳"
 opt.laststatus = 3
+
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 o.conceallevel = 0

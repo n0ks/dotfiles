@@ -239,6 +239,7 @@ require("lazy").setup({
 	},
 	{
 		"rcarriga/nvim-notify",
+		enabled = false,
 		config = function()
 			vim.notify = require("notify")
 
@@ -253,7 +254,7 @@ require("lazy").setup({
 		-- commit = "f2778bd",
 		build = ":TSUpdate",
 		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
+			-- "nvim-treesitter/nvim-treesitter-textobjects",
 		},
 		config = function()
 			require("noks.configs.treesitter")
@@ -309,8 +310,9 @@ require("lazy").setup({
 	},
 
 	{
-		"hrsh7th/nvim-cmp",
-		event = "VeryLazy",
+		"yioneko/nvim-cmp",
+		branch = "perf",
+		event = "InsertEnter",
 		config = function()
 			require("noks.configs.cmp") -- completion
 		end,
@@ -320,7 +322,6 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
 			"hrsh7th/cmp-path",
-			"hrsh7th/nvim-cmp",
 			"saadparwaiz1/cmp_luasnip",
 			"onsails/lspkind.nvim",
 		},

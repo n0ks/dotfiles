@@ -232,6 +232,7 @@ map("n", "<leader>gl", ":diffget //3<CR>")
 map("n", "<leader>gh", ":diffget //2<CR>")
 map("n", "<leader>gp", ":Octo pr list<CR>")
 map("n", "<leader>dc", ":DiffviewClose<CR>")
+map("n", "<leader>do", ":DiffviewOpen<CR>")
 
 -- " ----------------------------------------------------------------------------
 -- " DAP
