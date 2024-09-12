@@ -49,10 +49,10 @@ M.setup = function()
 				map("n", "<F4>", ":lua require('telescope').extensions.flutter.commands()<CR>")
 
 				vim.cmd([[
-              command BuildRunner AsyncRun -mode=term -focus=0 -rows=12 flutter pub run build_runner build --delete-conflicting-outputs
-              command L10n AsyncRun -mode=term -focus=0 -rows=12 flutter gen-l10n
-              command DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply
-              command ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --no-enums --use-freezed -o "$(VIM_FILEPATH)"
+              command! BuildRunner AsyncRun -mode=term -focus=0 -rows=12 flutter pub run build_runner build --delete-conflicting-outputs
+              command! L10n AsyncRun -mode=term -focus=0 -rows=12 flutter gen-l10n
+              command! DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply
+              command! ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --no-enums --use-freezed -o "$(VIM_FILEPATH)"
           ]])
 
 				require("noks.lsp.handlers").on_attach(_, bufnr)

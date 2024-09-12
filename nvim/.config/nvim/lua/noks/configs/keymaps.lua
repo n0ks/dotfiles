@@ -96,6 +96,7 @@ map("n", "<leader>CC", ":call CleanNoNameEmptyBuffers()<CR>")
 map("n", "<Backspace>", "<C-^>")
 map("i", "<C-s>", "<ESC>:w<CR>")
 map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
+map("n", "<Leader>vo", ":Oil<CR>")
 
 map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
