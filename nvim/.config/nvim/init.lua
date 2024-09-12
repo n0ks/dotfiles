@@ -44,42 +44,38 @@ local opts = {
 require("lazy").setup({
 	{
 		"rebelot/kanagawa.nvim",
-		enabled = false,
 		config = function()
-			-- require("noks.configs.themes.kanagawa")
+			require("noks.configs.themes.kanagawa")
 			-- vim.api.nvim_command("colorscheme kanagawa")
 		end,
 	},
 
 	{
 		"AlexvZyl/nordic.nvim",
-		enabled = false,
-		priority = 1000,
+		-- priority = 1000,
 		config = function()
-			-- local nord = require("nordic")
-			-- nord.setup({
-			-- 	transparent_bg = true,
-			-- 	override = {
-			-- 		Visual = { bg = "#747575" },
-			-- 	},
-			-- })
+			local nord = require("nordic")
+			nord.setup({
+				transparent_bg = true,
+				override = {
+					Visual = { bg = "#747575" },
+				},
+			})
 			-- nord.load()
 		end,
 	},
 	{
 		"rose-pine/neovim",
-		enabled = false,
 		name = "rose-pine",
 		-- lazy = false,
 		-- priority = 1000,
 		config = function()
-			-- im.api.nvim_command("colorscheme rose-pine-main")
+			-- vim.api.nvim_command("colorscheme rose-pine-main")
 		end,
 	},
 
 	{
 		"catppuccin/nvim",
-		enabled = false,
 		config = function()
 			require("noks.configs.themes.catppuccin")
 			-- vim.api.nvim_command("colorscheme catppuccin")
@@ -87,17 +83,17 @@ require("lazy").setup({
 	},
 	{
 		"folke/tokyonight.nvim",
-		-- enabled = false,
-		lazy = false,
-		priority = 1000,
+		-- lazy = false,
+		-- priority = 1000,
 		config = function()
 			require("noks.configs.themes.tokyo")
-			vim.api.nvim_command("colorscheme tokyonight-night")
+			-- vim.api.nvim_command("colorscheme tokyonight-night")
 		end,
 	},
 
 	{
 		"m00qek/baleia.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		config = function()
 			local b = require("baleia").setup({})
@@ -171,6 +167,7 @@ require("lazy").setup({
 
 	{
 		"glepnir/dashboard-nvim",
+		enabled = false,
 		event = "VimEnter",
 		config = function()
 			require("noks.configs.dashboard")
@@ -363,10 +360,15 @@ require("lazy").setup({
 			},
 		},
 	},
+
 	{
 		"junegunn/fzf",
-		build = function()
-			vim.fn["fzf#install"]()
+		build = "./install --bin",
+	},
+	{
+		"ibhagwan/fzf-lua",
+		config = function()
+			require("fzf-lua").setup({})
 		end,
 	},
 	{
@@ -432,10 +434,32 @@ require("lazy").setup({
 		end,
 		{
 			"stevearc/oil.nvim",
-    {
-      "stevearc/oil.nvim",
-      opts = {
-        default_file_explorer = false,
-      },
-    },
+			opts = {
+				default_file_explorer = false,
+				keymaps = {
+					["yp"] = {
+						desc = "Copy filepath to system clipboard",
+						callback = function()
+							require("oil.actions").copy_entry_path.callback()
+							vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
+						end,
+					},
+				},
+			},
+		},
+	},
+	{
+		"jesseleite/nvim-noirbuddy",
+		dependencies = {
+			{ "tjdevries/colorbuddy.nvim" },
+		},
+		lazy = false,
+		priority = 1000,
+		opts = {
+			preset = "miami-nights",
+			colors = {
+				primary = "#de2666",
+			},
+		},
+	},
 }, opts)
