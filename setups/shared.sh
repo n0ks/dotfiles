@@ -84,6 +84,7 @@ onEndScript() {
 
 cloneRepos() {
   echo "[INFO] cloning repos"
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm/tpm
   git clone https://github.com/neovim/neovim.git ~/code/neovim
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.0
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

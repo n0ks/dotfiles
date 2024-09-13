@@ -11,7 +11,6 @@ M.setup = function()
 			"vimls",
 			"sqlls",
 			"jsonls",
-			"gopls",
 			"html",
 			"tsserver",
 		},
