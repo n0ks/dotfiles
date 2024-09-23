@@ -26,6 +26,7 @@ alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias drbb="dart run build_runner build -d -v"
+alias fclean="flutter clean && flutter pub get && drbb"
 alias p="cd $PROJECTS"
 alias code="cd ~/code"
 # Gatekeeper (for installing 3rd party apps)

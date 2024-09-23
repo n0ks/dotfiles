@@ -117,5 +117,19 @@
       "}"
     ],
     "description": "Usecase class"
+  },
+  "Get it controller": {
+    "prefix": "getc",
+    "body": [
+      "final $1_controller = GetIt.I.get();"
+    ],
+    "description": "Get a controller from get it"
+  },
+  "Get it register factory": {
+    "prefix": "getrf",
+    "body": [
+      "GetIt.I.registerFactory<$1>($2);"
+    ],
+    "description": "Get a controller from get it"
   }
 }
