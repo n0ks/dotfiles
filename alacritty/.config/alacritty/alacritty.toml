@@ -1,36 +1,60 @@
-# Colors (Oxocarbon)
-# Source https://vimcolorschemes.com/nyoom-engineering/oxocarbon.nvim
+# Colors (Nord)
+# Source https://gist.github.com/candidtim/6097565040a3aec839a8a2d28cb8887d
 
-# Default colors
 [colors.primary]
-background = '#1b1b1b'
-foreground = '#ffffff'
+background = "#191d24"
+foreground = "#d8dee9"
+dim_foreground = "#a5abb6"
 
 [colors.cursor]
-text = '#161616' 
-cursor = '#78a9ff'
+text = "#2e3440"
+cursor = "#d8dee9"
 
-# Normal colors
+[colors.vi_mode_cursor]
+text = "#2e3440"
+cursor = "#d8dee9"
+
+[colors.selection]
+text = "CellForeground"
+background = "#4c566a"
+
+[colors.search.matches]
+foreground = "CellBackground"
+background = "#88c0d0"
+
+[colors.footer_bar]
+background = "#434c5e"
+foreground = "#d8dee9"
+
 [colors.normal]
-black   = '#161616'
-red     = '#ee5396'
-green   = '#42be65'
-yellow  = '#ff7eb6'
-blue    = '#33b1ff'
-magenta = '#be95ff'
-cyan    = '#3ddbd9'   
-white   = '#ffffff'  
+black = "#3b4252"
+red = "#bf616a"
+green = "#a3be8c"
+yellow = "#ebcb8b"
+blue = "#81a1c1"
+magenta = "#b48ead"
+cyan = "#88c0d0"
+white = "#e5e9f0"
 
-# Bright colors
 [colors.bright]
-black   = '#525252'
-red     = '#ee5396'
-green   = '#42be65'
-yellow  = '#ff7eb6'
-blue    = '#33b1ff'
-magenta = '#be95ff'
-cyan    = '#3ddbd9'   
-white   = '#ffffff'  
+black = "#4c566a"
+red = "#bf616a"
+green = "#a3be8c"
+yellow = "#ebcb8b"
+blue = "#81a1c1"
+magenta = "#b48ead"
+cyan = "#8fbcbb"
+white = "#eceff4"
+
+[colors.dim]
+black = "#373e4d"
+red = "#94545d"
+green = "#809575"
+yellow = "#b29e75"
+blue = "#68809a"
+magenta = "#8c738c"
+cyan = "#6d96a5"
+white = "#aeb3bb"
 
 
 [cursor]
@@ -42,9 +66,10 @@ shape = "Block"
 
 [env]
 TERM = "xterm-256color"
+LANG = "en_US.UTF-8"
 
 [font]
-size = 14
+size = 11
 
 [font.bold]
 family = "JetBrainsMonoNL Nerd Font"
@@ -54,12 +79,16 @@ style = "Bold"
 family = "JetBrainsMonoNL Nerd Font"
 style = "Italic"
 
+[font.bold_italic]
+family = "JetBrainsMonoNL Nerd Font"
+style = "Bold Italic"
+
 [font.normal]
 family = "JetBrainsMonoNL Nerd Font"
 style = "Regular"
 
 [font.offset]
-x = 0
+x = 1
 y = 4
 
 [scrolling]
@@ -67,7 +96,7 @@ history = 5000
 
 [window]
 decorations = "none"
-opacity = 0.94
+opacity = 0.98
 startup_mode = "Maximized"
 padding = {x =  0, y = 0}
 option_as_alt = "OnlyLeft"
