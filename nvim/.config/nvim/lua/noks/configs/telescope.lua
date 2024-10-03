@@ -1,96 +1,5 @@
-local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
-local previewers = require("telescope.previewers")
-local inspect = require("noks.configs.inspect")
-
-telescope.setup({
-	defaults = {
-		color_devicons = true,
-		prompt_prefix = " λ ",
-		selection_caret = " > ",
-		file_previewer = previewers.vim_buffer_cat.new,
-		grep_previewer = previewers.vim_buffer_vimgrep.new,
-		qflist_previewer = previewers.vim_buffer_qflist.new,
-		layout_strategy = "flex",
-		-- file_ignore_patterns = { ".git/", "%.js", "%.svg" },
-		mappings = {
-			i = {
-				-- ["<C-x>"] = false,
-				["<C-s>"] = actions.toggle_selection,
-				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-				["<esc>"] = actions.close,
-			},
-			n = {
-				["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
-			},
-		},
-		path_display = {
-			truncate = 3,
-		},
-	},
-	extensions = {
-		file_browser = {
-			theme = "ivy",
-		},
-		fzf = {
-			fuzzy = true, -- false will only do exact matching
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
-		},
-		media_files = {
-			-- filetypes whitelist
-			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-			filetypes = { "png", "webp", "jpg", "jpeg", "pdf" },
-		},
-	},
-	pickers = {
-		git_branches = {
-			theme = "ivy",
-			layout_config = {
-				width = 0.75,
-				preview_height = 0.2,
-			},
-		},
-		lsp_document_symbols = {
-			theme = "dropdown",
-		},
-		buffers = {
-			show_all_buffers = false,
-			ignore_current_buffer = true,
-			previewer = false,
-			theme = "dropdown",
-			path_display = {
-				shorten = { len = 1, exclude = { 1, -1 } },
-			},
-			mappings = {
-				i = { ["<c-x>"] = "delete_buffer" },
-				n = { ["<c-x>"] = "delete_buffer" },
-			},
-		},
-		live_grep = {
-			additional_args = function(opts)
-				return { "--hidden", "--smart-case" }
-			end,
-		},
-		find_files = {
-			hidden = false,
-			file_ignore_patterns = { ".git/" },
-			previewer = false,
-		},
-		git_files = {
-			file_ignore_patterns = { "%.png", "%.g.dart" },
-		},
-	},
-})
-
--- telescope.load_extension("git_worktree")
-telescope.load_extension("file_browser")
-telescope.load_extension("fzf")
--- telescope.load_extension("media_files")
--- telescope.load_extension("advanced_git_search")
--- telescope.load_extension("textcase")
 
 local M = {}
 
@@ -98,7 +7,7 @@ M.search_dotfiles = function()
 	builtin.find_files({
 		prompt_title = "< DOTFILES >",
 		cwd = "$HOME/.dotfiles",
-		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--hidden" },
+		find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--iglob", "!.git", "--hidden" },
 		previewer = false,
 		follow = false,
 	})
@@ -205,10 +114,6 @@ M.live_grep_qflist = function()
 	end
 
 	builtin.live_grep({ search_dirs = filetable })
-end
-
-M.notifications = function()
-	telescope.extensions.notify.notify()
 end
 
 vim.cmd(

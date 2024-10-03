@@ -1,63 +1,63 @@
 #!/usr/bin/env bash
 
 function runAll() {
-  ls -d -- */ | xargs -I {} bash -c "cd '{}' && $1"
+	ls -d -- */ | xargs -I {} bash -c "cd '{}' && $1"
 }
 
 f() {
-  fff "$@"
-  cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || exit
+	fff "$@"
+	cd "$(cat "${XDG_CACHE_HOME:=${HOME}/.cache}/fff/.fff_d")" || exit
 }
 
 # fkill - kill process
 fkill() {
-  local pid
-  pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
+	local pid
+	pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
-  if [ "x$pid" != "x" ]; then
-    echo $pid | xargs kill -${1:-9}
-  fi
+	if [ "x$pid" != "x" ]; then
+		echo $pid | xargs kill -${1:-9}
+	fi
 }
 
 vmi() {
-  local lang=${1}
+	local lang=${1}
 
-  if [[ ! $lang ]]; then
-    lang=$(asdf plugin-list | fzf)
-  fi
+	if [[ ! $lang ]]; then
+		lang=$(asdf plugin-list | fzf)
+	fi
 
-  if [[ $lang ]]; then
-    local versions
+	if [[ $lang ]]; then
+		local versions
 
-    versions=$(asdf list-all "$lang" | fzf --tac --no-sort --multi)
+		versions=$(asdf list-all "$lang" | fzf --tac --no-sort --multi)
 
-    if [[ $versions ]]; then
-      for version in $versions; do asdf install "$lang" "$version"; done
-    fi
-  fi
+		if [[ $versions ]]; then
+			for version in $versions; do asdf install "$lang" "$version"; done
+		fi
+	fi
 }
 
 commands() {
-  CMD=$(
-    (
-      (alias)
-      (functions | grep "()" | cut -d ' ' -f1 | grep -v "^_")
-    ) | fzf | cut -d '=' -f1
-  )
+	CMD=$(
+		(
+			(alias)
+			(functions | grep "()" | cut -d ' ' -f1 | grep -v "^_")
+		) | fzf | cut -d '=' -f1
+	)
 
-  eval "$CMD"
+	eval "$CMD"
 }
 
 function getFZFPreviewer() (
-  if [[ $(hasBinary bat) = TRUE ]]; then
-    echo "bat --style=numbers --color=always --line-range :500 {}"
-  else
-    echo "cat {}"
-  fi
+	if [[ $(hasBinary bat) = TRUE ]]; then
+		echo "bat --style=numbers --color=always --line-range :500 {}"
+	else
+		echo "cat {}"
+	fi
 )
 
 sf() {
-  $EDITOR "$(fd --type f | fzf --multi --reverse --preview "$(getFZFPreviewer)")"
+	$EDITOR "$(fd --type f | fzf --multi --reverse --preview "$(getFZFPreviewer)")"
 }
 
 # ────────────────────────────────────────────────────────────
@@ -71,54 +71,81 @@ gwr() { git worktree remove "$*"; }
 gwrf() { git worktree remove --force "$*"; }
 
 fbra() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-    branch=$(echo "$branches" | fzf-tmux -d $((10 + $(wc -l <<<"$branches"))) +m) &&
-    git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
+	local branches branch
+	branches=$(git branch --all | grep -v HEAD) &&
+		branch=$(echo "$branches" | fzf-tmux -d $((10 + $(wc -l <<<"$branches"))) +m) &&
+		git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
 }
 
 fbr() {
-  local branches branch
-  branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
-    branch=$(echo "$branches" | fzf-tmux -d $((10 + $(wc -l <<<"$branches"))) +m) &&
-    git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
+	local branches branch
+	branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
+		branch=$(echo "$branches" | fzf-tmux -d $((10 + $(wc -l <<<"$branches"))) +m) &&
+		git checkout "$(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")"
 }
 
 open-at-line() {
-  nvim "$(rg --line-number --hidden . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')"
+	nvim "$(rg --line-number --hidden . | fzf --delimiter ':' --preview 'bat --color=always --highlight-line {2} {1}' | awk -F ':' '{print "+"$2" "$1}')"
 }
 
 watchgotest() {
-  fswatch -e ".*" -i "\\.go$" . | xargs -n1 -I {} sh -c "echo $'\e[1;31m'{}$'\e[0m'; go test -v — bench . — benchmem"
+	fswatch -e ".*" -i "\\.go$" . | xargs -n1 -I {} sh -c "echo $'\e[1;31m'{}$'\e[0m'; go test -v — bench . — benchmem"
 }
 
 xcodeenv() {
-  local project=$1
-  xcodebuild -project "$project.xcodeproj" -target "$project" -showBuildSettings
+	local project=$1
+	xcodebuild -project "$project.xcodeproj" -target "$project" -showBuildSettings
 }
 
 w() {
-  local worktree
+	local worktree
 
-  worktree=$(
-    git worktree list | fzf \
-      --prompt="Switch Worktree: " \
-      --height 40% --reverse |
-      awk '{print $1}'
-  )
+	worktree=$(
+		git worktree list | fzf \
+			--prompt="Switch Worktree: " \
+			--height 40% --reverse |
+			awk '{print $1}'
+	)
 
-  cd "$worktree" || return
+	cd "$worktree" || return
 
 }
 
 wremote() {
-  git worktree add --checkout "$1" "$2" && cd "$2" || exit
+	git worktree add --checkout "$1" "$2" && cd "$2" || exit
 }
 
 wremove() {
-  git worktree remove "$1"
+	git worktree remove "$1"
 }
 
 wlocal() {
-  git worktree add -b "$1" "$2"
+	git worktree add -b "$1" "$2"
+}
+
+# Select a docker container to start and attach to
+function da() {
+	local cid
+	cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+
+	[ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
+}
+# Select a running docker container to stop
+function ds() {
+	local cid
+	cid=$(docker ps | sed 1d | fzf -q "$1" | awk '{print $1}')
+
+	[ -n "$cid" ] && docker stop "$cid"
+}
+# Select a docker container to remove
+function drm() {
+	local cid
+	cid=$(docker ps -a | sed 1d | fzf -q "$1" | awk '{print $1}')
+
+	[ -n "$cid" ] && docker rm "$cid"
+}
+
+# Select a docker image or images to remove
+function drmi() {
+	docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
 }

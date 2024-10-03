@@ -7,469 +7,91 @@ vim.cmd("source" .. "~/.config/nvim/general/funfun.vim")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 
 vim.opt.rtp:prepend(lazypath)
 
 local opts = {
-  performance = {
-    defaults = { lazy = true },
-    cache = {
-      enabled = true,
-    },
-    rtp = {
-      disabled_plugins = {
-        "gzip",
-        "matchit",
-        "matchparen",
-        "netrwPlugin",
-        "rplugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
-  },
+	performance = {
+		defaults = { lazy = true },
+		cache = {
+			enabled = true,
+		},
+		rtp = {
+			disabled_plugins = {
+				"gzip",
+				"matchit",
+				"matchparen",
+				"netrwPlugin",
+				"tarPlugin",
+				"tar",
+				"tutor",
+				"2html_plugin",
+				"tohtml",
+				"getscript",
+				"getscriptPlugin",
+				"logipat",
+				"netrw",
+				"netrwPlugin",
+				"netrwSettings",
+				"netrwFileHanlers",
+				"rrhelper",
+				"spellfile_plugin",
+				"vimball",
+				"vimballPlugin",
+				"zip",
+				"zipPlugin",
+				"rplugin",
+				"syntax",
+				"synmenu",
+				"optwin",
+				"compiler",
+				"bugreport",
+			},
+		},
+	},
 }
 
 require("lazy").setup({
-  {
-    "rebelot/kanagawa.nvim",
-    config = function()
-      require("noks.configs.themes.kanagawa")
-      -- vim.api.nvim_command("colorscheme kanagawa")
-    end,
-  },
+	spec = {
+		{ import = "plugins" },
 
-  {
-    "AlexvZyl/nordic.nvim",
-    -- priority = 1000,
-    config = function()
-      local nord = require("nordic")
-      nord.setup({
-        transparent_bg = false,
-        override = {
-          Visual = { bg = "#747575" },
-        },
-      })
-      nord.load()
-    end,
-  },
-  {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    -- lazy = false,
-    -- priority = 1000,
-    config = function()
-      -- vim.api.nvim_command("colorscheme rose-pine-main")
-    end,
-  },
+		{
+			"nvimtools/none-ls.nvim",
+			event = { "BufReadPre", "BufNewFile" },
+			config = function()
+				require("noks.lsp.servers.null_ls").setup()
+			end,
+		},
+		{
+			"neovim/nvim-lspconfig",
+			event = { "BufReadPre", "BufNewFile" },
+			config = function()
+				require("noks.lsp.init").setup()
+			end,
+		},
 
-  {
-    "catppuccin/nvim",
-    config = function()
-      require("noks.configs.themes.catppuccin")
-      -- vim.api.nvim_command("colorscheme catppuccin")
-    end,
-  },
-  {
-    "folke/tokyonight.nvim",
-    -- lazy = false,
-    -- priority = 1000,
-    config = function()
-      require("noks.configs.themes.tokyo")
-      -- vim.api.nvim_command("colorscheme tokyonight-night")
-    end,
-  },
+		{
+			"mfussenegger/nvim-dap",
+			event = "VeryLazy",
+			dependencies = {
+				"theHamsta/nvim-dap-virtual-text",
+				"leoluz/nvim-dap-go",
+				"rcarriga/nvim-dap-ui",
+				"nvim-neotest/nvim-nio",
+			},
+			config = function()
+				require("noks.configs.dap")
+			end,
+		},
 
-  {
-    "m00qek/baleia.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    config = function()
-      local b = require("baleia").setup({})
-
-      vim.api.nvim_create_user_command("BaleiaColorize", function()
-        b.once(vim.api.nvim_get_current_buf())
-      end, {})
-
-      vim.cmd([[
-          let s:baleia = luaeval("require('baleia').setup { }")
-          autocmd BufWinEnter,BufRead dap-repl setlocal modifiable
-          \| silent call s:baleia.automatically(bufnr('%'))
-          \| setlocal nomodifiable
-    ]])
-    end,
-  },
-
-  { "b0o/schemastore.nvim",           event = "BufEnter *.json" },
-
-  { "ThePrimeagen/git-worktree.nvim", config = true,            enabled = false },
-
-  { "tpope/vim-projectionist",        enabled = false },
-  { "tpope/vim-rhubarb",              enable = false },
-
-  "tpope/vim-fugitive",
-  "tpope/vim-repeat",
-  {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-    }
-  },
-
-  { "skywind3000/asyncrun.vim",   event = "VeryLazy" },
-
-  { "nvim-tree/nvim-web-devicons" },
-
-  "stevearc/dressing.nvim",
-
-  { "johmsalas/text-case.nvim", config = true, event = "VeryLazy" },
-
-  {
-    "jackMort/ChatGPT.nvim",
-    enabled = false,
-    event = "VeryLazy",
-    config = function()
-      require("chatgpt").setup()
-    end,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-    },
-  },
-
-  {
-    "Exafunction/codeium.vim",
-    enabled = false,
-    event = "LspAttach",
-    config = function()
-      vim.keymap.set("i", "<C-g>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true })
-
-      vim.keymap.set("i", "<C-]>", function()
-        return vim.fn["codeium#CycleCompletions"](1)
-      end, { expr = true })
-
-      vim.keymap.set("i", "<C-[>", function()
-        return vim.fn["codeium#CycleCompletions"](-1)
-      end, { expr = true })
-
-      vim.keymap.set("i", "<C-x>", function()
-        return vim.fn["codeium#Clear"]()
-      end, { expr = true })
-    end,
-  },
-
-  {
-    "glepnir/dashboard-nvim",
-    enabled = false,
-    event = "VimEnter",
-    config = function()
-      require("noks.configs.dashboard")
-    end,
-  },
-
-  { "kylechui/nvim-surround",   config = true, event = "VeryLazy" },
-  {
-    "sindrets/diffview.nvim",
-    event = "VeryLazy",
-    -- cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-    config = function()
-      require("noks.configs.diffview")
-    end,
-  },
-
-  {
-    "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("noks.configs.gitsigns")
-    end,
-  },
-
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("noks.configs.comment")
-    end,
-    event = "VeryLazy",
-  },
-
-  { "echasnovski/mini.statusline", version = false,        config = true },
-
-  {
-    enabled = false,
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require("noks.configs.lualine")
-    end,
-  },
-  {
-    "kevinhwang91/nvim-bqf",
-    config = function()
-      require("noks.configs.bqf")
-    end,
-    event = "VeryLazy",
-  },
-
-  {
-    "ThePrimeagen/harpoon",
-    event = "VeryLazy",
-    config = function()
-      require("noks.configs.harpoon")
-    end,
-  },
-
-  { "mzlogin/vim-markdown-toc",    event = "BufEnter *.md" },
-
-  {
-    "iamcco/markdown-preview.nvim",
-    event = "BufEnter *.md",
-    build = function()
-      vim.fn["mkdp#util#install"]()
-    end,
-  },
-  {
-    "rcarriga/nvim-notify",
-    enabled = false,
-    config = function()
-      vim.notify = require("notify")
-
-      vim.notify.setup({
-        timeout = 3000,
-        background_colour = "#FFFFFF",
-      })
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    -- commit = "f2778bd",
-    build = ":TSUpdate",
-    dependencies = {
-      -- "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-    config = function()
-      require("noks.configs.treesitter")
-    end,
-    lazy = false,
-  },
-
-  {
-    "nvimtools/none-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require("noks.lsp.servers.null_ls").setup()
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      {
-        "williamboman/mason-lspconfig.nvim",
-        config = function()
-          require("noks.lsp.mason").setup()
-        end,
-      },
-      {
-        "folke/neodev.nvim",
-        ft = "*.lua",
-        config = function()
-          require("neodev").setup({
-            library = { plugins = { "neotest" }, types = true },
-          })
-        end,
-      },
-    },
-    config = function()
-      require("noks.lsp.init").setup()
-    end,
-  },
-  {
-    "glepnir/lspsaga.nvim",
-    event = "LspAttach",
-    config = function()
-      require("noks.lsp.lsp-saga")
-    end,
-  },
-  {
-    "windwp/nvim-autopairs",
-    event = "VeryLazy",
-    config = function()
-      require("noks.configs.autopairs")
-    end,
-  },
-
-  {
-    "yioneko/nvim-cmp",
-    branch = "perf",
-    event = "InsertEnter",
-    config = function()
-      require("noks.configs.cmp") -- completion
-    end,
-    dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim",
-    },
-  },
-  {
-    "L3MON4D3/LuaSnip",
-    event = "VeryLazy",
-    build = "make install_jsregexp",
-    version = "2.2.*",
-    dependencies = { "rafamadriz/friendly-snippets" },
-    config = function()
-      require("noks.configs.luasnip")
-    end,
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    event = "VeryLazy",
-    config = function()
-      require("noks.configs.nvim-tree")
-    end,
-  },
-
-  {
-    "nvim-telescope/telescope.nvim",
-    config = function()
-      require("noks.configs.telescope")
-    end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      -- "nvim-telescope/telescope-media-files.nvim",
-      -- "nvim-telescope/telescope-symbols.nvim",
-      -- "aaronhallaert/advanced-git-search.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        lazy = true,
-        build = "make",
-      },
-    },
-  },
-
-  {
-    "junegunn/fzf",
-    build = "./install --bin",
-  },
-  {
-    "akinsho/flutter-tools.nvim",
-    config = function()
-      require("noks.lsp.servers.flutter").setup()
-    end,
-  },
-  {
-    "mfussenegger/nvim-dap",
-    event = "VeryLazy",
-    dependencies = {
-      "theHamsta/nvim-dap-virtual-text",
-      "leoluz/nvim-dap-go",
-      "rcarriga/nvim-dap-ui",
-      "nvim-neotest/nvim-nio",
-    },
-    config = function()
-      require("noks.configs.dap")
-    end,
-  },
-  {
-    "nvim-neotest/neotest",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-neotest/neotest-go",
-      "haydenmeade/neotest-jest",
-      "sidlatau/neotest-dart",
-      "nvim-neotest/nvim-nio",
-    },
-    config = function()
-      require("noks.configs.neotest")
-    end,
-  },
-  {
-    "olexsmir/gopher.nvim",
-    ft = "go",
-    build = function()
-      vim.cmd.GoInstallDeps()
-    end,
-    opts = {},
-  },
-
-  {
-
-    "kristijanhusak/vim-dadbod-ui",
-    dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
-      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true }, -- Optional
-    },
-    cmd = {
-      "DBUI",
-      "DBUIToggle",
-      "DBUIAddConnection",
-      "DBUIFindBuffer",
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
-      vim.g.dbs = {
-        { name = "snippetbox", url = "mysql://root@localhost/snippetbox" },
-      }
-    end,
-    {
-      "stevearc/oil.nvim",
-      opts = {
-        default_file_explorer = false,
-        keymaps = {
-          ["yp"] = {
-            desc = "Copy filepath to system clipboard",
-            callback = function()
-              require("oil.actions").copy_entry_path.callback()
-              vim.fn.setreg("+", vim.fn.getreg(vim.v.register))
-            end,
-          },
-        },
-      },
-    },
-  },
-  {
-    "jesseleite/nvim-noirbuddy",
-    dependencies = {
-      { "tjdevries/colorbuddy.nvim" },
-    },
-    enabled = false,
-    -- lazy = false,
-    -- priority = 1000,
-    opts = {
-      preset = "slate",
-      colors = {
-        primary = "#de2666",
-      },
-    },
-  },
+	},
 }, opts)

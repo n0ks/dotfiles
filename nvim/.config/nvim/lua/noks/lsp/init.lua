@@ -12,44 +12,44 @@ local jsonls_settings = require("noks.lsp.servers.jsonls")
 local M = {}
 
 M.setup = function()
-	local server_args = {
-		jsonls = jsonls_settings,
-		pyright = pyright_settings,
-		sumneko_lua = sumneko_lua.config,
-		tsserver = tsserver.config,
-		yamlls = {
-			settings = {
-				yaml = {
-					keyOrdering = false,
-				},
-			},
-		},
-		gopls = go.settings,
-	}
+  local server_args = {
+    jsonls = jsonls_settings,
+    pyright = pyright_settings,
+    sumneko_lua = sumneko_lua.config,
+    tsserver = tsserver.config,
+    yamlls = {
+      settings = {
+        yaml = {
+          keyOrdering = false,
+        },
+      },
+    },
+    gopls = go.settings,
+  }
 
-	local opts = {
-		flags = {
-			debounce_text_changes = 150,
-		},
-	}
+  local opts = {
+    flags = {
+      debounce_text_changes = 150,
+    },
+  }
 
-	mlsp.setup_handlers({
-		function(server_name)
-			local args = server_args[server_name] or {}
+  mlsp.setup_handlers({
+    function(server_name)
+      local args = server_args[server_name] or {}
 
-			if not args.on_attach then
-				args.on_attach = on_attach
-			end
+      if not args.on_attach then
+        args.on_attach = on_attach
+      end
 
-			if not args.capabilities then
-				args.capabilities = capabilities
-			end
+      if not args.capabilities then
+        args.capabilities = capabilities
+      end
 
-			args.flags = opts.flags
+      args.flags = opts.flags
 
-			lsp_config[server_name].setup(args)
-		end,
-	})
+      lsp_config[server_name].setup(args)
+    end,
+  })
 end
 
 return M

@@ -81,8 +81,19 @@ export FASTLANE_SKIP_UPDATE_CHECK=1
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --multi --no-mouse 
 --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 
-export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
-export FZF_CTRL_R_OPTS='--no-sort'
+# export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+# export FZF_CTRL_R_OPTS='--no-sort'
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
 export FZF_ALT_C_COMMAND="fd -t d . $HOME/code"
 export GLFW_IM_MODULE=ibus
 export SSH_KEY_PATH="~/.ssh/rsa_id"

@@ -69,7 +69,7 @@ TERM = "xterm-256color"
 LANG = "en_US.UTF-8"
 
 [font]
-size = 11
+size = 12
 
 [font.bold]
 family = "JetBrainsMonoNL Nerd Font"

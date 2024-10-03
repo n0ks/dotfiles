@@ -6,7 +6,8 @@
     ],
     "Lua.diagnostics.globals": [
         "vim",
-        "require"
+        "require",
+        "on_attatch_go"
     ],
     "workspace.checkThirdParty": false,
     "workspace.library": [

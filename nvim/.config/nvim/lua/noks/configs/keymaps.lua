@@ -150,6 +150,8 @@ map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>")
 map("n", "]d", ":Lspsaga diagnostic_jump_next<CR>")
 map("n", "[i", ":Lspsaga show_line_diagnostics<CR>")
 map("n", "<leader>o", ":Lspsaga outline<CR>")
+map("n", "<M-s>", ":Lspsaga subtypes<CR>")
+map("n", "<M-S>", ":Lspsaga supertypes<CR>")
 
 map({ "n", "t" }, "<M-d>", "<cmd>Lspsaga term_toggle<CR>")
 
@@ -234,6 +236,8 @@ map("n", "<leader>gh", ":diffget //2<CR>")
 map("n", "<leader>gp", ":Octo pr list<CR>")
 map("n", "<leader>dc", ":DiffviewClose<CR>")
 map("n", "<leader>do", ":DiffviewOpen<CR>")
+map("n", "<leader>dh", ":DiffviewFileHistory %<CR>")
+map("n", "<leader>lg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>")
 
 -- " ----------------------------------------------------------------------------
 -- " DAP

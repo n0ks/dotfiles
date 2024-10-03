@@ -26,6 +26,8 @@ alias d="cd ~/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias drbb="dart run build_runner build -d -v"
+alias drbbc="dart run build_runner clean && drbb"
+
 alias fclean="flutter clean && flutter pub get && drbb"
 alias p="cd $PROJECTS"
 alias code="cd ~/code"
@@ -51,4 +53,5 @@ alias getwname="xprop | grep WM_CLASS"
 alias deletestore='find . -name ".DS_Store" -type f -print -delete'
 
 alias tldrf='tldr --list | fzf --preview "tldr {1} --color=always" --preview-window=right,70% | xargs tldr'
-alias kill_md="launchctl unload /Library/LaunchAgents/com.microsoft.wdav.tray.plist"
+alias lg="lazygit"
+alias xcodeclean='rm -rf ~/Library/Developer/Xcode/DerivedData/*'
