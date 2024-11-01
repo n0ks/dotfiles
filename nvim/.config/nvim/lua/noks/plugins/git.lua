@@ -1,6 +1,6 @@
 return {
 
-	"tpope/vim-fugitive",
+	{ "tpope/vim-fugitive", cmd = { "Git", "G", "Gw", "Gr" } },
 
 	{
 		"sindrets/diffview.nvim",
@@ -10,7 +10,7 @@ return {
 
 	{
 		"lewis6991/gitsigns.nvim",
-		event = "VeryLazy",
+		cmd = { "Gitsigns" },
 		opts = function()
 			return {
 				on_attach = function(bufnr)

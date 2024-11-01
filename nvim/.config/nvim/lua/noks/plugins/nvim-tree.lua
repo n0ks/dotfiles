@@ -2,7 +2,7 @@ return {
 
   {
     "nvim-tree/nvim-tree.lua",
-    event = "VeryLazy",
+    cmd = { "NvimTreeToggle", "NvimTreeOpen" },
     opts = {
 
       on_attach = function(bufnr)
@@ -84,7 +84,7 @@ return {
           show = {
             file = true,
             folder = true,
-            folder_arrow = false,
+            folder_arrow = true,
           },
         },
         indent_markers = {

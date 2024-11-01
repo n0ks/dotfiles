@@ -7,6 +7,8 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 setopt AUTO_PUSHD # cd -1,-2 etc..
+setopt SHARE_HISTORY
+setopt HIST_REDUCE_BLANKS
 setopt appendhistory
 setopt auto_cd
 unsetopt MULTIOS
@@ -28,7 +30,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 . $HOME/.asdf/asdf.sh
-#. ~/.asdf/plugins/java/set-java-home.zsh
+. ~/.asdf/plugins/java/set-java-home.zsh
 export HISTFILE=$HOME/.zsh_history
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme zenburn'"
@@ -94,7 +96,7 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 
-export FZF_ALT_C_COMMAND="fd -t d . $HOME/code"
+export FZF_ALT_C_COMMAND="fd --max-results 200 --max-depth 2 -t d . $HOME/code "
 export GLFW_IM_MODULE=ibus
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 

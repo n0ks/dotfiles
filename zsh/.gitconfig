@@ -112,10 +112,12 @@
 ; fetch = +refs/heads/*:refs/remotes/origin/*
 
 
-[includeIf "gitdir:~/code/enel/"]
-  path = ~/.gitconfig_enel
+[includeIf "gitdir:~/code/TIM/"]
+  path = ~/.gitconfig_enterprise
 
 [rerere]
 	enabled = true
 [maintenance]
 	auto = true
+; [commit]
+; 	gpgsign = true

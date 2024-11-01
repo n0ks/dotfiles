@@ -1,53 +1,73 @@
-local sumneko_lua = require("noks.lsp.servers.sumneko")
-local tsserver = require("noks.lsp.servers.tsserver")
-local lsp_config = require("lspconfig")
-local mlsp = require("mason-lspconfig")
-local on_attach = require("noks.lsp.handlers").on_attach
-local capabilities = require("noks.lsp.handlers").capabilities
-local go = require("noks.lsp.servers.go")
+-- Core LSP imports
+local lspconfig = require("lspconfig")
+local mason_lspconfig = require("mason-lspconfig")
 
-local pyright_settings = require("noks.lsp.servers.pyright")
-local jsonls_settings = require("noks.lsp.servers.jsonls")
+-- Server configurations
+local servers = {
+  sumneko = require("noks.lsp.servers.sumneko"),
+  tsserver = require("noks.lsp.servers.tsserver"),
+  go = require("noks.lsp.servers.go"),
+  pyright = require("noks.lsp.servers.pyright"),
+  jsonls = require("noks.lsp.servers.jsonls"),
+}
 
+-- LSP handlers
+local handlers = require("noks.lsp.handlers")
+
+---@class Module
 local M = {}
 
-M.setup = function()
-  local server_args = {
-    jsonls = jsonls_settings,
-    pyright = pyright_settings,
-    sumneko_lua = sumneko_lua.config,
-    tsserver = tsserver.config,
-    yamlls = {
-      settings = {
-        yaml = {
-          keyOrdering = false,
+-- Default LSP options
+local default_opts = {
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
+
+-- Server specific configurations
+local server_configs = {
+  jsonls = servers.jsonls,
+  pyright = servers.pyright,
+  sumneko_lua = servers.sumneko.config,
+  tsserver = servers.tsserver.config,
+  gopls = servers.go.settings,
+  yamlls = {
+    settings = {
+      yaml = {
+        keyOrdering = false,
+        schemaStore = {
+          enable = false,
+          url = "",
         },
+        schemas = require("schemastore").yaml.schemas(),
       },
     },
-    gopls = go.settings,
-  }
+  },
+}
 
-  local opts = {
-    flags = {
-      debounce_text_changes = 150,
-    },
-  }
-
-  mlsp.setup_handlers({
+---Setup LSP servers with proper configuration
+M.setup = function()
+  mason_lspconfig.setup_handlers({
     function(server_name)
-      local args = server_args[server_name] or {}
+      local ok, server_config = pcall(function()
+        return server_configs[server_name] or {}
+      end)
 
-      if not args.on_attach then
-        args.on_attach = on_attach
+      if not ok then
+        vim.notify(
+          string.format("Failed to load config for %s", server_name),
+          vim.log.levels.ERROR
+        )
+        return
       end
 
-      if not args.capabilities then
-        args.capabilities = capabilities
-      end
+      local config = vim.tbl_deep_extend("force", {
+        on_attach = handlers.on_attach,
+        capabilities = handlers.capabilities,
+        flags = default_opts.flags,
+      }, server_config)
 
-      args.flags = opts.flags
-
-      lsp_config[server_name].setup(args)
+      lspconfig[server_name].setup(config)
     end,
   })
 end

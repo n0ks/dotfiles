@@ -2,6 +2,7 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
+		cmd = { "Telescope" },
 		config = function()
 			local builtin = require("telescope.builtin")
 			local actions = require("telescope.actions")

@@ -87,6 +87,32 @@
     ],
     "description": "Datasource function"
   },
+
+  "Model class": {
+    "prefix": "mdl",
+    "body": [
+      " import 'package:json_annotation/json_annotation.dart';",
+      "",
+      "@JsonSerializable()",
+      "class $1Model extends $1Entity {",
+      "",
+      "const $1Model();",
+      "",
+      "}"
+    ],
+    "description": "Datasource function"
+  },
+  "Entity class": {
+    "prefix": "ett",
+    "body": [
+      "abstract class $1Entity { ",
+      "",
+      "const $1Entity();",
+      "",
+      "}"
+    ],
+    "description": "Datasource function"
+  },
   "Datasource class": {
     "prefix": "dsc",
     "body": [

@@ -98,6 +98,10 @@ map("i", "<C-s>", "<ESC>:w<CR>")
 map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
 map("n", "<Leader>vo", ":Oil<CR>")
 
+map("n", "<leader>co", ":CodeCompanion<CR>")
+map("v", "<leader>co", ":CodeCompanion<CR>")
+map("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>")
+
 map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
 -- " ----------------------------------------------------------------------------
@@ -176,7 +180,6 @@ map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true, timeout_ms=5000})<CR
 
 map("n", "<leader>ps", ":Telescope find_files<cr>")
 map("n", "<leader>pl", ":Telescope live_grep<cr>")
-map("n", "<leader>pp", ":Telescope projects<cr>")
 map("n", "<leader>sd", ":lua require('noks.configs.telescope').search_dotfiles()<CR>")
 map("n", "<leader>no", ":lua require('noks.configs.telescope').search_notes()<CR>")
 map("n", "<leader>fq", ":lua require('noks.configs.telescope').live_grep_qflist()<CR>")
@@ -227,6 +230,8 @@ map("n", "<leader>gdi", ":Telescope git_bcommits<CR>")
 map("n", "<leader>tr", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
 map("n", "<leader>tc", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
 map("n", "<leader>mf", ":lua require('telescope').extensions.media_files.media_files()<CR>")
+
+map("n", "<leader>gl", ":G log<CR>")
 map("n", "<leader>gm", ":G mergetool<CR>")
 map("n", "<leader>gqq", ":Gitsigns setqflist all<CR>")
 map("n", "<leader>gcl", ":0Gclog<CR>")
