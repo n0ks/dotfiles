@@ -60,8 +60,6 @@ return {
               command! Golden AsyncRun -cwd=$(VIM_CWD) flutter test --update-goldens
               command! ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --no-enums --use-freezed -o "$(VIM_FILEPATH)"
           ]])
-
-            require("noks.lsp.handlers").on_attach(_, bufnr)
           end,
         },
       })

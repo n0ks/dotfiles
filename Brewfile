@@ -1,6 +1,5 @@
 tap "git-chglog/git-chglog"
 tap "hakky54/crip"
-tap "jankuss/genq"
 tap "leoafarias/fvm"
 brew "librsvg"
 brew "asciinema"

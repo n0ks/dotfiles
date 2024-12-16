@@ -43,8 +43,12 @@ return {
     "rose-pine/neovim",
     name = "rose-pine",
     opts = {
-      dark_variant = "moon",
-      disable_background = false,
+      dark_variant = "main",
+      styles = {
+        bold = true,
+        italic = true,
+        transparency = true,
+      },
     },
     config = function()
       -- vim.api.nvim_command("colorscheme rose-pine-main")
@@ -57,6 +61,11 @@ return {
       flavour = "mocha",
       transparent_background = false,
       show_end_of_buffer = false,
+      styles = {
+        bold = true,
+        italic = true,
+        transparency = true,
+      },
       highlight_overrides = {
         mocha = function(mocha)
           return {
@@ -121,17 +130,16 @@ return {
     "EdenEast/nightfox.nvim",
     -- priority = 1000,
     config = function()
-      require("nightfox").setup({
-        options = {
-          transparent = false,
-          styles = {
-            comments = "italic",
-            functions = "italic",
-          },
-        },
-      })
-
-      -- vim.cmd("colorscheme nordfox")
+      -- require("nightfox").setup({
+      --   options = {
+      --     transparent = true,
+      --     styles = {
+      --       comments = "italic",
+      --       functions = "italic",
+      --     },
+      --   },
+      -- })
+      -- vim.cmd("colorscheme nightfox")
     end,
   },
   {
@@ -149,22 +157,13 @@ return {
       },
     },
   },
-
   {
-    "olivercederborg/poimandres.nvim",
+    "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
-    config = function()
-      require("poimandres").setup({
-        -- leave this setup function empty for default config
-        -- or refer to the configuration section
-        -- for configuration options
-      })
-    end,
-
-    -- optionally set the colorscheme within lazy config
-    init = function()
-      vim.cmd("colorscheme poimandres")
-    end,
+    config = function ()
+      vim.cmd("colorscheme cyberdream")
+      
+    end
   },
 }

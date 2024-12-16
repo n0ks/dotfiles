@@ -1,5 +1,5 @@
 java openjdk-17.0.2
 #ruby 2.7.4
 nodejs 20.11.1
-python 3.9.7 system
+python 3.11.1
 golang 1.22.5

@@ -27,44 +27,18 @@ return {
       end
 
       dapui.setup({
-        icons = { expanded = "▾", collapsed = "▸" },
-
-        layouts = {
-          {
-            elements = {
-              {
-                id = "scopes",
-                size = 0.25,
-              },
-              {
-                id = "breakpoints",
-                size = 0.25,
-              },
-              {
-                id = "stacks",
-                size = 0.25,
-              },
-              {
-                id = "watches",
-                size = 0.25,
-              },
-            },
-            position = "left",
-            size = 40,
-          },
-          {
-            elements = {
-              {
-                id = "repl",
-                size = 1.0,
-              },
-              {
-                id = "console",
-                size = 0,
-              },
-            },
-            position = "bottom",
-            size = 20,
+        icons = { expanded = "▾", collapsed = "▸", current_frame = "*" },
+        controls = {
+          icons = {
+            pause = "⏸",
+            play = "▶",
+            step_into = "⏎",
+            step_over = "⏭",
+            step_out = "⏮",
+            step_back = "b",
+            run_last = "▶▶",
+            terminate = "⏹",
+            disconnect = "⏏",
           },
         },
       })

@@ -149,3 +149,18 @@ function drm() {
 function drmi() {
 	docker images | sed 1d | fzf -q "$1" --no-sort -m --tac | awk '{ print $3 }' | xargs -r docker rmi
 }
+
+asdf_update_java_home() {
+	local java_path
+	java_path="$(asdf which java)"
+	if [[ -n "${java_path}" ]]; then
+		export JAVA_HOME
+		JAVA_HOME="$(dirname "$(dirname "${java_path:A}")")"
+		export JDK_HOME=${JAVA_HOME}
+	fi
+}
+
+asdf_shell_java() {
+	asdf shell java "$1"
+	asdf_update_java_home
+}

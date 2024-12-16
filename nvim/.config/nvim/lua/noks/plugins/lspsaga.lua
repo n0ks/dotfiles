@@ -1,5 +1,4 @@
 return {
-
 	{
 		"glepnir/lspsaga.nvim",
 		event = "LspAttach",

@@ -19,7 +19,6 @@ alias t="tmux"
 #alias vim=nvim
 alias ls=eza
 alias ll="eza --all --tree --level 1 "
-alias luamake=$HOME/Documents/code/lua-language-server/3rd/luamake/luamake
 alias be='bundle exec '
 # Shortcuts
 alias d="cd ~/Dropbox"
@@ -59,3 +58,5 @@ alias lg="lazygit"
 alias xcodeclean='rm -rf ~/Library/Developer/Xcode/DerivedData/*'
 
 alias emuroot="emulator -writable-system -avd pixel8 -feature -Vulkan"
+
+alias unlockGradle='find ~/.gradle -type f -name "*.lock" -delete'
