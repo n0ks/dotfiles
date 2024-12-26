@@ -1,0 +1,39 @@
+# Config relating to git
+git:
+  # Config relating to committing
+  commit:
+    # If autoWrapCommitMessage is true, the width to wrap to
+    autoWrapWidth: 80
+
+# Periodic update checks
+update:
+  # One of: 'prompt' (default) | 'background' | 'never'
+  method: prompt
+
+  # Period in days between update checks
+  days: 14
+
+# Background refreshes
+refresher:
+  # File/submodule refresh interval in seconds.
+  # Auto-refresh can be disabled via option 'git.autoRefresh'.
+  refreshInterval: 10
+
+  # Re-fetch interval in seconds.
+  # Auto-fetch can be disabled via option 'git.autoFetch'.
+  fetchInterval: 60
+
+# If true, show a confirmation popup before quitting Lazygit
+confirmOnQuit: false
+
+# If true, exit Lazygit when the user presses escape in a context where there is nothing to cancel/close
+quitOnTopLevelReturn: false
+
+# Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
+os:
+  # Command for editing a file. Should contain "{{filename}}".
+  edit: "nvim {{filename}}"
+
+  open: "nvim {{filename}}"
+  openLink: open -a "/Applications/Google Chrome.app" {{link}}
+
