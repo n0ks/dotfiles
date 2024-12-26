@@ -17,6 +17,8 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock launchanim -bool false
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "scale"
+defaults write com.apple.dock no-bouncing -bool TRUE
+defaults write com.apple.dock expose-group-apps -bool true
 
 # Set the icon size of Dock items to 45 pixels
 defaults write com.apple.Dock tilesize -int 45
@@ -64,6 +66,8 @@ defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write GlobalPreferences com.apple.mouse.scaling -1
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+# disable display separeted spaces
+defaults write com.apple.spaces spans-displays -bool true
 
 # Trackpad: map two fingers tap to right-click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
