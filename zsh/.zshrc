@@ -42,14 +42,15 @@ export ASDF_DATA_DIR=~/.asdf
 # . ~/.asdf/plugins/java/set-java-home.zsh
 export JAVA_HOME=/Users/rodrigo.m.de.campos/.asdf/installs/java/openjdk-17.0.2
 # export JAVA_HOME=/Users/rodrigo.m.de.campos/Library/Java/JavaVirtualMachines/azul-15.0.10/Contents/Home/bin
-export XDG_CONFIG_HOME="$HOME/.config"
+export WEZTERM_CONFIG_FILE=$HOME/.config
+# export XDG_CONFIG_HOME="$HOME/.config"
 export HISTFILE=$HOME/.zsh_history
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme zenburn'"
 export EDITOR="nvim"
 export GREP_OPTIONS='--color=auto'
 export BROWSER='/usr/bin/firefox'
-export PATH=$PATH:/bin:/usr/bin:$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/
+export PATH=$PATH:/bin:/usr/bin:$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/:$HOME/Library/Android/sdk/build-tools/34.0.0
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
