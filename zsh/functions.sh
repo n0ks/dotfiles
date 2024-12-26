@@ -57,7 +57,7 @@ function getFZFPreviewer() (
 )
 
 sf() {
-	$EDITOR "$(fd --type f | fzf --multi --reverse --preview "$(getFZFPreviewer)")"
+	$EDITOR "$(fd --no-ignore --type f | fzf --multi --reverse --preview "$(getFZFPreviewer)")"
 }
 
 # ────────────────────────────────────────────────────────────
@@ -65,7 +65,15 @@ sf() {
 # GIT STUFF
 
 gitnewrepo() { mkdir "$*" && cd "$*" && git init && hub create && touch README.md && echo "# " "$*" >>README.md && git add . && git commit -m "init" && git push -u origin HEAD; }
-gwc() { git clone --bare "$1"" ""$2" && cd "$2" && git worktree add main && cd main || exit; }
+
+gwc() {
+	git clone --bare "$1" .bare
+  echo "gitdir: ./.bare" > .git
+  git config remote.origin.fetch '+refs/heads/*:refs/remotes/origin/*'
+  git fetch
+  git for-each-ref --format='%(refname:short)' refs/heads | xargs -n1 -I{} git branch --set-upstream-to=origin/{}
+}
+
 gwa() { git worktree add "$*"; }
 gwr() { git worktree remove "$*"; }
 gwrf() { git worktree remove --force "$*"; }
