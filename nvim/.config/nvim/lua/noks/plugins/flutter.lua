@@ -36,7 +36,6 @@ return {
           color = {
             enabled = true,
           },
-          capabilities = require("noks.lsp.handlers").capabilities,
           on_attach = function(_, bufnr)
             local map = require("noks.configs.utils").map
 
