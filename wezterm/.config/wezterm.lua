@@ -6,10 +6,10 @@ local act = wezterm.action
 local config = wezterm.config_builder()
 
 config.font = wezterm.font("JetBrains Mono", { stretch = "Expanded" })
-config.color_scheme = "DoomOne"
--- config.color_scheme = 'duckbones'
 
-config.window_background_opacity = 1.0
+config.colors = require("cyberdream")
+
+config.window_background_opacity = 0.95
 
 config.animation_fps = 120
 config.max_fps = 120
@@ -23,7 +23,7 @@ config.window_padding = {
   bottom = 2,
 }
 config.default_workspace = "home"
-config.line_height = 1.1
+config.line_height = 1.15
 
 config.keys = {
   { key = "Enter", mods = "ALT", action = act.DisableDefaultAssignment  },

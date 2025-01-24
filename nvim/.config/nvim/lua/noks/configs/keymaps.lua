@@ -112,21 +112,6 @@ map("n", "<Leader>ga", ":GoAlt<CR>")
 
 map("v", "<space>ca", "<cmd>lua require('go.codeaction').run_range_code_action()<CR>")
 
--- " ----------------------------------------------------------------------------
--- " Harpoon
--- " ----------------------------------------------------------------------------
-
-map("n", "<M-a>", ":lua require('harpoon.mark').add_file()<CR>")
-map("n", "<M-m>", ":lua require('harpoon.ui').toggle_quick_menu()<CR>")
-map("n", "<M-c>", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>")
-map("n", "<M-1>", ":lua require('harpoon.ui').nav_file(1)<CR>")
-map("n", "<M-2>", ":lua require('harpoon.ui').nav_file(2)<CR>")
-map("n", "<M-3>", ":lua require('harpoon.ui').nav_file(3)<CR>")
-map("n", "<M-4>", ":lua require('harpoon.ui').nav_file(4)<CR>")
-map("n", "<M-5>", ":lua require('harpoon.ui').nav_file(5)<CR>")
-map("n", "<M-0>", ":lua require('harpoon.term').gotoTerminal(1)<CR>")
-map("n", "<M-9>", ":lua require('harpoon.term').sendCommand(1, 1)<CR>")
-
 -- "---------------------------------------------------------------------------
 -- " Quickfix
 -- " ----------------------------------------------------------------------------
@@ -178,7 +163,7 @@ map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true, timeout_ms=5000})<CR
 -- TELESCOPE
 -- ----------------------------------------------------------------------------
 
-map("n", "<leader>ps", ":Telescope find_files<cr>")
+map("n", "<leader>ps", ":lua require('noks.configs.telescope').find_files()<CR>")
 map("n", "<leader>pl", ":Telescope live_grep<cr>")
 map("n", "<leader>sd", ":lua require('noks.configs.telescope').search_dotfiles()<CR>")
 map("n", "<leader>no", ":lua require('noks.configs.telescope').search_notes()<CR>")

@@ -78,7 +78,7 @@ return {
           },
           find_files = {
             hidden = false,
-            file_ignore_patterns = { ".git/" },
+            file_ignore_patterns = { ".git/", "node_modules/" },
             previewer = false,
           },
           git_files = {

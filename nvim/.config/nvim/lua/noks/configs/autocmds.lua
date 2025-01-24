@@ -6,16 +6,16 @@ local fn = vim.fn
 local api = vim.api
 
 local autocmd = function(ftable, pattern, action, group)
-	api.nvim_create_autocmd(ftable, {
-		group = group,
-		pattern = pattern or nil,
-		command = action.command or nil,
-		callback = action.callback or nil,
-	})
+  api.nvim_create_autocmd(ftable, {
+    group = group,
+    pattern = pattern or nil,
+    command = action.command or nil,
+    callback = action.callback or nil,
+  })
 end
 
 local autogroup = function(name)
-	api.nvim_create_augroup(name, { clear = true })
+  api.nvim_create_augroup(name, { clear = true })
 end
 
 -- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -44,9 +44,9 @@ autocmd({ "BufEnter" }, nil, { command = [[set formatoptions-=cro]] })
 autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
 
 autocmd(
-	"FileType",
-	{ "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
-	{ command = [[nnoremap <buffer><silent> q :close<CR>]] }
+  "FileType",
+  { "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
+  { command = [[nnoremap <buffer><silent> q :close<CR>]] }
 )
 
 -- autocmd({ "FileType" }, { "typescriptreact" }, { command = "set ft=typescript" })
@@ -63,12 +63,12 @@ autocmd(
 --
 -- restore cursor position when opening file
 autocmd({ "BufReadPost" }, { "*" }, {
-	callback = function()
-		if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
-			fn.setpos(".", fn.getpos("'\""))
-			api.nvim_feedkeys("zz", "n", true)
-		end
-	end,
+  callback = function()
+    if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
+      fn.setpos(".", fn.getpos("'\""))
+      api.nvim_feedkeys("zz", "n", true)
+    end
+  end,
 })
 
 autocmd({ "BufNewFile", "BufRead" }, { "Fastfile", "Podfile" }, { command = "setl filetype=ruby" })
@@ -85,20 +85,22 @@ autocmd({ "BufRead" }, { "*.yaml" }, { command = "set sw=2 sts=2 expandtab" })
 -- autocmd({ "BufWinLeave" }, { "*" }, { command = "call UnsetQFControlVariable()" }, qflist_group)
 
 autocmd({ "TextYankPost" }, { "*" }, {
-	callback = function()
-		vim.highlight.on_yank({ timeout = 40, on_visual = true, higroup = "IncSearch" })
-	end,
+  callback = function()
+    vim.highlight.on_yank({ timeout = 40, on_visual = true, higroup = "IncSearch" })
+  end,
 }, highlight_yank_group)
 
-autocmd(
-	{ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
-	{ "*" },
-	{ command = "silent! checktime" },
-	read_file_on_change_group
-)
+-- autocmd(
+-- 	{ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
+-- 	{ "*" },
+-- 	{ command = "silent! checktime" },
+-- 	read_file_on_change_group
+-- )
 
 autocmd({ "BufRead" }, { "*/node_modules/*" }, { command = "lua vim.diagnostic.disable(0)" }, lsp_node)
 autocmd({ "BufNewFile" }, { "*/node_modules/*" }, { command = "lua vim.diagnostic.disable(0)" }, lsp_node)
+
+autocmd({ "BufWritePre" }, { "*.go" }, { command = 'lua require("go.format").gofmt()' })
 
 -- autocmd({ "BufWinLeave" }, { "*.*" }, { command = "mkview!" })
 -- autocmd({ "BufWinEnter" }, { "*.*" }, { command = "silent loadview" })
