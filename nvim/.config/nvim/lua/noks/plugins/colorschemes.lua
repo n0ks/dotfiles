@@ -161,13 +161,21 @@ return {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
-    config = function ()
-      require('cyberdream').setup({
-        transparent = false,
-        cache = true
+    config = function()
+      require("cyberdream").setup({
+        transparent = true,
+        cache = true,
       })
 
       vim.cmd("colorscheme cyberdream")
+    end,
+  },
+  {
+    "zootedb0t/citruszest.nvim",
+    -- lazy = false,
+    -- priority = 1000,
+    config = function ()
+      -- vim.cmd("colorscheme citruszest")
       
     end
   },

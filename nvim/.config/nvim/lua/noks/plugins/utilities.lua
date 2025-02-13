@@ -6,10 +6,9 @@ return {
   { "ThePrimeagen/git-worktree.nvim", config = true, enabled = false },
   { "b0o/schemastore.nvim", event = "BufEnter *.json" },
   { "johmsalas/text-case.nvim", config = true, event = "VeryLazy" },
-  { "kylechui/nvim-surround", config = true, event = "VeryLazy" },
   { "mzlogin/vim-markdown-toc", event = "BufEnter *.md" },
   { "skywind3000/asyncrun.vim", event = "VeryLazy" },
-  { "tpope/vim-projectionist", enabled = false },
+  { "tpope/vim-projectionist", enabled = true },
   { "tpope/vim-rhubarb", enable = false },
 
   { "junegunn/fzf", build = "./install --bin" },
@@ -29,29 +28,6 @@ return {
     },
   },
   {
-    "windwp/nvim-autopairs",
-    event = "VeryLazy",
-    opts = {
-      enable_check_bracket_line = false, -- Don't add pairs if it already has a close pair in the same line
-      ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
-      check_ts = true, -- use treesitter to check for a pair.
-      ts_config = {
-        lua = { "string" }, -- it will not add pair on that treesitter node
-        javascript = { "template_string" },
-        java = false, -- don't check treesitter on java
-      },
-    },
-  },
-
-  {
-    "chrisbra/Colorizer",
-    config = function()
-      vim.g.colorizer_auto_filetype = "dap-repl"
-      vim.g.colorizer_disable_bufleave = 1
-    end,
-  },
-
-  {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
     event = "VeryLazy",
@@ -60,15 +36,28 @@ return {
 
       harpoon:setup()
 
-      vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-      vim.keymap.set("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+      vim.keymap.set("n", "<leader>a", function()
+        harpoon:list():add()
+      end)
+      vim.keymap.set("n", "<C-e>", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
 
-      vim.keymap.set("n", "<M-1>", function() harpoon:list():select(1) end)
-      vim.keymap.set("n", "<M-2>", function() harpoon:list():select(2) end)
-      vim.keymap.set("n", "<M-3>", function() harpoon:list():select(3) end)
-      vim.keymap.set("n", "<M-4>", function() harpoon:list():select(4) end)
-      vim.keymap.set("n", "<M-5>", function() harpoon:list():select(5) end)
-
+      vim.keymap.set("n", "<M-1>", function()
+        harpoon:list():select(1)
+      end)
+      vim.keymap.set("n", "<M-2>", function()
+        harpoon:list():select(2)
+      end)
+      vim.keymap.set("n", "<M-3>", function()
+        harpoon:list():select(3)
+      end)
+      vim.keymap.set("n", "<M-4>", function()
+        harpoon:list():select(4)
+      end)
+      vim.keymap.set("n", "<M-5>", function()
+        harpoon:list():select(5)
+      end)
     end,
     opts = {
       menu = {
@@ -110,6 +99,7 @@ return {
     config = function()
       vim.notify = require("notify")
 
+      ---@diagnostic disable-next-line: undefined-field
       vim.notify.setup({
         timeout = 3000,
         background_colour = "#FFFFFF",
@@ -119,7 +109,7 @@ return {
 
   {
     "numToStr/Comment.nvim",
-    event = "VeryLazy",
+    kjvent = "VeryLazy",
     opts = {
       pre_hook = function(ctx)
         if vim.bo.filetype == "typescriptreact" then
@@ -168,18 +158,22 @@ return {
     "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
-      -- require("noks.lsp.servers.null_ls").setup()
-
       local nls = require("null-ls")
       nls.setup({
         sources = {
           nls.builtins.diagnostics.golangci_lint.with({ extra_args = { "--fast" } }),
           nls.builtins.formatting.gofumpt,
+          nls.builtins.formatting.dart_format.with({ extra_args = { "-l 120" } }),
           nls.builtins.formatting.goimports_reviser.with({
             extra_args = { "-rm-unused", "-company-prefixes" },
           }),
           -- nls.builtins.diagnostics.shellcheck,
-          nls.builtins.formatting.golines,
+          nls.builtins.formatting.golines.with({
+            extra_args = {
+              "--max-len=180",
+              "--base-formatter=gofumpt",
+            },
+          }),
           nls.builtins.formatting.shfmt,
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.prettier.with({
@@ -204,40 +198,43 @@ return {
     end,
   },
   {
-    "olimorris/codecompanion.nvim",
-    cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
-    lazy = true,
-    config = function()
-      require("codecompanion").setup({
-        send_code = true,
-        adapters = {
-          anthropic = function()
-            return require("codecompanion.adapters").extend("anthropic", {
-              env = {
-                api_key = "",
-              },
-            })
-          end,
-          openai = function()
-            return require("codecompanion.adapters").extend("openai", {
-              env = {
-                api_key = "",
-              },
-            })
-          end,
-        },
-        strategies = {
-          chat = {
-            adapter = "anthropic",
-          },
-          inline = {
-            adapter = "anthropic",
-          },
-          agent = {
-            adapter = "anthropic",
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false,
+    opts = {
+      -- add any opts here
+    },
+    build = "make",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        "HakonHarnes/img-clip.nvim",
+        event = "VeryLazy",
+        opts = {
+          -- recommended settings
+          default = {
+            embed_image_as_base64 = false,
+            prompt_for_file_name = false,
+            drag_and_drop = {
+              insert_mode = true,
+            },
+            -- required for Windows users
+            use_absolute_path = true,
           },
         },
-      })
-    end,
+      },
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
   },
 }

@@ -26,7 +26,7 @@ end
 M.find_files = function()
   builtin.find_files({
     prompt_title = "< Find Files >",
-    -- find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--hidden" },
+    find_command = { "rg", "--files", "--iglob", "!*.{jpg,png,ttf}", "--hidden" },
     previewer = false,
     follow = false,
   })

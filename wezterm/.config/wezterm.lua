@@ -9,7 +9,11 @@ config.font = wezterm.font("JetBrains Mono", { stretch = "Expanded" })
 
 config.colors = require("cyberdream")
 
-config.window_background_opacity = 0.95
+config.colors.tab_bar = {
+  background = "rgba(0,0,0,0)",
+}
+
+config.window_background_opacity = 0.85
 
 config.animation_fps = 120
 config.max_fps = 120
@@ -22,14 +26,23 @@ config.window_padding = {
   top = 2,
   bottom = 2,
 }
+
 config.default_workspace = "home"
 config.line_height = 1.15
 
 config.keys = {
-  { key = "Enter", mods = "ALT", action = act.DisableDefaultAssignment  },
+  { key = "Enter", mods = "ALT", action = act.DisableDefaultAssignment },
 
   { key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
 }
+config.use_fancy_tab_bar = true
+config.hide_tab_bar_if_only_one_tab = true
+config.macos_window_background_blur = 50
+
+-- config.window_frame = {
+--         inactive_titlebar_bg = "none",
+--         active_titlebar_bg = "none",
+-- }
 
 -- config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
 -- config.keys = {

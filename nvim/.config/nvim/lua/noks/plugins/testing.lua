@@ -18,6 +18,10 @@ return {
           failed = "",
           passed = "👌",
         },
+        log_level = vim.log.levels.DEBUG,
+        output = {
+          open_on_run = true
+        },
         adapters = {
           require("neotest-jest")({
             jestCommand = "npx jest --",
@@ -26,7 +30,7 @@ return {
           require("neotest-dart")({
             command = "flutter",
             use_lsp = true,
-            custom_test_method_names = {"group",  "blocTest", "test","testWidget"}
+            custom_test_method_names = { "group", "blocTest", "test", "testWidget" },
           }),
           require("neotest-go")({
             experimental = {

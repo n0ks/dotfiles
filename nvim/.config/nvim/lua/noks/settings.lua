@@ -28,7 +28,7 @@ g.netrw_banner = 0
 g.term_buf = 0
 g.NetrwIsOpen = 0
 
-opt.cmdheight = 0
+opt.cmdheight = 1
 
 opt.backspace = { "eol", "start", "indent" }
 opt.clipboard = "unnamedplus"
@@ -125,14 +125,14 @@ opt.shortmess = {
   O = true, -- file-read message overwrites previous
   T = true, -- truncate non-file messages in middle
   f = true, -- (file x of x) instead of just (x of x
-  F = true, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
+  F = false, -- Don't give file info when editing a file, NOTE: this breaks autocommand messages
   s = true,
   c = true,
   W = true, -- Don't show [w] or written when writing
 }
 
 opt.redrawtime = 1500
-opt.timeoutlen = 250
+opt.timeoutlen = 300
 opt.ttimeoutlen = 10
 opt.updatetime = 100
 opt.breakindent = true

@@ -1,6 +1,11 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      { "williamboman/mason.nvim", opts = {} },
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+    },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local lspconfig = require("lspconfig")
@@ -18,7 +23,7 @@ return {
         },
         update_in_insert = true,
         underline = false,
-        severity_sort = true,
+        -- severity_sort = true,
         -- float = {
         -- 	focus = false,
         -- 	focusable = true,
@@ -47,22 +52,8 @@ return {
         end
       end
 
-      -- Server configurations
       local servers = {
-        sumneko = require("noks.lsp.servers.sumneko"),
-        tsserver = require("noks.lsp.servers.tsserver"),
-        go = require("noks.lsp.servers.go"),
-        pyright = require("noks.lsp.servers.pyright"),
-        jsonls = require("noks.lsp.servers.jsonls"),
-      }
-
-      -- Server specific configurations
-      local configs = {
-        jsonls = servers.jsonls,
-        pyright = servers.pyright,
-        sumneko_lua = servers.sumneko.config,
-        tsserver = servers.tsserver.config,
-        -- gopls = servers.go.settings,
+        lua_ls = require("noks.lsp.servers.sumneko"),
         yamlls = {
           settings = {
             yaml = {
@@ -75,6 +66,10 @@ return {
             },
           },
         },
+        -- tsserver = require("noks.lsp.servers.tsserver"),
+        -- go = require("noks.lsp.servers.go"),
+        -- pyright = require("noks.lsp.servers.pyright"),
+        jsonls = require("noks.lsp.servers.jsonls"),
       }
 
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -118,12 +113,16 @@ return {
       })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
+
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+      local ensure_installed = vim.tbl_keys(servers or {})
 
       require("mason-lspconfig").setup({
         handlers = {
+          ensure_installed = ensure_installed,
           function(server_name)
-            local server_config = configs[server_name] or {}
+            local server_config = servers[server_name] or {}
 
             server_config.capabilities =
               vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {})

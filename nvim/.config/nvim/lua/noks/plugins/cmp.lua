@@ -1,17 +1,17 @@
 return {
-  { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
-  { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+  { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {}},
+  { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua", lazy = true },
   { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
-  { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+  { "iguanacucumber/mag-cmdline", name = "cmp-cmdline"},
   {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+      -- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+      --
+      -- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
       local has_words_before = function()
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))

@@ -45,7 +45,7 @@ return {
       },
       incremental_selection = { enable = true },
       indent = { enable = true },
-      autopairs = { enable = true },
+      autopairs = { enable = false },
       context_commentstring = {
         enable = true,
         enable_autocmd = false,
