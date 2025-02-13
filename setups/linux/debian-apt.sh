@@ -86,7 +86,6 @@ setup() {
   installNpmPackages
   neovimSetup
   alacrittySetup
-  chtshSetup
   postInstall
   onEndScript
   }

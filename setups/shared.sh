@@ -22,9 +22,6 @@ installNpmPackages() {
 
 
 neovimSetup() {
-  echo "[INFO] setting up vim-plug"
-  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
   pushd ~/code/neovim
   rm -rf build/
   git checkout master
@@ -33,12 +30,9 @@ neovimSetup() {
   sudo make install
   popd
 
-
   if command -v pip3 2>/dev/null; then
     pip3 install neovim python-language-server pylint pynvim
   fi
-
-  nvim --headless +PlugInstall +qall >/dev/null
 }
 
 chtshSetup(){
@@ -56,7 +50,7 @@ asdfSetup() {
   source ~/.bashrc
 
   # hackerman workaround
-  eval "$(cat ~/.bashrc | tail -n +10)"
+  eval "$(~/.bashrc | tail -n +10)"
 
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf plugin-add python
@@ -71,7 +65,6 @@ asdfSetup() {
 postInstall(){
   ~/.fzf/install --all
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-  cargo install stylua
 }
 
 
