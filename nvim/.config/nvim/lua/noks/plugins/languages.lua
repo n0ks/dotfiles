@@ -1,14 +1,4 @@
 return {
-
-  {
-    "olexsmir/gopher.nvim",
-    ft = "go",
-    enabled = false,
-    build = function()
-      vim.cmd.GoInstallDeps()
-    end,
-    opts = {},
-  },
   {
     "ray-x/go.nvim",
     dependencies = {
@@ -64,16 +54,11 @@ return {
       }
     end,
   },
+
   {
-    "wojciech-kulik/xcodebuild.nvim",
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     enabled = false,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-    config = function()
-      require("xcodebuild").setup({
-        -- put some options here or leave it empty to use default settings
-      })
-    end,
+    opts = {},
   },
 }

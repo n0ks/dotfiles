@@ -61,6 +61,7 @@ export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:$HOME/neovim/bin
+export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
 # export PATH=$PATH:$HOME/.asdf/shims
 export FVM_CACHE_PATH=$HOME/fvm
 export GEM_HOME=$HOME/.gem
@@ -81,6 +82,7 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 export FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FASTLANE_HIDE_CHANGELOG=1
 export FASTLANE_SKIP_UPDATE_CHECK=1 
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --multi --no-mouse 
 --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"

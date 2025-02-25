@@ -2,8 +2,6 @@
 return {
   {
     "akinsho/flutter-tools.nvim",
-    fvm = true,
-    ft = "dart",
     config = function()
       require("flutter-tools").setup({
         closing_tags = {
@@ -53,7 +51,7 @@ return {
             map("n", "<F4>", ":lua require('telescope').extensions.flutter.commands()<CR>")
 
             vim.cmd([[
-              command! BuildRunner AsyncRun -mode=term -focus=0 -rows=12 flutter pub run build_runner build --delete-conflicting-outputs
+              command! BuildRunner AsyncRun -mode=term -focus=0 -rows=12 dart run build_runner build --delete-conflicting-outputs
               command! L10n AsyncRun -mode=term -focus=0 -rows=12 flutter gen-l10n
               command! DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply
               command! Golden AsyncRun -cwd=$(VIM_CWD) flutter test --update-goldens

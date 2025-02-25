@@ -203,6 +203,13 @@ return {
     lazy = false,
     version = false,
     opts = {
+      behaviour = {
+        auto_suggestions = false
+      },
+      suggestion = {
+        debounce = 1000
+      }
+
       -- add any opts here
     },
     build = "make",
