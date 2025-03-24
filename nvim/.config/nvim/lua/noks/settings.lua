@@ -104,6 +104,7 @@ opt.number = true
 opt.rnu = false
 opt.scrolloff = 18
 opt.showmode = false
+opt.scroll = 10
 opt.sidescrolloff = 3 -- Lines to scroll horizontally
 opt.signcolumn = "yes"
 opt.splitbelow = true -- Open new split below
