@@ -1,6 +1,19 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      -- "nvim-telescope/telescope-media-files.nvim",
+      -- "nvim-telescope/telescope-symbols.nvim",
+      -- "aaronhallaert/advanced-git-search.nvim",
+      "nvim-telescope/telescope-file-browser.nvim",
+      "nvim-telescope/telescope-live-grep-args.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        lazy = true,
+        build = "make",
+      },
+    },
     cmd = { "Telescope" },
     config = function()
       local builtin = require("telescope.builtin")
@@ -94,6 +107,7 @@ return {
       -- telescope.load_extension("media_files")
       -- telescope.load_extension("advanced_git_search")
       -- telescope.load_extension("textcase")
+      pcall(require("telescope").load_extension("live_grep_args"))
 
       vim.keymap.set("n", "<leader>/", function()
         builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
@@ -102,18 +116,5 @@ return {
         }))
       end, { desc = "[/] Fuzzily search in current buffer" })
     end,
-
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      -- "nvim-telescope/telescope-media-files.nvim",
-      -- "nvim-telescope/telescope-symbols.nvim",
-      -- "aaronhallaert/advanced-git-search.nvim",
-      "nvim-telescope/telescope-file-browser.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        lazy = true,
-        build = "make",
-      },
-    },
   },
 }

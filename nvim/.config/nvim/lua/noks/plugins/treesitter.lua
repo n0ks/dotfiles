@@ -2,6 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
+    lazy = false,
     dependencies = {
       -- "nvim-treesitter/nvim-treesitter-textobjects",
     },
@@ -30,7 +31,6 @@ return {
         "markdown",
         "markdown_inline",
       },
-      ignore_install = { "dart" },
       sync_install = false,
       playground = {
         enable = true,
@@ -40,8 +40,6 @@ return {
       },
       highlight = {
         enable = true,
-        disable = { "yaml", "dart" },
-        additional_vim_regex_highlighting = { "yaml", "jack", "haskell", "dart" },
       },
       incremental_selection = { enable = true },
       indent = { enable = true },

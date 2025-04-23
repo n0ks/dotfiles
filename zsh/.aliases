@@ -23,9 +23,9 @@ alias be='bundle exec '
 # Shortcuts
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias drbb="dart run build_runner build -d -v"
-alias drbbc="dart run build_runner clean && drbb"
-alias drbbw="dart run build_runner watch"
+alias drbb="fvm dart run build_runner build -d -v"
+alias drbbc="fvm dart run build_runner clean && drbb"
+alias drbbw="fvm dart run build_runner watch"
 
 alias fclean="flutter clean && flutter pub get && drbb"
 alias fget="flutter pub get"
@@ -56,8 +56,11 @@ alias lzd="lazydocker"
 alias xcodeclean='rm -rf ~/Library/Developer/Xcode/DerivedData/*'
 alias flutter='fvm flutter'
 
+alias mitm="networksetup -setsecurewebproxystate Wi-Fi on && mitmproxy && networksetup -setsecurewebproxystate Wi-Fi off"
+alias printapkcert="apksigner verify --print-certs"
+
 # alias emuroot="emulator -writable-system -avd pixel8 -feature -Vulkan"
 #
-# alias unlockGradle='find ~/.gradle -type f -name "*.lock" -delete'
+# alias unlockGradle="find ~/.gradle -type f -name "*.lock" -delete'
 #
 # alias dartformat="dart format $(find . -name '*w*.dart' -not -name '*.g.dart') -l 120"
