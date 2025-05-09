@@ -35,6 +35,16 @@ config.keys = {
 
   { key = "Enter", mods = "CMD", action = act.ToggleFullScreen },
 }
+
+config.mouse_bindings = {
+	-- CMD-click will open the link under the mouse cursor
+	{
+		event = { Up = { streak = 1, button = "Left" } },
+		mods = "SUPER",
+		action = wezterm.action.OpenLinkAtMouseCursor,
+	},
+}
+
 config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = true
 config.macos_window_background_blur = 50
