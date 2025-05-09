@@ -20,13 +20,13 @@ installNpmPackages() {
   npm i -g "${npm_packages[@]}"
 }
 
-
 neovimSetup() {
   pushd ~/code/neovim
   rm -rf build/
   git checkout master
   git pull
   make CMAKE_BUILD_TYPE=Release
+
   sudo make install
   popd
 

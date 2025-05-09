@@ -31,10 +31,11 @@ M.find_files = function()
     follow = false,
   })
 end
+
 M.search_wallpapers = function()
   builtin.find_files({
     prompt_title = "< WALLPAPERS >",
-    cwd = "$HOME/wallpapers",
+    cwd = "$HOME/Documents/wallpapers",
     find_command = { "rg", "--files" },
     previewer = false,
     follow = false,

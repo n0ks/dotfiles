@@ -1,5 +1,5 @@
-#!/bin/zsh
-source ../shared.sh
+#!/usr/bin/env bash
+source ~/.dotfiles/setups/shared.sh
 
 echo "Hello $(whoami)! Let's get you set up."
 
@@ -30,19 +30,17 @@ installSoftware() {
   export HOMEBREW_NO_INSTALL_CLEANUP=1
 
 	echo "[INFO] Installing from Brewfile"
-	brew bundle --file="../Brewfile"
+	brew bundle --file="~/.dotfiles/Brewfile"
 	xcode-select --install
 
   brew update && brew upgrade && brew cleanup && brew doctor
 }
-
 macSettings() {
 	ssh-keygen -t rsa
 	osascript -e 'tell application "System Preferences" to quit'
-	source ./macos-settings
+	source ~/.dotfiles/setups/mac/macos-settings
 
   read -s -k $'?Press ANY KEY to REBOOT\n'
-  sudo reboot
   exit
 }
 
@@ -50,11 +48,6 @@ macSettings() {
 # settings we’re about to change
 
 setup() {
-	cloneRepos
-	installSoftware
-	dotfilesStow
-	asdfSetup
-	neovimSetup
 	macSettings
 }
 

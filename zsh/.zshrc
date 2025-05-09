@@ -13,17 +13,13 @@ setopt appendhistory
 setopt auto_cd
 unsetopt MULTIOS
 # autoload bashcompinit && bashcompinit
-# autoload -Uz compinit && compinit
-# autoload -U edit-command-line
-# zle -N edit-command-line
+autoload -Uz compinit && compinit
+autoload -U edit-command-line
+zle -N edit-command-line
 
 bindkey -M vicmd v edit-command-line
 bindkey '^ ' autosuggest-accept
 
-fpath+=($HOME/.zsh/pure)
-
-autoload -U promptinit; promptinit
-prompt pure
 PURE_GIT_DELAY_DIRTY_CHECK=0
 PURE_CMD_MAX_EXEC_TIME=1
 PURE_GIT_PULL=0
@@ -66,7 +62,8 @@ export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
 export FVM_CACHE_PATH=$HOME/fvm
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
-# export GOROOT=$(asdf where golang)/go
+export GOROOT=$(asdf where golang)/go
+export GOBIN=$(asdf where golang)/packages/bin
 # export MANPAGER='nvim -u +Man!'
 export MANWIDTH=999
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
@@ -112,7 +109,7 @@ source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
 [[ -f ~/functions.sh ]] && source ~/functions.sh
 
-# fpath+=("$(brew --prefix)/share/zsh/site-functions")
+fpath+=("$(brew --prefix)/share/zsh/site-functions")
 fpath+=($HOME/.zsh/pure)
 
 autoload -U promptinit; promptinit
