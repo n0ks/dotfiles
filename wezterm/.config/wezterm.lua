@@ -13,12 +13,13 @@ config.colors.tab_bar = {
   background = "rgba(0,0,0,0)",
 }
 
-config.window_background_opacity = 0.85
-
+config.window_background_opacity = 0.95
 config.animation_fps = 120
 config.max_fps = 120
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 5000
+config.window_close_confirmation = "NeverPrompt"
+config.font_size = 14
 
 config.window_padding = {
   left = 2,
@@ -28,7 +29,7 @@ config.window_padding = {
 }
 
 config.default_workspace = "home"
-config.line_height = 1.15
+config.line_height = 1.5
 
 config.keys = {
   { key = "Enter", mods = "ALT", action = act.DisableDefaultAssignment },

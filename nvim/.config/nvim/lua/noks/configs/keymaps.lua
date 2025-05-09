@@ -40,6 +40,8 @@ map("n", "J", "mzJ`z")
 map("n", "cn", "*``cgn")
 map("n", "cN", "*``cgN")
 
+map("n", "<C-d>", "6j")
+map("n", "<C-u>", "6k")
 map("n", "<leader>Y", 'gg"+yG')
 map("n", "<esc>", ":noh<return><esc>")
 -- map("n", ",fn", ":put =expand('%:t')<CR>")

@@ -39,7 +39,7 @@ local lsp_node = autogroup("LspNodeModules")
 -- })
 
 -- don't auto comment new line
-autocmd({ "BufEnter" }, nil, { command = [[set formatoptions-=cro]] })
+-- autocmd({ "BufEnter" }, nil, { command = [[set formatoptions-=cro]] })
 
 autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
 

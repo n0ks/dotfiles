@@ -82,13 +82,13 @@ return {
             },
           }),
         },
-        matching = {
-          disallow_fuzzy_matching = true,
-          disallow_fullfuzzy_matching = true,
-          disallow_partial_fuzzy_matching = true,
-          disallow_partial_matching = false,
-          disallow_prefix_unmatching = true,
-        },
+        -- matching = {
+        --   disallow_fuzzy_matching = true,
+        --   disallow_fullfuzzy_matching = true,
+        --   disallow_partial_fuzzy_matching = true,
+        --   disallow_partial_matching = false,
+        --   disallow_prefix_unmatching = true,
+        -- },
       })
 
       -- Set configuration for specific filetype.
