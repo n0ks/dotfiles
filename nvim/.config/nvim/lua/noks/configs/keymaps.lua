@@ -95,7 +95,7 @@ map("n", "<leader>cA", ":w <bar> %bd <bar> e# <bar> bd# <CR>")
 map("n", "<leader>CC", ":call CleanNoNameEmptyBuffers()<CR>")
 map("n", "<Backspace>", "<C-^>")
 map("i", "<C-s>", "<ESC>:w<CR>")
-map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
+map("n", "<Leader>vc", ":lua MiniFiles.open()<CR>")
 map("n", "<Leader>vo", ":Oil<CR>")
 
 map("n", "<leader>co", ":CodeCompanion<CR>")
