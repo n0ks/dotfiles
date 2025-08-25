@@ -1,106 +1,102 @@
--- ╭──────────────────╮
--- │ Helper functions │
--- ╰──────────────────╯
-
 local fn = vim.fn
 local api = vim.api
 
-local autocmd = function(ftable, pattern, action, group)
-  api.nvim_create_autocmd(ftable, {
-    group = group,
-    pattern = pattern or nil,
-    command = action.command or nil,
-    callback = action.callback or nil,
-  })
-end
+local on_buf_load = { "BufNewFile", "BufRead" }
 
-local autogroup = function(name)
-  api.nvim_create_augroup(name, { clear = true })
-end
+-- ╭───────────────────────╮
+-- │ Autocmd Groups        │
+-- ╰───────────────────────╯
+local qflist_group = api.nvim_create_augroup("QFlist", { clear = true })
+local highlight_yank_group = api.nvim_create_augroup("highlight_yank", { clear = true })
+local read_file_on_change_group = api.nvim_create_augroup("read_file_on_change", { clear = true })
+local lsp_node = api.nvim_create_augroup("LspNodeModules", { clear = true })
 
--- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-local qflist_group = autogroup("QFlist")
-local highlight_yank_group = autogroup("highlight_yank")
-local read_file_on_change_group = autogroup("read_file_on_change")
-local lsp_node = autogroup("LspNodeModules")
-
--- autocmd({ "CursorHold" }, { "" }, {
--- 	callback = function()
--- 		local opts = {
--- 			focusable = false,
--- 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
--- 			source = "always",
--- 			scope = "cursor",
--- 		}
-
--- 		vim.diagnostic.open_float(nil, opts)
--- 	end,
--- })
-
--- don't auto comment new line
--- autocmd({ "BufEnter" }, nil, { command = [[set formatoptions-=cro]] })
-
-autocmd({ "FileType" }, { "netrw" }, { command = "setl buffhidden=delete" })
-
-autocmd(
-  "FileType",
-  { "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
-  { command = [[nnoremap <buffer><silent> q :close<CR>]] }
-)
-
--- autocmd({ "FileType" }, { "typescriptreact" }, { command = "set ft=typescript" })
-
--- autocmd({ "TermOpen" }, { "*" }, { command = "startinsert | set winfixheight" })
-
--- autocmd({ "BufNewFile", "BufRead" }, { "*.ts" }, {
--- 	callback = function()
--- 		vim.schedule(function()
--- 			vim.cmd([["setl filetype = typescript"]])
--- 		end)
--- 	end,
--- })
---
--- restore cursor position when opening file
-autocmd({ "BufReadPost" }, { "*" }, {
-  callback = function()
-    if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
-      fn.setpos(".", fn.getpos("'\""))
-      api.nvim_feedkeys("zz", "n", true)
-    end
-  end,
+-- ╭──────────────────────────────╮
+-- │ Set filetype or options     │
+-- ╰──────────────────────────────╯
+api.nvim_create_autocmd("FileType", {
+	pattern = "netrw",
+	command = "setl buffhidden=delete",
 })
 
-autocmd({ "BufNewFile", "BufRead" }, { "Fastfile", "Podfile" }, { command = "setl filetype=ruby" })
-autocmd({ "BufNewFile", "BufRead" }, { "*.arb" }, { command = "setl filetype=json" })
+api.nvim_create_autocmd("FileType", {
+	pattern = { "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
+	command = "nnoremap <buffer><silent> q :close<CR>",
+})
 
-autocmd({ "BufNewFile", "BufRead" }, { "*.tmpl" }, { command = "setl filetype=html" })
+api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "Fastfile", "Podfile" },
+	command = "setl filetype=ruby",
+})
 
-autocmd({ "Filetype" }, { "json" }, { command = "setl filetype=jsonc" })
+api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*.arb",
+	command = "setl filetype=json",
+})
 
-autocmd({ "BufRead" }, { "*.yaml" }, { command = "set sw=2 sts=2 expandtab" })
+api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*.tmpl",
+	command = "setl filetype=html",
+})
 
--- autocmd({ "BufWinEnter" }, { "quickfix" }, { command = "call SetQFControlVariable()" }, qflist_group)
+api.nvim_create_autocmd("FileType", {
+	pattern = "json",
+	command = "setl filetype=jsonc",
+})
 
--- autocmd({ "BufWinLeave" }, { "*" }, { command = "call UnsetQFControlVariable()" }, qflist_group)
+api.nvim_create_autocmd("BufRead", {
+	pattern = "*.yaml",
+	command = "set sw=2 sts=2 expandtab",
+})
 
-autocmd({ "TextYankPost" }, { "*" }, {
-  callback = function()
-    vim.highlight.on_yank({ timeout = 40, on_visual = true, higroup = "IncSearch" })
-  end,
-}, highlight_yank_group)
+api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = "*/node_modules/*",
+	command = "lua vim.diagnostic.disable(0)",
+	group = lsp_node,
+})
 
--- autocmd(
--- 	{ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" },
--- 	{ "*" },
--- 	{ command = "silent! checktime" },
--- 	read_file_on_change_group
--- )
+-- ╭──────────────────────────────╮
+-- │ Highlight on yank           │
+-- ╰──────────────────────────────╯
+api.nvim_create_autocmd("TextYankPost", {
+	pattern = "*",
+	group = highlight_yank_group,
+	callback = function()
+		vim.highlight.on_yank({
+			timeout = 40,
+			on_visual = true,
+			higroup = "IncSearch",
+		})
+	end,
+})
 
-autocmd({ "BufRead" }, { "*/node_modules/*" }, { command = "lua vim.diagnostic.disable(0)" }, lsp_node)
-autocmd({ "BufNewFile" }, { "*/node_modules/*" }, { command = "lua vim.diagnostic.disable(0)" }, lsp_node)
+-- ╭──────────────────────────────╮
+-- │ Restore cursor position     │
+-- ╰──────────────────────────────╯
+api.nvim_create_autocmd("BufReadPost", {
+	pattern = "*",
+	callback = function()
+		if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
+			fn.setpos(".", fn.getpos("'\""))
+			api.nvim_feedkeys("zz", "n", true)
+		end
+	end,
+})
 
-autocmd({ "BufWritePre" }, { "*.go" }, { command = 'lua require("go.format").gofmt()' })
+-- ╭──────────────────────────────╮
+-- │ Disable completion in tree  │
+-- ╰──────────────────────────────╯
+api.nvim_create_autocmd("BufEnter", {
+	pattern = "*NvimTree*",
+	callback = function()
+		vim.b.completion = false
+	end,
+})
 
--- autocmd({ "BufWinLeave" }, { "*.*" }, { command = "mkview!" })
--- autocmd({ "BufWinEnter" }, { "*.*" }, { command = "silent loadview" })
+-- ╭──────────────────────────────╮
+-- │ Format go files             │
+-- ╰──────────────────────────────╯
+api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.go",
+	command = 'lua require("go.format").gofmt()',
+})

@@ -95,7 +95,7 @@ map("n", "<leader>cA", ":w <bar> %bd <bar> e# <bar> bd# <CR>")
 map("n", "<leader>CC", ":call CleanNoNameEmptyBuffers()<CR>")
 map("n", "<Backspace>", "<C-^>")
 map("i", "<C-s>", "<ESC>:w<CR>")
-map("n", "<Leader>vc", ":lua MiniFiles.open()<CR>")
+map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
 map("n", "<Leader>vo", ":Oil<CR>")
 
 map("n", "<leader>co", ":CodeCompanion<CR>")
@@ -232,15 +232,11 @@ map("n", "<leader>lg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygi
 
 -- " ----------------------------------------------------------------------------
 -- " DAP
--- " ----------------------------------------------------------------------------
-map("n", "<F5>", ":lua require'dap'.continue()<CR>")
-map("n", "<F10>", ":lua require'dap'.step_over()<CR>")
-map("n", "<F11>", ":lua require'dap'.step_into()<CR>")
-map("n", "<F12>", ":lua require'dap'.step_out()<CR>")
-map("n", "<F2>", ":DBUIToggle<CR>")
-map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
-map("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
-map("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+-- " -----------------------------------tep_out()<CR>")
+-- map("n", "<F2>", ":DBUIToggle<CR>")
+-- map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
+-- map("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+-- map("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 map("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 map("n", "<leader>d?", ":lua require'dapui'.float_element('scopes')<CR>")
 map("n", "<leader>dw", ":lua require'dap.ui.widgets'.hover()<CR>")
