@@ -20,6 +20,12 @@ return {
           enabled = false,
           open_cmd = "tabedit",
           notify_errors = false,
+          filter = function(log)
+            if string.find(log, "flutter") then
+              return log
+            end
+            return nil
+          end,
         },
         dev_tools = {
           autostart = true,
@@ -40,10 +46,11 @@ return {
             vim.o.textwidth = 120
 
             vim.lsp.handlers["textDocument/publishDiagnostics"] =
-              vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                virtual_text = false,
-                underline = true,
-              })
+                vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+                  virtual_text = false,
+                  underline = true,
+                  inlayHint = false,
+                })
 
             map("n", "<F1>", ":FlutterRun<CR>")
             map("n", "<F2>", ":FlutterReload<CR>")

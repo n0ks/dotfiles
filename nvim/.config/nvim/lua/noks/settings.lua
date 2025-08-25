@@ -28,7 +28,7 @@ g.netrw_banner = 0
 g.term_buf = 0
 g.NetrwIsOpen = 0
 
-opt.cmdheight = 1
+opt.cmdheight = 0
 
 opt.backspace = { "eol", "start", "indent" }
 opt.clipboard = "unnamedplus"
@@ -94,7 +94,6 @@ opt.guicursor = {
   [[n-v-c:block]],
 }
 
-opt.cursorline = false
 opt.laststatus = 3
 opt.lazyredraw = true
 opt.list = true
