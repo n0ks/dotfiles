@@ -58,6 +58,8 @@ alias flutter='fvm flutter'
 
 alias mitm="networksetup -setsecurewebproxystate Wi-Fi on && mitmproxy && networksetup -setsecurewebproxystate Wi-Fi off"
 alias printapkcert="apksigner verify --print-certs"
+alias p="podman"
+alias vim="nvim"
 
 # alias emuroot="emulator -writable-system -avd pixel8 -feature -Vulkan"
 #

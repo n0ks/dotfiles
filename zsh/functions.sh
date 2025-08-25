@@ -57,7 +57,7 @@ function getFZFPreviewer() (
 )
 
 sf() {
-  $EDITOR "$(fd --no-ignore --type f --exclude '*.{png,jpg}'| fzf --multi --reverse --preview "$(getFZFPreviewer)")"
+  $EDITOR "$(fd --no-ignore --type f --exclude '*.{png,jpg}' --type d --exclude 'node_modules'| fzf --multi --reverse --preview "$(getFZFPreviewer)")"
 }
 
 # ────────────────────────────────────────────────────────────
@@ -134,9 +134,9 @@ wlocal() {
 # Select a docker container to start and attach to
 function da() {
   local cid
-  cid=$(docker ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+  cid=$(podman ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
-  [ -n "$cid" ] && docker start "$cid" && docker attach "$cid"
+  [ -n "$cid" ] && podman start "$cid" && podman attach "$cid"
 }
 # Select a running docker container to stop
 function ds() {
