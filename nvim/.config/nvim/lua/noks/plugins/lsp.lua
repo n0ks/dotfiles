@@ -109,6 +109,7 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
             end, "[T]oggle Inlay [H]ints")
           end
+          vim.lsp.inlay_hint.enable(false, { bufnr = event.buf })
         end,
       })
 
@@ -125,7 +126,7 @@ return {
             local server_config = servers[server_name] or {}
 
             server_config.capabilities =
-              vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {})
+                vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {})
 
             lspconfig[server_name].setup(server_config)
           end,

@@ -29,7 +29,7 @@ config.window_padding = {
 }
 
 config.default_workspace = "home"
-config.line_height = 1.5
+config.line_height = 1.2
 
 config.keys = {
   { key = "Enter", mods = "ALT", action = act.DisableDefaultAssignment },
