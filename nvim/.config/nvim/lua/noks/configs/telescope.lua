@@ -35,7 +35,7 @@ end
 M.search_wallpapers = function()
   builtin.find_files({
     prompt_title = "< WALLPAPERS >",
-    cwd = "$HOME/Documents/wallpapers",
+    cwd = "$HOME/wallpapers",
     find_command = { "rg", "--files" },
     previewer = false,
     follow = false,
