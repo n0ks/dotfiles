@@ -36,21 +36,25 @@ return {
             renameFilesWithClasses = "always",
             documentation = "full",
             lineLength = 120,
+            inlayHints = false,
           },
           color = {
             enabled = true,
+            virtual_text = false,
           },
           on_attach = function(_, bufnr)
             local map = require("noks.configs.utils").map
 
             vim.o.textwidth = 120
 
-            vim.lsp.handlers["textDocument/publishDiagnostics"] =
-                vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                  virtual_text = false,
-                  underline = true,
-                  inlayHint = false,
-                })
+            vim.diagnostic.config({
+              virtual_text = false,
+              underline = true,
+              inlayHints = false,
+              signs = true,
+              update_in_insert = false,
+              severity_sort = true,
+            }, bufnr)
 
             map("n", "<F1>", ":FlutterRun<CR>")
             map("n", "<F2>", ":FlutterReload<CR>")

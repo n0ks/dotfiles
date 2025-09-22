@@ -13,9 +13,6 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		event = { "BufReadPre", "BufNewFile" },
-		opts = {
-			inlay_hints = { enabled = false },
-		},
 		config = function()
 			local lspconfig = require("lspconfig")
 			local mason_lspconfig = require("mason-lspconfig")
@@ -23,7 +20,7 @@ return {
 			local config = {
 				virtual_text = false,
 				inlay_hints = false,
-        float = false,
+				float = true,
 				signs = {
 					text = {
 						[vim.diagnostic.severity.HINT] = "",
@@ -44,6 +41,7 @@ return {
 			end, { desc = "Toggle diagnostic virtual_lines" })
 
 			vim.diagnostic.config(config)
+
 
 			-- Jump directly to the first available definition every time.
 			-- vim.lsp.handlers["textDocument/definition"] = function(_, result)
