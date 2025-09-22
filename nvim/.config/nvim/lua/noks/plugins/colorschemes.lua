@@ -5,12 +5,13 @@ return {
 		-- priority = 1000,
 		-- lazy = false,
 		config = function()
-			-- vim.cmd([[colorscheme nordic]])
+			-- require("nordic").load()
 		end,
 		opts = {
 			bold_keywords = false,
 			transparent = {
-				bg = false,
+				bg = true,
+				float = true,
 			},
 			bright_border = true,
 		},
@@ -56,44 +57,39 @@ return {
 	},
 	{
 		"catppuccin/nvim",
-		opts = {
-			term_colors = true,
-			flavour = "mocha",
-			transparent_background = false,
-			show_end_of_buffer = false,
-			styles = {
-				bold = true,
-				italic = true,
-				transparency = true,
-			},
-			highlight_overrides = {
-				mocha = function(mocha)
-					return {
-						LineNr = { fg = mocha.subtext0 },
-					}
-				end,
-			},
-			color_overrides = {
-				all = {
-					text = "#ffffff",
-				},
-				mocha = {
-					base = "#000000",
-					mantle = "#000000",
-					crust = "#000000",
-				},
-			},
-			integrations = {
-				gitsigns = true,
-				telescope = true,
-				dap = {
-					enabled = true,
-					enable_ui = true,
-				},
-			},
-		},
+		lazy = false,
+		priority = 1000,
 		config = function()
-			-- vim.api.nvim_command("colorscheme catppuccin")
+			require("catppuccin").setup({
+				term_colors = false,
+				flavour = "mocha",
+				transparent_background = true,
+				show_end_of_buffer = false,
+				float = {
+					transparent = true,
+					solid = true,
+				},
+				color_overrides = {
+					all = {
+						text = "#ffffff",
+					},
+					-- mocha = {
+					-- 	base = "#000000",
+					-- 	mantle = "#000000",
+					-- 	crust = "#000000",
+					-- },
+				},
+				integrations = {
+					gitsigns = true,
+					telescope = true,
+					dap = {
+						enabled = true,
+						enable_ui = true,
+					},
+				},
+			})
+
+			vim.api.nvim_command("colorscheme catppuccin")
 		end,
 	},
 
@@ -102,7 +98,7 @@ return {
 		-- priority = 1000,
 		-- lazy = false,
 		opts = {
-			transparent = false,
+			transparent = true,
 			dimInactive = false,
 			theme = "wave",
 			overrides = function(colors)
@@ -127,39 +123,7 @@ return {
 		end,
 	},
 	{
-		"EdenEast/nightfox.nvim",
-		-- priority = 1000,
-		config = function()
-			-- require("nightfox").setup({
-			--   options = {
-			--     transparent = true,
-			--     styles = {
-			--       comments = "italic",
-			--       functions = "italic",
-			--     },
-			--   },
-			-- })
-			-- vim.cmd("colorscheme nightfox")
-		end,
-	},
-	{
-		"jesseleite/nvim-noirbuddy",
-		enabled = false,
-		dependencies = {
-			{ "tjdevries/colorbuddy.nvim" },
-		},
-		-- lazy = false,
-		-- priority = 1000,
-		opts = {
-			preset = "slate",
-			colors = {
-				primary = "#de2666",
-			},
-		},
-	},
-	{
 		"scottmckendry/cyberdream.nvim",
-		-- lazy = false,
 		-- priority = 1000,
 		config = function()
 			-- require("cyberdream").setup({
@@ -168,25 +132,6 @@ return {
 			-- })
 
 			-- vim.cmd("colorscheme cyberdream")
-		end,
-	},
-	{
-		"ellisonleao/gruvbox.nvim",
-		priority = 1000,
-		config = function()
-			require("gruvbox").setup({
-        transparent_mode = true
-      })
-
-			vim.cmd("colorscheme gruvbox")
-		end,
-	},
-	{
-		"zootedb0t/citruszest.nvim",
-		-- lazy = false,
-		-- priority = 1000,
-		config = function()
-			-- vim.cmd("colorscheme citruszest")
 		end,
 	},
 }

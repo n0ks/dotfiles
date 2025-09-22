@@ -20,6 +20,12 @@ return {
           enabled = false,
           open_cmd = "tabedit",
           notify_errors = false,
+          filter = function(log)
+            if string.find(log, "flutter") then
+              return log
+            end
+            return nil
+          end,
         },
         dev_tools = {
           autostart = true,
@@ -30,20 +36,25 @@ return {
             renameFilesWithClasses = "always",
             documentation = "full",
             lineLength = 120,
+            inlayHints = false,
           },
           color = {
             enabled = true,
+            virtual_text = false,
           },
           on_attach = function(_, bufnr)
             local map = require("noks.configs.utils").map
 
             vim.o.textwidth = 120
 
-            vim.lsp.handlers["textDocument/publishDiagnostics"] =
-              vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                virtual_text = false,
-                underline = true,
-              })
+            vim.diagnostic.config({
+              virtual_text = false,
+              underline = true,
+              inlayHints = false,
+              signs = true,
+              update_in_insert = false,
+              severity_sort = true,
+            }, bufnr)
 
             map("n", "<F1>", ":FlutterRun<CR>")
             map("n", "<F2>", ":FlutterReload<CR>")

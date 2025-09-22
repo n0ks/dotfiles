@@ -1,7 +1,6 @@
 return {
 	"yetone/avante.nvim",
 	event = "VeryLazy",
-	lazy = false,
 	version = false,
 	opts = {
 		behaviour = {
@@ -41,7 +40,7 @@ return {
 			opts = {
 				file_types = { "markdown", "Avante" },
 			},
-			ft = { "markdown", "Avante" },
+			ft = { "Avante" },
 		},
 	},
 }

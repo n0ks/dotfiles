@@ -1,6 +1,4 @@
 return {
-	-- enabled = true,
-	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeOpen" },
 		opts = {
@@ -103,5 +101,4 @@ return {
 				},
 			},
 		},
-	},
 }
