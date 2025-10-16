@@ -140,12 +140,15 @@ opt.breakindentopt = "shift:2"
 opt.showbreak = "↳"
 opt.laststatus = 3
 
-vim.g.loaded_node_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_python_provider = 0
-vim.g.loaded_ruby_provider = 0
+-- vim.g.loaded_node_provider = 0
+-- vim.g.loaded_perl_provider = 0
+-- vim.g.loaded_python_provider = 0
+-- vim.g.loaded_ruby_provider = 0
+--
+
 
 o.conceallevel = 0
+o.autoread = true
 
 local fn = vim.fn
 

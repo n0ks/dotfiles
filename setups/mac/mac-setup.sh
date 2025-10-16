@@ -48,6 +48,11 @@ macSettings() {
 # settings we’re about to change
 
 setup() {
+	cloneRepos
+	installSoftware
+	dotfilesStow
+	asdfSetup
+	neovimSetup
 	macSettings
 }
 

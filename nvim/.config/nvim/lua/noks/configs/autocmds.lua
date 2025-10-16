@@ -14,9 +14,14 @@ local lsp_node = api.nvim_create_augroup("LspNodeModules", { clear = true })
 -- ╭──────────────────────────────╮
 -- │ Set filetype or options     │
 -- ╰──────────────────────────────╯
-api.nvim_create_autocmd("FileType", {
-	pattern = "netrw",
-	command = "setl buffhidden=delete",
+-- api.nvim_create_autocmd("FileType", {
+-- 	pattern = "netrw",
+-- 	command = "setl buffhidden=delete",
+-- })
+
+api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  command = "if mode() != 'c' | checktime | endif",
+  pattern = "*",
 })
 
 api.nvim_create_autocmd("FileType", {
