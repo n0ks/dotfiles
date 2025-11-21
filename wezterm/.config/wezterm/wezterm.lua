@@ -7,11 +7,12 @@ local config = wezterm.config_builder()
 
 config.font = wezterm.font("JetBrains Mono", { stretch = "Expanded" })
 
-config.colors = require("cyberdream")
+-- config.colors = require("cyberdream")
+config.color_scheme = 'Chalk (base16)'
 
-config.colors.tab_bar = {
-  background = "rgba(0,0,0,0)",
-}
+-- config.colors.tab_bar = {
+--   background = "rgba(0,0,0,0)",
+-- }
 
 config.window_background_opacity = 0.95
 config.animation_fps = 120
@@ -19,7 +20,7 @@ config.max_fps = 120
 config.window_decorations = "RESIZE"
 config.scrollback_lines = 5000
 config.window_close_confirmation = "NeverPrompt"
-config.font_size = 12
+config.font_size = 14
 config.initial_cols = 150
 config.initial_rows = 50
 config.adjust_window_size_when_changing_font_size = false
