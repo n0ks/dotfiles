@@ -67,7 +67,7 @@
   followTags = true
 
 [core]
-  editor = nvim
+	editor = nvim
 
 [sequence]
   editor = nvim
@@ -102,6 +102,8 @@
 
 [pull]
   rebase = true
+[rebase]
+  autoStash = true
 
 [http]
   postBuffer = 1048576000
@@ -124,3 +126,7 @@
 	auto = true
 ; [commit]
 ; 	gpgsign = true
+[column]
+	ui = auto
+[diff]
+	colorMoved = zebra
