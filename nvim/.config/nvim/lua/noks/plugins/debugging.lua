@@ -206,42 +206,39 @@ return {
 
 			dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-			vim.api.nvim_set_hl(0, "blue", { fg = "#3d59a1" })
-			vim.api.nvim_set_hl(0, "green", { fg = "#9ece6a" })
-			vim.api.nvim_set_hl(0, "yellow", { fg = "#FFFF00" })
-			vim.api.nvim_set_hl(0, "orange", { fg = "#f09000" })
-
+			-- DAP highlight groups
+			vim.api.nvim_set_hl(0, "DapBreakpointColor", { fg = "#3d59a1" })
+			vim.api.nvim_set_hl(0, "DapStoppedColor", { fg = "#9ece6a" })
+			vim.api.nvim_set_hl(0, "DapLogPointColor", { fg = "#FFFF00" })
+			vim.api.nvim_set_hl(0, "DapRejectedColor", { fg = "#f09000" })
 			vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-			vim.fn.sign_define(
-				"DapBreakpoint",
-				{ text = "", texthl = "DapBreakpoint", linehl = "", numhl = "DapBreakpoint" }
-			)
 
-			vim.fn.sign_define(
-				"DapStopped",
-				{ text = "", texthl = "green", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-			)
-
-			vim.fn.sign_define(
-				"DapBreakpointCondition",
-				{ text = "", texthl = "blue", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-			)
-
-			vim.fn.sign_define(
-				"DapBreakpointRejected",
-				{ text = "•", texthl = "orange", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-			)
-
-			vim.fn.sign_define(
-				"DapLogPoint",
-				{ text = "•", texthl = "yellow", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-			)
+			-- DAP signs
+			local signs = {
+				{ name = "DapBreakpoint", text = "", texthl = "DapBreakpointColor" },
+				{ name = "DapStopped", text = "", texthl = "DapStoppedColor", linehl = "DapStoppedLine" },
+				{ name = "DapBreakpointCondition", text = "", texthl = "DapBreakpointColor" },
+				{ name = "DapBreakpointRejected", text = "•", texthl = "DapRejectedColor" },
+				{ name = "DapLogPoint", text = "•", texthl = "DapLogPointColor" },
+			}
+			for _, sign in ipairs(signs) do
+				vim.fn.sign_define(sign.name, {
+					text = sign.text,
+					texthl = sign.texthl,
+					linehl = sign.linehl or "",
+					numhl = "",
+				})
+			end
 
 			dap.defaults.fallback.exception_breakpoints = { "raised" }
 
-			dap.set_log_level("DEBUG")
-
-			vim.cmd([[au FileType dap-repl lua require('dap.ext.autocompl').attach()]])
+			-- Enable autocompletion in DAP REPL
+			vim.api.nvim_create_autocmd("FileType", {
+				pattern = "dap-repl",
+				callback = function()
+					require("dap.ext.autocompl").attach()
+				end,
+			})
 		end,
 	},
 }

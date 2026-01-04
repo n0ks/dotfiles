@@ -46,7 +46,7 @@ return {
 
   {
     "numToStr/Comment.nvim",
-    kjvent = "VeryLazy",
+    event = "VeryLazy",
     opts = {
       pre_hook = function(ctx)
         if vim.bo.filetype == "typescriptreact" then

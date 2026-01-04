@@ -1,3 +1,5 @@
+-- Pretty print helper for debugging
 P = function(v)
-	print(vim.pretty_print(v))
+	vim.print(v)
+	return v
 end

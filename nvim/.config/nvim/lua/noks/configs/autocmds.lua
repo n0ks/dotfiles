@@ -24,10 +24,10 @@ api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
   pattern = "*",
 })
 
-api.nvim_create_autocmd("FileType", {
-	pattern = { "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
-	command = "nnoremap <buffer><silent> q :close<CR>",
-})
+-- api.nvim_create_autocmd("FileType", {
+-- 	pattern = { "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
+-- 	command = "nnoremap <buffer><silent> q :close<CR>",
+-- })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = { "Fastfile", "Podfile" },

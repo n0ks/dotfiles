@@ -39,7 +39,7 @@ export ASDF_DATA_DIR=~/.asdf
 export JAVA_HOME=/Users/rodrigo.m.de.campos/.asdf/installs/java/openjdk-17.0.2
 # export JAVA_HOME=/Users/rodrigo.m.de.campos/Library/Java/JavaVirtualMachines/azul-15.0.10/Contents/Home/bin
 export WEZTERM_CONFIG_FILE=$HOME/.config
-# export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME="$HOME/.config"
 export HISTFILE=$HOME/.zsh_history
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme zenburn'"
@@ -84,7 +84,7 @@ export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
 export FZF_DEFAULT_OPTS="--height 50% --layout=reverse --border --multi --no-mouse 
 --bind 'f1:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'"
 
-# export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
+export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
 # Preview file content using bat (https://github.com/sharkdp/bat)
 export FZF_CTRL_T_OPTS="
   --walker-skip .git,node_modules,target

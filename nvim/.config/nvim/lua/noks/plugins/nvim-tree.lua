@@ -68,7 +68,7 @@ return {
 				vim.keymap.set("n", "bmv", api.marks.bulk.move, opts("Move Bookmarked"))
 			end,
 			sort_by = "case_sensitive",
-			sync_root_with_cwd = true,
+			sync_root_with_cwd = false,
 			hijack_cursor = true,
 			notify = {
 				threshold = vim.log.levels.ERROR,

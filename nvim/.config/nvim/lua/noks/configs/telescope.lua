@@ -1,5 +1,6 @@
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
+local state = require("telescope.actions.state")
 
 local M = {}
 
@@ -117,8 +118,9 @@ M.live_grep_qflist = function()
   builtin.live_grep({ search_dirs = filetable })
 end
 
-vim.cmd(
-  [[command! -nargs=? Tgrep lua require 'telescope.builtin'.grep_string({ search = vim.fn.input("Grep For > ")})]]
-)
+-- Custom command for grep with input prompt
+vim.api.nvim_create_user_command("Tgrep", function()
+  builtin.grep_string({ search = vim.fn.input("Grep For > ") })
+end, {})
 
 return M

@@ -1,8 +1,8 @@
 local map = require("noks.configs.utils").map
 
--- +----------------------------------------------------------+
--- | GENERAL                                                  |
--- +----------------------------------------------------------+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                        General                            │
+-- ╰──────────────────────────────────────────────────────────╯
 
 map("n", "<leader>nf", ":lua require('neogen').generate()<CR>")
 map("n", ",T", "<Plug>PlenaryTestFile")
@@ -75,9 +75,9 @@ map("n", "<M-q>", ":copen<CR>")
 
 map("n", "<Leader>gpt", ":ChatGPT<CR>")
 
--- +----------------------------------------------------------+
--- | WINDOWS & BUFFERS                                        |
--- +----------------------------------------------------------+
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                   Windows & Buffers                       │
+-- ╰──────────────────────────────────────────────────────────╯
 
 map("n", "<M-h>", "<C-w>h")
 map("n", "<M-k>", "<C-w>k")
@@ -92,7 +92,7 @@ map("n", "<leader>Q", ":q<CR>")
 map("n", "<leader>+", ":vertical resize +15<CR>")
 map("n", "<leader>-", ":vertical resize -15<CR>")
 map("n", "<leader>cA", ":w <bar> %bd <bar> e# <bar> bd# <CR>")
-map("n", "<leader>CC", ":call CleanNoNameEmptyBuffers()<CR>")
+map("n", "<leader>CC", ":CleanEmptyBuffers<CR>")
 map("n", "<Backspace>", "<C-^>")
 map("i", "<C-s>", "<ESC>:w<CR>")
 map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
@@ -104,17 +104,17 @@ map("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>")
 
 map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
--- " ----------------------------------------------------------------------------
--- " Go  remaps
--- " ----------------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                          Go                               │
+-- ╰──────────────────────────────────────────────────────────╯
 
 map("n", "<Leader>ga", ":GoAlt<CR>")
 
 map("v", "<space>ca", "<cmd>lua require('go.codeaction').run_range_code_action()<CR>")
 
--- "---------------------------------------------------------------------------
--- " Quickfix
--- " ----------------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                       Quickfix                            │
+-- ╰──────────────────────────────────────────────────────────╯
 
 map("n", "]q", ":cnext<cr>zz")
 map("n", "[q", ":cprev<cr>zz")
@@ -127,9 +127,9 @@ map("n", "<Down>", ":cnext<CR>")
 map("n", "<Left>", ":cpfile<CR>")
 map("n", "<Right>", ":cnfile<CR>")
 
--- ----------------------------------------------------------------------------
--- LSP THINGS
--- ----------------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                          LSP                              │
+-- ╰──────────────────────────────────────────────────────────╯
 
 map("n", "<M-CR>", ":Lspsaga code_action<CR>")
 map("v", "<M-CR>", ":Lspsaga code_action<CR>")
@@ -159,9 +159,9 @@ map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
 map("n", "<leader>dle", ":lua vim.diagnostic.setloclist({severity=vim.diagnostic.severity.ERROR})<CR>")
 map("n", "<leader>dqq", ":lua vim.diagnostic.setqflist()<CR>")
 map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true, timeout_ms=5000})<CR>")
--- ----------------------------------------------------------------------------
--- TELESCOPE
--- ----------------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                       Telescope                           │
+-- ╰──────────────────────────────────────────────────────────╯
 
 map("n", "<leader>ps", ":lua require('noks.configs.telescope').find_files()<CR>")
 map("n", "<leader>pl", ":Telescope live_grep<cr>")
@@ -188,9 +188,9 @@ map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'git
 
 map("n", "<leader>pf", ":Telescope file_browser<CR>")
 
--- ----------------------------------------------------------------------------
--- Testing
--- ----------------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                        Testing                            │
+-- ╰──────────────────────────────────────────────────────────╯
 
 map("n", "<leader>tf", ":lua require('neotest').run.run(vim.fn.expand('%'))<CR>")
 map("n", "<leader>td", ":lua require('neotest').run.run({strategy = 'dap'})<CR>")
@@ -204,9 +204,9 @@ map("n", "]t", ":lua require('neotest').jump.next({ status = 'failed' })<CR>")
 -- map("n", "<leader>ts", ":TestSuite<CR>")
 -- map("n", "<leader>tl", ":TestLast<CR>")
 
--- " ----------------------------------------------------------------------------
--- " Git
--- " ----------------------------------------------------------------------------
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                          Git                              │
+-- ╰──────────────────────────────────────────────────────────╯
 
 map("n", "<leader>gB", ":G blame<CR>")
 map("n", "<leader>gs", ":G<CR>")
@@ -217,23 +217,22 @@ map("n", "<leader>tr", ":lua require('telescope').extensions.git_worktree.git_wo
 map("n", "<leader>tc", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
 map("n", "<leader>mf", ":lua require('telescope').extensions.media_files.media_files()<CR>")
 
-map("n", "<leader>gl", ":G log<CR>")
+map("n", "<leader>glo", ":G log<CR>")
 map("n", "<leader>gm", ":G mergetool<CR>")
 map("n", "<leader>gqq", ":Gitsigns setqflist all<CR>")
 map("n", "<leader>gcl", ":0Gclog<CR>")
 map("n", "<leader>gcd", ":Gclog -- %<CR>")
-map("n", "<leader>gl", ":diffget //3<CR>")
-map("n", "<leader>gh", ":diffget //2<CR>")
+map("n", "<leader>g3", ":diffget //3<CR>")
+map("n", "<leader>g2", ":diffget //2<CR>")
 map("n", "<leader>gp", ":Octo pr list<CR>")
 map("n", "<leader>dc", ":DiffviewClose<CR>")
 map("n", "<leader>do", ":DiffviewOpen<CR>")
 map("n", "<leader>dh", ":DiffviewFileHistory %<CR>")
 map("n", "<leader>lg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>")
 
--- " ----------------------------------------------------------------------------
--- " DAP
--- " -----------------------------------tep_out()<CR>")
--- map("n", "<F2>", ":DBUIToggle<CR>")
+-- ╭──────────────────────────────────────────────────────────╮
+-- │                          DAP                              │
+-- ╰──────────────────────────────────────────────────────────╯
 -- map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>")
 -- map("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 -- map("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")

@@ -31,8 +31,8 @@ alias fclean="flutter clean && flutter pub get && drbb"
 alias fget="flutter pub get"
 
 # Gatekeeper (for installing 3rd party apps)
-# alias gatekeeperOff="sudo spctl --master-disable"
-# alias gatekeeperOn="sudo spctl --master-enable"
+alias gatekeeperOff="sudo spctl --master-disable"
+alias gatekeeperOn="sudo spctl --master-enable"
 
 #Pacman Shortcuts
 alias sync="sudo pacman -Syyy"

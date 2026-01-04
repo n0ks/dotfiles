@@ -1,5 +1,6 @@
 local M = {}
 
+-- Organize imports for TypeScript files using LSP
 _G.lsp_organize_imports = function()
 	local params = {
 		command = "_typescript.organizeImports",
@@ -9,6 +10,7 @@ _G.lsp_organize_imports = function()
 	vim.lsp.buf.execute_command(params)
 end
 
+-- Merge two tables (shallow merge)
 M.merge = function(t1, t2)
 	for k, v in pairs(t2) do
 		t1[k] = v
@@ -16,6 +18,7 @@ M.merge = function(t1, t2)
 	return t1
 end
 
+-- Ternary operator helper
 M._if = function(bool, a, b)
 	if bool then
 		return a
@@ -24,14 +27,16 @@ M._if = function(bool, a, b)
 	end
 end
 
+-- Wrapper for vim.keymap.set with default options
 M.map = function(mode, lhs, rhs, opts)
 	local options = { noremap = true, silent = true }
 	if opts then
-		options = vim.tbl_extend("force", opts, options)
+		options = vim.tbl_extend("force", options, opts)
 	end
 	vim.keymap.set(mode, lhs, rhs, options)
 end
 
+-- Iterate over a table and apply a function to each element
 M.foreach = function(fn, list)
 	for key, value in pairs(list) do
 		fn(value, key)

@@ -1,32 +1,25 @@
-local o, opt, fn, g = vim.o, vim.opt, vim.fn, vim.g
+local o, opt, g = vim.o, vim.opt, vim.g
 local indent = 2
 
+-- ╭───────────────────────────────────────────────────────────╮
+-- │                      Leader Key                           │
+-- ╰───────────────────────────────────────────────────────────╯
+g.mapleader = " "
+
+-- ╭───────────────────────────────────────────────────────────╮
+-- │                    Plugin Settings                        │
+-- ╰───────────────────────────────────────────────────────────╯
 vim.cmd([[
  filetype plugin indent on
   " vim-test
   let test#strategy = 'neovim'
   let test#neovim#term_position = "vert botright 70"
   let test#javascript#jest#options = "--color=always"
-  set t_Co=256
 ]])
 
-opt.termguicolors = true
-
-g.mapleader = " "
 g.fugitive_summary_format = "%s <%an> - %ar"
-
-g.nvim_tree_update_cwd = 1
-g.nvim_tree_respect_buf_cwd = 1
 g.mkdp_auto_close = 0
 g.asyncrun_open = 8
-
-g.netrw_liststyle = 3
-g.netrw_browse_split = 2
-g.netrw_altv = 0
-g.netrw_winsize = 15
-g.netrw_banner = 0
-g.term_buf = 0
-g.NetrwIsOpen = 0
 
 opt.cmdheight = 0
 
@@ -95,7 +88,6 @@ opt.guicursor = {
 }
 
 opt.laststatus = 3
-opt.lazyredraw = true
 opt.list = true
 
 opt.mouse = "a"
@@ -150,8 +142,9 @@ opt.laststatus = 3
 o.conceallevel = 0
 o.autoread = true
 
-local fn = vim.fn
-
+-- ╭───────────────────────────────────────────────────────────╮
+-- │              Custom Quickfix Text Function                │
+-- ╰───────────────────────────────────────────────────────────╯
 function _G.qftf(info)
   local items
   local ret = {}

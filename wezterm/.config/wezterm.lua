@@ -13,7 +13,7 @@ config.colors.tab_bar = {
   background = "rgba(0,0,0,0)",
 }
 
-config.window_background_opacity = 0.94
+config.window_background_opacity = 0.95
 config.animation_fps = 120
 config.max_fps = 120
 config.window_decorations = "RESIZE"
