@@ -20,8 +20,8 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 on-focus-changed = ['move-mouse window-lazy-center']
 
 [gaps]
-inner.horizontal = 6
-inner.vertical =   6
+inner.horizontal = 8
+inner.vertical =   8
 outer.left =       6
 outer.bottom =     6
 outer.top =        6
@@ -31,7 +31,7 @@ outer.right =      6
 [mode.main.binding]
 
 alt-r = 'mode resize'
-cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
+# cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
 
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
@@ -66,6 +66,7 @@ cmd-shift-6 = 'move-node-to-workspace 6'
 cmd-shift-7 = 'move-node-to-workspace 7'
 cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
+# cmd-shift-S = 'workspace S'
 
 cmd-h = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
@@ -74,6 +75,8 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-shift-semicolon = 'mode service'
+
+alt-s = ['exec-and-forget open /Applications/Slack.app', 'workspace S'] # Slack workspace
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
@@ -92,7 +95,7 @@ if.app-id= 'org.mozilla.firefoxdeveloperedition'
 run = ['layout tiling', 'move-node-to-workspace 1']
 
 [[on-window-detected]]
-if.app-name-regex-substring = 'Code|Cursor|Simulator|Wezterm'
+if.app-name-regex-substring = 'Code|Cursor|Wezterm'
 run = ['layout tiling', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
@@ -104,8 +107,20 @@ if.app-id = 'com.microsoft.teams2'
 run = ['move-node-to-workspace 9']  
 
 [[on-window-detected]]
+if.app-id = 'com.microsoft.teams2'
+run = ['move-node-to-workspace 9']  
+
+[[on-window-detected]]
 if.app-id = 'com.tinyspeck.slackmacgap'
-run = ['move-node-to-workspace 5']
+run = ['move-node-to-workspace S']
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Finder'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'qemu-system|Simulator'
+run = 'layout floating'
 
 
 [mode.resize.binding]
