@@ -173,6 +173,7 @@ map("n", "<leader>ds", ":Telescope lsp_document_symbols<CR>")
 map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
 map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
+map("n", "<leader>in", ":lua vim.lsp.inlay_hint.enable(false)<CR>")
 
 map("n", "<leader>od", ":lua require('noks.configs.telescope').open_diff()<CR>")
 
