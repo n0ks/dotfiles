@@ -68,6 +68,7 @@
 
 [core]
   editor = nvim
+  pager = delta
 
 [sequence]
   editor = nvim
@@ -80,6 +81,8 @@
   whitespace-error-style = 22 reverse
   line-numbers = true
   side-by-side = true
+  navigate = true
+  true-color = always
 
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
@@ -111,15 +114,19 @@
   name = n0ks
   email = 22434056+n0ks@users.noreply.github.com
 
-; [remote "origin"]
-; fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "origin"]
+    ; fetch = +refs/tags/*:refs/tags/*
+    tagopt = --tags
+    force = true
+    prune = true
+    pruneTags = true
 
 
 [includeIf "gitdir:~/code/TIM/"]
   path = ~/.gitconfig_enterprise
 
 [rerere]
-	enabled = true
+	enabled = false
 [maintenance]
 	auto = true
 ; [commit]
