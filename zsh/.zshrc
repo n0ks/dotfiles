@@ -63,6 +63,7 @@ export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 export GOROOT=$(asdf where golang)/go
 export GOBIN=$(asdf where golang)/packages/bin
+export PATH=$GOBIN:$PATH
 # export MANPAGER='nvim -u +Man!'
 export MANWIDTH=999
 export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"

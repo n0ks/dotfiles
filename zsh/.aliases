@@ -27,8 +27,8 @@ alias drbb="fvm dart run build_runner build -d -v"
 alias drbbc="fvm dart run build_runner clean && drbb"
 alias drbbw="fvm dart run build_runner watch"
 
-alias fclean="flutter clean && flutter pub get && drbb"
-alias fget="flutter pub get"
+alias fclean="fvm flutter clean && fvm flutter pub get && drbb"
+alias fget="fvm flutter pub get"
 
 # Gatekeeper (for installing 3rd party apps)
 alias gatekeeperOff="sudo spctl --master-disable"
@@ -66,3 +66,4 @@ alias vim="nvim"
 # alias unlockGradle="find ~/.gradle -type f -name "*.lock" -delete'
 #
 # alias dartformat="dart format $(find . -name '*w*.dart' -not -name '*.g.dart') -l 120"
+alias brew="env PATH=\"\${PATH//.asdf/shims:/}\" brew"
