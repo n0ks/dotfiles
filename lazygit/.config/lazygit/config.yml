@@ -2,8 +2,12 @@
 git:
   # Config relating to committing
   commit:
-    # If autoWrapCommitMessage is true, the width to wrap to
-    autoWrapWidth: 80
+    autoWrapWidth: 120
+  commitPrefix:
+    - pattern: "^\\w+\\/(\\w+-\\w+).*"
+      replace: '[$1] '
+    - pattern: "^([^_]+)_.*" # Take all text prior to the first underscore
+      replace: '($1) '
 
 # Periodic update checks
 update:
@@ -38,6 +42,7 @@ os:
   openLink: open -a "/Applications/Google Chrome.app" {{link}}
 
 gui:
+    nerdFontsVersion: "3"
     border: rounded
     theme:
         activeBorderColor:
