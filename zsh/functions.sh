@@ -49,15 +49,15 @@ commands() {
 }
 
 function getFZFPreviewer() (
-  if [[ $(hasBinary bat) = TRUE ]]; then
-    echo "bat --style=numbers --color=always --line-range :500 {}"
-  else
-    echo "cat {}"
-  fi
+	if [[ $(hasBinary bat) = TRUE ]]; then
+		echo "bat --style=numbers --color=always --line-range :500 {}"
+	else
+		echo "cat {}"
+	fi
 )
 
 sf() {
-  $EDITOR "$(fd --no-ignore --type f --exclude '*.{png,jpg}' --type d --exclude 'node_modules'| fzf --multi --reverse --preview "$(getFZFPreviewer)")"
+	$EDITOR "$(fd --no-ignore --type f --exclude '*.{png,jpg}' --type d --exclude 'node_modules' | fzf --multi --reverse --preview "$(getFZFPreviewer)")"
 }
 
 # ────────────────────────────────────────────────────────────
@@ -133,10 +133,10 @@ wlocal() {
 
 # Select a docker container to start and attach to
 function da() {
-  local cid
-  cid=$(podman ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
+	local cid
+	cid=$(podman ps -a | sed 1d | fzf -1 -q "$1" | awk '{print $1}')
 
-  [ -n "$cid" ] && podman start "$cid" && podman attach "$cid"
+	[ -n "$cid" ] && podman start "$cid" && podman attach "$cid"
 }
 # Select a running docker container to stop
 function ds() {
@@ -201,4 +201,62 @@ log_firebase_events() {
 	adb shell setprop log.tag.FA VERBOSE
 	adb shell setprop log.tag.FA-SVC VERBOSE
 	adb logcat -v time -s FA FA-SVC | grep "Logging event"
+}
+
+optimize_image() {
+
+	if [ $# -eq 0 ]; then
+		echo "Usage: $0 <extension> [quality] [max_dimension]"
+		echo "Example: $0 jpg 75 2000"
+		echo "  extension: jpg, jpeg, png, webp, etc."
+		echo "  quality: optional, defaults to 85"
+		echo "  max_dimension: optional, defaults to 2000"
+	fi
+
+	EXTENSION="$1"
+	QUALITY="${2:-85}"
+	MIN_SIZE="500kb"
+
+	echo "Scanning for *.${EXTENSION} files larger than ${MIN_SIZE}..."
+	echo "Quality: ${QUALITY}%"
+	echo ""
+
+	FILES=$(find . -type f -iname "*.${EXTENSION}" -size +${MIN_SIZE})
+
+	if [ -z "$FILES" ]; then
+		echo "No *.${EXTENSION} files larger than ${MIN_SIZE} found."
+	fi
+
+	FILE_COUNT=$(echo "$FILES" | wc -l | tr -d ' ')
+	echo "Found ${FILE_COUNT} file(s) to optimize:"
+	echo ""
+
+	echo "$FILES" | while read -r file; do
+		size=$(du -h "$file" | cut -f1)
+		echo "  $file ($size)"
+	done
+	echo ""
+
+	echo "$FILES" | while read -r file; do
+		original_size=$(stat -f%z "$file")
+		magick mogrify -quality "${QUALITY}" -strip "$file"
+		new_size=$(stat -f%z "$file")
+		reduction=$((100 - (new_size * 100 / original_size)))
+
+		echo "  $(basename "$file"): $(numfmt --to=iec-i --suffix=B $original_size) → $(numfmt --to=iec-i --suffix=B $new_size) (${reduction}% reduction)"
+	done
+
+	echo ""
+	echo "Optimization complete!"
+}
+
+crop() {
+	ASPECT_RATIO="{$2:-16\:9}"
+  file=$1
+
+  extension=$(echo "$file" | cut -d '.' -f 2)
+  magick "$file" -gravity center "$ASPECT_RATIO" out."$extension"
+
+  echo "  $(stat -f%z "$1")"
+
 }
