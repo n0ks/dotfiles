@@ -7,7 +7,11 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require("go").setup({})
+      require("go").setup({
+        -- go.nvim's textobjects module calls require("nvim-treesitter.configs"),
+        -- which no longer exists on nvim-treesitter's `main` branch.
+        textobjects = false,
+      })
     end,
     ft = { "go", "gomod", "tmpl" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
