@@ -1,6 +1,6 @@
 return {
 	"yetone/avante.nvim",
-	event = "VeryLazy",
+	cmd = { "AvanteAsk", "AvanteChat", "AvanteToggle", "AvanteEdit" },
 	version = false,
 	opts = {
 		behaviour = {
@@ -18,10 +18,9 @@ return {
 		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
-		"zbirenbaum/copilot.lua", -- for providers='copilot'
 		{
 			"HakonHarnes/img-clip.nvim",
-			event = "VeryLazy",
+			cmd = { "AvanteAsk", "AvanteChat", "AvanteToggle", "AvanteEdit" },
 			opts = {
 				-- recommended settings
 				default = {
@@ -40,7 +39,7 @@ return {
 			opts = {
 				file_types = { "markdown", "Avante" },
 			},
-			ft = { "Avante" },
+			ft = { "markdown", "Avante" },
 		},
 	},
 }

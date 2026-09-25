@@ -65,8 +65,6 @@ return {
 						},
 					},
 				},
-				-- go = require("noks.lsp.servers.go"),
-				-- pyright = require("noks.lsp.servers.pyright"),
 				jsonls = require("noks.lsp.servers.jsonls"),
 			}
 

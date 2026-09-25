@@ -1,13 +1,16 @@
 ---@diagnostic disable: missing-fields
 return {
 
-  "nvim-neotest/neotest-go",
-  "haydenmeade/neotest-jest",
-  "sidlatau/neotest-dart",
-  "nvim-neotest/nvim-nio",
   {
     "nvim-neotest/neotest",
     event = "VeryLazy",
+    dependencies = {
+      "nvim-neotest/neotest-go",
+      "haydenmeade/neotest-jest",
+      "sidlatau/neotest-dart",
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+    },
     config = function()
       require("neotest").setup({
         quickfix = {

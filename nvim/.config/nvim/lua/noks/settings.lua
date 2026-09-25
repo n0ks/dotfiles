@@ -9,14 +9,6 @@ g.mapleader = " "
 -- ╭───────────────────────────────────────────────────────────╮
 -- │                    Plugin Settings                        │
 -- ╰───────────────────────────────────────────────────────────╯
-vim.cmd([[
- filetype plugin indent on
-  " vim-test
-  let test#strategy = 'neovim'
-  let test#neovim#term_position = "vert botright 70"
-  let test#javascript#jest#options = "--color=always"
-]])
-
 g.fugitive_summary_format = "%s <%an> - %ar"
 g.mkdp_auto_close = 0
 g.asyncrun_open = 8
@@ -28,7 +20,7 @@ opt.clipboard = "unnamedplus"
 opt.encoding = "utf-8"
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
 opt.syntax = "enable"
-opt.undodir = vim.fn.stdpath("config") .. "/undo"
+opt.undodir = vim.fn.stdpath("state") .. "/undo"
 opt.undofile = true
 opt.fillchars = {
   eob = " ", -- suppress ~ at EndOfBuffer
@@ -39,7 +31,6 @@ opt.fillchars = {
   -- foldclose = "▷", -- '▶'
   foldsep = " ",
 }
--- opt.undofile = true
 opt.pumheight = 15
 
 opt.listchars = {
@@ -72,9 +63,7 @@ vim.opt.wildignore = {
   "*sass-cache*",
   "*mypy_cache*",
   "*__pycache__*",
-  "*cache*",
   "*logs*",
-  "*node_modules*",
   "**/node_modules/**",
   "*DS_Store*",
   "*.gem",
@@ -87,7 +76,6 @@ opt.guicursor = {
   [[n-v-c:block]],
 }
 
-opt.laststatus = 3
 opt.list = true
 
 opt.mouse = "a"
@@ -106,7 +94,6 @@ opt.backup = false
 opt.swapfile = false
 opt.writebackup = false
 -- opt.regexpengine = 1
-opt.completeopt = { "menu", "menuone", "noselect" }
 
 opt.foldmethod = "manual"
 
@@ -132,12 +119,11 @@ opt.breakindentopt = "shift:2"
 opt.showbreak = "↳"
 opt.laststatus = 3
 
--- vim.g.loaded_node_provider = 0
--- vim.g.loaded_perl_provider = 0
--- vim.g.loaded_python_provider = 0
--- vim.g.loaded_ruby_provider = 0
---
 
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 o.conceallevel = 0
 o.autoread = true

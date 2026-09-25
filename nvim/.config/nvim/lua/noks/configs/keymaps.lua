@@ -4,7 +4,6 @@ local map = require("noks.configs.utils").map
 -- │                        General                            │
 -- ╰──────────────────────────────────────────────────────────╯
 
-map("n", "<leader>nf", ":lua require('neogen').generate()<CR>")
 map("n", ",T", "<Plug>PlenaryTestFile")
 map("n", ",0d", ":.,6d<CR>")
 map("n", ",sh", ":w !sh<CR>")
@@ -13,7 +12,6 @@ map("n", "<Leader>rr", ":LspRestart <CR>")
 
 -- exec last cmd
 -- map("n", ",cc", ":,@:<CR>")
-map("n", ",cc", ":BaleiaColorize<CR>")
 
 map("n", ",p", '"0p')
 map("n", ",P", '"0P')
@@ -48,7 +46,6 @@ map("n", "<esc>", ":noh<return><esc>")
 
 -- " Visually select the text that was last edited/pasted (Vimcast#2).
 map("n", "gV", "`[v`")
-map("n", "<leader>r", ":source ~/.config/nvim/init.vim<CR>")
 map("n", "<leader>cd", ":lcd %:p:h")
 map("n", "q;", ":q!<CR>")
 
@@ -73,7 +70,6 @@ map("n", "<M-q>", ":copen<CR>")
 -- map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
 --#region
 
-map("n", "<Leader>gpt", ":ChatGPT<CR>")
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │                   Windows & Buffers                       │
@@ -96,11 +92,7 @@ map("n", "<leader>CC", ":CleanEmptyBuffers<CR>")
 map("n", "<Backspace>", "<C-^>")
 map("i", "<C-s>", "<ESC>:w<CR>")
 map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
-map("n", "<Leader>vo", ":Oil<CR>")
 
-map("n", "<leader>co", ":CodeCompanion<CR>")
-map("v", "<leader>co", ":CodeCompanion<CR>")
-map("n", "<leader>cc", ":CodeCompanionChat Toggle<CR>")
 
 map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
@@ -150,15 +142,14 @@ map("v", "<M-CR>", ":<C-U>Lspsaga range_code_action<CR>")
 
 map("n", "gD", ":Lspsaga peek_definition<CR>")
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
-map("n", "gdv", ":vs | lua vim.lsp.buf.definition()<CR>")
+map("n", "<leader>gv", ":vs | lua vim.lsp.buf.definition()<CR>")
 map("n", "<leader>rn", ":Lspsaga rename<CR>")
 map("n", "<leader>rnp", ":Lspsaga rename ++project<CR>")
 
-map("n", "gr", ":lua vim.lsp.buf.references()<CR>")
 map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
 map("n", "<leader>dle", ":lua vim.diagnostic.setloclist({severity=vim.diagnostic.severity.ERROR})<CR>")
 map("n", "<leader>dqq", ":lua vim.diagnostic.setqflist()<CR>")
-map("n", "<leader>f", ":lua vim.lsp.buf.format({async=true, timeout_ms=5000})<CR>")
+map("n", "<leader>fm", ":lua vim.lsp.buf.format({async=true, timeout_ms=5000})<CR>")
 -- ╭──────────────────────────────────────────────────────────╮
 -- │                       Telescope                           │
 -- ╰──────────────────────────────────────────────────────────╯
@@ -183,8 +174,6 @@ map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")
 map("n", ";t", ":Telescope<cr>")
 
-map("n", "<leader>em", ":lua require'telescope.builtin'.symbols{ sources = {'emoji'} }<CR>")
-map("n", "<leader>eg", ":lua require'telescope.builtin'.symbols{ sources = {'gitmoji'} }<CR>")
 
 map("n", "<leader>pf", ":Telescope file_browser<CR>")
 
@@ -213,9 +202,6 @@ map("n", "<leader>gs", ":G<CR>")
 map("n", "<leader>ge", ":Ge:<CR>")
 map("n", "<leader>gb", ":lua require('noks.configs.telescope').git_branches()<CR>")
 map("n", "<leader>gdi", ":Telescope git_bcommits<CR>")
-map("n", "<leader>tr", ":lua require('telescope').extensions.git_worktree.git_worktrees()<CR>")
-map("n", "<leader>tc", ":lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>")
-map("n", "<leader>mf", ":lua require('telescope').extensions.media_files.media_files()<CR>")
 
 map("n", "<leader>glo", ":G log<CR>")
 map("n", "<leader>gm", ":G mergetool<CR>")
@@ -224,7 +210,6 @@ map("n", "<leader>gcl", ":0Gclog<CR>")
 map("n", "<leader>gcd", ":Gclog -- %<CR>")
 map("n", "<leader>g3", ":diffget //3<CR>")
 map("n", "<leader>g2", ":diffget //2<CR>")
-map("n", "<leader>gp", ":Octo pr list<CR>")
 map("n", "<leader>dc", ":DiffviewClose<CR>")
 map("n", "<leader>do", ":DiffviewOpen<CR>")
 map("n", "<leader>dh", ":DiffviewFileHistory %<CR>")
@@ -239,6 +224,5 @@ map("n", "<leader>lg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygi
 map("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 map("n", "<leader>d?", ":lua require'dapui'.float_element('scopes')<CR>")
 map("n", "<leader>dw", ":lua require'dap.ui.widgets'.hover()<CR>")
-map("n", "<M-i>", ":lua require('dapui').eval()<CR>")
 map("n", "<M-\\>", ":lua require('dapui').toggle()<CR>")
 map("n", "<M-o>", ":lua require('dapui').float_element()<CR>")

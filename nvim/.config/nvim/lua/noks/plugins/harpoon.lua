@@ -7,7 +7,7 @@ return {
 
 		harpoon:setup()
 
-		vim.keymap.set("n", "<leader>a", function()
+		vim.keymap.set("n", "<leader>ha", function()
 			harpoon:list():add()
 		end)
 		vim.keymap.set("n", "<C-e>", function()
