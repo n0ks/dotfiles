@@ -30,73 +30,73 @@ api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
 -- })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = { "Fastfile", "Podfile" },
-	command = "setl filetype=ruby",
+  pattern = { "Fastfile", "Podfile" },
+  command = "setl filetype=ruby",
 })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = "*.arb",
-	command = "setl filetype=jsonc",
+  pattern = "*.arb",
+  command = "setl filetype=jsonc",
 })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = "*.tmpl",
-	command = "setl filetype=html",
+  pattern = "*.tmpl",
+  command = "setl filetype=html",
 })
 
 vim.filetype.add({
-	extension = {
-		json = "jsonc",
-	},
+  extension = {
+    json = "jsonc",
+  },
 })
 
 api.nvim_create_autocmd("BufRead", {
-	pattern = "*.yaml",
-	command = "set sw=2 sts=2 expandtab",
+  pattern = "*.yaml",
+  command = "set sw=2 sts=2 expandtab",
 })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = "*/node_modules/*",
-	callback = function(args)
-		vim.diagnostic.enable(false, { bufnr = args.buf })
-	end,
-	group = lsp_node,
+  pattern = "*/node_modules/*",
+  callback = function(args)
+    vim.diagnostic.enable(false, { bufnr = args.buf })
+  end,
+  group = lsp_node,
 })
 
 -- ╭──────────────────────────────╮
 -- │ Highlight on yank           │
 -- ╰──────────────────────────────╯
 api.nvim_create_autocmd("TextYankPost", {
-	pattern = "*",
-	group = highlight_yank_group,
-	callback = function()
-		vim.hl.on_yank({
-			timeout = 40,
-			on_visual = true,
-			higroup = "IncSearch",
-		})
-	end,
+  pattern = "*",
+  group = highlight_yank_group,
+  callback = function()
+    vim.hl.on_yank({
+      timeout = 40,
+      on_visual = true,
+      higroup = "IncSearch",
+    })
+  end,
 })
 
 -- ╭──────────────────────────────╮
 -- │ Restore cursor position     │
 -- ╰──────────────────────────────╯
 api.nvim_create_autocmd("BufReadPost", {
-	pattern = "*",
-	callback = function()
-		if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
-			fn.setpos(".", fn.getpos("'\""))
-			api.nvim_feedkeys("zz", "n", true)
-		end
-	end,
+  pattern = "*",
+  callback = function()
+    if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
+      fn.setpos(".", fn.getpos("'\""))
+      api.nvim_feedkeys("zz", "n", true)
+    end
+  end,
 })
 
 -- ╭──────────────────────────────╮
 -- │ Disable completion in tree  │
 -- ╰──────────────────────────────╯
 api.nvim_create_autocmd("BufEnter", {
-	pattern = "*NvimTree*",
-	callback = function()
-		vim.b.completion = false
-	end,
+  pattern = "*NvimTree*",
+  callback = function()
+    vim.b.completion = false
+  end,
 })

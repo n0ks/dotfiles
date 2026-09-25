@@ -1,15 +1,15 @@
 return {
 
-	{ "echasnovski/mini.pairs", version = false, config = true, event = "InsertEnter" },
-	{ "echasnovski/mini.ai", version = false, config = true, event = "VeryLazy" },
-	{ "echasnovski/mini.surround", version = false, config = true, event = "VeryLazy" },
-	{ "echasnovski/mini.statusline", version = false, config = true, event = "VeryLazy" },
-	{
-		"echasnovski/mini.files",
-		version = false,
+  { "echasnovski/mini.pairs", version = false, config = true, event = "InsertEnter" },
+  { "echasnovski/mini.ai", version = false, config = true, event = "VeryLazy" },
+  { "echasnovski/mini.surround", version = false, config = true, event = "VeryLazy" },
+  { "echasnovski/mini.statusline", version = false, config = true, event = "VeryLazy" },
+  {
+    "echasnovski/mini.files",
+    version = false,
     enabled = false,
-		config = function()
-			require("mini.files").setup()
-		end,
-	},
+    config = function()
+      require("mini.files").setup()
+    end,
+  },
 }

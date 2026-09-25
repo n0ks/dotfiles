@@ -23,7 +23,7 @@ return {
         },
         log_level = vim.log.levels.WARN,
         output = {
-          open_on_run = true
+          open_on_run = true,
         },
         adapters = {
           require("neotest-jest")({

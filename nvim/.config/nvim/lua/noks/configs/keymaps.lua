@@ -70,7 +70,6 @@ map("n", "<M-q>", ":copen<CR>")
 -- map("v", "@", ":<C-U>execute 'noautocmd '<,'>norm! '. v:count1 . '@'. getcharstr()<cr>")
 --#region
 
-
 -- ╭──────────────────────────────────────────────────────────╮
 -- │                   Windows & Buffers                       │
 -- ╰──────────────────────────────────────────────────────────╯
@@ -92,7 +91,6 @@ map("n", "<leader>CC", ":CleanEmptyBuffers<CR>")
 map("n", "<Backspace>", "<C-^>")
 map("i", "<C-s>", "<ESC>:w<CR>")
 map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
-
 
 map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
@@ -172,7 +170,6 @@ map("n", "<leader>H", ":Telescope help_tags<CR>")
 map("n", "<C-p>", ":lua require('telescope.builtin').git_files()<CR>")
 map("n", "<C-b>", ":Telescope buffers<cr>")
 map("n", ";t", ":Telescope<cr>")
-
 
 map("n", "<leader>pf", ":Telescope file_browser<CR>")
 

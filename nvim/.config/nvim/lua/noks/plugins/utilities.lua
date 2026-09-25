@@ -1,7 +1,7 @@
 return {
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "tpope/vim-repeat", event = "VeryLazy" },
-  { "johmsalas/text-case.nvim", config = true,            event = "VeryLazy" },
+  { "johmsalas/text-case.nvim", config = true, event = "VeryLazy" },
   { "mzlogin/vim-markdown-toc", event = "BufEnter *.md" },
   { "skywind3000/asyncrun.vim", event = "VeryLazy" },
   { "tpope/vim-projectionist", cmd = { "A", "AV", "AS", "AT" } },
