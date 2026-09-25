@@ -9,7 +9,8 @@ return {
     config = function()
       require("go").setup({
         -- go.nvim's textobjects module calls require("nvim-treesitter.configs"),
-        -- which no longer exists on nvim-treesitter's `main` branch.
+        -- which no longer exists on nvim-treesitter's `main` branch. The same
+        -- mappings are set up by nvim-treesitter-textobjects in treesitter.lua.
         textobjects = false,
       })
     end,

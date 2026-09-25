@@ -22,6 +22,20 @@ local parsers = {
   "markdown_inline",
 }
 
+-- Wrappers so the lazy `keys` specs below stay readable. They are only called
+-- once the plugin is loaded, so requiring inside them is what triggers it.
+local function select_textobject(query)
+  return function()
+    require("nvim-treesitter-textobjects.select").select_textobject(query, "textobjects")
+  end
+end
+
+local function move(direction)
+  return function()
+    require("nvim-treesitter-textobjects.move")[direction]("@function.outer", "textobjects")
+  end
+end
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -48,5 +62,30 @@ return {
         end,
       })
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    keys = {
+      -- select
+      { "af", select_textobject("@function.outer"), mode = { "x", "o" }, desc = "a function" },
+      { "if", select_textobject("@function.inner"), mode = { "x", "o" }, desc = "inner function" },
+      { "ac", select_textobject("@class.outer"), mode = { "x", "o" }, desc = "a class" },
+      { "ic", select_textobject("@class.inner"), mode = { "x", "o" }, desc = "inner class" },
+      -- move
+      { "]]", move("goto_next_start"), mode = { "n", "x", "o" }, desc = "Next function start" },
+      { "][", move("goto_next_end"), mode = { "n", "x", "o" }, desc = "Next function end" },
+      { "[[", move("goto_previous_start"), mode = { "n", "x", "o" }, desc = "Previous function start" },
+      { "[]", move("goto_previous_end"), mode = { "n", "x", "o" }, desc = "Previous function end" },
+    },
+    opts = {
+      select = {
+        lookahead = true,
+      },
+      move = {
+        set_jumps = true,
+      },
+    },
   },
 }
