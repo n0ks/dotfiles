@@ -100,11 +100,3 @@ api.nvim_create_autocmd("BufEnter", {
 		vim.b.completion = false
 	end,
 })
-
--- ╭──────────────────────────────╮
--- │ Format go files             │
--- ╰──────────────────────────────╯
-api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*.go",
-	command = 'lua require("go.format").gofmt()',
-})

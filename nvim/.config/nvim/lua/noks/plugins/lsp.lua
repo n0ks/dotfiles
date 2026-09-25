@@ -3,13 +3,13 @@ return {
 		"neovim/nvim-lspconfig",
 		dependencies = {
 			{
-				"williamboman/mason.nvim",
+				"mason-org/mason.nvim",
 				opts = function(_, opts)
 					opts.ensure_installed = opts.ensure_installed or {}
 					vim.list_extend(opts.ensure_installed, { "js-debug-adapter" }) -- Ensure it's installed
 				end,
 			},
-			"williamboman/mason-lspconfig.nvim",
+			"mason-org/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"b0o/schemastore.nvim",
 		},
@@ -66,6 +66,7 @@ return {
 					},
 				},
 				jsonls = require("noks.lsp.servers.jsonls"),
+				mpls = {},
 			}
 
 			vim.api.nvim_create_autocmd("LspAttach", {
