@@ -11,16 +11,12 @@ return {
 			},
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"b0o/schemastore.nvim",
 		},
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			local lspconfig = require("lspconfig")
-			local mason_lspconfig = require("mason-lspconfig")
-
 			local config = {
 				virtual_text = false,
-				inlay_hints = false,
-				float = true,
 				signs = {
 					text = {
 						[vim.diagnostic.severity.HINT] = "",
@@ -29,9 +25,8 @@ return {
 						[vim.diagnostic.severity.WARN] = "",
 					},
 				},
-				update_in_insert = true,
+				update_in_insert = false,
 				underline = { severity = vim.diagnostic.severity.ERROR },
-				format_notify = false,
 				severity_sort = true,
 			}
 
@@ -131,23 +126,18 @@ return {
 				end,
 			})
 
-			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			vim.lsp.config("*", {
+				capabilities = require("blink.cmp").get_lsp_capabilities(),
+			})
 
-			local ensure_installed = vim.tbl_keys(servers or {})
+			for name, cfg in pairs(servers) do
+				vim.lsp.config(name, cfg)
+			end
 
 			require("mason-lspconfig").setup({
-				handlers = {
-					ensure_installed = ensure_installed,
-					function(server_name)
-						local server_config = servers[server_name] or {}
-
-						server_config.capabilities =
-							vim.tbl_deep_extend("force", {}, capabilities, server_config.capabilities or {})
-
-						lspconfig[server_name].setup(server_config)
-					end,
-				},
+				ensure_installed = vim.tbl_keys(servers),
 			})
+
 		end,
 	},
 }

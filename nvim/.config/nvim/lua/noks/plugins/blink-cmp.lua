@@ -1,12 +1,10 @@
 return {
   "saghen/blink.cmp",
-  dependencies = { "rafamadriz/friendly-snippets", "Kaiser-Yang/blink-cmp-avante" },
+  dependencies = { "rafamadriz/friendly-snippets", "Kaiser-Yang/blink-cmp-avante", "L3MON4D3/LuaSnip" },
   version = "1.*",
   event = "VimEnter",
   opts = {
-    enabled = function()
-      return vim.bo.buftype ~= "NvimTree"
-    end,
+    snippets = { preset = "luasnip" },
     cmdline = {
       keymap = { preset = "inherit" },
       completion = { menu = { auto_show = true } },
@@ -50,7 +48,7 @@ return {
     },
 
     sources = {
-      default = { "avante", "lsp", "path",  "snippets" },
+      default = { "avante", "lsp", "path", "snippets", "buffer" },
       providers = {
         avante = {
           module = "blink-cmp-avante",

@@ -113,7 +113,7 @@ return {
 				},
 			})
 
-			-- require("dap-go").setup()
+			require("dap-go").setup()
 			require("nvim-dap-virtual-text").setup()
 
 			local js_based_languages = {
@@ -122,18 +122,16 @@ return {
 				"typescriptreact",
 				"javascriptreact",
 			}
-			dap.adapters = {
-				["pwa-node"] = {
-					type = "server",
-					port = "${port}",
-					host = "localhost",
-					-- restart = true,
-					executable = {
-						command = "node",
-						args = {
-							vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
-							"${port}",
-						},
+			dap.adapters["pwa-node"] = {
+				type = "server",
+				port = "${port}",
+				host = "localhost",
+				-- restart = true,
+				executable = {
+					command = "node",
+					args = {
+						vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+						"${port}",
 					},
 				},
 			}

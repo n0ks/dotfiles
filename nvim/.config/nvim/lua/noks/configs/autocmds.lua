@@ -36,7 +36,7 @@ api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*.arb",
-	command = "setl filetype=json",
+	command = "setl filetype=jsonc",
 })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
@@ -44,9 +44,10 @@ api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	command = "setl filetype=html",
 })
 
-api.nvim_create_autocmd("FileType", {
-	pattern = "json",
-	command = "setl filetype=jsonc",
+vim.filetype.add({
+	extension = {
+		json = "jsonc",
+	},
 })
 
 api.nvim_create_autocmd("BufRead", {
@@ -56,7 +57,9 @@ api.nvim_create_autocmd("BufRead", {
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 	pattern = "*/node_modules/*",
-	command = "lua vim.diagnostic.disable(0)",
+	callback = function(args)
+		vim.diagnostic.enable(false, { bufnr = args.buf })
+	end,
 	group = lsp_node,
 })
 
@@ -67,7 +70,7 @@ api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	group = highlight_yank_group,
 	callback = function()
-		vim.highlight.on_yank({
+		vim.hl.on_yank({
 			timeout = 40,
 			on_visual = true,
 			higroup = "IncSearch",

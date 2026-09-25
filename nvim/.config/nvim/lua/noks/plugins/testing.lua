@@ -18,7 +18,7 @@ return {
           failed = "",
           passed = "👌",
         },
-        log_level = vim.log.levels.DEBUG,
+        log_level = vim.log.levels.WARN,
         output = {
           open_on_run = true
         },

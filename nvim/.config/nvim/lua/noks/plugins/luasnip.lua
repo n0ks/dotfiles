@@ -11,15 +11,15 @@ return {
 			updateevents = "TextChanged, TextChangedI",
 			enable_autosnippets = true,
 		},
-		config = function()
+		config = function(_, opts)
+			require("luasnip").setup(opts)
+
 			require("luasnip.loaders.from_vscode").lazy_load()
+			require("luasnip.loaders.from_vscode").lazy_load({
+				paths = { vim.fn.stdpath("config") .. "/snippets" },
+			})
 
-			require("luasnip.loaders.from_vscode").lazy_load({ paths = { "./snippets" } })
-
-			local ls = require("luasnip")
-
-			ls.filetype_extend("dart", { "flutter", "flutter_bloc" })
-			ls.filetype_extend("go", { "go" })
+			require("luasnip").filetype_extend("dart", { "flutter", "flutter_bloc" })
 		end,
 	},
 }

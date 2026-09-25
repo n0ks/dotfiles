@@ -54,21 +54,17 @@ return {
 
 						vim.o.textwidth = 120
 
-						vim.diagnostic.config({
-							virtual_text = false,
-							underline = true,
-							inlayHints = false,
-							signs = true,
-							update_in_insert = false,
-							severity_sort = true,
-						}, bufnr)
+						vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
 
-						vim.lsp.inlay_hint.enable(false, { bufnr })
-
-						map("n", "<F1>", ":FlutterRun<CR>")
-						map("n", "<F2>", ":FlutterReload<CR>")
-						map("n", "<F3>", ":FlutterRestart<CR>")
-						map("n", "<F4>", ":lua require('telescope').extensions.flutter.commands()<CR>")
+						map("n", "<F1>", ":FlutterRun<CR>", { buffer = bufnr })
+						map("n", "<F2>", ":FlutterReload<CR>", { buffer = bufnr })
+						map("n", "<F3>", ":FlutterRestart<CR>", { buffer = bufnr })
+						map(
+							"n",
+							"<F4>",
+							":lua require('telescope').extensions.flutter.commands()<CR>",
+							{ buffer = bufnr }
+						)
 
 						vim.cmd([[
               command! BuildRunner AsyncRun -mode=term -focus=0 -rows=12 dart run build_runner build --delete-conflicting-outputs

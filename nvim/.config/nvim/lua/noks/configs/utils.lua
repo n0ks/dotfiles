@@ -1,15 +1,5 @@
 local M = {}
 
--- Organize imports for TypeScript files using LSP
-_G.lsp_organize_imports = function()
-	local params = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-	vim.lsp.buf.execute_command(params)
-end
-
 -- Merge two tables (shallow merge)
 M.merge = function(t1, t2)
 	for k, v in pairs(t2) do

@@ -28,9 +28,14 @@ return {
     init = function()
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
-      vim.g.dbs = {
-        { name = "snippetbox", url = "mysql://root:password@localhost/snippetbox" },
-      }
+      -- Connection URLs live outside the repo; export e.g.
+      -- SNIPPETBOX_DB_URL=mysql://user:pass@localhost/snippetbox
+      vim.g.dbs = {}
+      if vim.env.SNIPPETBOX_DB_URL then
+        vim.g.dbs = {
+          { name = "snippetbox", url = vim.env.SNIPPETBOX_DB_URL },
+        }
+      end
     end,
   },
 }
