@@ -69,6 +69,11 @@ customCommands:
     context: "localBranches"
     description: "Prune local branches no longer on its remote; (G)one."
     loadingText: "Pruning gone..."
+  - key: 'E'
+    description: 'Add empty commit'
+    context: 'commits'
+    command: 'git commit --allow-empty -m "empty commit"'
+    loadingText: 'Committing empty commit...'
 # - key: 'n'
 #   context: 'localBranches'
 #   prompts:

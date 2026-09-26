@@ -38,6 +38,10 @@ return {
           autostart = true,
         },
         lsp = {
+          -- flutter-tools builds its own capabilities and merges whatever it
+          -- is handed; without this, dartls is the one client that misses
+          -- blink's.
+          capabilities = require("blink.cmp").get_lsp_capabilities(),
           settings = {
             showTodos = false,
             renameFilesWithClasses = "always",
@@ -67,6 +71,9 @@ return {
               command! DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply
               command! Golden AsyncRun -cwd=$(VIM_CWD) flutter test --update-goldens
               command! ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --no-enums --use-freezed -o "$(VIM_FILEPATH)"
+              " custom_lint boots its own analysis server, so it is explicit
+              " and async -- never wired to BufWritePost.
+              command! CustomLint AsyncRun -mode=term -focus=0 -rows=12 -cwd=$(VIM_ROOT) dart run custom_lint
           ]])
           end,
         },

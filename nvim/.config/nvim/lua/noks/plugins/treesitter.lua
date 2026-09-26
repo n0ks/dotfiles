@@ -77,6 +77,10 @@ return {
         end
       end)
 
+      -- go.nvim names the go-template filetypes gotexttmpl/gohtmltmpl; the
+      -- parser is called gotmpl.
+      vim.treesitter.language.register("gotmpl", { "gotexttmpl", "gohtmltmpl" })
+
       -- On the `main` branch highlight/indent are no longer config options;
       -- they are started per buffer.
       vim.api.nvim_create_autocmd("FileType", {
@@ -84,6 +88,14 @@ return {
         callback = function(args)
           local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
           if not lang or not vim.treesitter.language.add(lang) then
+            return
+          end
+          -- vim.treesitter.start() clears 'syntax'. Starting it for a language
+          -- whose highlights query is missing therefore leaves the buffer with
+          -- no highlighting at all, rather than falling back to syntax.
+          local has_query = pcall(vim.treesitter.query.get, lang, "highlights")
+            and vim.treesitter.query.get(lang, "highlights") ~= nil
+          if not has_query then
             return
           end
           if not pcall(vim.treesitter.start, args.buf, lang) then

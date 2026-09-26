@@ -100,6 +100,9 @@ map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
 map("n", "<Leader>ga", ":GoAlt<CR>")
 
+-- Dart: full custom_lint pass (dartls only reports the analyzer's own rules)
+map("n", "<leader>cl", ":CustomLint<CR>")
+
 map("v", "<space>ca", "<cmd>lua require('go.codeaction').run_code_action()<CR>")
 
 -- ╭──────────────────────────────────────────────────────────╮

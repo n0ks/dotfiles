@@ -14,7 +14,9 @@ return {
         textobjects = false,
       })
     end,
-    ft = { "go", "gomod", "tmpl" },
+    -- go.nvim's own ftdetect claims *.tmpl/*.gohtml; `tmpl` was never a
+    -- filetype, so the plugin simply never loaded for templates.
+    ft = { "go", "gomod", "gowork", "gosum", "gotexttmpl", "gohtmltmpl" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
   {

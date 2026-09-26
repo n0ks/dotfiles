@@ -15,6 +15,17 @@ local prettier_filetypes = {
   "graphql",
 }
 
+-- Formatters that are safe to run unattended: they are either
+-- project-config-free or driven by a config the repo already owns.
+-- The prettier filetypes stay on <leader>fm, since a global prettier with
+-- no project config would reformat to its own defaults on every save.
+local format_on_save_filetypes = {
+  go = true,
+  dart = true,
+  lua = true,
+  sh = true,
+}
+
 local formatters_by_ft = {
   go = { "goimports-reviser", "gofumpt", "golines" },
   dart = { "dart_format" },
@@ -43,10 +54,11 @@ return {
     },
     opts = {
       formatters_by_ft = formatters_by_ft,
-      -- Matches the previous `BufWritePre *.go` autocmd; everything else is
-      -- formatted on demand via <leader>fm.
       format_on_save = function(bufnr)
-        if vim.bo[bufnr].filetype ~= "go" then
+        if not format_on_save_filetypes[vim.bo[bufnr].filetype] then
+          return nil
+        end
+        if vim.api.nvim_buf_get_name(bufnr):find("/node_modules/", 1, true) then
           return nil
         end
         return { timeout_ms = 5000, lsp_format = "fallback" }
@@ -59,7 +71,10 @@ return {
           prepend_args = { "--max-len=180", "--base-formatter=gofumpt" },
         },
         dart_format = {
-          prepend_args = { "-l", "120" },
+          -- conform's default args are { "format", "$FILENAME" }; prepending
+          -- here produced `dart -l 120 format ...`, which dart rejects, so
+          -- dart formatting silently did nothing.
+          args = { "format", "-l", "120", "$FILENAME" },
         },
       },
     },
@@ -70,15 +85,37 @@ return {
     config = function()
       local lint = require("lint")
 
+      local eslint = { "eslint_d" }
+
       lint.linters_by_ft = {
         go = { "golangcilint" },
+        javascript = eslint,
+        javascriptreact = eslint,
+        typescript = eslint,
+        typescriptreact = eslint,
+        sh = { "shellcheck" },
+        bash = { "shellcheck" },
       }
+
+      -- try_lint() errors out loud when a linter's binary is missing, which
+      -- turns every save in a repo without it into a message.
+      local function lint_if_available()
+        local names = lint.linters_by_ft[vim.bo.filetype]
+        if not names then
+          return
+        end
+        for _, name in ipairs(names) do
+          local linter = lint.linters[name]
+          local cmd = type(linter) == "table" and linter.cmd
+          if cmd and vim.fn.executable(cmd) == 1 then
+            lint.try_lint(name)
+          end
+        end
+      end
 
       vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
         group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
-        callback = function()
-          lint.try_lint()
-        end,
+        callback = lint_if_available,
       })
     end,
   },

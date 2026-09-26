@@ -39,11 +39,6 @@ api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   command = "setl filetype=jsonc",
 })
 
-api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.tmpl",
-  command = "setl filetype=html",
-})
-
 vim.filetype.add({
   extension = {
     json = "jsonc",

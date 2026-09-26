@@ -1,5 +1,14 @@
 return {
   {
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    opts = {
+      notification = {
+        window = { winblend = 0 },
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "mason-org/mason.nvim",
@@ -59,6 +68,8 @@ return {
           },
         },
         jsonls = require("noks.lsp.servers.jsonls"),
+        gopls = require("noks.lsp.servers.gopls"),
+        ts_ls = require("noks.lsp.servers.ts_ls"),
         mpls = {},
       }
 
