@@ -4,7 +4,7 @@ local map = require("noks.configs.utils").map
 -- │                        General                            │
 -- ╰──────────────────────────────────────────────────────────╯
 
-map("n", ",T", "<Plug>PlenaryTestFile")
+map("n", ",T", "<Plug>PlenaryTestFile", { remap = true })
 map("n", ",0d", ":.,6d<CR>")
 map("n", ",sh", ":w !sh<CR>")
 map("n", ",rr", ":luafile %<CR>")
@@ -46,7 +46,7 @@ map("n", "<esc>", ":noh<return><esc>")
 
 -- " Visually select the text that was last edited/pasted (Vimcast#2).
 map("n", "gV", "`[v`")
-map("n", "<leader>cd", ":lcd %:p:h")
+map("n", "<leader>cd", ":lcd %:p:h<CR>")
 map("n", "q;", ":q!<CR>")
 
 map("n", ",fn", ":put =expand('%:t')<CR>")
@@ -78,7 +78,7 @@ map("n", "<M-h>", "<C-w>h")
 map("n", "<M-k>", "<C-w>k")
 map("n", "<M-j>", "<C-w>j")
 map("n", "<M-l>", "<C-w>l")
-map("n", "<leader>w", "<C-w>w ")
+map("n", "<leader>w", "<C-w>w")
 map("n", "<leader>a", ":A<CR>")
 map("n", "<C-s>", ":w<CR>")
 map("n", "<C-c>", "<Esc>")
@@ -100,7 +100,7 @@ map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
 map("n", "<Leader>ga", ":GoAlt<CR>")
 
-map("v", "<space>ca", "<cmd>lua require('go.codeaction').run_range_code_action()<CR>")
+map("v", "<space>ca", "<cmd>lua require('go.codeaction').run_code_action()<CR>")
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │                       Quickfix                            │
@@ -128,7 +128,7 @@ map("n", "<leader>K", ":Lspsaga hover_doc ++keep<CR>")
 map("n", "[d", ":Lspsaga diagnostic_jump_prev<CR>")
 map("n", "]d", ":Lspsaga diagnostic_jump_next<CR>")
 map("n", "[i", ":Lspsaga show_line_diagnostics<CR>")
-map("n", "<leader>o", ":Lspsaga outline<CR>")
+map("n", "<leader>lo", ":Lspsaga outline<CR>")
 map("n", "<M-s>", ":Lspsaga subtypes<CR>")
 map("n", "<M-S>", ":Lspsaga supertypes<CR>")
 
@@ -136,13 +136,11 @@ map({ "n", "t" }, "<M-d>", "<cmd>Lspsaga term_toggle<CR>")
 
 map("n", "<leader>gr", ":Lspsaga finder<CR>")
 
-map("v", "<M-CR>", ":<C-U>Lspsaga range_code_action<CR>")
-
 map("n", "gD", ":Lspsaga peek_definition<CR>")
 map("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 map("n", "<leader>gv", ":vs | lua vim.lsp.buf.definition()<CR>")
 map("n", "<leader>rn", ":Lspsaga rename<CR>")
-map("n", "<leader>rnp", ":Lspsaga rename ++project<CR>")
+map("n", "<leader>rN", ":Lspsaga rename ++project<CR>")
 
 map("n", "<leader>dll", ":lua vim.diagnostic.setloclist()<CR>")
 map("n", "<leader>dle", ":lua vim.diagnostic.setloclist({severity=vim.diagnostic.severity.ERROR})<CR>")
@@ -209,7 +207,10 @@ map("n", "<leader>g2", ":diffget //2<CR>")
 map("n", "<leader>dc", ":DiffviewClose<CR>")
 map("n", "<leader>do", ":DiffviewOpen<CR>")
 map("n", "<leader>dh", ":DiffviewFileHistory %<CR>")
-map("n", "<leader>lg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>")
+-- cwd has to be resolved at call time, not when this file is sourced.
+map("n", "<leader>lg", function()
+  vim.fn.system({ "tmux", "new-window", "-c", vim.fn.getcwd(), "--", "lazygit" })
+end)
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │                          DAP                              │

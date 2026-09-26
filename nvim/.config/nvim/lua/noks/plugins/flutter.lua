@@ -71,6 +71,9 @@ return {
           end,
         },
       })
+
+      -- flutter-tools ships the telescope extension; nothing registers it otherwise.
+      pcall(require("telescope").load_extension, "flutter")
     end,
   },
 }

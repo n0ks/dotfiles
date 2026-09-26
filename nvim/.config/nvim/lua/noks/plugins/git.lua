@@ -1,6 +1,9 @@
 return {
 
-  { "tpope/vim-fugitive", cmd = { "Git", "G", "Gw", "Gr" } },
+  -- Loaded on VeryLazy rather than by `cmd`: fugitive defines a dozen commands
+  -- (`Ge`, `Gclog`, `Gedit`, …) with `-count`/`-complete` signatures that
+  -- lazy.nvim's command stubs do not reproduce faithfully.
+  { "tpope/vim-fugitive", event = "VeryLazy" },
 
   {
     "sindrets/diffview.nvim",

@@ -18,12 +18,15 @@ M._if = function(bool, a, b)
 end
 
 -- Wrapper for vim.keymap.set with default options
+-- `remap = true` opts out of the forced `noremap`, which is required for any
+-- rhs that has to expand another mapping (e.g. a `<Plug>` target).
 M.map = function(mode, lhs, rhs, opts)
-  local options = { noremap = true, silent = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
+  opts = opts or {}
+  local options = { silent = true }
+  if not opts.remap then
+    options.noremap = true
   end
-  vim.keymap.set(mode, lhs, rhs, options)
+  vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", options, opts))
 end
 
 -- Iterate over a table and apply a function to each element

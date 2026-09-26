@@ -69,8 +69,9 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     keys = {
       -- select
-      { "af", select_textobject("@function.outer"), mode = { "x", "o" }, desc = "a function" },
-      { "if", select_textobject("@function.inner"), mode = { "x", "o" }, desc = "inner function" },
+      -- `am`/`im` rather than `af`/`if`: those are mini.ai's function-call textobject.
+      { "am", select_textobject("@function.outer"), mode = { "x", "o" }, desc = "a method" },
+      { "im", select_textobject("@function.inner"), mode = { "x", "o" }, desc = "inner method" },
       { "ac", select_textobject("@class.outer"), mode = { "x", "o" }, desc = "a class" },
       { "ic", select_textobject("@class.inner"), mode = { "x", "o" }, desc = "inner class" },
       -- move
