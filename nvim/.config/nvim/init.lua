@@ -51,8 +51,6 @@ require("lazy").setup({
         "zip",
         "zipPlugin",
         "rplugin",
-        "syntax",
-        "synmenu",
         "optwin",
         "compiler",
         "bugreport",

@@ -19,7 +19,6 @@ opt.backspace = { "eol", "start", "indent" }
 opt.clipboard = "unnamedplus"
 opt.encoding = "utf-8"
 opt.matchpairs = { "(:)", "{:}", "[:]", "<:>" }
-opt.syntax = "enable"
 opt.undodir = vim.fn.stdpath("state") .. "/undo"
 opt.undofile = true
 opt.fillchars = {

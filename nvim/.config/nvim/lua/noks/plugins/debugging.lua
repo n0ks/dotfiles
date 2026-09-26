@@ -6,30 +6,6 @@ return {
       "leoluz/nvim-dap-go",
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
-      {
-        "microsoft/vscode-js-debug",
-        -- After install, build it and rename the dist directory to out
-        build = "npm install --legacy-peer-deps --no-save && npx gulp vsDebugServerBundle && rm -rf out && mv dist out",
-        version = "1.*",
-      },
-      {
-        "mxsdev/nvim-dap-vscode-js",
-        config = function()
-          ---@diagnostic disable-next-line: missing-fields
-          require("dap-vscode-js").setup({
-            debugger_path = vim.fn.resolve(vim.fn.stdpath("data") .. "/lazy/vscode-js-debug"),
-            debugger_cmd = { "js-debug-adapter" },
-            adapters = {
-              "chrome",
-              "pwa-node",
-              "pwa-chrome",
-              "pwa-msedge",
-              "pwa-extensionHost",
-              "node-terminal",
-            },
-          })
-        end,
-      },
     },
     keys = {
       -- Basic debugging keymaps, feel free to change to your liking!
@@ -121,19 +97,25 @@ return {
         "typescriptreact",
         "javascriptreact",
       }
-      dap.adapters["pwa-node"] = {
-        type = "server",
-        port = "${port}",
-        host = "localhost",
-        -- restart = true,
-        executable = {
-          command = "node",
-          args = {
-            vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
-            "${port}",
+      -- One js-debug server backs every pwa-* session type. The package is
+      -- guaranteed by mason-tool-installer (see plugins/mason-tools.lua).
+      local js_debug_server = vim.fn.stdpath("data")
+        .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js"
+
+      local function js_debug_adapter()
+        return {
+          type = "server",
+          port = "${port}",
+          host = "localhost",
+          executable = {
+            command = "node",
+            args = { js_debug_server, "${port}" },
           },
-        },
-      }
+        }
+      end
+
+      dap.adapters["pwa-node"] = js_debug_adapter()
+      dap.adapters["pwa-chrome"] = js_debug_adapter()
 
       local vscode = require("dap.ext.vscode")
 
