@@ -43,8 +43,39 @@ return {
     build = ":TSUpdate",
     lazy = false,
     config = function()
-      require("nvim-treesitter").setup({})
-      require("nvim-treesitter").install(parsers)
+      local ts = require("nvim-treesitter")
+      ts.setup({})
+
+      -- Parsers live in `stdpath("data")/site` (nvim-treesitter's default
+      -- install_dir), not in the plugin clone, which is wiped on every update.
+      -- Installing unconditionally on every startup fired a download each
+      -- time, so only ever install what is actually missing, and only on
+      -- demand -- `install()` has hung in this environment before.
+      local function missing_parsers()
+        local installed = ts.get_installed("parsers")
+        return vim.tbl_filter(function(lang)
+          return not vim.tbl_contains(installed, lang)
+        end, parsers)
+      end
+
+      vim.api.nvim_create_user_command("TSInstallMissing", function()
+        local missing = missing_parsers()
+        if #missing == 0 then
+          vim.notify("nvim-treesitter: nothing missing", vim.log.levels.INFO)
+          return
+        end
+        ts.install(missing)
+      end, { desc = "Install the configured parsers that are not present yet" })
+
+      vim.schedule(function()
+        local missing = missing_parsers()
+        if #missing > 0 then
+          vim.notify(
+            ("nvim-treesitter: missing %s -- run :TSInstallMissing"):format(table.concat(missing, ", ")),
+            vim.log.levels.WARN
+          )
+        end
+      end)
 
       -- On the `main` branch highlight/indent are no longer config options;
       -- they are started per buffer.
