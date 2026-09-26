@@ -4,12 +4,4 @@ return {
   { "echasnovski/mini.ai", version = false, config = true, event = "VeryLazy" },
   { "echasnovski/mini.surround", version = false, config = true, event = "VeryLazy" },
   { "echasnovski/mini.statusline", version = false, config = true, event = "VeryLazy" },
-  {
-    "echasnovski/mini.files",
-    version = false,
-    enabled = false,
-    config = function()
-      require("mini.files").setup()
-    end,
-  },
 }

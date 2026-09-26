@@ -20,7 +20,7 @@ return {
       vim.keymap.set("n", "<", api.tree.change_root_to_parent, opts("Up"))
       vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
     end,
-    sort_by = "case_sensitive",
+    sort = { sorter = "case_sensitive" },
     sync_root_with_cwd = false,
     hijack_cursor = true,
     notify = {

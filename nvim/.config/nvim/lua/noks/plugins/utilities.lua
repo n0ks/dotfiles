@@ -31,20 +31,6 @@ return {
   },
 
   {
-    "rcarriga/nvim-notify",
-    enabled = false,
-    config = function()
-      vim.notify = require("notify")
-
-      ---@diagnostic disable-next-line: undefined-field
-      vim.notify.setup({
-        timeout = 3000,
-        background_colour = "#FFFFFF",
-      })
-    end,
-  },
-
-  {
     "numToStr/Comment.nvim",
     event = "VeryLazy",
     opts = {},

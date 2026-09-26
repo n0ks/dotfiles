@@ -30,7 +30,7 @@ return {
               return "]c"
             end
             vim.schedule(function()
-              gs.next_hunk()
+              gs.nav_hunk("next")
             end)
             return "<Ignore>"
           end, { expr = true })
@@ -40,7 +40,7 @@ return {
               return "[c"
             end
             vim.schedule(function()
-              gs.prev_hunk()
+              gs.nav_hunk("prev")
             end)
             return "<Ignore>"
           end, { expr = true })
@@ -49,7 +49,6 @@ return {
           map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
           map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
           map("n", "<leader>hS", gs.stage_buffer)
-          map("n", "<leader>hu", gs.undo_stage_hunk)
           map("n", "<leader>hR", gs.reset_buffer)
           map("n", "<leader>hp", gs.preview_hunk)
           map("n", "<leader>hb", function()

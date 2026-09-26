@@ -6,7 +6,6 @@ return {
       "leoluz/nvim-dap-go",
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
-      "stevearc/overseer.nvim",
       {
         "microsoft/vscode-js-debug",
         -- After install, build it and rename the dist directory to out
