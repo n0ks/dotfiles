@@ -67,7 +67,8 @@
   followTags = true
 
 [core]
-	editor = nvim
+  editor = nvim
+  pager = delta
 
 [sequence]
   editor = nvim

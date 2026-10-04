@@ -1,6 +1,6 @@
 return {
   {
-    "glepnir/dashboard-nvim",
+    "nvimdev/dashboard-nvim",
     enabled = true,
     event = "VimEnter",
     opts = {

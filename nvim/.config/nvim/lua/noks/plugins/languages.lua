@@ -7,10 +7,16 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     config = function()
-      require("go").setup({})
+      require("go").setup({
+        -- go.nvim's textobjects module calls require("nvim-treesitter.configs"),
+        -- which no longer exists on nvim-treesitter's `main` branch. The same
+        -- mappings are set up by nvim-treesitter-textobjects in treesitter.lua.
+        textobjects = false,
+      })
     end,
-    event = { "CmdlineEnter" },
-    ft = { "go", "gomod", "tmpl" },
+    -- go.nvim's own ftdetect claims *.tmpl/*.gohtml; `tmpl` was never a
+    -- filetype, so the plugin simply never loaded for templates.
+    ft = { "go", "gomod", "gowork", "gosum", "gotexttmpl", "gohtmltmpl" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
   {
@@ -28,9 +34,14 @@ return {
     init = function()
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
-      vim.g.dbs = {
-        { name = "snippetbox", url = "mysql://root:password@localhost/snippetbox" },
-      }
+      -- Connection URLs live outside the repo; export e.g.
+      -- SNIPPETBOX_DB_URL=mysql://user:pass@localhost/snippetbox
+      vim.g.dbs = {}
+      if vim.env.SNIPPETBOX_DB_URL then
+        vim.g.dbs = {
+          { name = "snippetbox", url = vim.env.SNIPPETBOX_DB_URL },
+        }
+      end
     end,
   },
 }

@@ -23,13 +23,13 @@ vmi() {
 	local lang=${1}
 
 	if [[ ! $lang ]]; then
-		lang=$(asdf plugin-list | fzf)
+		lang=$(asdf plugin list | fzf)
 	fi
 
 	if [[ $lang ]]; then
 		local versions
 
-		versions=$(asdf list-all "$lang" | fzf --tac --no-sort --multi)
+		versions=$(asdf list all "$lang" | fzf --tac --no-sort --multi)
 
 		if [[ $versions ]]; then
 			for version in $versions; do asdf install "$lang" "$version"; done
@@ -168,8 +168,9 @@ asdf_update_java_home() {
 	fi
 }
 
+# asdf 0.16+ has no `asdf shell`: pins the version in ./.tool-versions instead
 asdf_shell_java() {
-	asdf shell java "$1"
+	asdf set java "$1"
 	asdf_update_java_home
 }
 

@@ -52,11 +52,11 @@ function! KittyBufferHistoryClean()
   silent! %s/\s*$//
   let @/ = ""
   set rnu
-  " map q to force quit
-  cnoremap q q!
 endfunction
 command! KittyBufferHistoryClean call KittyBufferHistoryClean()
 
 vnoremap <silent> / :<C-U>call RangeSearch('/')<CR>:if strlen(g:srchstr) > 0\|exec '/'.g:srchstr\|endif<CR>
 vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|exec '?'.g:srchstr\|endif<CR>
 
+
+command! CleanEmptyBuffers call CleanNoNameEmptyBuffers()

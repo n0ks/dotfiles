@@ -1,11 +1,13 @@
 return {
 
-  { "tpope/vim-fugitive", cmd = { "Git", "G", "Gw", "Gr" } },
+  -- Loaded on VeryLazy rather than by `cmd`: fugitive defines a dozen commands
+  -- (`Ge`, `Gclog`, `Gedit`, …) with `-count`/`-complete` signatures that
+  -- lazy.nvim's command stubs do not reproduce faithfully.
+  { "tpope/vim-fugitive", event = "VeryLazy" },
 
   {
     "sindrets/diffview.nvim",
-    event = "VeryLazy",
-    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
   },
 
   {
@@ -28,7 +30,7 @@ return {
               return "]c"
             end
             vim.schedule(function()
-              gs.next_hunk()
+              gs.nav_hunk("next")
             end)
             return "<Ignore>"
           end, { expr = true })
@@ -38,7 +40,7 @@ return {
               return "[c"
             end
             vim.schedule(function()
-              gs.prev_hunk()
+              gs.nav_hunk("prev")
             end)
             return "<Ignore>"
           end, { expr = true })
@@ -47,7 +49,6 @@ return {
           map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>")
           map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>")
           map("n", "<leader>hS", gs.stage_buffer)
-          map("n", "<leader>hu", gs.undo_stage_hunk)
           map("n", "<leader>hR", gs.reset_buffer)
           map("n", "<leader>hp", gs.preview_hunk)
           map("n", "<leader>hb", function()
@@ -95,5 +96,22 @@ return {
         },
       }
     end,
+  },
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>ll", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
   },
 }

@@ -27,8 +27,8 @@ alias drbb="fvm dart run build_runner build -d -v"
 alias drbbc="fvm dart run build_runner clean && drbb"
 alias drbbw="fvm dart run build_runner watch"
 
-alias fclean="fvm flutter clean && fvm flutter pub get && drbb"
-alias fget="fvm flutter pub get"
+alias fclean="rm pubspec.lock && fvm flutter clean && fvm flutter pub get && drbb"
+alias fget="flutter pub get"
 
 # Gatekeeper (for installing 3rd party apps)
 alias gatekeeperOff="sudo spctl --master-disable"
@@ -55,12 +55,16 @@ alias lg="lazygit"
 alias lzd="lazydocker"
 alias xcodeclean='rm -rf ~/Library/Developer/Xcode/DerivedData/*'
 alias flutter='fvm flutter'
+alias ftug='flutter test --update-goldens'
+alias cc='claude'
 
 alias mitm="networksetup -setsecurewebproxystate Wi-Fi on && mitmproxy && networksetup -setsecurewebproxystate Wi-Fi off"
 alias printapkcert="apksigner verify --print-certs"
 alias p="podman"
 alias vim="nvim"
 
+
+alias wts='wt switch'
 # alias emuroot="emulator -writable-system -avd pixel8 -feature -Vulkan"
 #
 # alias unlockGradle="find ~/.gradle -type f -name "*.lock" -delete'

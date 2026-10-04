@@ -18,63 +18,40 @@ local lsp_node = api.nvim_create_augroup("LspNodeModules", { clear = true })
 -- Auto-reload files when changed outside vim (wrapped in pcall)
 api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
   pattern = "*",
-  callback = function()
-    if vim.fn.mode() ~= 'c' then
-      pcall(vim.cmd.checktime)
-    end
-  end,
 })
 
-api.nvim_create_autocmd("FileType", {
-  pattern = { "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
-  callback = function()
-    vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = true, silent = true })
-  end,
-})
+-- api.nvim_create_autocmd("FileType", {
+-- 	pattern = { "help", "startuptime", "qf", "lspinfo", "fugitive", "null-ls-info" },
+-- 	command = "nnoremap <buffer><silent> q :close<CR>",
+-- })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "Fastfile", "Podfile" },
-  callback = function()
-    vim.bo.filetype = "ruby"
-  end,
+  command = "setl filetype=ruby",
 })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.arb",
-  callback = function()
-    vim.bo.filetype = "json"
-  end,
+  command = "setl filetype=jsonc",
 })
 
-api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.tmpl",
-  callback = function()
-    vim.bo.filetype = "html"
-  end,
-})
-
-api.nvim_create_autocmd("FileType", {
-  pattern = "json",
-  callback = function()
-    vim.bo.filetype = "jsonc"
-  end,
+vim.filetype.add({
+  extension = {
+    json = "jsonc",
+  },
 })
 
 api.nvim_create_autocmd("BufRead", {
   pattern = "*.yaml",
-  callback = function()
-    vim.bo.shiftwidth = 2
-    vim.bo.softtabstop = 2
-    vim.bo.expandtab = true
-  end,
+  command = "set sw=2 sts=2 expandtab",
 })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*/node_modules/*",
-  group = lsp_node,
-  callback = function()
-    vim.diagnostic.disable(0)
+  callback = function(args)
+    vim.diagnostic.enable(false, { bufnr = args.buf })
   end,
+  group = lsp_node,
 })
 
 -- ╭──────────────────────────────╮
@@ -84,7 +61,7 @@ api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   group = highlight_yank_group,
   callback = function()
-    vim.highlight.on_yank({
+    vim.hl.on_yank({
       timeout = 40,
       on_visual = true,
       higroup = "IncSearch",
@@ -98,11 +75,9 @@ api.nvim_create_autocmd("TextYankPost", {
 api.nvim_create_autocmd("BufReadPost", {
   pattern = "*",
   callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-      vim.cmd("normal! zz")
+    if fn.line("'\"") > 0 and fn.line("'\"") <= fn.line("$") then
+      fn.setpos(".", fn.getpos("'\""))
+      api.nvim_feedkeys("zz", "n", true)
     end
   end,
 })
@@ -114,19 +89,5 @@ api.nvim_create_autocmd("BufEnter", {
   pattern = "*NvimTree*",
   callback = function()
     vim.b.completion = false
-  end,
-})
-
--- ╭──────────────────────────────╮
--- │ Format go files             │
--- ╰──────────────────────────────╯
-api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-    -- Safely call go format, suppress errors if plugin not loaded
-    local ok, go_format = pcall(require, "go.format")
-    if ok and go_format and go_format.gofmt then
-      pcall(go_format.gofmt)
-    end
   end,
 })

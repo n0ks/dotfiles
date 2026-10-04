@@ -1,0 +1,54 @@
+# GUI apps — opt-in: ./install.sh --apps (or answer yes to the prompt).
+# Corporate apps (Company Portal, Defender, GlobalProtect, Office, Teams) are
+# managed by IT and intentionally left out.
+
+# take over apps that were installed by hand instead of failing on them
+cask_args adopt: true
+
+# ── browsers ─────────────────────────────────────────────────────────────────
+cask "brave-browser"
+cask "firefox@developer-edition"
+cask "google-chrome"
+cask "librewolf"
+
+# ── dev ──────────────────────────────────────────────────────────────────────
+cask "android-studio"
+cask "cursor"
+cask "dbeaver-community"
+cask "http-toolkit"
+cask "jetbrains-toolbox"
+cask "mitmproxy"
+cask "ngrok"
+cask "postman"
+cask "proxyman"
+cask "sequel-ace"
+cask "visual-studio-code"
+cask "vmware-fusion"
+cask "xquartz"
+
+# ── productivity ─────────────────────────────────────────────────────────────
+cask "figma"
+cask "keepassxc"
+cask "keyguard"
+cask "obsidian"
+cask "ollama-app"
+cask "raycast"
+
+# ── utilities ────────────────────────────────────────────────────────────────
+cask "blackhole-2ch"
+cask "flameshot"
+cask "hot"
+cask "keycastr"
+cask "localsend"
+cask "macs-fan-control"
+cask "qview"
+cask "syncthing-app"
+cask "the-unarchiver"
+cask "zerotier-one"
+
+# ── media ────────────────────────────────────────────────────────────────────
+cask "iina"
+cask "obs"
+
+# ── App Store (needs you signed in to the App Store first) ───────────────────
+mas "Amphetamine", id: 937984704

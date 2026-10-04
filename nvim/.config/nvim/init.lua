@@ -3,10 +3,10 @@ require("noks.globals")
 require("noks.configs.keymaps")
 require("noks.configs.autocmds")
 
-vim.cmd("source" .. "~/.config/nvim/general/funfun.vim")
+vim.cmd("source " .. "~/.config/nvim/general/funfun.vim")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -19,9 +19,11 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-local opts = {
+require("lazy").setup({
+  spec = {
+    { import = "noks.plugins" },
+  },
   performance = {
-    -- defaults = { lazy = true },
     cache = {
       enabled = true,
     },
@@ -30,7 +32,6 @@ local opts = {
         "gzip",
         "matchit",
         "matchparen",
-        "netrwPlugin",
         "tarPlugin",
         "tar",
         "tutor",
@@ -42,7 +43,7 @@ local opts = {
         "netrw",
         "netrwPlugin",
         "netrwSettings",
-        "netrwFileHanlers",
+        "netrwFileHandlers",
         "rrhelper",
         "spellfile_plugin",
         "vimball",
@@ -50,18 +51,10 @@ local opts = {
         "zip",
         "zipPlugin",
         "rplugin",
-        "syntax",
-        "synmenu",
         "optwin",
         "compiler",
         "bugreport",
       },
     },
   },
-}
-
-require("lazy").setup({
-  spec = {
-    { import = "noks.plugins" },
-  },
-}, opts)
+})
