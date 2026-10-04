@@ -3,12 +3,9 @@
 
 tap "felixkratz/formulae"
 tap "git-chglog/git-chglog"
-tap "jankuss/genq"
 tap "jesseduffield/lazydocker"
-tap "julien-cpsn/atac"
 tap "leoafarias/fvm"
 tap "nikitabobko/tap"
-tap "wix-incubator/brew"
 
 # ── shell ────────────────────────────────────────────────────────────────────
 brew "bat"
@@ -66,24 +63,15 @@ brew "zlib"
 brew "luarocks"
 
 # ── dev ──────────────────────────────────────────────────────────────────────
-brew "aichat"
 brew "azure-cli"
-brew "cabal-install"
 brew "lcov"
 brew "maven"
-brew "mysql@8.4"
-brew "nginx"
-brew "pandoc"
 brew "perl"
 brew "podman"
-brew "postgresql@14"
 brew "rtk"
 brew "shellcheck"
 brew "watchman"
-brew "zrok"
-brew "jankuss/genq/genq"
 brew "jesseduffield/lazydocker/lazydocker"
-brew "julien-cpsn/atac/atac"
 
 # ── mobile (Flutter / iOS / Android) ─────────────────────────────────────────
 brew "apktool"
@@ -124,8 +112,6 @@ brew "telnet"
 # ── desktop: window manager, terminals, fonts ────────────────────────────────
 brew "felixkratz/formulae/borders" # started from aerospace.toml
 cask "nikitabobko/tap/aerospace"
-cask "alacritty"
-cask "kitty"
 cask "wezterm"
 cask "git-credential-manager"
 cask "font-hack-nerd-font"
