@@ -80,6 +80,8 @@
   whitespace-error-style = 22 reverse
   line-numbers = true
   side-by-side = true
+  navigate = true
+  true-color = always
 
 [delta "decorations"]
   commit-decoration-style = bold yellow box ul
@@ -97,9 +99,6 @@
 #                     │        └─ decorations (branch, heads or tags)
 #                     └─ hash (abbreviated)
 
-[credential]
-  ; helper = cache --timeout=3600
-
 [pull]
   rebase = true
 [rebase]
@@ -107,21 +106,25 @@
 
 [http]
   postBuffer = 1048576000
-	sslVerify = false
+	sslVerify = true
 
 [user]
   name = n0ks
   email = 22434056+n0ks@users.noreply.github.com
 
-; [remote "origin"]
-; fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "origin"]
+    ; fetch = +refs/tags/*:refs/tags/*
+    tagopt = --tags
+    force = true
+    prune = true
+    pruneTags = true
 
 
 [includeIf "gitdir:~/code/TIM/"]
   path = ~/.gitconfig_enterprise
 
 [rerere]
-	enabled = true
+	enabled = false
 [maintenance]
 	auto = true
 ; [commit]
@@ -130,3 +133,16 @@
 	ui = auto
 [diff]
 	colorMoved = zebra
+; [rebase]
+; 	updateRefs = true
+[credential]
+	helper = osxkeychain
+	; helper = osxkeychain
+	; helper = manager
+	; interactive = always
+; [credential "azrepos:org/timbrasil"]
+; 	username = T3732703@timbrasil.com.br
+[credential "https://dev.azure.com"]
+	azureAuthority = https://login.microsoftonline.com/57b8c96e-ac2f-4d78-a149-f1fc6817d3c4
+	helper = manager
+	useHttpPath = true

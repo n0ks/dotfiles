@@ -13,34 +13,25 @@ git:
 update:
   # One of: 'prompt' (default) | 'background' | 'never'
   method: prompt
-
   # Period in days between update checks
   days: 14
-
 # Background refreshes
 refresher:
   # File/submodule refresh interval in seconds.
   # Auto-refresh can be disabled via option 'git.autoRefresh'.
   refreshInterval: 10
-
   # Re-fetch interval in seconds.
   # Auto-fetch can be disabled via option 'git.autoFetch'.
   fetchInterval: 60
-
 # If true, show a confirmation popup before quitting Lazygit
 confirmOnQuit: false
-
 # If true, exit Lazygit when the user presses escape in a context where there is nothing to cancel/close
 quitOnTopLevelReturn: false
-
 # Config relating to things outside of Lazygit like how files are opened, copying to clipboard, etc
-os:
   # Command for editing a file. Should contain "{{filename}}".
-  edit: "nvim {{filename}}"
-
+os:
   open: "nvim {{filename}}"
   openLink: open -a "/Applications/Google Chrome.app" {{link}}
-
 gui:
     nerdFontsVersion: "3"
     border: rounded
@@ -80,3 +71,25 @@ customCommands:
     context: "localBranches"
     description: "Prune local branches no longer on its remote; (G)one."
     loadingText: "Pruning gone..."
+# - key: 'n'
+#   context: 'localBranches'
+#   prompts:
+#     - type: 'menu'
+#       title: 'What kind of branch is it?'
+#       key: 'BranchType'
+#       options:
+#         - name: 'feature'
+#           description: 'a feature branch'
+#           value: 'feature'
+#         - name: 'hotfix'
+#           description: 'a hotfix branch'
+#           value: 'hotfix'
+#         - name: 'release'
+#           description: 'a release branch'
+#           value: 'release'
+#     - type: 'input'
+#       title: 'What is the new branch name?'
+#       key: 'BranchName'
+#       initialValue: ''
+#   command: "git flow {{.Form.BranchType}} start {{.Form.BranchName}}"
+#   loadingText: 'Creating branch'
