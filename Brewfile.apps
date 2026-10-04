@@ -12,18 +12,14 @@ cask "google-chrome"
 cask "librewolf"
 
 # ── dev ──────────────────────────────────────────────────────────────────────
-cask "android-studio"
 cask "cursor"
 cask "dbeaver-community"
 cask "http-toolkit"
 cask "jetbrains-toolbox"
 cask "mitmproxy"
-cask "ngrok"
 cask "postman"
 cask "proxyman"
-cask "sequel-ace"
 cask "visual-studio-code"
-cask "vmware-fusion"
 cask "xquartz"
 
 # ── productivity ─────────────────────────────────────────────────────────────
@@ -31,20 +27,17 @@ cask "figma"
 cask "keepassxc"
 cask "keyguard"
 cask "obsidian"
-cask "ollama-app"
 cask "raycast"
 
 # ── utilities ────────────────────────────────────────────────────────────────
 cask "blackhole-2ch"
 cask "flameshot"
-cask "hot"
 cask "keycastr"
 cask "localsend"
 cask "macs-fan-control"
 cask "qview"
 cask "syncthing-app"
 cask "the-unarchiver"
-cask "zerotier-one"
 
 # ── media ────────────────────────────────────────────────────────────────────
 cask "iina"
