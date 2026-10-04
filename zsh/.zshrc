@@ -12,11 +12,19 @@ setopt HIST_REDUCE_BLANKS
 setopt appendhistory
 setopt auto_cd
 unsetopt MULTIOS
+
+# Homebrew prefix, cached (HOMEBREW_PREFIX comes from `brew shellenv` in ~/.zprofile)
+BREW_PREFIX="${HOMEBREW_PREFIX:-/opt/homebrew}"
+fpath+=("$BREW_PREFIX/share/zsh/site-functions") # also where brew's pure lives
+fpath+=($HOME/.zsh-complete)
+
 # autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 autoload -U edit-command-line
+#
 zle -N edit-command-line
 
+# source <(kubectl completion zsh)
 bindkey -M vicmd v edit-command-line
 bindkey '^ ' autosuggest-accept
 
@@ -33,20 +41,13 @@ SAVEHIST=10000
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-. $HOME/.asdf/asdf.sh
 export ASDF_DATA_DIR=~/.asdf
-# . ~/.asdf/plugins/java/set-java-home.zsh
-export JAVA_HOME=/Users/rodrigo.m.de.campos/.asdf/installs/java/openjdk-17.0.2
-# export JAVA_HOME=/Users/rodrigo.m.de.campos/Library/Java/JavaVirtualMachines/azul-15.0.10/Contents/Home/bin
-export WEZTERM_CONFIG_FILE=$HOME/.config
 export XDG_CONFIG_HOME="$HOME/.config"
 export HISTFILE=$HOME/.zsh_history
 export DOTFILES=$HOME/.dotfiles
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme zenburn'"
 export EDITOR="nvim"
-export GREP_OPTIONS='--color=auto'
-export BROWSER='/usr/bin/firefox'
-export PATH=$PATH:/bin:/usr/bin:$HOME/.rbenv/bin:/usr/local/var/rbenv/shims/pod:$HOME/bin:$HOME/chtsh/:$HOME/.local/bin/:$HOME/Library/Android/sdk/build-tools/34.0.0
+export PATH=$PATH:/bin:/usr/bin:$HOME/bin:$HOME/.local/bin/:$HOME/Library/Android/sdk/build-tools/34.0.0:$ASDF_DATA_DIR/shims
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -56,25 +57,24 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.pub-cache/bin
 export PATH=$PATH:$HOME/fvm/default/bin
 export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/neovim/bin
 export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
 # export PATH=$PATH:$HOME/.asdf/shims
 export FVM_CACHE_PATH=$HOME/fvm
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
-export GOROOT=$(asdf where golang)/go
-export GOBIN=$(asdf where golang)/packages/bin
+# runtimes managed by asdf; only exported when installed
+if (( $+commands[asdf] )); then
+  _asdf_dir=$(asdf where java 2>/dev/null) && export JAVA_HOME=$_asdf_dir
+  _asdf_dir=$(asdf where golang 2>/dev/null) && export GOROOT=$_asdf_dir/go GOBIN=$_asdf_dir/packages/bin
+  unset _asdf_dir
+fi
 # export MANPAGER='nvim -u +Man!'
 export MANWIDTH=999
-export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
+export PATH="$BREW_PREFIX/opt/mysql@8.4/bin:$PATH"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
-export MAGICK_HOME="$HOME/ImageMagick-7.0.8"
-export PATH="$MAGICK_HOME/bin:$PATH"
-export DYLD_LIBRARY_PATH="$MAGICK_HOME/lib/"  
 export GIT_EDITOR=vim
 export GIT_SEQUENCE_EDITOR="vim"
-export RBENV_ROOT=/usr/local/var/rbenv
 export FREETYPE_PROPERTIES="truetype:interpreter-version=35"
 export FD_OPTIONS="--follow --exclude .git --exclude node_modules"
 export FASTLANE_HIDE_CHANGELOG=1
@@ -100,23 +100,42 @@ export FZF_CTRL_R_OPTS="
 
 export FZF_ALT_C_COMMAND="fd --max-results 200 --max-depth 2 -t d . $HOME/code "
 export GLFW_IM_MODULE=ibus
-export SSH_KEY_PATH="~/.ssh/rsa_id"
+
 
 source ~/.aliases
+unalias azp 2>/dev/null; azp() { az pipelines "$@" --organization "https://dev.azure.com/timbrasil/" --project "Projeto_App_Meu_TIM"; }
+[[ -f $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]] &&
+  source $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+(( $+commands[fzf] )) && source <(fzf --zsh)
+(( $+commands[zoxide] )) && eval "$(zoxide init zsh)"
 [[ -f ~/functions.sh ]] && source ~/functions.sh
-
-fpath+=("$(brew --prefix)/share/zsh/site-functions")
-fpath+=($HOME/.zsh/pure)
 
 autoload -U promptinit; promptinit
 prompt pure
 
-## [Completion] 
+## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/rodrigo.m.de.campos/.dart-cli-completion/zsh-config.zsh ]] && . /Users/rodrigo.m.de.campos/.dart-cli-completion/zsh-config.zsh || true
+[[ -f $HOME/.config/.dart-cli-completion/zsh-config.zsh ]] && . $HOME/.config/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+[[ -f "$HOME/.local/bin/env" ]] && . "$HOME/.local/bin/env"
+
+# checkTrack — auditor de tagueamento Dashboard Metrics
+checkTrack() {
+  bash "${HOME}/.claude/scripts/check_track.sh" "$@"
+}
+
+# machine-local secrets/overrides (not versioned; created by the setup script)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

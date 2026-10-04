@@ -1,4 +1,16 @@
+#!/usr/bin/env bash
+# macOS preferences. Safe to re-run. Some changes need a logout/reboot.
+#
+#   ./install.sh --only macos_defaults        # via the setup (recommended)
+#   bash setups/mac/macos-defaults.sh         # standalone
+#
+# Asks for sudo (nvram). Safari and reduce-motion only stick if the terminal
+# has Full Disk Access (System Settings → Privacy & Security).
+
 echo "making system modifications:"
+
+# Close System Settings so it doesn't overwrite what we change here
+osascript -e 'tell application "System Settings" to quit' 2>/dev/null
 
 ###############################################################################
 # 📱 Dock
@@ -17,24 +29,20 @@ defaults write com.apple.dock show-process-indicators -bool true
 defaults write com.apple.dock launchanim -bool false
 # Change minimize/maximize window effect
 defaults write com.apple.dock mineffect -string "scale"
-defaults write com.apple.dock no-bouncing -bool TRUE
+defaults write com.apple.dock no-bouncing -bool true
 defaults write com.apple.dock expose-group-apps -bool true
 
-# Set the icon size of Dock items to 45 pixels
-defaults write com.apple.Dock tilesize -int 32
-
+# Set the icon size of Dock items to 32 pixels
+defaults write com.apple.dock tilesize -int 32
 
 ###############################################################################
 # 🎛 Mission Control
 ###############################################################################
 
 defaults write com.apple.dock expose-animation-duration -float 0.1
-defaults write com.apple.dashboard mcx-disabled -bool true
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
-
-killall Dock
 
 ###############################################################################
 # ⌨️ Keyboard
@@ -44,7 +52,7 @@ defaults write NSGlobalDomain KeyRepeat -int 3
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Disable press-and-hold for keys in favour of key repeat
-defaults write -g ApplePressAndHoldEnabled -bool true
+defaults write -g ApplePressAndHoldEnabled -bool false
 
 # Disable automatic modifications of entered text
 defaults write -g NSAutomaticCapitalizationEnabled -bool false
@@ -59,13 +67,15 @@ defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Tracking Speed: from 0 to 3
 defaults write -g com.apple.trackpad.scaling -float 2.5
+# Mouse speed; -1 disables acceleration
+defaults write -g com.apple.mouse.scaling -float -1
 
 # Enable tap to click for the current user and the login screen. (Don't have to press down on the trackpad -- just tap it.)
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write GlobalPreferences com.apple.mouse.scaling -1
-sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
+
 # disable display separeted spaces
 defaults write com.apple.spaces spans-displays -bool true
 
@@ -74,17 +84,18 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCorner
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehavior -int 1
 defaults -currentHost write -g com.apple.trackpad.enableSecondaryClick -bool true
-defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -int 1
+defaults write com.apple.AppleMultitouchTrackpad TrackpadRightClick -bool true
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
-
 
 ###############################################################################
 # 💻 Reduce motion & transparency
 ###############################################################################
 
+# com.apple.universalaccess is protected; writing it needs Full Disk Access for the terminal
 defaults write com.apple.Accessibility DifferentiateWithoutColor -int 1
 defaults write com.apple.Accessibility ReduceMotionEnabled -int 1
-defaults write com.apple.universalaccess reduceMotion -int 1
+defaults write com.apple.universalaccess reduceMotion -int 1 2>/dev/null ||
+	echo "[WARN] reduceMotion not set (give the terminal Full Disk Access)"
 
 ###############################################################################
 # 📂 Finder
@@ -98,7 +109,7 @@ defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder FinderSpawnTab -bool false
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
-defaults write com.apple.finder QLEnableTextSelection -bool TRUE
+defaults write com.apple.finder QLEnableTextSelection -bool true
 
 # Avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -113,8 +124,6 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 # Use list view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
-
-killall Finder
 
 ###############################################################################
 # 📊 Activity Monitor
@@ -137,16 +146,16 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 # 🎚️ Others
 ###############################################################################
 
-#"Enabling Safari's debug menu"
-defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+# Safari is sandboxed: these only stick if the terminal has Full Disk Access
+{
+	defaults write com.apple.Safari IncludeInternalDebugMenu -bool true &&
+		defaults write com.apple.Safari IncludeDevelopMenu -bool true &&
+		defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true &&
+		defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+} 2>/dev/null || echo "[WARN] Safari developer menu not set (give the terminal Full Disk Access)"
 
-#"Enabling the Develop menu and the Web Inspector in Safari"
-defaults write com.apple.Safari IncludeDevelopMenu -bool true
-defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
-
-# Disable the sound effects on boot
-sudo nvram SystemAudioVolume=" "
+# Disable the sound effects on boot (Apple Silicon)
+sudo nvram StartupMute=%01
 
 # Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
@@ -155,15 +164,11 @@ defaults write com.apple.CrashReporter DialogType -string "none"
 defaults write com.apple.terminal StringEncodings -array 4
 
 for app in "Activity Monitor" \
-	"Calendar" \
 	"cfprefsd" \
 	"Dock" \
 	"Finder" \
-	"Mail" \
-	"Messages" \
-	"Safari" \
-	"SystemUIServer" \
-	"Terminal" \
-	"iCal"; do
-	killall "${app}" &> /dev/null
+	"SystemUIServer"; do
+	killall "${app}" &>/dev/null
 done
+
+echo "done. Some of these changes need a logout/restart to take effect."
