@@ -18,6 +18,11 @@ local lsp_node = api.nvim_create_augroup("LspNodeModules", { clear = true })
 -- Auto-reload files when changed outside vim (wrapped in pcall)
 api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
   pattern = "*",
+  callback = function()
+    if vim.fn.mode() ~= "c" then
+      pcall(vim.cmd.checktime)
+    end
+  end,
 })
 
 -- api.nvim_create_autocmd("FileType", {
