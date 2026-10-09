@@ -107,7 +107,7 @@ return {
         for _, name in ipairs(names) do
           local linter = lint.linters[name]
           local cmd = type(linter) == "table" and linter.cmd
-          if cmd and vim.fn.executable(cmd) == 1 then
+          if type(cmd) == "string" and vim.fn.executable(cmd) == 1 then
             lint.try_lint(name)
           end
         end
