@@ -22,3 +22,4 @@ tags
 
 # machine-local secrets (see setups/mac/mac-setup.sh)
 .zshrc.local
+fonts/.local/**
