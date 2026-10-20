@@ -58,10 +58,21 @@ return {
         end, parsers)
       end
 
+      local function has_tree_sitter_cli()
+        return vim.fn.executable("tree-sitter") == 1
+      end
+
       vim.api.nvim_create_user_command("TSInstallMissing", function()
         local missing = missing_parsers()
         if #missing == 0 then
           vim.notify("nvim-treesitter: nothing missing", vim.log.levels.INFO)
+          return
+        end
+        if not has_tree_sitter_cli() then
+          vim.notify(
+            "nvim-treesitter: `tree-sitter` CLI not found. Install with `brew install tree-sitter-cli`",
+            vim.log.levels.ERROR
+          )
           return
         end
         ts.install(missing)
@@ -69,12 +80,20 @@ return {
 
       vim.schedule(function()
         local missing = missing_parsers()
-        if #missing > 0 then
+        if #missing == 0 then
+          return
+        end
+        if not has_tree_sitter_cli() then
           vim.notify(
-            ("nvim-treesitter: missing %s -- run :TSInstallMissing"):format(table.concat(missing, ", ")),
+            "nvim-treesitter: `tree-sitter` CLI not found. Install with `brew install tree-sitter-cli`",
             vim.log.levels.WARN
           )
+          return
         end
+        vim.notify(
+          ("nvim-treesitter: missing %s -- run :TSInstallMissing"):format(table.concat(missing, ", ")),
+          vim.log.levels.WARN
+        )
       end)
 
       -- go.nvim names the go-template filetypes gotexttmpl/gohtmltmpl; the

@@ -1,10 +1,13 @@
-after-login-command = []
+config-version = 2
 
 after-startup-command = [
   'exec-and-forget borders active_color=0xff2acaea inactive_color=0xff494d64 width=2.0',
 ]
 
 start-at-login = false
+
+# Reload once after enabling so the file watcher starts.
+auto-reload-config = true
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -17,7 +20,22 @@ default-root-container-orientation = 'auto'
 
 key-mapping.preset = 'qwerty'
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
-on-focus-changed = ['move-mouse window-lazy-center']
+
+# Do not also move-mouse on focus-changed: it fights focus-follows-mouse.
+focus-follows-mouse.enabled = true
+
+# Required on config-version 2, otherwise empty workspaces disappear.
+persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "S"]
+
+on-window-detected = [
+  { if = 'test %{app-bundle-id} = org.mozilla.firefoxdeveloperedition', run = ['layout tiling', 'move-node-to-workspace 1'] },
+  { if = 'test %{app-bundle-id} = com.microsoft.VSCode || test %{app-bundle-id} = com.todesktop.230313mzl4w4u92 || test %{app-bundle-id} = com.github.wez.wezterm', run = ['layout tiling', 'move-node-to-workspace 2'] },
+  { if = 'test %{app-bundle-id} = org.jkiss.dbeaver.core.product', run = 'move-node-to-workspace 6' },
+  { if = 'test %{app-bundle-id} = com.microsoft.teams2', run = 'move-node-to-workspace 9' },
+  { if = 'test %{app-bundle-id} = com.tinyspeck.slackmacgap', run = 'move-node-to-workspace S' },
+  { if = 'test %{app-bundle-id} = com.apple.finder', run = 'layout floating' },
+  { if = 'test %{app-bundle-id} = com.apple.iphonesimulator || test %{app-name} ~= qemu-system', run = 'layout floating' },
+]
 
 [gaps]
 inner.horizontal = 8
@@ -31,15 +49,17 @@ outer.right =      6
 [mode.main.binding]
 
 alt-r = 'mode resize'
-# cmd-enter = 'exec-and-forget open -n /Applications/WezTerm.app'
+alt-enter = 'exec-and-forget open -n /Applications/WezTerm.app && workspace 2'
+alt-e = 'exec-and-forget open /Applications/Cursor.app && workspace 2'
+alt-s = 'exec-and-forget open /Applications/Slack.app && workspace S'
 
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-h = 'focus --wrap-around left'
+alt-j = 'focus --wrap-around down'
+alt-k = 'focus --wrap-around up'
+alt-l = 'focus --wrap-around right'
 
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
@@ -66,7 +86,7 @@ cmd-shift-6 = 'move-node-to-workspace 6'
 cmd-shift-7 = 'move-node-to-workspace 7'
 cmd-shift-8 = 'move-node-to-workspace 8'
 cmd-shift-9 = 'move-node-to-workspace 9'
-# cmd-shift-S = 'workspace S'
+cmd-shift-s = 'move-node-to-workspace S'
 
 cmd-h = [] # Disable "hide application"
 cmd-alt-h = [] # Disable "hide others"
@@ -75,8 +95,6 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-shift-semicolon = 'mode service'
-
-alt-s = ['exec-and-forget open /Applications/Slack.app', 'workspace S'] # Slack workspace
 
 [mode.service.binding]
 esc = ['reload-config', 'mode main']
@@ -89,39 +107,6 @@ alt-shift-h = ['join-with left', 'mode main']
 alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
-
-[[on-window-detected]]
-if.app-id= 'org.mozilla.firefoxdeveloperedition'
-run = ['layout tiling', 'move-node-to-workspace 1']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Code|Cursor|Wezterm'
-run = ['layout tiling', 'move-node-to-workspace 2']
-
-[[on-window-detected]]
-if.app-id = 'org.jkiss.dbeaver.core.product'
-run = ['move-node-to-workspace 6'] 
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.teams2'
-run = ['move-node-to-workspace 9']  
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.teams2'
-run = ['move-node-to-workspace 9']  
-
-[[on-window-detected]]
-if.app-id = 'com.tinyspeck.slackmacgap'
-run = ['move-node-to-workspace S']
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'Finder'
-run = 'layout floating'
-
-[[on-window-detected]]
-if.app-name-regex-substring = 'qemu-system|Simulator'
-run = 'layout floating'
-
 
 [mode.resize.binding]
 minus = 'resize smart -70'

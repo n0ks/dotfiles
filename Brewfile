@@ -61,6 +61,7 @@ brew "tcl-tk"
 brew "xz"
 brew "zlib"
 brew "luarocks"
+brew "tree-sitter-cli" # nvim-treesitter (main) shells out to `tree-sitter build`
 
 # ── dev ──────────────────────────────────────────────────────────────────────
 brew "azure-cli"

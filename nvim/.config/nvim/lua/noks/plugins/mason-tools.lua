@@ -23,9 +23,8 @@ return {
         "shellcheck",
         -- nvim-dap adapter for js/ts (see plugins/debugging.lua)
         "js-debug-adapter",
-        -- nvim-treesitter's install() shells out to this to build parsers AND
-        -- to fetch their queries; without it there is no highlighting.
-        "tree-sitter-cli",
+        -- tree-sitter CLI comes from Homebrew (`tree-sitter-cli`). Mason's copy
+        -- loaded too late for nvim-treesitter's `:TSUpdate` build step.
       },
       auto_update = false,
       run_on_start = true,
