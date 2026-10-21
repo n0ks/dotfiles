@@ -139,3 +139,6 @@ checkTrack() {
 
 # machine-local secrets/overrides (not versioned; created by the setup script)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+gpgconf --launch gpg-agent
+gpg-connect-agent /bye
+export GPG_TTY=$(tty)
