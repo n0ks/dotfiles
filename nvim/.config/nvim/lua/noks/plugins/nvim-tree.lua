@@ -6,10 +6,6 @@ return {
     on_attach = function(bufnr)
       local api = require("nvim-tree.api")
 
-      api.events.subscribe(api.events.Event.FileCreated, function(file)
-        vim.cmd("edit " .. file.fname)
-      end)
-
       local function opts(desc)
         return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
       end
@@ -54,4 +50,16 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require("nvim-tree").setup(opts)
+    -- Subscribe once. Doing this in on_attach stacked a handler every time
+    -- the tree buffer was created, so a new file opened N copies of itself.
+    local api = require("nvim-tree.api")
+    api.events.subscribe(api.events.Event.FileCreated, function(file)
+      if type(file.fname) ~= "string" or file.fname == "" then
+        return
+      end
+      vim.cmd.edit(vim.fn.fnameescape(file.fname))
+    end)
+  end,
 }

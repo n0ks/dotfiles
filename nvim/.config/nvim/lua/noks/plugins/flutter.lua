@@ -7,6 +7,19 @@ return {
       "stevearc/dressing.nvim",
     },
     config = function()
+      -- Defined once here, not in on_attach: dartls attach was redefining
+      -- these global commands on every buffer.
+      -- custom_lint boots its own analysis server, so it is explicit
+      -- and async -- never wired to BufWritePost.
+      vim.cmd([[
+        command! BuildRunner AsyncRun -mode=term -focus=0 -rows=12 dart run build_runner build --delete-conflicting-outputs
+        command! L10n AsyncRun -mode=term -focus=0 -rows=12 flutter gen-l10n
+        command! DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply
+        command! Golden AsyncRun -cwd=$(VIM_CWD) flutter test --update-goldens
+        command! ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --no-enums --use-freezed -o "$(VIM_FILEPATH)"
+        command! CustomLint AsyncRun -mode=term -focus=0 -rows=12 -cwd=$(VIM_ROOT) dart run custom_lint
+      ]])
+
       require("flutter-tools").setup({
         closing_tags = {
           enabled = true,
@@ -64,17 +77,6 @@ return {
             map("n", "<F2>", ":FlutterReload<CR>", { buffer = bufnr })
             map("n", "<F3>", ":FlutterRestart<CR>", { buffer = bufnr })
             map("n", "<F4>", ":lua require('telescope').extensions.flutter.commands()<CR>", { buffer = bufnr })
-
-            vim.cmd([[
-              command! BuildRunner AsyncRun -mode=term -focus=0 -rows=12 dart run build_runner build --delete-conflicting-outputs
-              command! L10n AsyncRun -mode=term -focus=0 -rows=12 flutter gen-l10n
-              command! DartFix AsyncRun -cwd=$(VIM_FILEDIR) dart fix --apply
-              command! Golden AsyncRun -cwd=$(VIM_CWD) flutter test --update-goldens
-              command! ToFreezed AsyncRun! -cwd=$(VIM_FILEDIR) quicktype "$(VIM_FILEPATH)" -l dart --no-enums --use-freezed -o "$(VIM_FILEPATH)"
-              " custom_lint boots its own analysis server, so it is explicit
-              " and async -- never wired to BufWritePost.
-              command! CustomLint AsyncRun -mode=term -focus=0 -rows=12 -cwd=$(VIM_ROOT) dart run custom_lint
-          ]])
           end,
         },
       })

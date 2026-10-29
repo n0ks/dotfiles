@@ -113,9 +113,22 @@ return {
         end
       end
 
-      vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-        group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+      -- golangci-lint is too heavy to run on every InsertLeave.
+      local skip_insert_leave = { go = true }
+
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        group = vim.api.nvim_create_augroup("nvim-lint-save", { clear = true }),
         callback = lint_if_available,
+      })
+
+      vim.api.nvim_create_autocmd("InsertLeave", {
+        group = vim.api.nvim_create_augroup("nvim-lint-insert", { clear = true }),
+        callback = function()
+          if skip_insert_leave[vim.bo.filetype] then
+            return
+          end
+          lint_if_available()
+        end,
       })
     end,
   },

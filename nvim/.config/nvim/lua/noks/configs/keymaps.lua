@@ -95,15 +95,26 @@ map("n", "<Leader>vc", ":NvimTreeToggle<CR>")
 map("n", "gas", ":lua require('textcase').current_word('to_snake_case')<CR>")
 
 -- ╭──────────────────────────────────────────────────────────╮
--- │                          Go                               │
+-- │                     Go / Dart                             │
 -- ╰──────────────────────────────────────────────────────────╯
 
-map("n", "<Leader>ga", ":GoAlt<CR>")
+-- These commands only exist after go.nvim / flutter-tools load, and they
+-- are meaningless on other filetypes.
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "go",
+  callback = function(args)
+    map("n", "<Leader>ga", ":GoAlt<CR>", { buffer = args.buf })
+    map("v", "<space>ca", "<cmd>lua require('go.codeaction').run_code_action()<CR>", { buffer = args.buf })
+  end,
+})
 
--- Dart: full custom_lint pass (dartls only reports the analyzer's own rules)
-map("n", "<leader>cl", ":CustomLint<CR>")
-
-map("v", "<space>ca", "<cmd>lua require('go.codeaction').run_code_action()<CR>")
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "dart",
+  callback = function(args)
+    -- Dart: full custom_lint pass (dartls only reports the analyzer's own rules)
+    map("n", "<leader>cl", ":CustomLint<CR>", { buffer = args.buf })
+  end,
+})
 
 -- ╭──────────────────────────────────────────────────────────╮
 -- │                       Quickfix                            │
@@ -162,7 +173,10 @@ map("n", "<leader>ds", ":Telescope lsp_document_symbols<CR>")
 map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
 map("n", "<leader>mm", ":lua require('noks.configs.telescope').man_pages()<CR>")
-map("n", "<leader>in", ":lua vim.lsp.inlay_hint.enable(false)<CR>")
+map("n", "<leader>in", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+end)
 
 map("n", "<leader>od", ":lua require('noks.configs.telescope').open_diff()<CR>")
 
@@ -212,8 +226,15 @@ map("n", "<leader>dc", ":DiffviewClose<CR>")
 map("n", "<leader>do", ":DiffviewOpen<CR>")
 map("n", "<leader>dh", ":DiffviewFileHistory %<CR>")
 -- cwd has to be resolved at call time, not when this file is sourced.
+-- Prefer a tmux window when we are already inside tmux; otherwise the
+-- lazygit.nvim command (which lazy-loads the plugin).
 map("n", "<leader>lg", function()
-  vim.fn.system({ "tmux", "new-window", "-c", vim.fn.getcwd(), "--", "lazygit" })
+  local in_tmux = vim.env.TMUX and vim.env.TMUX ~= ""
+  if in_tmux and vim.fn.executable("tmux") == 1 and vim.fn.executable("lazygit") == 1 then
+    vim.fn.system({ "tmux", "new-window", "-c", vim.fn.getcwd(), "--", "lazygit" })
+    return
+  end
+  vim.cmd("LazyGit")
 end)
 
 -- ╭──────────────────────────────────────────────────────────╮

@@ -1,5 +1,14 @@
 return {
   {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  {
     "j-hui/fidget.nvim",
     event = "LspAttach",
     opts = {
@@ -14,6 +23,7 @@ return {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",
       "b0o/schemastore.nvim",
+      "folke/lazydev.nvim",
     },
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -54,57 +64,65 @@ return {
       -- end
 
       local servers = {
-        lua_ls = require("noks.lsp.servers.sumneko"),
-        yamlls = {
-          settings = {
-            yaml = {
-              keyOrdering = false,
-              schemaStore = {
-                enable = false,
-                url = "",
-              },
-              schemas = require("schemastore").yaml.schemas(),
-            },
-          },
-        },
+        lua_ls = require("noks.lsp.servers.lua_ls"),
+        yamlls = require("noks.lsp.servers.yamlls"),
         jsonls = require("noks.lsp.servers.jsonls"),
         gopls = require("noks.lsp.servers.gopls"),
         ts_ls = require("noks.lsp.servers.ts_ls"),
         mpls = {},
       }
 
+      local highlight_method = vim.lsp.protocol.Methods.textDocument_documentHighlight
+      local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+
+      -- One global detach handler. Recreating it with clear=true inside
+      -- LspAttach dropped the previous buffer's cleanup, and clearing
+      -- highlights on any detach killed them while another client still
+      -- wanted documentHighlight.
+      vim.api.nvim_create_autocmd("LspDetach", {
+        group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+        callback = function(event)
+          pcall(vim.api.nvim_buf_call, event.buf, vim.lsp.buf.clear_references)
+          local remaining = vim.lsp.get_clients({
+            bufnr = event.buf,
+            method = highlight_method,
+          })
+          local detaching_id = event.data and event.data.client_id
+          local still = vim.tbl_filter(function(client)
+            return client.id ~= detaching_id
+          end, remaining)
+          if #still == 0 then
+            vim.api.nvim_clear_autocmds({ group = highlight_augroup, buffer = event.buf })
+          end
+        end,
+      })
+
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
         callback = function(event)
-          local map = function(keys, func, desc, mode)
-            mode = mode or "n"
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-          end
-
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-            local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.document_highlight,
-            })
-
-            vim.lsp.inlay_hint.enable(false, { bufnr = event.buf })
-            vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.clear_references,
-            })
-
-            vim.api.nvim_create_autocmd("LspDetach", {
-              group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-              callback = function(event2)
-                vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
-              end,
-            })
+          if not client then
+            return
           end
+
+          vim.lsp.inlay_hint.enable(false, { bufnr = event.buf })
+
+          if not client:supports_method(highlight_method, event.buf) then
+            return
+          end
+
+          -- Replace, don't stack, when a second client attaches to the buffer.
+          vim.api.nvim_clear_autocmds({ group = highlight_augroup, buffer = event.buf })
+          vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+            buffer = event.buf,
+            group = highlight_augroup,
+            callback = vim.lsp.buf.document_highlight,
+          })
+          vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+            buffer = event.buf,
+            group = highlight_augroup,
+            callback = vim.lsp.buf.clear_references,
+          })
         end,
       })
 
@@ -116,8 +134,13 @@ return {
         vim.lsp.config(name, cfg)
       end
 
+      local server_names = vim.tbl_keys(servers)
       require("mason-lspconfig").setup({
-        ensure_installed = vim.tbl_keys(servers),
+        ensure_installed = server_names,
+        -- Default automatic_enable=true would vim.lsp.enable() every Mason
+        -- server, including a stray dartls that would double-attach with
+        -- flutter-tools.
+        automatic_enable = server_names,
       })
     end,
   },

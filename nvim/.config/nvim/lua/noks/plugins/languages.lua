@@ -12,6 +12,16 @@ return {
         -- which no longer exists on nvim-treesitter's `main` branch. The same
         -- mappings are set up by nvim-treesitter-textobjects in treesitter.lua.
         textobjects = false,
+        -- LSP, format, DAP UI and inlay are owned by lsp.lua / conform / nvim-dap.
+        -- The defaults would re-enable inlay globally, remap LSP keys over
+        -- Lspsaga, and register a second dap-ui / virtual-text setup.
+        lsp_cfg = false,
+        lsp_keymaps = false,
+        lsp_document_formatting = false,
+        lsp_inlay_hints = { enable = false },
+        dap_debug_keymap = false,
+        dap_debug_gui = false,
+        dap_debug_vt = false,
       })
     end,
     -- go.nvim's own ftdetect claims *.tmpl/*.gohtml; `tmpl` was never a

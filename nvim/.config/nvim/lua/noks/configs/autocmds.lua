@@ -46,9 +46,13 @@ vim.filetype.add({
   },
 })
 
-api.nvim_create_autocmd("BufRead", {
-  pattern = "*.yaml",
-  command = "set sw=2 sts=2 expandtab",
+api.nvim_create_autocmd("FileType", {
+  pattern = { "yaml", "yaml.docker-compose" },
+  callback = function()
+    vim.bo.shiftwidth = 2
+    vim.bo.softtabstop = 2
+    vim.bo.expandtab = true
+  end,
 })
 
 api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {

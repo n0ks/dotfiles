@@ -8,7 +8,9 @@ return {
     dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
       history = true,
-      updateevents = "TextChanged, TextChangedI",
+      -- A comma-separated string with a space becomes the event " TextChangedI",
+      -- which never fires, so snippet nodes stop updating while typing.
+      updateevents = { "TextChanged", "TextChangedI" },
       enable_autosnippets = true,
     },
     config = function(_, opts)

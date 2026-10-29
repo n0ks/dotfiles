@@ -16,22 +16,23 @@ return {
         end,
         desc = "Debug: Start/Continue",
       },
+      -- F1-F4 are Flutter run/reload/restart/commands on dart buffers.
       {
-        "<F1>",
+        "<F8>",
         function()
           require("dap").step_into()
         end,
         desc = "Debug: Step Into",
       },
       {
-        "<F2>",
+        "<F9>",
         function()
           require("dap").step_over()
         end,
         desc = "Debug: Step Over",
       },
       {
-        "<F3>",
+        "<F10>",
         function()
           require("dap").step_out()
         end,
@@ -152,17 +153,15 @@ return {
             request = "launch",
             name = "Launch & Debug Chrome",
             url = function()
-              local co = coroutine.running()
-              return coroutine.create(function()
+              -- nvim-dap runs this as a coroutine and passes the session
+              -- thread as the first argument. Resuming coroutine.running()
+              -- from the caller wakes the wrong thread.
+              return coroutine.create(function(dap_run_co)
                 vim.ui.input({
                   prompt = "Enter URL: ",
                   default = "http://localhost:3000",
                 }, function(url)
-                  if url == nil or url == "" then
-                    return
-                  else
-                    coroutine.resume(co, url)
-                  end
+                  coroutine.resume(dap_run_co, url)
                 end)
               end)
             end,
@@ -194,11 +193,11 @@ return {
 
       -- DAP signs
       local signs = {
-        { name = "DapBreakpoint", text = "", texthl = "DapBreakpointColor" },
-        { name = "DapStopped", text = "", texthl = "DapStoppedColor", linehl = "DapStoppedLine" },
-        { name = "DapBreakpointCondition", text = "", texthl = "DapBreakpointColor" },
-        { name = "DapBreakpointRejected", text = "•", texthl = "DapRejectedColor" },
-        { name = "DapLogPoint", text = "•", texthl = "DapLogPointColor" },
+        { name = "DapBreakpoint", text = "●", texthl = "DapBreakpointColor" },
+        { name = "DapStopped", text = "▶", texthl = "DapStoppedColor", linehl = "DapStoppedLine" },
+        { name = "DapBreakpointCondition", text = "◆", texthl = "DapBreakpointColor" },
+        { name = "DapBreakpointRejected", text = "●", texthl = "DapRejectedColor" },
+        { name = "DapLogPoint", text = "◆", texthl = "DapLogPointColor" },
       }
       for _, sign in ipairs(signs) do
         vim.fn.sign_define(sign.name, {

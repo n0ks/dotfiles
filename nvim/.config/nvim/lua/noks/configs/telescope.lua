@@ -101,6 +101,10 @@ M.open_diff = function()
   })
 end
 
+M.man_pages = function()
+  builtin.man_pages({ sections = { "1", "2", "3" } })
+end
+
 M.live_grep_qflist = function()
   local qflist = vim.fn.getqflist()
   local filetable = {}

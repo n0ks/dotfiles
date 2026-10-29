@@ -1,6 +1,9 @@
 return {
   {
     "nvimdev/lspsaga.nvim",
+    -- Global keymaps use :Lspsaga; without cmd, lazy has no stub and K
+    -- errors until the first LSP attach.
+    cmd = "Lspsaga",
     event = "LspAttach",
     opts = {
 
